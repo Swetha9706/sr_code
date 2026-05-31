@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Work — Swetha Ramachandran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Quicksand:wght@400;500;600;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:    #ffffff;
+  --black:    #000000;
+  --border:   #e5e5e5;
+  --card:     #ffffff;
+  --pink:     #ef626c;
+  --yellow:   #f5e33a;
+  --lavender: #c8caff;
+  --blue:     #3b3bea;
+  --ink:      #0d0d0d;
+  --muted:    #6b6b6b;
+  --fs-body:17px;
+  --lh-body:1.8;
+  --color-body:#3d3d3d;
+}
+@media(max-width:1199px){:root{--fs-body:16px;--lh-body:1.75}}
+@media(max-width:767px){:root{--fs-body:15px;--lh-body:1.7}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:'Quicksand',system-ui,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ── NAV ── */
+.navbar{position:sticky;top:1.2rem;z-index:200;margin:1.2rem 1.5rem 0}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2rem;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:0 2px 16px rgba(0,0,0,.06);
+  transition:box-shadow .2s;
+}
+.navbar.scrolled .nav-inner{box-shadow:0 4px 24px rgba(0,0,0,.1)}
+.nav-left{display:flex;align-items:center;gap:.7rem}
+.nav-right{display:flex;align-items:center;gap:.5rem}
+.npill{
+  padding:.45rem 1.2rem;border-radius:999px;
+  font-family:'Quicksand',sans-serif;
+  font-size:13px;font-weight:600;
+  cursor:pointer;border:none;
+  transition:transform .15s,box-shadow .15s;
+  letter-spacing:.01em;
+  text-decoration:none;display:inline-block;
+}
+.npill:hover{transform:scale(1.05);box-shadow:0 3px 10px rgba(0,0,0,.12)}
+.pp{background:var(--pink);color:#fff}
+.py{background:var(--yellow);color:var(--ink)}
+.pl{background:var(--lavender);color:var(--blue)}
+.nav-name{
+  font-family:'Playfair Display',serif;
+  font-size:14px;font-weight:700;
+  text-decoration:underline;text-underline-offset:3px;
+  color:var(--black);
+}
+.nav-cross{font-size:1.2rem;color:var(--muted);user-select:none}
+
+/* ── PAGE WRAP ── */
+.page-wrap{max-width:1100px;margin:0 auto;padding:4rem 2rem 6rem}
+.pg-tag{
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--pink);
+  display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;
+}
+.pg-tag::before{content:'';width:1.5rem;height:1px;background:var(--pink)}
+.pg-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,5vw,3.5rem);font-weight:900;margin-bottom:.5rem;
+}
+.pg-sub{
+  font-size:var(--fs-body);color:var(--color-body);font-weight:300;
+  max-width:64ch;margin-bottom:3rem;line-height:var(--lh-body);
+}
+
+/* ── FILTER PILLS ── */
+.filters{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.fpill{
+  padding:.4rem 1.1rem;border-radius:999px;font-size:12px;font-weight:500;
+  cursor:pointer;border:1.5px solid var(--border);background:#fff;
+  color:var(--muted);transition:all .15s;font-family:'Quicksand',sans-serif;
+}
+.fpill:hover,.fpill.on{border-color:var(--ink);background:var(--ink);color:#fff}
+
+/* ── WORK GRID ── */
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.wcard{
+  background:var(--card);border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;
+  display:block;color:inherit;text-decoration:none;
+}
+.wcard:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
+.wthumb{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.wthumb svg{width:60%;max-width:160px;opacity:.9}
+.wthumb img{width:100%;height:100%;object-fit:cover}
+.wtag{
+  position:absolute;top:1rem;left:1rem;padding:.3rem .85rem;border-radius:999px;
+  font-size:10px;font-weight:500;font-family:'DM Mono',monospace;
+  letter-spacing:.06em;text-transform:uppercase;
+}
+.wbody{padding:1.25rem 1.5rem 1.5rem}
+.wname{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;margin-bottom:.4rem}
+.wdesc{font-size:var(--fs-body);color:var(--color-body);font-weight:300;line-height:var(--lh-body);margin-bottom:1rem}
+.wpills{display:flex;flex-wrap:wrap;gap:.35rem}
+.wpill{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.04em;
+  color:var(--muted);border:1px solid var(--border);padding:2px 8px;border-radius:4px;
+}
+.warrow{float:right;font-size:1.1rem;color:var(--border);transition:color .2s,transform .2s}
+.wcard:hover .warrow{color:var(--pink);transform:translate(3px,-3px)}
+
+/* ── HAMBURGER ── */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;padding:4px;background:none;border:none;cursor:pointer}
+.hamburger span{display:block;height:2px;background:var(--black);border-radius:2px;transition:all .25s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* ── MOBILE MENU ── */
+.mobile-menu{display:none;position:fixed;inset:0;z-index:300;background:var(--white);padding:5rem 2rem 2rem;flex-direction:column;overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;background:#f0f0f0;border:none;border-radius:999px;padding:.45rem 1rem;cursor:pointer}
+.mobile-nav{display:flex;flex-direction:column;gap:.25rem}
+.mobile-nav-link{font-family:'Quicksand',sans-serif;font-size:1.6rem;font-weight:700;color:var(--black);padding:.5rem 0;text-decoration:none;display:block}
+.mobile-nav-sub{font-family:'Quicksand',sans-serif;font-size:1rem;font-weight:600;color:var(--muted);padding:.3rem 0 .3rem 1.25rem;text-decoration:none;display:block}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .hamburger{display:flex}
+  .nav-right{display:none}
+  .nav-name{display:none}
+  .navbar{margin:.7rem .7rem 0}
+  .nav-inner{padding:.85rem 1.25rem}
+  .work-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .page-wrap{padding:3rem 1.25rem 5rem}
+  .work-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="aboutme.html" class="npill pp">About Me</a>
+      <span class="nav-cross">✛</span>
+      <a href="index.html" class="nav-name">Swetha Ramachandran</a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html#home" class="npill py">Home</a>
+      <a href="work.html" class="npill pl">Work</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">Close</button>
+  <nav class="mobile-nav">
+    <a href="index.html#home" class="mobile-nav-link">Home</a>
+    <a href="work.html" class="mobile-nav-link">Work</a>
+    <a href="Projects/kretha.html" class="mobile-nav-sub">Krētha</a>
+    <a href="Projects/futurescope_Remix.html" class="mobile-nav-sub">FutureScope</a>
+    <a href="Projects/sip-scones.html" class="mobile-nav-sub">Sip &amp; Scones</a>
+    <a href="aboutme.html" class="mobile-nav-link">About Me</a>
+  </nav>
+</div>
+
+<main>
+  <div class="page-wrap">
+
+    <div class="pg-tag">Selected projects</div>
+    <h1 class="pg-title">My Work</h1>
+    <p class="pg-sub">Here are some of my personal &amp; professional UX/UI projects — each one shows how I explore ideas, solve problems, and design experiences that feel simple and meaningful.</p>
+
+    <!-- Work grid -->
+    <div class="work-grid" id="wgrid">
+
+      <a class="wcard" data-cat="ux" href="Projects/kretha.html">
+        <div class="wthumb" style="background:#e8f0fe">
+          <span class="wtag" style="background:#dbeafe;color:#1d4ed8">UX / UI</span>
+          <img src="Online world-connect 1.png" alt="Krētha project">
+        </div>
+        <div class="wbody">
+          <div class="warrow">→</div>
+          <div class="wname">Krētha</div>
+          <div class="wdesc">A B2B procurement platform that simplifies how small businesses source, manage, and connect with trusted suppliers — designed to make retail operations faster, smarter, and more accessible.</div>
+          <div class="wpills"><span class="wpill">B2B SaaS</span><span class="wpill">User Research</span><span class="wpill">Prototyping</span><span class="wpill">Mobile</span></div>
+        </div>
+      </a>
+
+      <a class="wcard" data-cat="ux" href="Projects/futurescope_Remix.html">
+        <div class="wthumb" style="background:#fdf2f8">
+          <span class="wtag" style="background:#fce7f3;color:#be185d">UX / UI</span>
+          <img src="10 1.jpg" alt="FutureScope project">
+        </div>
+        <div class="wbody">
+          <div class="warrow">→</div>
+          <div class="wname">FutureScope</div>
+          <div class="wdesc">Full brand identity for a sustainable architecture firm — logo system to spatial wayfinding.</div>
+          <div class="wpills"><span class="wpill">Illustrator</span><span class="wpill">Brand Identity</span><span class="wpill">Print</span></div>
+        </div>
+      </a>
+
+      <a class="wcard" data-cat="ux" href="Projects/sip-scones.html">
+        <div class="wthumb" style="background:#fff7ed">
+          <span class="wtag" style="background:#ffedd5;color:#c2410c">UX / UI</span>
+          <svg viewBox="0 0 160 120" fill="none"><rect x="30" y="22" width="100" height="76" rx="4" fill="white" stroke="#f5e33a" stroke-width="2"/><rect x="30" y="22" width="100" height="22" rx="4" fill="#f5e33a"/><rect x="38" y="52" width="84" height="5" rx="2.5" fill="#f5e33a" opacity=".4"/><rect x="38" y="62" width="64" height="4" rx="2" fill="#e2e8f0"/><rect x="38" y="72" width="74" height="4" rx="2" fill="#e2e8f0"/><rect x="38" y="82" width="44" height="4" rx="2" fill="#e2e8f0"/></svg>
+        </div>
+        <div class="wbody">
+          <div class="warrow">→</div>
+          <div class="wname">Sip &amp; Scones</div>
+          <div class="wdesc">UX design for a cozy café ordering experience — from discovery to checkout, optimised for delight.</div>
+          <div class="wpills"><span class="wpill">UX Design</span><span class="wpill">Figma</span><span class="wpill">Prototyping</span></div>
+        </div>
+      </a>
+
+
+    </div>
+  </div>
+</main>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  function openMenu(){mobileMenu.classList.add('open');hamburger.classList.add('open');hamburger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'}
+  function closeMenu(){mobileMenu.classList.remove('open');hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');document.body.style.overflow=''}
+  hamburger.addEventListener('click', openMenu);
+  mobileClose.addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeMenu(); });
+
+  function filter(btn, cat) {
+    document.querySelectorAll('.fpill').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    document.querySelectorAll('.wcard').forEach(c => {
+      c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'block' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

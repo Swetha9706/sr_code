@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me — Swetha Ramachandran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Quicksand:wght@400;500;600;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:    #ffffff;
+  --black:    #000000;
+  --border:   #e5e5e5;
+  --pink:     #ef626c;
+  --yellow:   #f5e33a;
+  --lavender: #c8caff;
+  --blue:     #3b3bea;
+  --ink:      #0d0d0d;
+  --muted:    #6b6b6b;
+  --fs-body:17px;
+  --lh-body:1.8;
+  --color-body:#3d3d3d;
+}
+@media(max-width:1199px){:root{--fs-body:16px;--lh-body:1.75}}
+@media(max-width:767px){:root{--fs-body:15px;--lh-body:1.7}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--white);color:var(--ink);font-family:'Quicksand',system-ui,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ── NAV ── */
+.navbar{position:sticky;top:1.2rem;z-index:200;margin:1.2rem 1.5rem 0}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2rem;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:0 2px 16px rgba(0,0,0,.06);
+  transition:box-shadow .2s;
+}
+.navbar.scrolled .nav-inner{box-shadow:0 4px 24px rgba(0,0,0,.1)}
+.nav-left{display:flex;align-items:center;gap:.7rem}
+.nav-right{display:flex;align-items:center;gap:.5rem}
+.npill{
+  padding:.45rem 1.2rem;border-radius:999px;
+  font-family:'Quicksand',sans-serif;
+  font-size:13px;font-weight:600;
+  cursor:pointer;border:none;
+  transition:transform .15s,box-shadow .15s;
+  letter-spacing:.01em;
+  text-decoration:none;display:inline-block;
+}
+.npill:hover{transform:scale(1.05);box-shadow:0 3px 10px rgba(0,0,0,.12)}
+.pp{background:var(--pink);color:#fff}
+.py{background:var(--yellow);color:var(--ink)}
+.pl{background:var(--lavender);color:var(--blue)}
+.nav-name{
+  font-family:'Playfair Display',serif;
+  font-size:14px;font-weight:700;
+  text-decoration:underline;text-underline-offset:3px;
+  color:var(--black);
+}
+.nav-cross{font-size:1.2rem;color:var(--muted);user-select:none}
+
+/* ── PAGE WRAP ── */
+.page-wrap{max-width:1100px;margin:0 auto;padding:4rem 2rem 6rem}
+.pg-tag{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--pink);margin-bottom:.75rem;
+}
+.pg-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;
+  line-height:.95;margin-bottom:3rem;
+}
+
+/* ── ABOUT HERO ── */
+.about-hero{
+  display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;
+  align-items:start;margin-bottom:4rem;
+}
+.about-img{
+  background:var(--lavender);border-radius:20px;
+  aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.about-img-inner{
+  width:65%;aspect-ratio:1;border-radius:50%;
+  background:var(--blue);display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:4rem;color:#fff;font-style:italic;
+}
+.about-img-label{
+  position:absolute;bottom:1.2rem;left:1.2rem;
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;
+  color:rgba(0,0,0,.4);text-transform:uppercase;
+}
+.about-lead{
+  font-family:'Playfair Display',serif;font-size:1.6rem;
+  line-height:1.35;margin-bottom:1.25rem;color:var(--ink);
+}
+.about-lead em{font-style:italic;color:var(--blue)}
+.about-body{
+  font-size:var(--fs-body);color:var(--color-body);line-height:var(--lh-body);
+  font-weight:300;margin-bottom:1rem;
+}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+.sbox{border:1.5px solid var(--border);border-radius:12px;padding:1.25rem}
+.snum{
+  font-family:'Playfair Display',serif;font-size:2.2rem;
+  color:var(--pink);display:block;line-height:1;margin-bottom:.2rem;
+}
+.slbl{
+  font-size:.75rem;color:var(--muted);letter-spacing:.05em;
+  text-transform:uppercase;font-family:'DM Mono',monospace;
+}
+
+/* ── SKILLS ── */
+.skills-wrap{margin-bottom:4rem}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+.skill-card{
+  background:#fff;border:1px solid var(--border);border-radius:14px;
+  padding:1.25rem;display:flex;align-items:flex-start;gap:.85rem;
+}
+.skill-icon{
+  width:38px;height:38px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:1.1rem;
+}
+.skill-name{font-weight:500;font-size:.9rem;margin-bottom:.2rem}
+.skill-tools{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.5}
+
+/* ── TIMELINE ── */
+.tl{position:relative;padding-left:1.75rem;margin-bottom:4rem;margin-top:1.5rem}
+.tl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border)}
+.tli{position:relative;padding:0 0 2.5rem 1.75rem}
+.tldot{
+  position:absolute;left:-1.75rem;width:9px;height:9px;
+  background:var(--pink);top:5px;transform:translateX(-4px);
+}
+.tlyear{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;
+  color:var(--pink);text-transform:uppercase;margin-bottom:.3rem;
+}
+.tlrole{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;margin-bottom:.15rem}
+.tlco{font-size:.82rem;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:.04em;margin-bottom:.6rem}
+.tldesc{font-size:var(--fs-body);color:var(--color-body);line-height:var(--lh-body);font-weight:300;max-width:64ch}
+
+/* ── CONTACT STRIP ── */
+.contact-strip{
+  background:var(--ink);border-radius:20px;
+  padding:3rem 2.5rem;text-align:center;margin-bottom:2rem;
+  position:relative;overflow:hidden;
+}
+.cs-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,5vw,3.5rem);font-weight:900;
+  color:#fff;margin-bottom:.75rem;
+}
+.cs-title em{font-style:italic;color:var(--pink)}
+.cs-sub{font-size:.95rem;color:rgba(255,255,255,.5);font-weight:300;max-width:40ch;margin:0 auto 2rem}
+.cs-links{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.clink{
+  font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:#fff;
+  border:1px solid rgba(255,255,255,.2);padding:.7rem 1.5rem;
+  border-radius:999px;transition:border-color .2s,color .2s;background:transparent;
+  text-decoration:none;
+}
+.clink:hover{border-color:var(--pink);color:var(--pink)}
+
+/* ── SECTION LABELS ── */
+.section-label{
+  font-family:'Playfair Display',serif;font-size:1.8rem;
+  font-weight:900;margin-bottom:1.5rem;margin-top:.5rem;
+}
+
+/* ── HAMBURGER ── */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;padding:4px;background:none;border:none;cursor:pointer}
+.hamburger span{display:block;height:2px;background:var(--black);border-radius:2px;transition:all .25s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* ── MOBILE MENU ── */
+.mobile-menu{display:none;position:fixed;inset:0;z-index:300;background:var(--white);padding:5rem 2rem 2rem;flex-direction:column;overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;background:#f0f0f0;border:none;border-radius:999px;padding:.45rem 1rem;cursor:pointer}
+.mobile-nav{display:flex;flex-direction:column;gap:.25rem}
+.mobile-nav-link{font-family:'Quicksand',sans-serif;font-size:1.6rem;font-weight:700;color:var(--black);padding:.5rem 0;text-decoration:none;display:block}
+.mobile-nav-sub{font-family:'Quicksand',sans-serif;font-size:1rem;font-weight:600;color:var(--muted);padding:.3rem 0 .3rem 1.25rem;text-decoration:none;display:block}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .hamburger{display:flex}
+  .nav-right{display:none}
+  .nav-name{display:none}
+  .navbar{margin:.7rem .7rem 0}
+  .nav-inner{padding:.85rem 1.25rem}
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  .about-hero{grid-template-columns:1fr}
+  .about-img{aspect-ratio:4/3}
+  .page-wrap{padding:3rem 1.25rem 5rem}
+}
+@media(max-width:480px){
+  .about-stats{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  .contact-strip{padding:2.5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="aboutme.html" class="npill pp">About Me</a>
+      <span class="nav-cross">✛</span>
+      <a href="index.html" class="nav-name">Swetha Ramachandran</a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html#home" class="npill py">Home</a>
+      <a href="index.html#work" class="npill pl">Work</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">Close</button>
+  <nav class="mobile-nav">
+    <a href="index.html#home" class="mobile-nav-link">Home</a>
+    <a href="work.html" class="mobile-nav-link">Work</a>
+    <a href="Projects/kretha.html" class="mobile-nav-sub">Krētha</a>
+    <a href="Projects/futurescope_Remix.html" class="mobile-nav-sub">FutureScope</a>
+    <a href="Projects/sip-scones.html" class="mobile-nav-sub">Sip &amp; Scones</a>
+    <a href="aboutme.html" class="mobile-nav-link">About Me</a>
+  </nav>
+</div>
+
+<main>
+  <div class="page-wrap">
+
+    <div class="pg-tag">Get to know me</div>
+    <h1 class="pg-title">About Me</h1>
+
+    <!-- Bio + photo -->
+    <div class="about-hero">
+      <div class="about-img">
+        <div class="about-img-inner">S</div>
+        <div class="about-img-label">Swetha · Pune, IN</div>
+        <div style="position:absolute;top:1.5rem;right:1.5rem;width:50px;height:50px">
+          <svg viewBox="0 0 50 50" fill="none">
+            <circle cx="25" cy="25" r="7" fill="#f03f8f"/>
+            <ellipse cx="25" cy="9" rx="4" ry="8" fill="#f03f8f"/>
+            <ellipse cx="25" cy="41" rx="4" ry="8" fill="#f03f8f"/>
+            <ellipse cx="9" cy="25" rx="8" ry="4" fill="#f03f8f"/>
+            <ellipse cx="41" cy="25" rx="8" ry="4" fill="#f03f8f"/>
+            <circle cx="25" cy="25" r="5.5" fill="#f5e33a"/>
+          </svg>
+        </div>
+      </div>
+
+      <div>
+        <p class="about-lead">I design things that feel <em>good</em> to use — and even better to look at.</p>
+        <p class="about-body">Hi, I'm Swetha — a UX researcher, UI designer, and graphic designer based in Pune. I'm drawn to the messy, human side of design: the part where you sit with real people, understand what frustrates them, and turn those insights into interfaces that just click.</p>
+        <p class="about-body">I care equally about the big picture (how does this product make people feel?) and the small details (is that button actually 8px too wide?). My work spans digital products, brand identity, and editorial design.</p>
+        <p class="about-body">Outside of work you'll find me sketching in Muji notebooks, obsessing over type specimens, and making very strong opinions about colour contrast ratios.</p>
+        <div class="about-stats">
+          <div class="sbox"><span class="snum">5+</span><span class="slbl">Years experience</span></div>
+          <div class="sbox"><span class="snum">40+</span><span class="slbl">Projects delivered</span></div>
+          <div class="sbox"><span class="snum">20</span><span class="slbl">Happy clients</span></div>
+          <div class="sbox"><span class="snum">3</span><span class="slbl">Design awards</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="skills-wrap">
+      <div class="pg-tag">What I do</div>
+      <h2 class="section-label">Skills &amp; Tools</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon" style="background:#e8f0fe">🔍</div>
+          <div><div class="skill-name">UX Research</div><div class="skill-tools">User interviews, usability testing, affinity mapping, journey mapping</div></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background:#fce7f3">🎨</div>
+          <div><div class="skill-name">UI Design</div><div class="skill-tools">Figma, wireframing, prototyping, design systems, component libraries</div></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background:#fffbeb">✏️</div>
+          <div><div class="skill-name">Graphic Design</div><div class="skill-tools">Illustrator, Photoshop, InDesign, editorial, print, packaging</div></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background:#f0fdf4">📐</div>
+          <div><div class="skill-name">Brand Identity</div><div class="skill-tools">Logo systems, brand guidelines, typography, visual language</div></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background:#f5f3ff">🧩</div>
+          <div><div class="skill-name">Design Systems</div><div class="skill-tools">Tokens, documentation, component specs, accessibility standards</div></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background:#fff7ed">📊</div>
+          <div><div class="skill-name">Strategy</div><div class="skill-tools">Competitive analysis, stakeholder mapping, design ops, workshops</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="pg-tag">Career path</div>
+    <h2 class="section-label">Experience</h2>
+    <div class="tl">
+      <div class="tli">
+        <div class="tldot"></div>
+        <div class="tlyear">2022 — Present</div>
+        <div class="tlrole">Senior Product Designer</div>
+        <div class="tlco">Nucleus Design Co. · Full-time</div>
+        <p class="tldesc">Lead design across three product tracks. Own the design system, run weekly critiques, and work directly with engineering leads on quality and implementation.</p>
+      </div>
+      <div class="tli">
+        <div class="tldot"></div>
+        <div class="tlyear">2020 — 2022</div>
+        <div class="tlrole">UI/UX Designer</div>
+        <div class="tlco">Lightwave Agency · Full-time</div>
+        <p class="tldesc">End-to-end product design for clients across fintech, healthtech, and consumer apps — from research through to handoff.</p>
+      </div>
+      <div class="tli">
+        <div class="tldot"></div>
+        <div class="tlyear">2019 — 2020</div>
+        <div class="tlrole">Graphic &amp; Brand Designer</div>
+        <div class="tlco">Freelance · Independent</div>
+        <p class="tldesc">Brand identities, editorial design, and print collateral for startups and small businesses across India.</p>
+      </div>
+      <div class="tli">
+        <div class="tldot"></div>
+        <div class="tlyear">2015 — 2019</div>
+        <div class="tlrole">B.Des — Visual Communication</div>
+        <div class="tlco">National Institute of Design · Education</div>
+        <p class="tldesc">Studied visual communication with a focus on typography, brand systems, and interaction design. Graduated with distinction.</p>
+      </div>
+    </div>
+
+    <!-- Contact strip -->
+    <div class="contact-strip">
+      <div class="cs-title">Let's make something <em>great.</em></div>
+      <p class="cs-sub">Open to freelance projects, full-time roles, and interesting collaborations.</p>
+      <div class="cs-links">
+        <a class="clink" href="mailto:swetha.ramachandran17@gmail.com">Email me</a>
+        <a class="clink" href="#">Dribbble</a>
+        <a class="clink" href="#">LinkedIn</a>
+        <a class="clink" href="#">Resume ↓</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  function openMenu(){mobileMenu.classList.add('open');hamburger.classList.add('open');hamburger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'}
+  function closeMenu(){mobileMenu.classList.remove('open');hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');document.body.style.overflow=''}
+  hamburger.addEventListener('click', openMenu);
+  mobileClose.addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeMenu(); });
+</script>
+</body>
+</html>

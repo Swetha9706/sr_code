@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FutureScope — Swetha Ramachandran</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ───────────────────────────────────────
+   RESET & TOKENS
+─────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f5f2;
+  --ink:#0d0d0d;
+  --pink:#f03f8f;
+  --yellow:#f5e33a;
+  --blue:#3b3bea;
+  --lavender:#e8e0fa;
+  --orange:#f05a28;
+  --green:#3ecf8e;
+  --muted:#3d3d3d;
+  --border:#e4dfd6;
+  --card:#ffffff;
+  --alt:#ede9df;
+  --dark-surface:#181614;
+  --r-sm:12px;
+  --r-md:16px;
+  --r-lg:20px;
+  --transition:0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+  --fs-body:17px;
+  --lh-body:1.8;
+  --color-body:#3a3530;
+  --color-body-dark:rgba(255,255,255,0.65);
+}
+@media(max-width:1199px){:root{--fs-body:16px;--lh-body:1.75}}
+@media(max-width:767px){:root{--fs-body:15px;--lh-body:1.7}}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ───────────────────────────────────────
+   SCROLL REVEAL
+─────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(32px)}
+@media(prefers-reduced-motion:no-preference){
+  .reveal{transition:opacity 0.7s var(--transition),transform 0.7s var(--transition)}
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+.reveal-left{opacity:0;transform:translateX(-28px)}
+@media(prefers-reduced-motion:no-preference){
+  .reveal-left{transition:opacity 0.7s var(--transition),transform 0.7s var(--transition)}
+}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+
+/* ───────────────────────────────────────
+   PROGRESS BAR
+─────────────────────────────────────── */
+#progress-bar{
+  position:fixed;top:0;left:0;height:2px;
+  background:var(--pink);width:0%;z-index:1000;
+}
+@media(prefers-reduced-motion:no-preference){
+  #progress-bar{transition:width 0.1s linear}
+}
+
+/* ───────────────────────────────────────
+   NAV
+─────────────────────────────────────── */
+nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2.5rem;background:rgba(247,245,242,0.92);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid var(--border);border-radius:var(--r-lg);
+  margin:1.1rem 1.5rem 0;position:sticky;top:1.1rem;z-index:200;
+  box-shadow:0 2px 24px rgba(0,0,0,.05);
+}
+.nav-back{
+  display:flex;align-items:center;gap:.5rem;
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--muted);text-decoration:none;
+  border:1px solid var(--border);padding:.4rem .95rem;border-radius:999px;
+}
+@media(prefers-reduced-motion:no-preference){
+  .nav-back{transition:border-color var(--transition),color var(--transition),background var(--transition)}
+}
+.nav-back:hover{border-color:var(--ink);color:#fff;background:var(--ink)}
+.nav-center{
+  font-family:'Playfair Display',serif;font-size:14px;font-weight:900;
+  text-decoration:underline;cursor:pointer;
+  color:var(--ink);text-decoration-color:var(--pink);
+}
+.nav-pills{display:flex;gap:.5rem}
+.npill{
+  padding:.4rem 1.1rem;border-radius:999px;font-size:12px;font-weight:500;
+  cursor:pointer;border:none;font-family:'DM Sans',sans-serif;
+}
+@media(prefers-reduced-motion:no-preference){
+  .npill{transition:transform .15s,box-shadow .15s}
+}
+.npill:hover{transform:scale(1.06);box-shadow:0 4px 14px rgba(0,0,0,.1)}
+.np-y{background:var(--yellow);color:var(--ink)}
+.np-l{background:var(--lavender);color:var(--blue)}
+
+/* ───────────────────────────────────────
+   HERO
+─────────────────────────────────────── */
+.hero{
+  position:relative;overflow:hidden;
+  background:var(--ink);
+  padding:6rem 3rem 5rem;
+  min-height:92vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.hero-grid-bg{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;
+}
+.hero-noise{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;opacity:.4;
+}
+.hero-deco-burst{
+  position:absolute;right:5%;top:8%;
+  width:200px;height:200px;opacity:.07;
+}
+.hero-deco-circle{
+  position:absolute;left:-80px;bottom:-80px;
+  width:400px;height:400px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.04);
+  pointer-events:none;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:1rem;
+  margin-bottom:2.5rem;
+}
+.hero-tag{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--pink);
+  display:flex;align-items:center;gap:.6rem;
+}
+.hero-tag::before{content:'';width:2rem;height:1px;background:var(--pink)}
+.hero-pill{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.3);
+  border:1px solid rgba(255,255,255,.1);padding:.28rem .85rem;border-radius:999px;
+}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(4rem,10vw,9rem);font-weight:900;line-height:.88;
+  letter-spacing:-.04em;color:#fff;margin-bottom:1.25rem;
+}
+.hero-title em{font-style:italic;color:var(--pink)}
+.hero-subtitle{
+  font-size:clamp(.95rem,1.5vw,1.15rem);font-weight:300;
+  color:rgba(255,255,255,.55);line-height:1.7;
+  max-width:60ch;margin-bottom:4rem;
+}
+.hero-meta-bar{
+  display:flex;gap:0;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-top:2rem;flex-wrap:wrap;
+}
+.hero-meta-item{
+  flex:1;min-width:160px;padding-right:2rem;
+  border-right:1px solid rgba(255,255,255,.08);
+  margin-right:2rem;margin-bottom:1rem;
+}
+.hero-meta-item:last-child{border-right:none;margin-right:0}
+.meta-l{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;
+  text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.4rem;
+}
+.meta-v{font-size:.9rem;color:rgba(255,255,255,.7);font-weight:300;line-height:1.4}
+.scroll-hint{
+  position:absolute;right:3rem;bottom:3rem;
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;
+  text-transform:uppercase;color:rgba(255,255,255,.2);
+  animation:bob 2s ease-in-out infinite;
+}
+.scroll-hint svg{opacity:.3}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ───────────────────────────────────────
+   SHARED SECTION STYLES
+─────────────────────────────────────── */
+section{padding:5.5rem 3rem}
+.s-white{background:var(--card)}
+.s-alt{background:var(--alt)}
+.s-dark{background:var(--ink)}
+.s-lavender{background:var(--lavender)}
+.divider{height:1px;background:var(--border)}
+
+.sec-label{
+  font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--pink);
+  display:flex;align-items:center;gap:.7rem;margin-bottom:1.5rem;
+}
+.sec-label::before{content:'';width:1.75rem;height:1px;background:var(--pink)}
+.sec-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.05;
+  margin-bottom:1.5rem;letter-spacing:-.01em;
+}
+.sec-title em{font-style:italic;color:var(--blue)}
+.body{font-size:var(--fs-body);color:var(--color-body);line-height:var(--lh-body);font-weight:300;max-width:62ch;margin-bottom:1.25rem}
+.body-dark{color:rgba(255,255,255,.55)}
+
+/* ───────────────────────────────────────
+   LAYOUTS
+─────────────────────────────────────── */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.grid-2-wide{display:grid;grid-template-columns:1.25fr 1fr;gap:4.5rem;align-items:start}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.grid-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--border)}
+
+/* ───────────────────────────────────────
+   BRIEF SECTION
+─────────────────────────────────────── */
+.brief-header-img{
+  width:100%;border-radius:var(--r-md);overflow:hidden;
+  background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);
+  aspect-ratio:16/7;display:flex;align-items:center;justify-content:center;
+  margin-bottom:4rem;position:relative;
+}
+.brief-header-img img{width:100%;height:100%;object-fit:cover;border-radius:var(--r-md)}
+.brief-header-placeholder{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;font-style:italic;color:rgba(255,255,255,.15);
+  letter-spacing:.05em;
+}
+.info-block{margin-bottom:2rem}
+.info-label{
+  font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;display:block;
+}
+.info-val{font-size:.92rem;color:var(--ink);font-weight:400;line-height:1.5}
+.hypothesis-box{
+  border:2px solid var(--blue);border-radius:var(--r-lg);
+  padding:2.25rem;margin-top:2rem;position:relative;
+  background:rgba(59,59,234,.03);
+}
+.hyp-tag{
+  position:absolute;top:-12px;left:1.5rem;
+  background:var(--card);padding:0 .75rem;
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--blue);
+}
+.hypothesis-box p{
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem;font-style:italic;line-height:1.65;color:var(--ink);
+}
+
+/* ───────────────────────────────────────
+   STAT BAND
+─────────────────────────────────────── */
+.stat-cell{background:var(--bg);padding:2.75rem 2.25rem}
+.stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3.2rem,6vw,5.5rem);font-weight:900;
+  color:var(--pink);line-height:1;display:block;margin-bottom:.6rem;
+}
+.stat-text{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.6;max-width:28ch}
+.stat-source{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;
+  color:var(--muted);text-transform:uppercase;margin-top:.75rem;display:block;
+}
+
+/* ───────────────────────────────────────
+   PULL QUOTE
+─────────────────────────────────────── */
+.pull-quote{
+  background:var(--ink);border-radius:var(--r-lg);
+  padding:3.5rem;margin:2.5rem 0;position:relative;overflow:hidden;
+}
+.pull-quote::before{
+  content:'\201C';font-family:'Playfair Display',serif;
+  font-size:14rem;line-height:.8;
+  color:rgba(255,255,255,.03);
+  position:absolute;top:-.5rem;left:.5rem;pointer-events:none;
+  font-style:italic;
+}
+.pull-quote blockquote{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.1rem,2.2vw,1.65rem);
+  font-style:italic;color:#fff;line-height:1.5;
+  max-width:54ch;position:relative;z-index:1;margin-bottom:.85rem;
+}
+.pull-quote cite{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.3);font-style:normal;
+}
+
+/* ───────────────────────────────────────
+   INSIGHT CARDS
+─────────────────────────────────────── */
+.icard{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r-md);padding:1.65rem;
+}
+@media(prefers-reduced-motion:no-preference){
+  .icard{transition:transform var(--transition),box-shadow var(--transition)}
+}
+.icard:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.07)}
+.icard-icon{font-size:1.5rem;margin-bottom:.85rem;display:block}
+.icard-title{font-weight:500;font-size:.95rem;margin-bottom:.35rem;color:var(--ink)}
+.icard-text{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.65}
+
+/* ───────────────────────────────────────
+   PROBLEM CONTEXT SECTION
+─────────────────────────────────────── */
+.context-pair{display:flex;flex-direction:column;gap:1rem}
+.context-item{
+  display:flex;gap:1.25rem;align-items:flex-start;
+  padding:1.5rem;background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r-md);
+}
+.context-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--pink);flex-shrink:0;margin-top:5px;
+}
+.context-text{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.7}
+
+/* ───────────────────────────────────────
+   WHY IT MATTERS — 3-UP POINTS
+─────────────────────────────────────── */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin:2.5rem 0}
+.why-cell{
+  background:var(--bg);padding:2rem;
+}
+@media(prefers-reduced-motion:no-preference){
+  .why-cell{transition:background var(--transition)}
+}
+.why-cell:hover{background:var(--card)}
+.why-num{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;
+  color:var(--pink);margin-bottom:1rem;display:block;
+}
+.why-text{font-size:.9rem;color:var(--ink);font-weight:400;line-height:1.65}
+
+/* ───────────────────────────────────────
+   USER TYPES
+─────────────────────────────────────── */
+.user-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
+.user-card{
+  border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:2rem;background:var(--card);
+}
+@media(prefers-reduced-motion:no-preference){
+  .user-card{transition:border-color var(--transition),box-shadow var(--transition)}
+}
+.user-card:hover{border-color:var(--pink);box-shadow:0 0 0 3px rgba(240,63,143,.06)}
+.user-type-tag{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--pink);margin-bottom:.7rem;display:block;
+}
+.user-title{
+  font-family:'Playfair Display',serif;font-size:1.15rem;
+  font-weight:900;margin-bottom:.6rem;
+}
+.user-desc{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.7}
+
+/* ───────────────────────────────────────
+   SOLUTION FEATURES
+─────────────────────────────────────── */
+.feature-row{
+  display:flex;gap:2rem;align-items:flex-start;
+  padding:1.75rem 0;border-bottom:1px solid var(--border);
+}
+.feature-row:last-child{border-bottom:none}
+.feat-num{
+  font-family:'Playfair Display',serif;font-size:2.5rem;
+  font-weight:900;color:var(--pink);line-height:1;min-width:3.5rem;flex-shrink:0;
+}
+.feat-content{}
+.feat-title{font-weight:500;font-size:1rem;margin-bottom:.4rem}
+.feat-desc{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.7}
+
+/* ───────────────────────────────────────
+   RESEARCH METHODS
+─────────────────────────────────────── */
+.method-block{
+  border:1px solid var(--border);border-radius:var(--r-lg);
+  overflow:hidden;margin-bottom:1.5rem;
+}
+.method-head{
+  background:var(--dark-surface);padding:1.5rem 2rem;
+  display:flex;align-items:center;gap:1.25rem;
+}
+.method-n{
+  font-family:'Playfair Display',serif;font-size:2.25rem;
+  font-weight:900;color:var(--pink);line-height:1;
+}
+.method-head-text{}
+.method-tag-sm{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.2rem;
+}
+.method-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;color:#fff;font-weight:900;
+}
+.method-body{padding:2rem 2rem 1.5rem}
+.method-obj{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.35rem;margin-top:1.25rem;
+  display:block;
+}
+.method-body p{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.75;margin-bottom:.75rem}
+.finding-callout{
+  background:var(--alt);border-left:3px solid var(--pink);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;
+  padding:1rem 1.25rem;margin-top:1rem;
+  font-size:.9rem;color:var(--ink);line-height:1.65;
+}
+.accordion-toggle{
+  width:100%;text-align:left;background:none;border:none;
+  border-top:1px solid var(--border);padding:1.1rem 2rem;
+  font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;
+  color:var(--ink);cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;
+}
+@media(prefers-reduced-motion:no-preference){
+  .accordion-toggle{transition:background var(--transition)}
+}
+.accordion-toggle:hover{background:var(--alt)}
+.accordion-toggle .chevron{
+  font-size:.75rem;color:var(--muted);
+}
+@media(prefers-reduced-motion:no-preference){
+  .accordion-toggle .chevron{transition:transform var(--transition)}
+}
+.accordion-toggle.open .chevron{transform:rotate(180deg)}
+.accordion-body{
+  display:none;padding:1.5rem 2rem;
+  border-top:1px solid var(--border);
+  background:rgba(0,0,0,.01);
+}
+.accordion-body.open{display:block}
+.accordion-body p{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.75;margin-bottom:.75rem}
+.accordion-body p:last-child{margin-bottom:0}
+.inline-quote{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:1rem;line-height:1.55;
+  color:var(--ink);padding-left:1.25rem;
+  border-left:2px solid var(--pink);margin:1rem 0;
+}
+
+/* ───────────────────────────────────────
+   FINDINGS GRID
+─────────────────────────────────────── */
+.finding-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}
+.finding-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r-md);padding:1.5rem;
+}
+.finding-icon{font-size:1.3rem;margin-bottom:.6rem;display:block}
+.finding-text{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.65}
+
+/* ───────────────────────────────────────
+   COMPETITIVE ANALYSIS
+─────────────────────────────────────── */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%}
+.comp-table{width:100%;border-collapse:collapse;margin:1.5rem 0;min-width:480px}
+.comp-table th{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);
+  padding:.75rem 1rem;border-bottom:2px solid var(--border);text-align:left;
+}
+.comp-table td{
+  padding:1.1rem 1rem;border-bottom:1px solid var(--border);
+  font-size:.9rem;line-height:1.55;vertical-align:top;
+  color:var(--muted);font-weight:300;
+}
+.comp-table td:first-child{color:var(--ink);font-weight:400}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table tr:hover td{background:rgba(0,0,0,.015)}
+
+/* ───────────────────────────────────────
+   KEY INSIGHTS NUMBERED
+─────────────────────────────────────── */
+.numbered-insights{list-style:none;margin:1.5rem 0}
+.numbered-insights li{
+  display:flex;gap:1.25rem;align-items:flex-start;
+  padding:1.25rem 0;border-bottom:1px solid var(--border);
+}
+.numbered-insights li:last-child{border-bottom:none}
+.ni-num{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;
+  color:var(--pink);min-width:2rem;padding-top:.15rem;
+}
+.ni-text{font-size:.9rem;color:var(--ink);font-weight:400;line-height:1.65}
+
+/* ───────────────────────────────────────
+   PROBLEM STATEMENT
+─────────────────────────────────────── */
+.problem-statement{
+  background:var(--lavender);border-radius:var(--r-lg);
+  padding:2.75rem;margin:2.5rem 0;
+}
+.ps-tag{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:1.1rem;display:block;
+}
+.ps-text{
+  font-size:1.02rem;line-height:1.8;color:var(--ink);font-weight:300;
+  font-style:italic;
+}
+
+/* ───────────────────────────────────────
+   OPP TABLE
+─────────────────────────────────────── */
+.opp-table{width:100%;border-collapse:collapse;margin:2rem 0;min-width:480px}
+.opp-table thead th{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;
+  text-transform:uppercase;padding:.8rem 1.1rem;
+  border-bottom:2px solid var(--border);text-align:left;color:var(--muted);
+}
+.opp-table tbody td{
+  padding:1.2rem 1.1rem;border-bottom:1px solid var(--border);
+  font-size:.9rem;vertical-align:top;line-height:1.6;
+}
+.opp-table tbody td:first-child{color:var(--ink);font-weight:400;max-width:35ch}
+.opp-table tbody td:last-child{color:var(--muted);font-weight:300}
+.opp-table tbody tr{background:transparent}
+@media(prefers-reduced-motion:no-preference){
+  .opp-table tbody tr{transition:background var(--transition)}
+}
+.opp-table tbody tr:hover td{background:rgba(59,59,234,.02)}
+
+/* ───────────────────────────────────────
+   RESEARCH QUESTION CALLOUT
+─────────────────────────────────────── */
+.rq-callout{
+  background:var(--ink);border-radius:var(--r-lg);padding:3.5rem;
+  margin:3rem 0;text-align:center;
+}
+.rq-label{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--pink);margin-bottom:1.25rem;display:block;
+}
+.rq-text{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.2rem,2.5vw,1.75rem);font-style:italic;
+  color:#fff;line-height:1.5;max-width:60ch;margin:0 auto;
+}
+
+/* ───────────────────────────────────────
+   FOOTER
+─────────────────────────────────────── */
+.case-footer{
+  background:var(--ink);padding:5rem 3rem;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:2.5rem;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.footer-lead{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;font-weight:900}
+.footer-lead em{font-style:italic;color:var(--pink)}
+.footer-links{display:flex;gap:.75rem;flex-wrap:wrap}
+.fl{
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:#fff;text-decoration:none;
+  border:1px solid rgba(255,255,255,.18);padding:.65rem 1.3rem;
+  border-radius:999px;
+}
+@media(prefers-reduced-motion:no-preference){
+  .fl{transition:border-color var(--transition),color var(--transition),background var(--transition)}
+}
+.fl:hover{border-color:var(--pink);color:var(--pink)}
+
+/* ───────────────────────────────────────
+   MOBILE
+─────────────────────────────────────── */
+@media(max-width:900px){
+  nav{padding:.9rem 1.25rem;margin:.7rem .7rem 0}
+  .hero{padding:4rem 1.5rem 3.5rem;min-height:auto}
+  section{padding:3.5rem 1.5rem}
+  .grid-2,.grid-2-wide,.grid-3,.user-cards,.why-grid,.finding-cards{grid-template-columns:1fr}
+  .grid-stats{grid-template-columns:repeat(2,1fr)}
+  .hero-meta-bar{gap:1.5rem}
+  .hero-deco-burst{display:none}
+  .pull-quote{padding:2rem 1.5rem}
+  .rq-callout{padding:2.5rem 1.5rem;margin:0 1.5rem!important}
+  .case-footer{padding:3rem 1.5rem;flex-direction:column;align-items:flex-start}
+  .method-body{padding:1.5rem}
+  .accordion-body{padding:1.25rem 1.5rem}
+  .accordion-toggle{padding:.9rem 1.5rem}
+}
+@media(max-width:480px){
+  .grid-stats{grid-template-columns:1fr}
+  .rq-callout{margin:0 .75rem!important;border-radius:12px;padding:2rem 1.25rem}
+  section{padding:2.5rem 1.25rem}
+  .hero{padding:3rem 1rem 2.5rem}
+  .case-footer{padding:2.5rem 1rem}
+  .hero-meta-bar .hero-meta-item{min-width:100%;padding-right:0;border-right:none;margin-right:0}
+  .method-head{padding:1.25rem 1.5rem}
+  .pull-quote{padding:1.75rem 1.25rem}
+  .problem-statement{padding:2rem 1.5rem}
+  .hypothesis-box{padding:1.75rem 1.5rem}
+}
+
+/* ───────────────────────────────────────
+   BARRIERS INFOGRAPHIC
+─────────────────────────────────────── */
+.barriers-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5px;
+  background:var(--border);
+  border-radius:var(--r-md);
+  overflow:hidden;
+}
+.bc{
+  background:var(--bg);
+  padding:2.5rem 2.25rem;
+  display:flex;
+  flex-direction:column;
+  gap:.9rem;
+  position:relative;
+  overflow:hidden;
+}
+.bc::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  background:var(--accent-color,var(--pink));
+}
+.bc-icon{
+  width:52px;height:52px;
+  border-radius:50%;
+  background:color-mix(in srgb, var(--accent-color,var(--pink)) 12%, transparent);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  margin-bottom:.25rem;
+}
+.bc-icon svg{
+  width:26px;height:26px;
+  stroke:var(--accent-color,var(--pink));
+  fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;
+}
+@media(prefers-reduced-motion:no-preference){
+  .bc-icon svg{transition:transform .35s var(--transition)}
+}
+.bc:hover .bc-icon svg{transform:scale(1.15)}
+.bc-label{
+  font-family:'DM Mono',monospace;
+  font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent-color,var(--pink));
+}
+.bc-definition{
+  font-size:.85rem;color:var(--ink);
+  font-weight:400;line-height:1.65;
+}
+.bc-stat-row{
+  display:flex;align-items:baseline;gap:.75rem;
+  flex-wrap:wrap;
+  padding:.85rem 1rem;
+  background:color-mix(in srgb, var(--accent-color,var(--pink)) 8%, transparent);
+  border-radius:var(--r-sm);
+  border-left:3px solid var(--accent-color,var(--pink));
+}
+.bc-stat{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3vw,2.6rem);
+  font-weight:900;line-height:1;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.bc-stat em{font-style:normal;color:var(--accent-color,var(--pink))}
+.bc-stat-note{
+  font-size:.8rem;color:var(--muted);
+  font-weight:300;line-height:1.5;
+  flex:1;min-width:8ch;
+}
+.bc-desc{
+  font-size:.82rem;color:var(--muted);
+  font-weight:300;line-height:1.7;
+}
+/* Digital exclusion dark callout */
+.bc-dark-box{
+  background:var(--ink);
+  border-radius:var(--r-sm);
+  padding:1.1rem 1.25rem;
+  display:flex;align-items:center;gap:1.1rem;
+}
+.bc-dark-stat{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:900;
+  color:var(--green);
+  white-space:nowrap;
+  line-height:1;
+}
+.bc-dark-text{
+  font-size:.76rem;color:rgba(255,255,255,.6);
+  font-weight:300;line-height:1.5;
+}
+.bc-mini-stat{
+  display:flex;align-items:baseline;gap:.6rem;
+}
+.bc-mini-num{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;font-weight:900;
+  color:var(--accent-color,var(--pink));line-height:1;
+}
+.bc-mini-text{
+  font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.5;flex:1
+}
+/* Socio-economic inline stats */
+.bc-inline-stats{
+  display:flex;gap:1.5rem;
+}
+.bc-inline-stat-item{display:flex;flex-direction:column;gap:.2rem}
+.bc-age{
+  font-family:'Playfair Display',serif;
+  font-size:1.9rem;font-weight:900;color:var(--ink);line-height:1;
+}
+.bc-age em{font-style:normal;font-size:.9rem;color:var(--accent-color,var(--pink))}
+.bc-inline-label{font-size:.72rem;color:var(--muted);font-weight:300}
+/* Bar chart */
+.bc-bar-section-label{
+  font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.1rem;
+}
+.bc-bar-wrap{display:flex;flex-direction:column;gap:.55rem}
+.bc-bar-row{display:flex;align-items:center;gap:.6rem}
+.bc-bar-label{
+  font-size:.73rem;color:var(--muted);font-weight:300;
+  flex:1;line-height:1.3;
+}
+.bc-bar-track{
+  width:38%;height:5px;background:var(--border);border-radius:999px;overflow:hidden;flex-shrink:0;
+}
+.bc-bar-fill{
+  height:100%;border-radius:999px;
+  background:var(--accent-color,var(--pink));
+  width:0%;
+}
+@media(prefers-reduced-motion:no-preference){
+  .bc-bar-fill{transition:width 1.1s cubic-bezier(.25,.46,.45,.94) .5s}
+}
+.bc-bar-fill.animated{width:var(--bar-w,50%)}
+.bc-bar-pct{
+  font-family:'DM Mono',monospace;font-size:9px;
+  color:var(--ink);font-weight:500;min-width:2.5rem;text-align:right;
+}
+
+@media(prefers-reduced-motion:no-preference){
+  .bc{transition:transform .3s var(--transition),box-shadow .3s var(--transition)}
+  .bc:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.07)}
+}
+@media(max-width:900px){.barriers-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.barriers-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- ────────── NAV ────────── -->
+<nav style="flex-wrap:wrap">
+  <div style="display:flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);">
+    <a href="../work.html" style="color:inherit;text-decoration:none;transition:color .2s;border:none;padding:0;background:none">Work</a>
+    <span style="margin:0 .3rem">/</span>
+    <span style="color:var(--ink);font-weight:500">FutureScope</span>
+  </div>
+  <span class="nav-center" onclick="window.location='../index.html'">Swetha Ramachandran</span>
+  <div class="nav-pills">
+    <button class="npill np-y" onclick="window.location='../index.html'">Home</button>
+    <button class="npill np-l" onclick="window.location='../index.html'">Work</button>
+  </div>
+</nav>
+
+<!-- ────────── HERO ────────── -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-deco-circle"></div>
+
+  <svg class="hero-deco-burst" viewBox="0 0 200 200" fill="none">
+    <circle cx="100" cy="100" r="18" fill="#f03f8f"/>
+    <line x1="100" y1="10" x2="100" y2="42" stroke="#f03f8f" stroke-width="6" stroke-linecap="round"/>
+    <line x1="100" y1="158" x2="100" y2="190" stroke="#f03f8f" stroke-width="6" stroke-linecap="round"/>
+    <line x1="10" y1="100" x2="42" y2="100" stroke="#f03f8f" stroke-width="6" stroke-linecap="round"/>
+    <line x1="158" y1="100" x2="190" y2="100" stroke="#f03f8f" stroke-width="6" stroke-linecap="round"/>
+    <line x1="32" y1="32" x2="54" y2="54" stroke="#f03f8f" stroke-width="5" stroke-linecap="round"/>
+    <line x1="146" y1="146" x2="168" y2="168" stroke="#f03f8f" stroke-width="5" stroke-linecap="round"/>
+    <line x1="168" y1="32" x2="146" y2="54" stroke="#f03f8f" stroke-width="5" stroke-linecap="round"/>
+    <line x1="54" y1="146" x2="32" y2="168" stroke="#f03f8f" stroke-width="5" stroke-linecap="round"/>
+    <line x1="65" y1="15" x2="75" y2="44" stroke="#f03f8f" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="135" y1="185" x2="125" y2="156" stroke="#f03f8f" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="15" y1="65" x2="44" y2="75" stroke="#f03f8f" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="185" y1="135" x2="156" y2="125" stroke="#f03f8f" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="15" y1="135" x2="44" y2="125" stroke="#f03f8f" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="185" y1="65" x2="156" y2="75" stroke="#f03f8f" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="135" y1="15" x2="125" y2="44" stroke="#f03f8f" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="65" y1="185" x2="75" y2="156" stroke="#f03f8f" stroke-width="3.5" stroke-linecap="round"/>
+  </svg>
+
+  <div class="hero-eyebrow reveal">
+    <span class="hero-tag">Case Study</span>
+    <span class="hero-pill">UX Research & Service Design</span>
+  </div>
+
+  <h1 class="hero-title reveal reveal-delay-1">
+    Future<em>Scope</em>
+  </h1>
+
+  <p class="hero-subtitle reveal reveal-delay-2">
+    A hypothetical digital service for Prosper (formerly ForMore) that simplifies retirement planning through personalized guidance, expert consultation, and progress tracking — in an engaging and relatable way.
+  </p>
+
+  <div class="hero-meta-bar reveal reveal-delay-3">
+    <div class="hero-meta-item">
+      <div class="meta-l">Project Type</div>
+      <div class="meta-v">UX Research & Service Design<br>Retirement Planning Platform</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="meta-l">Team</div>
+      <div class="meta-v">Collaborative project with a<br>UX research & design team</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="meta-l">Users</div>
+      <div class="meta-v">Adults aged 35–50<br>in the United Kingdom</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="meta-l">Platform</div>
+      <div class="meta-v">Digital service — mobile-first<br>web application</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <svg width="18" height="24" viewBox="0 0 18 24" fill="none">
+      <rect x="1" y="1" width="16" height="22" rx="8" stroke="white" stroke-width="1.5"/>
+      <circle cx="9" cy="8" r="2" fill="white"/>
+    </svg>
+    scroll
+  </div>
+</section>
+
+<!-- ────────── PROJECT BRIEF ────────── -->
+<section class="s-white">
+  <div class="brief-header-img reveal">
+    <img src="futurescope-header.png" alt="FutureScope header" onerror="this.parentElement.innerHTML='<span class=brief-header-placeholder>FutureScope</span>'">
+  </div>
+
+  <div class="grid-2-wide">
+    <div>
+      <div class="sec-label reveal">Project Brief</div>
+      <h2 class="sec-title reveal reveal-delay-1">Enhancing<br><em>Retirement Strategies</em></h2>
+      <p class="body reveal reveal-delay-2">The aim of this project was to address the gap in retirement planning by designing a digital platform that simplifies financial literacy and savings strategies for individuals aged 35–50.</p>
+      <p class="body reveal reveal-delay-3">Many individuals in the UK struggle with planning for retirement due to financial jargon, lack of accessible guidance, and anxiety about their financial future. As a result, they feel unprepared and overwhelmed when making long-term financial decisions.</p>
+    </div>
+
+    <div>
+      <div class="info-block reveal reveal-delay-1" style="margin-top:5.5rem">
+        <span class="info-label">Project Type</span>
+        <span class="info-val">UX Research & Service Design for a Retirement Planning Platform</span>
+      </div>
+      <div class="info-block reveal reveal-delay-2">
+        <span class="info-label">Team</span>
+        <span class="info-val">Collaborative project with a UX research & design team</span>
+      </div>
+      <div class="info-block reveal reveal-delay-3">
+        <span class="info-label">Project Outcome</span>
+        <span class="info-val">Developed FutureScope — a digital solution integrating personalized financial advice, guided planning tools, and expert consultations to make retirement planning more accessible.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hypothesis-box reveal" style="margin-top:3rem">
+    <span class="hyp-tag">Hypothesis</span>
+    <p>If we provide an interactive, personalized financial planning experience, users will feel more confident and motivated to take actionable steps toward their retirement goals.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ────────── INITIAL PROBLEM DISCOVERY ────────── -->
+<section class="s-alt">
+  <div class="sec-label reveal">Initial Problem Discovery</div>
+  <h2 class="sec-title reveal reveal-delay-1">The scale of the<br><em>problem</em></h2>
+
+  <div class="grid-stats reveal reveal-delay-2">
+    <div class="stat-cell">
+      <span class="stat-num">67%</span>
+      <p class="stat-text">of adults living in the UK are financially literate — leaving a third without the knowledge to plan for retirement.</p>
+      <span class="stat-source">— agediversity.org</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">43%</span>
+      <p class="stat-text">of adults aged 50–65 are approaching retirement without a plan, leaving their financial future uncertain.</p>
+      <span class="stat-source">— UK Adult Financial Wellbeing 2021</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">52%</span>
+      <p class="stat-text">of UK Adults <b>DO NOT</b> have a plan for their retirement finances</p>
+      <span class="stat-source">— Organisation for Economic Co-operation and Development</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">47%</span>
+      <p class="stat-text">of working adults <b>DO NOT</b> have sufficient knowledge about Pensions</p>
+      <span class="stat-source">— Organisation for Economic Co-operation and Development</span>
+    </div>
+  </div>
+
+  <div style="margin-top:3rem;text-align:center">
+    <h3 class="sec-title reveal" style="font-size:1.6rem">Why this problem matters</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.5rem;text-align:left">
+      <div class="reveal reveal-delay-1" style="background:var(--bg);padding:2.75rem 2.25rem;border-radius:var(--r-lg);border:1px solid var(--border)">
+        <div style="display:flex;justify-content:center;margin-bottom:1.5rem">
+          <img src="OpenDoodles_studying.png" alt="Studying illustration" style="height:220px;width:auto;display:block;border-radius:8px">
+        </div>
+        <p class="stat-text" style="max-width:none;font-size:1.17rem">People in their <b>mid-30s to 50s</b> begin recognizing the importance of financial planning but <u>often lack the tools and knowledge</u> to take action.</p>
+      </div>
+      <div class="reveal reveal-delay-2" style="background:var(--bg);padding:2.75rem 2.25rem;border-radius:var(--r-lg);border:1px solid var(--border)">
+        <div style="display:flex;justify-content:center;margin-bottom:1.5rem">
+          <img src="MessyDoodle.svg" alt="Messy doodle illustration" style="height:242px;width:auto;display:block">
+        </div>
+        <p class="stat-text" style="max-width:none;font-size:1.17rem">Existing solutions are either too complex, overly technical, or fail to provide a personalized approach to retirement savings.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center">
+    <div style="display:flex;align-items:center;justify-content:center">
+      <img src="Doodles_SittingDog.svg" alt="Sitting dog illustration" style="width:70%;height:auto;display:block">
+    </div>
+    <div>
+      <h3 class="sec-title reveal" style="font-size:1.6rem">Contributing factors</h3>
+      <div class="reveal reveal-delay-1">
+        <div class="feature-row">
+          <div class="feat-num">01</div>
+          <div class="feat-content">
+            <p class="feat-desc">The lack of early financial planning can result in financial insecurity during retirement.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feat-num">02</div>
+          <div class="feat-content">
+            <p class="feat-desc">Behavioral biases, such as present bias, make it difficult for individuals to connect with their future selves.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feat-num">03</div>
+          <div class="feat-content">
+            <p class="feat-desc">Many people do not seek financial advice due to a lack of trust, complexity, or intimidation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem">
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div class="icard reveal reveal-delay-1">
+        <span class="icard-icon">🎯</span>
+        <div class="icard-title">Personalized guidance works</div>
+        <div class="icard-text">Personalized financial guidance is more effective in encouraging users to take meaningful action toward retirement goals.</div>
+      </div>
+      <div class="icard reveal reveal-delay-2">
+        <span class="icard-icon">🧩</span>
+        <div class="icard-title">Disconnected from life planning</div>
+        <div class="icard-text">Retirement planning rarely factors into major life decisions around housing, travel, or investments — even for those who consider themselves financially aware.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-image-block reveal reveal-delay-3" style="margin-top:3rem">
+    <div style="margin-bottom:2rem">
+      <h3 class="sec-title" style="margin-bottom:.75rem;white-space:nowrap"><span class="stat-num" style="font-size:inherit;display:inline">6</span> Key Barriers for Retirement Planning in the UK</h3>
+      <p class="body" style="margin-bottom:0;white-space:nowrap">Identified by the 2021 UK Adult Financial Wellbeing Survey conducted by the Department of Work and Pensions.</p>
+    </div>
+    <!--
+    <div class="barriers-grid" id="barriers-grid">
+
+      <div class="bc" style="--accent-color:var(--blue)">
+        <div class="bc-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.5-1.3 4.7-3.2 6H8.2A7 7 0 0 1 5 9a7 7 0 0 1 7-7z"/><path d="M9 15v2a3 3 0 0 0 6 0v-2"/><line x1="9" y1="10" x2="9.01" y2="10"/><line x1="15" y1="10" x2="15.01" y2="10"/><path d="M9.5 13.5c.83.67 2.17.67 3 0 .83-.67 2.17-.67 3 0"/></svg>
+        </div>
+        <div class="bc-label">Psychological</div>
+        <p class="bc-definition">Present bias is a common psychological phenomenon in financial planning. It leads individuals to prefer instant benefits over long-term gains.</p>
+        <div class="bc-stat-row">
+          <span class="bc-stat"><em>£13K</em></span>
+          <p class="bc-stat-note">less needed by individuals experiencing higher levels of present bias, compared to those who experienced lower levels.</p>
+        </div>
+      </div>
+
+      <div class="bc" style="--accent-color:var(--pink)">
+        <div class="bc-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="bc-label">Cultural</div>
+        <p class="bc-definition">Studies have shown that people in the UK are more likely to discuss the details of their love life than discuss finance.</p>
+        <p class="bc-desc">The tendency to avoid discussing money has led to low levels of financial literacy, leaving people ill-equipped to save for the future strategically.</p>
+      </div>
+
+      <div class="bc" style="--accent-color:var(--orange)">
+        <div class="bc-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><circle cx="12" cy="8" r="1.5" fill="var(--orange)" stroke="none"/></svg>
+        </div>
+        <div class="bc-label">Awareness</div>
+        <div class="bc-stat-row">
+          <span class="bc-stat"><em>1 in 5</em> <span style="font-size:.55em;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--ink)">workers</span></span>
+          <p class="bc-stat-note">in the UK have never reviewed their pension.</p>
+        </div>
+        <p class="bc-desc">Workers' disconnection from the pension process, coupled with the rise of gig and contractual work, creates a pressing need for personalised strategies to maximise retirement savings.</p>
+      </div>
+
+      <div class="bc" style="--accent-color:var(--green)">
+        <div class="bc-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><line x1="2" y1="8" x2="22" y2="8"/><line x1="7" y1="12" x2="10" y2="12"/></svg>
+        </div>
+        <div class="bc-label">Digital Exclusion</div>
+        <p class="bc-definition">Digital exclusion refers to unequal access to technology as a result of economic, social and physical characteristics.</p>
+        <div class="bc-dark-box">
+          <span class="bc-dark-stat">£744</span>
+          <p class="bc-dark-text">The annual loss for those with reduced access to digital services</p>
+        </div>
+        <div class="bc-mini-stat">
+          <span class="bc-mini-num">18%</span>
+          <p class="bc-mini-text">annually in conditions regarding UK financial products and services</p>
+        </div>
+      </div>
+
+      <div class="bc" style="--accent-color:#c8a000">
+        <div class="bc-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <div class="bc-label">Trust</div>
+        <p class="bc-definition">Mistrust in the UK pension system has reduced workers' incentive to increase their monthly contributions.</p>
+        <div class="bc-stat-row">
+          <span class="bc-stat"><em>1 in 5</em></span>
+          <p class="bc-stat-note">adults in the UK have been a victim to a pension scam.</p>
+        </div>
+      </div>
+
+      <div class="bc" style="--accent-color:var(--blue)">
+        <div class="bc-icon">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+        </div>
+        <div class="bc-label">Socio-economic</div>
+        <div class="bc-inline-stats">
+          <div class="bc-inline-stat-item">
+            <span class="bc-stat"><em>40%</em></span>
+            <span class="bc-inline-label">of UK adults on average</span>
+          </div>
+          <div class="bc-inline-stat-item">
+            <span class="bc-age">65 <em>yrs</em></span>
+            <span class="bc-inline-label">avg. retirement age</span>
+          </div>
+        </div>
+        <p class="bc-bar-section-label">Reasons for not contributing to a pension</p>
+        <div class="bc-bar-wrap">
+          <div class="bc-bar-row">
+            <span class="bc-bar-label">Low income / not working</span>
+            <div class="bc-bar-track"><div class="bc-bar-fill" style="--bar-w:54%"></div></div>
+            <span class="bc-bar-pct">54%</span>
+          </div>
+          <div class="bc-bar-row">
+            <span class="bc-bar-label">Family expenses / can't afford</span>
+            <div class="bc-bar-track"><div class="bc-bar-fill" style="--bar-w:29%"></div></div>
+            <span class="bc-bar-pct">29%</span>
+          </div>
+          <div class="bc-bar-row">
+            <span class="bc-bar-label">Prefer other types of saving</span>
+            <div class="bc-bar-track"><div class="bc-bar-fill" style="--bar-w:8%"></div></div>
+            <span class="bc-bar-pct">8%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    -->
+
+    <img src="uk-retirement-barriers.png" alt="Key barriers for retirement planning visualization" style="width:100%;height:auto;display:block;border-radius:var(--r-md)">
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ────────── TARGET AUDIENCE ────────── -->
+<section class="s-white">
+  <div class="sec-label reveal">Target Audience Analysis</div>
+  <h2 class="sec-title reveal reveal-delay-1">Who we designed for</h2>
+
+  <div class="user-cards">
+    <div class="user-card reveal reveal-delay-1">
+      <span class="user-type-tag">Primary Users</span>
+      <div class="user-title">Adults aged 35–50</div>
+      <p class="user-desc">Individuals who recognize the importance of retirement planning but struggle to navigate the process due to a lack of structured guidance and accessible resources.</p>
+    </div>
+    <div class="user-card reveal reveal-delay-2">
+      <span class="user-type-tag">Secondary Users</span>
+      <div class="user-title">Younger & older individuals</div>
+      <p class="user-desc">Younger individuals interested in financial independence (e.g., FIRE community) and older individuals seeking ways to manage their savings efficiently.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ────────── SOLUTION ────────── -->
+<section class="s-alt">
+  <div class="sec-label reveal">Solution</div>
+  <h2 class="sec-title reveal reveal-delay-1">FutureScope is designed to simplify and personalize retirement planning through <em>three core features</em></h2>
+  <p class="body reveal reveal-delay-2">We developed a high-level concept for a personalised retirement planning service, including a quiz, a financial consultation meeting, and routine financial updates. This service would be virtual, with monthly updates similar to a daily horoscope — designed to feel approachable and ease the anxiety surrounding future financial planning.</p>
+
+  <div style="margin-top:2.5rem">
+    <div class="feature-row reveal reveal-delay-1">
+      <div class="feat-num">01</div>
+      <div class="feat-content">
+        <div class="feat-title">Onboarding Quiz & Personalized Profiles</div>
+        <p class="feat-desc">Users complete a guided questionnaire to identify their lifestyle goals and savings needs. Drawing on our Buzzfeed boundary object research, the quiz uses imagery and personality indicators to make the process feel engaging rather than intimidating.</p>
+      </div>
+    </div>
+    <div class="feature-row reveal reveal-delay-2">
+      <div class="feat-num">02</div>
+      <div class="feat-content">
+        <div class="feat-title">Expert Consultation</div>
+        <p class="feat-desc">A financial advisor provides tailored recommendations based on the user's profile. This directly addresses our core research finding: personalized guidance is far more effective than generic advice at motivating real action.</p>
+      </div>
+    </div>
+    <div class="feature-row reveal reveal-delay-3">
+      <div class="feat-num">03</div>
+      <div class="feat-content">
+        <div class="feat-title">Progress Tracking & Insights</div>
+        <p class="feat-desc">A mobile-first interface helps users monitor their savings progress with engaging visualizations and periodic updates — delivered like a monthly horoscope to maintain consistent engagement without creating additional anxiety.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ────────── RESEARCH QUESTION ────────── -->
+<div class="rq-callout reveal" style="margin:0 3rem">
+  <span class="rq-label">Research Question</span>
+  <p class="rq-text">"How can we support individuals in the UK between the ages of 35–50 to envision the realities of their retirement and determine what they will need to sustain a certain lifestyle?"</p>
+</div>
+
+<!-- ────────── RESEARCH METHODS ────────── -->
+<section class="s-white">
+  <div class="sec-label reveal">Research Methods</div>
+  <h2 class="sec-title reveal reveal-delay-1">How we discovered the problem</h2>
+
+  <!-- Method 1 -->
+  <div class="method-block reveal reveal-delay-2">
+    <div class="method-head">
+      <div class="method-n">01</div>
+      <div class="method-head-text">
+        <div class="method-tag-sm">Method</div>
+        <div class="method-name">Surveys & Interviews</div>
+      </div>
+    </div>
+    <div class="method-body">
+      <span class="method-obj">Objective</span>
+      <p>Understand user behaviors, attitudes, and pain points regarding retirement planning.</p>
+      <span class="method-obj">Approach</span>
+      <p>Conducted a survey (12 participants, aged 25–50) via Reddit & Discord. Conducted 4 in-depth interviews to explore user motivations and challenges. Used a Buzzfeed-style quiz as a boundary object to help participants visualize their future lifestyles.</p>
+    </div>
+
+    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+      Buzzfeed as a Boundary Object <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+      <p>We created a boundary object using a custom Buzzfeed quiz to help initiate a discussion about lifestyle expectations in retirement. The quiz consisted of multiple-choice questions with captioned images representing response options.</p>
+      <p>The quiz included questions on daily activities and lifestyle choices. Each response included a set of <strong>unlabelled images</strong> — the rationale was to reduce researcher bias and allow participants to be more expressive in their answers.</p>
+      <p style="font-style:italic;color:var(--muted);font-size:.83rem">Imagery is an effective interview tool to elicit deeper introspection and establish a rapport with the interviewee while giving the participant more control in picking imagery that is more meaningful to them. — (Frith et al., 2005; Bagnoli, 2009)</p>
+    </div>
+
+    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+      Survey Execution <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+      <p>The survey was posted on Reddit and Discord, receiving 12 responses. Of the 12, 11 indicated they reside in the UK. Around 35% of respondents were between 25–30 years old, and 63% were between 35–45. Most respondents were male (90%), and nearly half worked in the tech sector.</p>
+      <p>A key difference between age groups was expected retirement length. Those under 30 anticipated retiring for 10–15 years, while those over 30 expected 15–20 years — possibly due to rising living costs and fewer projected earning years.</p>
+      <div class="finding-callout">💡 <strong>Key takeaway:</strong> Regardless of age, people are somewhat aimless about their retirement planning and struggle to envision their realistic needs. There was no clear distinction between age groups when it came to retirement planning.</div>
+    </div>
+
+    <button class="accordion-toggle" onclick="toggleAccordion(this)">
+      Interview Execution <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+      <p>We conducted four in-depth interviews with individuals aged 27–40 using the Buzzfeed quiz as a boundary object. At the end of each quiz, participants were presented with a result estimating how much money they would need to maintain their desired lifestyle. Estimates were based on the HSBC Retirement Calculator.</p>
+      <div class="inline-quote">"I'm nowhere near saving that amount, but this result makes me feel less anxious. It's about the sum I've been aiming for."</div>
+      <p>3 participants expressed interest in a more luxury lifestyle but were surprised by the savings necessary to sustain it. Using a boundary object allowed for more introspection into personality types through prompted questions such as:</p>
+      <div class="inline-quote">"Would you consider yourself an optimist or realist?"</div>
+      <p>For one participant who expressed a more optimistic life perspective:</p>
+      <div class="inline-quote">"I don't consider myself someone with a luxury lifestyle, but I think it's good to have ambitious goals."</div>
+    </div>
+
+    <div class="method-body" style="border-top:1px solid var(--border)">
+      <span class="method-obj">Findings</span>
+      <div class="finding-cards">
+        <div class="finding-card"><span class="finding-icon">🗺️</span><p class="finding-text">Users struggled to translate their ideal retirement lifestyle into concrete financial plans.</p></div>
+        <div class="finding-card"><span class="finding-icon">💰</span><p class="finding-text">Many users felt anxious about savings estimates and were unsure where to start.</p></div>
+        <div class="finding-card"><span class="finding-icon">🤝</span><p class="finding-text">Personalized support — consultations and progress tracking — was strongly preferred over generic financial advice.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Method 2 -->
+  <div class="method-block reveal">
+    <div class="method-head">
+      <div class="method-n">02</div>
+      <div class="method-head-text">
+        <div class="method-tag-sm">Method</div>
+        <div class="method-name">Competitive Analysis</div>
+      </div>
+    </div>
+    <div class="method-body">
+      <span class="method-obj">Objective</span>
+      <p>Identify strengths and weaknesses of existing retirement planning tools.</p>
+      <span class="method-obj">Competitors Analyzed</span>
+      <div class="table-wrap"><table class="comp-table">
+        <thead><tr><th>Competitor</th><th>Type</th><th>Gap identified</th></tr></thead>
+        <tbody>
+          <tr><td>HSBC Retirement Calculator</td><td>Traditional planning platform</td><td>Number-crunching only; no behavioral layer</td></tr>
+          <tr><td>Mint</td><td>Financial independence app</td><td>Broad budgeting focus; weak on retirement visualization</td></tr>
+          <tr><td>YNAB</td><td>Budgeting tool</td><td>Goal-based but not retirement-specific; steep learning curve</td></tr>
+        </tbody>
+      </table></div>
+      <div class="finding-callout" style="margin-top:1rem">🔍 <strong>Most tools focus on number-crunching rather than behavior-driven financial planning.</strong> Users need an intuitive, engaging way to track savings progress over time.</div>
+      <span class="method-obj" style="margin-top:1.5rem">Key Insights</span>
+      <ol class="numbered-insights">
+        <li><span class="ni-num">01</span><span class="ni-text">Users need a way to visualize their future to make realistic financial decisions.</span></li>
+        <li><span class="ni-num">02</span><span class="ni-text">Financial planning should be engaging and jargon-free to reduce anxiety.</span></li>
+        <li><span class="ni-num">03</span><span class="ni-text">Personalized financial guidance increases trust and motivation.</span></li>
+      </ol>
+      <p style="margin-top:1rem">Surveys and research showed that access to financial planning resources alone wasn't enough. Many users do not seek out this information due to anxiety or fear — the resources needed to be made more approachable. These insights led to the development of a goal-oriented, personalized approach that integrates education, expert consultations, and an intuitive digital experience.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ────────── RESEARCH TAKEAWAYS ────────── -->
+<section class="s-alt">
+  <div class="sec-label reveal">Summarizing Research / Takeaways</div>
+  <h2 class="sec-title reveal reveal-delay-1">What was the<br><em>take away</em> from the research?</h2>
+
+  <div class="grid-2">
+    <div>
+      <div class="problem-statement reveal reveal-delay-1">
+        <span class="ps-tag">Problem Statement</span>
+        <p class="ps-text">"I am a 35-year-old woman living and working in the UK. I am trying to develop a savings plan for retirement, but I am struggling to do so because I cannot imagine what my needs will be that far in the future. This has caused me to feel overwhelmed and ill-prepared for my retirement."</p>
+      </div>
+    </div>
+    <div>
+      <div class="hypothesis-box reveal reveal-delay-2" style="--bg:var(--card)">
+        <span class="hyp-tag" style="background:var(--alt)">Hypothesis</span>
+        <p>If we provide an interactive, personalized financial planning experience, users will feel more confident and motivated to take actionable steps toward their retirement goals.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec-title reveal" style="font-size:1.6rem;margin-top:3.5rem;margin-bottom:1.5rem">Problem / Opportunity Spaces</h3>
+  <div class="table-wrap"><table class="opp-table reveal reveal-delay-1">
+    <thead>
+      <tr>
+        <th>Identified Problem</th>
+        <th>Design Opportunity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Users struggle to visualize their retirement lifestyle.</td>
+        <td>Use engaging quizzes and visual storytelling to help users connect with their future selves.</td>
+      </tr>
+      <tr>
+        <td>Retirement planning feels overwhelming and complex.</td>
+        <td>Simplify financial concepts through clear, bite-sized education and gamification.</td>
+      </tr>
+      <tr>
+        <td>Lack of motivation to save consistently.</td>
+        <td>Introduce goal tracking, milestone celebrations, and community-driven motivation.</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="reveal reveal-delay-2" style="margin-top:2.5rem;border-radius:var(--r-lg);overflow:hidden;background:var(--card);border:1px solid var(--border)">
+    <img
+      src="futurescope-prototype.jpg"
+      alt="Problem / Opportunity Spaces diagram"
+      style="width:100%;display:block;border-radius:var(--r-lg)"
+      onerror="this.style.display='none'"
+    >
+  </div>
+</section>
+
+<!-- ────────── CTA SECTION ────────── -->
+<section style="background:var(--card);padding:4rem 2.5rem;border-top:1px solid var(--border)">
+  <div style="max-width:960px;margin:0 auto;text-align:center">
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;margin-bottom:1rem">More case studies</h3>
+    <p style="color:var(--muted);margin-bottom:2rem;font-size:.95rem">Explore other projects or get in touch about collaboration.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="../work.html" style="display:inline-block;padding:.65rem 1.8rem;background:var(--ink);color:#fff;border-radius:999px;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s;font-size:.9rem" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.15)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">← All Projects</a>
+      <a href="mailto:swetha.ramachandran17@gmail.com" style="display:inline-block;padding:.65rem 1.8rem;background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:999px;font-weight:600;text-decoration:none;transition:all .2s;font-size:.9rem" onmouseover="this.style.borderColor='var(--ink)';this.style.backgroundColor='#f7f5f2'" onmouseout="this.style.borderColor='var(--border)';this.style.backgroundColor='transparent'">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── FOOTER ────────── -->
+<footer class="case-footer">
+  <div class="footer-lead">Want to see more work?<br><em>Let's connect.</em></div>
+  <div class="footer-links">
+    <a class="fl" href="../index.html">← All projects</a>
+    <a class="fl" href="mailto:swetha.ramachandran17@gmail.com">Email me</a>
+    <a class="fl" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+/* ── SCROLL REVEAL ── */
+const revealEls = document.querySelectorAll('.reveal, .reveal-left');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => observer.observe(el));
+
+/* ── PROGRESS BAR ── */
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (scrollTop / docHeight * 100) + '%';
+});
+
+/* ── ACCORDION ── */
+function toggleAccordion(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.accordion-toggle').forEach(b => b.classList.remove('open'));
+  if (!isOpen) {
+    body.classList.add('open');
+    btn.classList.add('open');
+  }
+}
+
+/* ── SMOOTH NAV ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))
+      ?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+/* ── BARRIERS BAR ANIMATION ── */
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.querySelectorAll('.bc-bar-fill').forEach(fill => {
+        fill.classList.add('animated');
+      });
+      barObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.3});
+const barGrid = document.getElementById('barriers-grid');
+if(barGrid) barObserver.observe(barGrid);
+</script>
+</body>
+</html>

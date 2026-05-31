@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sip & Scones — Swetha Ramachandran</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & TOKENS ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f5f2;
+  --ink:#0d0d0d;
+  --pink:#f03f8f;
+  --yellow:#f5e33a;
+  --blue:#3b3bea;
+  --lavender:#e8e0fa;
+  --orange:#387470;
+  --green:#3ecf8e;
+  --muted:#6b6b6b;
+  --border:#e4dfd6;
+  --card:#ffffff;
+  --alt:#ede9df;
+  --dark:#181614;
+  --ease:cubic-bezier(0.25,0.46,0.45,0.94);
+  --fs-body:17px;
+  --lh-body:1.8;
+  --color-body:#3a3530;
+  --color-body-dark:rgba(255,255,255,0.65);
+}
+@media(max-width:1199px){:root{--fs-body:16px;--lh-body:1.75}}
+@media(max-width:767px){:root{--fs-body:15px;--lh-body:1.7}}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── PROGRESS ── */
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--orange);width:0%;z-index:999}
+@media(prefers-reduced-motion:no-preference){
+  #progress{transition:width 0.08s linear}
+}
+
+/* ── SCROLL REVEAL ── */
+.sr{opacity:0;transform:translateY(28px)}
+@media(prefers-reduced-motion:no-preference){
+  .sr{transition:opacity .65s var(--ease),transform .65s var(--ease)}
+}
+.sr.in{opacity:1;transform:none}
+.sr-l{opacity:0;transform:translateX(-24px)}
+@media(prefers-reduced-motion:no-preference){
+  .sr-l{transition:opacity .65s var(--ease),transform .65s var(--ease)}
+}
+.sr-l.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* ── NAV ── */
+nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2.5rem;background:rgba(247,245,242,.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--border);border-radius:20px;
+  margin:1.1rem 1.5rem 0;position:sticky;top:1.1rem;z-index:200;
+  box-shadow:0 2px 24px rgba(0,0,0,.05);
+}
+.nav-back{display:flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:.4rem 1rem;border-radius:999px}
+@media(prefers-reduced-motion:no-preference){
+  .nav-back{transition:all .2s}
+}
+.nav-back:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.nav-center{font-family:'Playfair Display',serif;font-size:14px;font-weight:900;text-decoration:underline;text-decoration-color:var(--orange);cursor:pointer}
+.nav-pills{display:flex;gap:.5rem}
+.np{padding:.4rem 1.1rem;border-radius:999px;font-size:12px;font-weight:500;cursor:pointer;border:none;font-family:'DM Sans',sans-serif}
+@media(prefers-reduced-motion:no-preference){
+  .np{transition:transform .15s,box-shadow .15s}
+}
+.np:hover{transform:scale(1.06)}
+.np-y{background:var(--yellow);color:var(--ink)}
+.np-l{background:var(--lavender);color:var(--blue)}
+
+/* ── HERO ── */
+.hero{
+  position:relative;overflow:hidden;
+  background:var(--dark);
+  padding:7rem 3rem 5rem;
+  min-height:94vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:55px 55px;pointer-events:none}
+.hero-blob{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(56,116,112,.12) 0%,transparent 70%);right:-150px;top:-100px;pointer-events:none}
+.hero-blob2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(59,59,234,.09) 0%,transparent 70%);left:-80px;bottom:-60px;pointer-events:none}
+.hero-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem}
+.h-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:.6rem}
+.h-tag::before{content:'';width:2rem;height:1px;background:var(--orange)}
+.h-pill{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.1);padding:.28rem .85rem;border-radius:999px}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(4.5rem,11vw,10rem);font-weight:900;line-height:.86;letter-spacing:-.04em;color:#fff;margin-bottom:1.5rem}
+.hero-title em{font-style:italic;color:var(--orange)}
+.hero-sub{font-size:clamp(.95rem,1.5vw,1.15rem);font-weight:300;color:rgba(255,255,255,.5);line-height:1.72;max-width:62ch;margin-bottom:4rem}
+.hero-meta{display:flex;gap:0;border-top:1px solid rgba(255,255,255,.07);padding-top:2rem;flex-wrap:wrap}
+.hm-item{flex:1;min-width:160px;padding-right:2rem;border-right:1px solid rgba(255,255,255,.07);margin-right:2rem;margin-bottom:1rem}
+.hm-item:last-child{border-right:none;margin-right:0}
+.hm-l{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:.4rem}
+.hm-v{font-size:.85rem;color:rgba(255,255,255,.65);font-weight:300;line-height:1.4}
+.scroll-cue{position:absolute;right:3rem;bottom:3rem;display:flex;flex-direction:column;align-items:center;gap:.45rem;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.18);animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+/* ── SHARED ── */
+section{padding:5.5rem 3rem}
+.s-white{background:var(--card)}
+.s-alt{background:var(--alt)}
+.s-dark{background:var(--dark)}
+.divider{height:1px;background:var(--border)}
+
+.sec-label{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:.7rem;margin-bottom:1.5rem}
+.sec-label::before{content:'';width:1.75rem;height:1px;background:var(--orange)}
+
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.05;margin-bottom:1.5rem;letter-spacing:-.01em}
+.sec-title em{font-style:italic;color:var(--orange)}
+.sec-title-sm{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;line-height:1.1;margin-bottom:1rem}
+.body-t{font-size:var(--fs-body);color:var(--color-body);line-height:var(--lh-body);font-weight:300;max-width:64ch;margin-bottom:1.25rem}
+.body-dk{color:var(--color-body-dark)}
+
+/* ── LAYOUT ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.g2-wide{display:grid;grid-template-columns:1.3fr 1fr;gap:5rem;align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+
+/* ── OVERVIEW IMAGE ── */
+.hero-img-wrap{width:100%;border-radius:16px;overflow:hidden;margin-bottom:4rem;aspect-ratio:16/6;position:relative}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-img-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(8px);padding:.5rem 1rem;border-radius:999px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+/* ── META ROW ── */
+.meta-row{display:flex;flex-wrap:wrap;gap:2rem;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:.5rem 0}
+.meta-item-lgt .lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem;display:block}
+.meta-item-lgt .val{font-size:.87rem;color:var(--ink);font-weight:400;line-height:1.45}
+
+/* ── CALLOUT ── */
+.callout-box{border:2px solid var(--orange);border-radius:16px;padding:2.5rem;position:relative;background:rgba(56,116,112,.025)}
+.callout-tag{position:absolute;top:-12px;left:1.5rem;background:var(--card);padding:0 .75rem;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--orange)}
+.callout-box p{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;line-height:1.65;color:var(--ink)}
+.callout-box-alt .callout-tag{background:var(--alt)}
+
+/* ── CONTEXT CARDS ── */
+.ctx-item{display:flex;gap:1.1rem;align-items:flex-start;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:14px}
+@media(prefers-reduced-motion:no-preference){
+  .ctx-item{transition:border-color .2s,box-shadow .2s}
+}
+.ctx-item:hover{border-color:var(--orange);box-shadow:0 4px 20px rgba(56,116,112,.07)}
+.ctx-dot{width:9px;height:9px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:5px}
+.ctx-text{font-size:.88rem;color:var(--muted);font-weight:300;line-height:1.72}
+
+/* ── PULL QUOTE ── */
+.pq{background:var(--dark);border-radius:16px;padding:3.5rem;position:relative;overflow:hidden}
+.pq::before{content:'\201C';font-family:'Playfair Display',serif;font-size:14rem;line-height:.8;color:rgba(255,255,255,.03);position:absolute;top:-.5rem;left:.5rem;pointer-events:none;font-style:italic}
+.pq blockquote{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.2vw,1.5rem);font-style:italic;color:#fff;line-height:1.5;max-width:54ch;position:relative;z-index:1;margin-bottom:.8rem}
+.pq cite{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);font-style:normal}
+
+/* ── INSIGHT / FEATURE CARDS ── */
+.ic{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.65rem}
+@media(prefers-reduced-motion:no-preference){
+  .ic{transition:transform .2s,box-shadow .2s}
+}
+.ic:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.07)}
+.ic-title{font-weight:500;font-size:.93rem;margin-bottom:.35rem}
+.ic-text{font-size:.82rem;color:var(--muted);font-weight:300;line-height:1.65}
+
+/* ── USER / TYPE CARDS ── */
+.uc{border:1px solid var(--border);border-radius:16px;padding:2rem;background:var(--card)}
+@media(prefers-reduced-motion:no-preference){
+  .uc{transition:border-color .2s,box-shadow .2s}
+}
+.uc:hover{border-color:var(--orange);box-shadow:0 0 0 3px rgba(56,116,112,.06)}
+.uc-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:.7rem;display:block}
+.uc-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;margin-bottom:.6rem}
+.uc-desc{font-size:.84rem;color:var(--muted);font-weight:300;line-height:1.7}
+
+/* ── PROCESS STEPS ── */
+.process-steps{display:flex;flex-direction:column;gap:0}
+.ps-item{display:flex;gap:2rem;align-items:flex-start;padding:2rem 0;border-bottom:1px solid var(--border)}
+.ps-item:last-child{border-bottom:none}
+.ps-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--orange);line-height:1;min-width:4rem;flex-shrink:0;opacity:.35}
+.ps-title{font-weight:500;font-size:1rem;margin-bottom:.4rem}
+.ps-desc{font-size:.88rem;color:var(--muted);font-weight:300;line-height:1.75}
+
+/* ── LAYER CARDS ── */
+.layer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin:2.5rem 0;border-radius:16px;overflow:hidden}
+.layer-cell{background:var(--card);padding:2.25rem 2rem}
+@media(prefers-reduced-motion:no-preference){
+  .layer-cell{transition:background .2s}
+}
+.layer-cell:hover{background:var(--bg)}
+.layer-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.7rem;display:block}
+.layer-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:900;margin-bottom:.5rem}
+.layer-desc{font-size:.83rem;color:var(--muted);font-weight:300;line-height:1.65}
+
+/* ── FLOW BLOCKS ── */
+.flow-block{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:1.5rem}
+.flow-head{background:var(--dark);padding:1.5rem 2rem;display:flex;align-items:center;gap:1.25rem}
+.flow-n{font-family:'Playfair Display',serif;font-size:2.25rem;font-weight:900;color:var(--orange);line-height:1}
+.flow-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.2rem}
+.flow-name{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;font-weight:900}
+.flow-body{padding:2.25rem 2rem}
+.flow-body p{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.78;margin-bottom:.9rem}
+.obj-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem;display:block;margin-top:1.25rem}
+.finding-note{background:var(--alt);border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:1rem 1.25rem;margin-top:.75rem;font-size:.85rem;color:var(--ink);line-height:1.65}
+
+/* ── TIMELINE ── */
+.timeline{position:relative;padding-left:2rem;margin:1.5rem 0}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border)}
+.tl-item{position:relative;padding:0 0 2.5rem 2rem}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:-2rem;width:9px;height:9px;background:var(--orange);top:5px;transform:translateX(-4px)}
+.tl-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.3rem}
+.tl-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:900;margin-bottom:.4rem}
+.tl-desc{font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.65;max-width:52ch}
+
+/* ── HIGHLIGHT BAND ── */
+.hl-band{background:var(--orange);padding:4.5rem 3rem;text-align:center}
+.hl-band p{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-style:italic;color:#fff;line-height:1.45;max-width:64ch;margin:0 auto}
+
+/* ── FLOW JOURNEY PILLS ── */
+.flow-journey{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:1.75rem 0}
+.fj-pill{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .9rem;border-radius:999px;background:var(--card);border:1px solid var(--border);color:var(--muted)}
+.fj-arrow{color:var(--orange);font-size:.75rem;line-height:1}
+
+/* ── IMAGE PANEL (inline sections) ── */
+.img-panel{border-radius:16px;overflow:hidden;border:1px solid var(--border)}
+.img-panel img{width:100%;height:100%;object-fit:cover;display:block;min-height:300px}
+
+/* ── IMAGE STRIP ── */
+.img-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem}
+.img-strip figure{margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--card)}
+.img-strip img{width:100%;height:160px;object-fit:cover;display:block}
+.img-strip figcaption{padding:.65rem 1rem;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ── FOOTER ── */
+.site-footer{background:var(--dark);padding:5rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2.5rem;border-top:1px solid rgba(255,255,255,.05)}
+.ft-lead{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;font-weight:900}
+.ft-lead em{font-style:italic;color:var(--orange)}
+.ft-links{display:flex;gap:.75rem;flex-wrap:wrap}
+.fl{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.18);padding:.65rem 1.3rem;border-radius:999px}
+@media(prefers-reduced-motion:no-preference){
+  .fl{transition:all .2s}
+}
+.fl:hover{border-color:var(--orange);color:var(--orange)}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  nav{padding:.9rem 1.25rem;margin:.7rem .7rem 0}
+  .hero{padding:4rem 1.5rem 3.5rem;min-height:auto}
+  section{padding:3.5rem 1.5rem}
+  .g2,.g2-wide,.g3,.layer-grid{grid-template-columns:1fr}
+  .hero-meta{gap:1.5rem}
+  .pq{padding:2rem 1.5rem}
+  .hl-band{padding:3rem 1.5rem}
+  .site-footer{padding:3rem 1.5rem;flex-direction:column;align-items:flex-start}
+  .img-strip{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .nav-center{display:none}
+  .img-strip{grid-template-columns:1fr 1fr}
+  section{padding:2.5rem 1.25rem}
+  .hl-band{padding:2rem 1.25rem}
+  .hero{padding:3rem 1.25rem 2.5rem}
+  .site-footer{padding:2.5rem 1.25rem}
+  .hm-item{min-width:100%;padding-right:0;border-right:none;margin-right:0}
+  .pq{padding:1.75rem 1.25rem}
+  .callout-box{padding:2rem 1.5rem}
+}
+@media(max-width:400px){
+  .img-strip{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ══════ NAV ══════ -->
+<nav style="flex-wrap:wrap">
+  <div style="display:flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);">
+    <a href="../work.html" style="color:inherit;text-decoration:none;transition:color .2s;border:none;padding:0;background:none">Work</a>
+    <span style="margin:0 .3rem">/</span>
+    <span style="color:var(--ink);font-weight:500">Sip &amp; Scones</span>
+  </div>
+  <span class="nav-center" onclick="window.location='../index.html'">Swetha Ramachandran</span>
+  <div class="nav-pills">
+    <button class="np np-y" onclick="window.location='../index.html'">Home</button>
+    <button class="np np-l" onclick="window.location='../work.html'">Work</button>
+  </div>
+</nav>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-blob"></div>
+  <div class="hero-blob2"></div>
+
+  <div class="hero-eyebrow sr">
+    <span class="h-tag">Case Study</span>
+    <span class="h-pill">UX Design · Low-Code · Restaurant Tech</span>
+  </div>
+
+  <h1 class="hero-title sr d1">Sip <em>&</em> Scones</h1>
+
+  <p class="hero-sub sr d2">
+    A tablet-based digital ordering system inspired by the elegance of English afternoon tea. Diners can customise a three-tiered tea tray, pair it with drinks, and track purchases through a visual loyalty program.
+  </p>
+
+  <div class="hero-meta sr d3">
+    <div class="hm-item">
+      <div class="hm-l">Tools</div>
+      <div class="hm-v">LiveCode and Figma.</div>
+    </div>
+    <div class="hm-item">
+      <div class="hm-l">Role</div>
+      <div class="hm-v">Research, user flows, interface prototyping, usability testing, and LiveCode implementation.</div>
+    </div>
+    <div class="hm-item">
+      <div class="hm-l">Brief</div>
+      <div class="hm-v">Design a customisable food or drink ordering system for a restaurant tablet interface.</div>
+    </div>
+    <div class="hm-item">
+      <div class="hm-l">Outcome</div>
+      <div class="hm-v">A functional ordering prototype with a tray menu, curated drinks, payment simulation, and loyalty rewards.</div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <svg width="18" height="24" viewBox="0 0 18 24" fill="none"><rect x="1" y="1" width="16" height="22" rx="8" stroke="white" stroke-width="1.5"/><circle cx="9" cy="8" r="2" fill="white"/></svg>
+    scroll
+  </div>
+</section>
+
+<!-- ══════ USER NEEDS ══════ -->
+<section class="s-white" id="concept">
+  <div class="hero-img-wrap sr">
+    <img src="sip-scones-hero.png" alt="Sip and Scones interface">
+    <span class="hero-img-badge">Tablet Ordering System · LiveCode Prototype</span>
+  </div>
+
+  <div class="g2-wide">
+    <div>
+      <div class="sec-label sr">User Needs</div>
+      <h2 class="sec-title sr d1">Designing for <em>atmosphere</em>, not just ordering</h2>
+      <p class="body-t sr d2">Afternoon tea is a social ritual shaped by tradition, pacing, and ambience. Early research showed that the digital system needed to enhance the experience without interrupting its quiet elegance.</p>
+      <p class="body-t sr d3">The challenge was to bring the warmth and personality of afternoon tea into a tablet interface — keeping interaction feeling deliberate and unhurried, while still being intuitive enough to require no instruction.</p>
+    </div>
+    <div>
+      <div class="pq sr d2">
+        <blockquote>Technology should enhance the experience, not disrupt it.</blockquote>
+        <cite>— Design principle, Sip & Scones</cite>
+      </div>
+      <div class="meta-row sr d3" style="margin-top:1.5rem">
+        <div class="meta-item-lgt"><span class="lbl">Format</span><span class="val">Tablet-based, table-side ordering — no personal devices required</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════ THE CONCEPT ══════ -->
+<section class="s-alt">
+  <div class="sec-label sr">The Concept</div>
+  <h2 class="sec-title sr d1">A discreet table-side <em>ordering experience</em></h2>
+  <p class="body-t sr d2">Instead of using entrance kiosks or personal phones, the concept places a tablet-based menu at each table. Diners keep control of the order while the restaurant preserves the intimacy and mood of afternoon tea.</p>
+
+  <div class="g3 sr d1" style="margin-top:2rem">
+    <div class="ic">
+      <div class="ic-title">Build a tea tray</div>
+      <div class="ic-text">Customise sandwiches, scones, and sweets through a visual three-tiered interface that mimics the physical experience of assembling an afternoon tea stand.</div>
+    </div>
+    <div class="ic">
+      <div class="ic-title">Pair drinks</div>
+      <div class="ic-text">Choose from a curated set of teas, coffees, and hot beverages — illustrated with icons and simplified radio buttons to reduce clutter.</div>
+    </div>
+    <div class="ic">
+      <div class="ic-title">Earn rewards</div>
+      <div class="ic-text">Track loyalty through a stack of teacups — a visual and thematically fitting metaphor, with four cups unlocking a 30% discount.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════ USER FLOW ══════ -->
+<section class="s-white" id="flow">
+  <div class="sec-label sr">User Flow</div>
+  <h2 class="sec-title sr d1">A linear journey with <em>visual richness</em></h2>
+  <p class="body-t sr d2">The ordering journey was mapped in Figma as a clear sequence that encouraged exploration without overwhelming diners. Each step builds on the last, guiding users from welcome to payment without backtracking or confusion.</p>
+
+  <div class="flow-journey sr d1">
+    <span class="fj-pill">Welcome</span>
+    <span class="fj-arrow">→</span>
+    <span class="fj-pill">Tier Selection</span>
+    <span class="fj-arrow">→</span>
+    <span class="fj-pill">Drinks</span>
+    <span class="fj-arrow">→</span>
+    <span class="fj-pill">Login (Optional)</span>
+    <span class="fj-arrow">→</span>
+    <span class="fj-pill">Loyalty</span>
+    <span class="fj-arrow">→</span>
+    <span class="fj-pill">Confirmation</span>
+    <span class="fj-arrow">→</span>
+    <span class="fj-pill">Payment</span>
+  </div>
+
+  <div class="g3 sr d2">
+    <div class="ic">
+      <div class="ic-title">Start with calm context</div>
+      <div class="ic-text">A visually rich welcome screen introduces the experience and leads users into tray selection — setting the mood before any decisions are required.</div>
+    </div>
+    <div class="ic">
+      <div class="ic-title">Assemble the tray</div>
+      <div class="ic-text">Selections populate the virtual tray in real time, giving diners a sense of building their tea experience — the visual metaphor became one of the strongest design elements.</div>
+    </div>
+    <div class="ic">
+      <div class="ic-title">Confirm and pay</div>
+      <div class="ic-text">A clear summary, payment simulation, and optional order-again action complete the journey cleanly — no dead ends or ambiguity.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════ KEY FEATURES ══════ -->
+<section class="s-alt" id="features">
+  <div class="sec-label sr">Key Features</div>
+  <h2 class="sec-title sr d1">Theme-led interactions that work within <em>low-code constraints</em></h2>
+  <p class="body-t sr d2">The application aimed to feel delightful and themed while staying realistic to implement in LiveCode. Every feature decision balanced the elegance of the afternoon tea experience with what was genuinely buildable.</p>
+
+  <div class="g3 sr d1" style="margin-top:2rem">
+    <div class="ic">
+      <div class="ic-title">Tiered tray menu</div>
+      <div class="ic-text">Landscape orientation mimics a physical afternoon tea tray and uses labelled visual indicators for each food tier — sandwiches, scones, and sweets each occupy their own layer.</div>
+    </div>
+    <div class="ic">
+      <div class="ic-title">Drinks selection</div>
+      <div class="ic-text">Illustrative icons and radio buttons simplify choices while clear visual states reduce clutter — keeping the interface focused and calm throughout.</div>
+    </div>
+    <div class="ic">
+      <div class="ic-title">Loyalty program</div>
+      <div class="ic-text">Each completed order earns a teacup icon — four teacups unlock a 30% discount, turning a transactional mechanic into a thematically coherent ritual.</div>
+    </div>
+    <div class="ic">
+      <div class="ic-title">Payment simulation</div>
+      <div class="ic-text">A Pay Now button triggers a confirmation dialog that mimics digital transaction feedback — providing closure to the ordering experience.</div>
+    </div>
+    <div class="ic">
+      <div class="ic-title">Help access</div>
+      <div class="ic-text">A persistent Help button simulates calling a server — supporting users during moments of uncertainty without breaking the flow or requiring a restart.</div>
+    </div>
+    <div class="ic">
+      <div class="ic-title">Order reset</div>
+      <div class="ic-text">Cancel Order prompts confirmation and then resets the process — reducing confusion and giving users a safe exit without accidental data loss.</div>
+    </div>
+  </div>
+
+  <div class="img-strip sr d2">
+    <figure>
+      <img src="sip-scones-tier-selection.png" alt="Tier selection screen">
+      <figcaption>Tier selection</figcaption>
+    </figure>
+    <figure>
+      <img src="sip-scones-drinks-selection.png" alt="Drinks selection screen">
+      <figcaption>Drinks</figcaption>
+    </figure>
+    <figure>
+      <img src="sip-scones-loyalty-teacup.png" alt="Loyalty teacup screen">
+      <figcaption>Loyalty</figcaption>
+    </figure>
+    <figure>
+      <img src="sip-scones-payment.png" alt="Payment screen">
+      <figcaption>Payment</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════ PROTOTYPING & TESTING ══════ -->
+<section class="s-white" id="testing">
+  <div class="g2-wide">
+    <div>
+      <div class="sec-label sr">Prototyping & Testing</div>
+      <h2 class="sec-title sr d1">Layout mattered <em>more than expected</em></h2>
+      <p class="body-t sr d2">The team tested two interface concepts using paper prototypes and a Wizard of Oz method — manually simulating interactions while participants used the system. This surface-level testing surfaced meaningful differences in how users perceived and navigated each layout.</p>
+
+      <div class="g2 sr d3" style="gap:1rem;margin-top:1.5rem">
+        <div class="uc">
+          <span class="uc-tag">Option 01</span>
+          <div class="uc-title">Full-tier view</div>
+          <p class="uc-desc">Users could see all three tiers at once and review the meal as a whole — closer to the physical experience of looking at a tea stand.</p>
+        </div>
+        <div class="uc">
+          <span class="uc-tag">Option 02</span>
+          <div class="uc-title">Single-tier focus</div>
+          <p class="uc-desc">The interface zoomed into one tier at a time to reduce visual clutter — but users felt less in control of the overall order.</p>
+        </div>
+      </div>
+    </div>
+    <div class="img-panel sr d2">
+      <img src="sip-scones-prototype-testing.png" alt="Prototype testing screen">
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════ USER TESTING FINDINGS ══════ -->
+<section class="s-alt">
+  <div class="sec-label sr">User Testing</div>
+  <h2 class="sec-title sr d1">The full-tier view felt more intuitive <em>and satisfying</em></h2>
+  <p class="body-t sr d2">Users liked seeing the whole tray because it felt close to assembling a physical afternoon tea stand. The visual metaphor became one of the strongest design elements — and testing confirmed it was the right call over the single-tier approach.</p>
+
+  <div class="g3 sr d1" style="margin-top:2rem">
+    <div class="ic">
+      <div class="ic-title">Switching menus</div>
+      <div class="ic-text">Users wanted more fluid movement between food tiers and drinks to create better pairings — the fixed sequence felt slightly limiting for those who wanted to revisit earlier choices.</div>
+    </div>
+    <div class="ic">
+      <div class="ic-title">Clear onboarding</div>
+      <div class="ic-text">Participants asked for clearer instructions, especially for users whose first language was not English — a prompt for more inclusive copywriting and visual guidance.</div>
+    </div>
+    <div class="ic">
+      <div class="ic-title">Loyalty clarity</div>
+      <div class="ic-text">One user needed the Help button to understand the loyalty screen — validating the need for subtle, contextual guidance built into the interface rather than relying on exploration.</div>
+    </div>
+    <div class="ic">
+      <div class="ic-title">Strong concept</div>
+      <div class="ic-text">Participants praised the visual design, ordering flow, and thematic fit of the tiered layout — the design language resonated clearly with the afternoon tea setting.</div>
+    </div>
+    <div class="ic">
+      <div class="ic-title">Minimal friction</div>
+      <div class="ic-text">Both users completed their task with only minor issues — a strong signal that the core flow was logical and learnable even without prior instruction.</div>
+    </div>
+    <div class="ic">
+      <div class="ic-title">More flexibility</div>
+      <div class="ic-text">Future versions would support back navigation and easier order editing without requiring a full restart — the biggest functional gap identified through testing.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════ EVALUATION ══════ -->
+<section class="s-white" id="reflection">
+  <div class="g2-wide" style="margin-bottom:3.5rem">
+    <div>
+      <div class="sec-label sr">Evaluation</div>
+      <h2 class="sec-title sr d1">Designing with low-code tools <em>shaped the product</em></h2>
+      <p class="body-t sr d2">LiveCode made it possible to create interactive visual components without heavy coding, but it also introduced constraints around nested controls, limited undo, and more ambitious features such as persistent login or memory-based data recall.</p>
+      <p class="body-t sr d3">These constraints were not weaknesses — they sharpened prioritisation and pushed the design toward clarity and focus. Working within limits forced better decisions about what actually mattered to the experience.</p>
+    </div>
+    <div class="img-panel sr d2">
+      <img src="sip-scones-interface-detail.png" alt="Sip and Scones interface detail">
+    </div>
+  </div>
+
+  <div class="sec-label sr">What comes next</div>
+  <div class="g3 sr d1">
+    <div class="ctx-item">
+      <div class="ctx-dot"></div>
+      <p class="ctx-text"><strong style="color:var(--ink);font-weight:500">Smarter dialogs —</strong> Replace default dialog boxes with styled modal dialogs that match the interface aesthetic and feel part of the experience.</p>
+    </div>
+    <div class="ctx-item">
+      <div class="ctx-dot"></div>
+      <p class="ctx-text"><strong style="color:var(--ink);font-weight:500">Memory and navigation —</strong> Use stored variables to support back buttons and order revisions without losing progress — the most-requested change from testing.</p>
+    </div>
+    <div class="ctx-item">
+      <div class="ctx-dot"></div>
+      <p class="ctx-text"><strong style="color:var(--ink);font-weight:500">Real sign-up flow —</strong> Move beyond predefined personas toward personalised accounts and long-term reward tracking for returning visitors.</p>
+    </div>
+    <div class="ctx-item">
+      <div class="ctx-dot"></div>
+      <p class="ctx-text"><strong style="color:var(--ink);font-weight:500">Visual summaries —</strong> Show the full tea tray and drink selections before checkout for clarity and delight — giving diners a moment to appreciate what they've built.</p>
+    </div>
+    <div class="ctx-item">
+      <div class="ctx-dot"></div>
+      <p class="ctx-text"><strong style="color:var(--ink);font-weight:500">Checkout validation —</strong> Prevent users from continuing without at least one selection — a simple guard that avoids empty order confusion.</p>
+    </div>
+    <div class="ctx-item">
+      <div class="ctx-dot"></div>
+      <p class="ctx-text"><strong style="color:var(--ink);font-weight:500">Refined responsiveness —</strong> Use testing feedback to make the experience clearer, smoother, and more flexible — especially around tier switching and mid-flow edits.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ HIGHLIGHT BAND ══════ -->
+<div class="hl-band sr">
+  <p>"User testing turned Sip & Scones from a functional prototype into something more delightful and usable — confirming that the visual tray metaphor was the right design decision from the start."</p>
+</div>
+
+<!-- ══════ FINAL THOUGHTS ══════ -->
+<section class="s-dark" style="padding:5.5rem 3rem">
+  <div style="max-width:960px;margin:0 auto">
+    <div class="sec-label sr">Final Thoughts</div>
+    <h2 class="sec-title sr d1" style="color:#fff">Tools shape the design process <em>as much as ideas do</em></h2>
+    <p class="body-t body-dk sr d2">The project showed that designing with constraints — whether from code, budget, or time — forces clearer priorities and a more focused user experience. LiveCode's limitations pushed every decision toward what the user actually needed, rather than what was technically impressive.</p>
+    <p class="body-t body-dk sr d3">Sip & Scones demonstrated that a strong conceptual metaphor — the physical tea tray translated to screen — can carry an entire product. When the interface feels familiar, users trust it faster and enjoy it more.</p>
+  </div>
+</section>
+
+<!-- ══════ CTA SECTION ══════ -->
+<section class="s-white" style="padding:4rem 3rem;border-top:1px solid var(--border)">
+  <div style="max-width:960px;margin:0 auto;text-align:center">
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;margin-bottom:1rem">Liked this project?</h3>
+    <p style="color:var(--muted);margin-bottom:2rem;font-size:.95rem">Check out my other case studies or reach out to discuss your next project.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="../work.html" style="display:inline-block;padding:.65rem 1.8rem;background:var(--ink);color:#fff;border-radius:999px;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s;font-size:.9rem" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.15)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">← All Projects</a>
+      <a href="mailto:swetha.ramachandran17@gmail.com" style="display:inline-block;padding:.65rem 1.8rem;background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:999px;font-weight:600;text-decoration:none;transition:all .2s;font-size:.9rem" onmouseover="this.style.borderColor='var(--ink)';this.style.backgroundColor='#f5f5f5'" onmouseout="this.style.borderColor='var(--border)';this.style.backgroundColor='transparent'">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer class="site-footer">
+  <div class="ft-lead">Let's connect — <em>Swetha Ramachandran</em></div>
+  <div class="ft-links">
+    <a class="fl" href="../work.html">← All Work</a>
+    <a class="fl" href="../index.html">Home</a>
+  </div>
+</footer>
+
+<script>
+// scroll progress bar
+const bar = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop || document.body.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  bar.style.width = pct + '%';
+});
+
+// scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.sr, .sr-l').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
