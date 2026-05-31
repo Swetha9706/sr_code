@@ -1,64 +1,62 @@
 # Swetha Ramachandran — Portfolio
 
-This is the source code for your portfolio website.
+Source code for Swetha Ramachandran's design portfolio website.
+
+🔗 **Live site:** [siddharthsubramaniam1996.github.io/sr_code](https://siddharthsubramaniam1996.github.io/sr_code/)
+
+## About
+
+A personal portfolio showcasing UX/product design work, including case studies for Krētha, FutureScope, and Sip & Scones. Built with plain HTML and CSS — no framework, no build step.
+
+## Project structure
+
+```
+sr_code/
+├── index.html              ← Home page
+├── aboutme.html            ← About Me
+├── work.html               ← Project grid
+├── swethafullportfolio.html
+├── Projects/
+│   ├── kretha.html         ← Krētha case study
+│   ├── futurescope_Remix.html  ← FutureScope case study
+│   ├── sip-scones.html     ← Sip & Scones case study
+│   └── (project images)
+└── (root-level images)
+```
+
+## Running locally
+
+No setup needed — just open `index.html` in any browser.
+
+```bash
+git clone https://github.com/siddharthsubramaniam1996/sr_code.git
+cd sr_code
+open index.html
+```
+
+## Deployment
+
+The site is deployed two ways:
+1. **GitHub Pages** (auto-deploys from `main`)
+2. **cPanel hosting** (manual upload to `public_html/`)
 
 ---
 
-## How to update your portfolio
+## Personal workflow notes
 
-Whenever you want to change something — a project, your bio, a colour, anything — follow these steps:
+> The section below is a working guide for updating the site — not relevant to visitors.
 
-### Step 1 — Make your changes
-Open Claude Code and describe what you want to change. For example:
-- *"Change the email address in the contact section of aboutme.html"*
+### How to update
+
+Open Claude Code and describe the change you want, e.g.:
+- *"Change the email address in aboutme.html"*
 - *"Add a new project card to work.html"*
-- *"Update the bio text in aboutme.html"*
+- *"Update the bio text"*
 
-Claude will make the changes directly to the files.
+Then say *"push the updates to GitHub"* — Claude will commit and push.
 
-### Step 2 — Push to GitHub
-Once Claude has made the changes, tell it:
+### cPanel upload
 
-> *"Push the updates to GitHub"*
-
-Claude will commit and push everything for you.
-
-### Step 3 — Upload to cPanel
-Log in to your cPanel hosting, go to **File Manager → public_html**, and re-upload whichever file was changed. It will overwrite the old version and your live site will update immediately.
-
----
-
-## File map — what lives where
-
-| File | What it is |
-|---|---|
-| `index.html` | Home page |
-| `aboutme.html` | About Me page |
-| `work.html` | My Work page (project grid) |
-| `Projects/kretha.html` | Krētha case study |
-| `Projects/futurescope_Remix.html` | FutureScope case study |
-| `Projects/sip-scones.html` | Sip & Scones case study |
-| `10 1.jpg`, `Online world-connect 1.png`, etc. | Images used on the site |
-
----
-
-## cPanel upload reminder
-
-When uploading to cPanel, the folder structure must match exactly:
-
-```
-public_html/
-├── index.html
-├── aboutme.html
-├── work.html
-├── 10 1.jpg
-├── Online world-connect 1.png
-├── Pic.png
-├── Vector.png
-└── Projects/
-    ├── kretha.html
-    ├── futurescope_Remix.html
-    └── sip-scones.html
-```
+After pushing to GitHub, log in to cPanel → **File Manager → public_html**, and re-upload whichever file changed. The folder structure must match the layout above.
 
 If you add a new image, upload it to the same folder as the HTML file that uses it.
