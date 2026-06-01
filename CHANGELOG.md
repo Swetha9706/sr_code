@@ -4,6 +4,20 @@ A running log of meaningful updates to the portfolio. Newest entries on top.
 
 ---
 
+## 2026-06-01 — Landing page hero graphics motion & layout
+
+**File:** `index.html`  
+**Assets added:** `Background.svg`, `Flower.svg`, `Purple sun.svg`, `Swipe.svg`
+
+- Replaced all four inline SVG decorations with external SVG files.
+- Added CSS animations: Background blob fades/zooms in on load; Purple sun fades/zooms in; Flower spins slowly (12s loop); Swipe squiggle sways side to side (2.5s loop).
+- Repositioned all decorative elements to match reference layout — flower upper-right, purple sun upper-left behind head, swipe lower-right.
+- Added `prefers-reduced-motion` override to disable all animations for accessibility.
+
+**Rollback tag:** `pre-hero-motion-2026-06-01` points at the commit before this work.
+
+---
+
 ## 2026-05-31 — FutureScope case study restructure
 
 **File:** `Projects/futurescope_Remix.html`
