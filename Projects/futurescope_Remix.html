@@ -177,7 +177,7 @@ nav{
   font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;
   text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.4rem;
 }
-.meta-v{font-size:.9rem;color:rgba(255,255,255,.7);font-weight:300;line-height:1.4}
+.meta-v{font-size:1rem;color:rgba(255,255,255,.7);font-weight:300;line-height:1.4}
 .scroll-hint{
   position:absolute;right:3rem;bottom:3rem;
   display:flex;flex-direction:column;align-items:center;gap:.5rem;
@@ -242,7 +242,7 @@ section{padding:5.5rem 3rem}
   font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.15em;
   text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;display:block;
 }
-.info-val{font-size:.92rem;color:var(--ink);font-weight:400;line-height:1.5}
+.info-val{font-size:1rem;color:var(--ink);font-weight:400;line-height:1.5}
 .hypothesis-box{
   border:2px solid var(--blue);border-radius:var(--r-lg);
   padding:2.25rem;margin-top:2rem;position:relative;
@@ -265,13 +265,13 @@ section{padding:5.5rem 3rem}
 .stat-cell{background:var(--bg);padding:2.75rem 2.25rem}
 .stat-num{
   font-family:'Playfair Display',serif;
-  font-size:clamp(3.2rem,6vw,5.5rem);font-weight:900;
+  font-size:clamp(2.2rem,4vw,3.6rem);font-weight:900;
   color:var(--pink);line-height:1;display:block;margin-bottom:.6rem;
 }
-.stat-text{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.6;max-width:28ch}
+.stat-text{font-size:1.05rem;color:var(--muted);font-weight:300;line-height:1.65;max-width:none}
 .stat-source{
-  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;
-  color:var(--muted);text-transform:uppercase;margin-top:.75rem;display:block;
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;
+  color:var(--ink);text-transform:uppercase;margin-top:1rem;display:block;font-weight:500;
 }
 
 /* Hero stat — single dominant figure */
@@ -308,7 +308,7 @@ section{padding:5.5rem 3rem}
   font-size:2.6rem;font-weight:900;color:var(--pink);line-height:1;flex-shrink:0;
 }
 .stat-strip .stat-mini-text{
-  font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.5;margin:0;
+  font-size:1rem;color:var(--muted);font-weight:300;line-height:1.6;margin:0;
 }
 .stat-strip .stat-mini-source{
   font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;
@@ -356,8 +356,8 @@ section{padding:5.5rem 3rem}
 }
 .icard:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.07)}
 .icard-icon{font-size:1.5rem;margin-bottom:.85rem;display:block}
-.icard-title{font-weight:500;font-size:.95rem;margin-bottom:.35rem;color:var(--ink)}
-.icard-text{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.65}
+.icard-title{font-weight:500;font-size:1.05rem;margin-bottom:.4rem;color:var(--ink)}
+.icard-text{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.65}
 
 /* ───────────────────────────────────────
    PROBLEM CONTEXT SECTION
@@ -372,7 +372,7 @@ section{padding:5.5rem 3rem}
   width:10px;height:10px;border-radius:50%;
   background:var(--pink);flex-shrink:0;margin-top:5px;
 }
-.context-text{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.7}
+.context-text{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.7}
 
 /* ───────────────────────────────────────
    WHY IT MATTERS — 3-UP POINTS
@@ -389,7 +389,7 @@ section{padding:5.5rem 3rem}
   font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;
   color:var(--pink);margin-bottom:1rem;display:block;
 }
-.why-text{font-size:.9rem;color:var(--ink);font-weight:400;line-height:1.65}
+.why-text{font-size:1rem;color:var(--ink);font-weight:400;line-height:1.65}
 
 /* ───────────────────────────────────────
    USER TYPES
@@ -411,47 +411,210 @@ section{padding:5.5rem 3rem}
   font-family:'Playfair Display',serif;font-size:1.15rem;
   font-weight:900;margin-bottom:.6rem;
 }
-.user-desc{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.7}
+.user-desc{font-size:1.05rem;color:var(--muted);font-weight:300;line-height:1.7}
 
 /* ───────────────────────────────────────
    SOLUTION FEATURES
 ─────────────────────────────────────── */
 .feature-row{
-  display:flex;gap:2rem;align-items:flex-start;
-  padding:1.75rem 0;border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:auto 1fr 1fr;gap:2.5rem;align-items:start;
+  padding:2.5rem 0;border-bottom:1px solid var(--border);
 }
+.feature-row.reverse{grid-template-columns:auto 1fr 1fr}
+.feature-row.reverse .feat-content{order:3}
+.feature-row.reverse .feat-visual{order:2}
 .feature-row:last-child{border-bottom:none}
 .feat-num{
   font-family:'Playfair Display',serif;font-size:2.5rem;
   font-weight:900;color:var(--pink);line-height:1;min-width:3.5rem;flex-shrink:0;
 }
 .feat-content{}
-.feat-title{font-weight:500;font-size:1rem;margin-bottom:.4rem}
-.feat-desc{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.7}
+.feat-title{font-weight:500;font-size:1.25rem;margin-bottom:.6rem}
+.feat-desc{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.7}
+.feat-visual{
+  background:var(--alt);border:1px dashed var(--border);border-radius:var(--r-lg);
+  min-height:240px;display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;text-align:center;
+}
+.feat-visual-label{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);line-height:1.7;
+}
+
+/* Feature 03 — extended horoscope section */
+.feature-extended{
+  padding:3rem 0;border-bottom:1px solid var(--border);
+}
+.feature-extended:last-child{border-bottom:none}
+.feature-extended-head{
+  display:flex;gap:2rem;align-items:flex-start;margin-bottom:2rem;
+}
+.feat-lead{
+  font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;
+  font-style:italic;color:var(--ink);line-height:1.5;margin:1.5rem 0 2rem;
+  padding-left:1.25rem;border-left:2px solid var(--pink);max-width:780px;
+}
+.horoscope-visual{
+  background:linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius:var(--r-lg);padding:3rem 2rem;margin:2rem 0;
+  display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;
+  min-height:280px;
+}
+.horoscope-visual-text{color:rgba(255,255,255,.55);text-align:center;
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;line-height:1.8;
+}
+.horoscope-visual-text strong{color:rgba(255,255,255,.85);display:block;margin-bottom:.6rem;font-weight:500;letter-spacing:.08em}
+.contrast-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0;
+}
+.contrast-card{
+  border:1px solid var(--border);border-radius:var(--r-md);
+  padding:1.5rem;background:var(--card);
+}
+.contrast-card.dread{border-left:3px solid #888}
+.contrast-card.curiosity{border-left:3px solid var(--pink);background:var(--alt)}
+.contrast-label{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;display:block;
+}
+.contrast-quote{
+  font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;
+  color:var(--ink);line-height:1.5;
+}
+.card-types{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:.85rem;margin:2rem 0;
+}
+
+.card-type{
+  position:relative;
+  background:#fce4e4;
+  border-radius:10px;
+  padding:8px;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  box-shadow:0 12px 28px rgba(0,0,0,.08);
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.card-type:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.12)}
+
+.card-type-inner{
+  background:#fff;
+  border:2px solid #e63946;
+  border-radius:6px;
+  padding:.9rem .55rem 0;
+  display:flex;flex-direction:column;
+  height:280px;
+  position:relative;
+}
+
+/* Roman numeral banner at top */
+.card-type-numeral{
+  position:absolute;top:-2px;left:50%;transform:translateX(-50%);
+  background:#fce4e4;
+  border:2px solid #e63946;border-top:none;
+  padding:.22rem .9rem .26rem;
+  border-radius:0 0 4px 4px;
+  font-family:'Playfair Display',serif;
+  font-size:.72rem;letter-spacing:.16em;font-weight:600;
+  color:#e63946;
+}
+
+/* Decorative corner stars */
+.card-type-corner{
+  position:absolute;width:11px;height:11px;
+  color:#e63946;opacity:.7;pointer-events:none;
+}
+.card-type-corner.tl{top:6px;left:6px}
+.card-type-corner.tr{top:6px;right:6px}
+.card-type-corner.bl{bottom:38px;left:6px}
+.card-type-corner.br{bottom:38px;right:6px}
+
+/* Illustration zone */
+.card-type-illus{
+  flex:1;
+  display:flex;align-items:center;justify-content:center;
+  padding:.5rem 0 .4rem;
+  color:#e63946;
+  position:relative;
+}
+.card-type-illus svg{width:auto;height:64px;max-width:85%}
+.card-type-illus .sparkle{
+  position:absolute;color:#e63946;opacity:.5;
+}
+.card-type-illus .sparkle.s1{top:8%;left:10%;width:8px;height:8px}
+.card-type-illus .sparkle.s2{top:14%;right:12%;width:7px;height:7px}
+.card-type-illus .sparkle.s3{bottom:18%;left:8%;width:6px;height:6px}
+.card-type-illus .sparkle.s4{bottom:12%;right:10%;width:9px;height:9px}
+
+/* Name banner at bottom */
+.card-type-banner{
+  margin:0 -.55rem;
+  background:#e63946;
+  color:#fff;
+  padding:.5rem .4rem;
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-size:.78rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;
+  border-radius:0 0 4px 4px;
+  margin-top:auto;
+}
+
+/* Description below the card */
+.card-type-desc{
+  font-size:.82rem;color:var(--muted);font-weight:300;line-height:1.5;
+  padding:.85rem .15rem 0;text-align:center;
+}
+.card-type-desc em{font-style:italic;color:var(--ink)}
+.tarot-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0;
+}
+.tarot-card{
+  aspect-ratio:2/3;border:1px dashed var(--border);border-radius:var(--r-md);
+  background:var(--alt);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:1rem;text-align:center;
+}
+.tarot-name{
+  font-family:'Playfair Display',serif;font-size:1rem;font-weight:500;color:var(--ink);
+  font-style:italic;margin-bottom:.4rem;
+}
+.tarot-placeholder{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);
+}
+@media(max-width:900px){
+  .feature-row{grid-template-columns:auto 1fr;gap:1.5rem}
+  .feat-visual{grid-column:1 / -1;margin-top:1rem}
+  .horoscope-visual{grid-template-columns:1fr;padding:2rem 1.25rem}
+  .contrast-row{grid-template-columns:1fr}
+  .card-types{grid-template-columns:1fr;gap:.75rem}
+  .tarot-strip{grid-template-columns:repeat(3,1fr);gap:.5rem}
+}
 
 /* ───────────────────────────────────────
    RESEARCH METHODS
 ─────────────────────────────────────── */
 .method-block{
   border:1px solid var(--border);border-radius:var(--r-lg);
-  overflow:hidden;margin-bottom:1.5rem;
+  overflow:hidden;margin-bottom:1.5rem;background:var(--card);
 }
 .method-head{
-  background:var(--dark-surface);padding:1.5rem 2rem;
+  background:var(--dark-surface);padding:1.25rem 2rem;
   display:flex;align-items:center;gap:1.25rem;
 }
 .method-n{
-  font-family:'Playfair Display',serif;font-size:2.25rem;
-  font-weight:900;color:var(--pink);line-height:1;
+  font-family:'Playfair Display',serif;font-size:2.5rem;
+  font-weight:900;color:var(--pink);line-height:1;flex-shrink:0;
 }
-.method-head-text{}
+.method-head-text{display:flex;flex-direction:column;gap:.15rem}
 .method-tag-sm{
-  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;
-  text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.2rem;
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.4);
 }
 .method-name{
   font-family:'Playfair Display',serif;
-  font-size:1.2rem;color:#fff;font-weight:900;
+  font-size:1.35rem;color:#fff;font-weight:900;line-height:1.1;
 }
 .method-body{padding:2rem 2rem 1.5rem}
 .method-obj{
@@ -459,17 +622,127 @@ section{padding:5.5rem 3rem}
   text-transform:uppercase;color:var(--muted);margin-bottom:.35rem;margin-top:1.25rem;
   display:block;
 }
-.method-body p{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.75;margin-bottom:.75rem}
+.method-body p{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.75;margin-bottom:.75rem}
+
+/* Two-column narrative for Method 01 */
+.method-narrative{
+  display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;
+  padding:2.5rem 2rem;
+}
+.method-rail{
+  position:sticky;top:5rem;align-self:start;
+  display:flex;flex-direction:column;gap:.85rem;
+}
+.method-rail-item{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);
+  padding:.5rem 0 .5rem .9rem;border-left:2px solid var(--border);
+  line-height:1.4;
+}
+.method-rail-item.is-active{color:var(--pink);border-left-color:var(--pink)}
+.method-prose p{font-size:1.02rem;color:var(--muted);font-weight:300;line-height:1.8;margin-bottom:1rem}
+.method-prose .method-obj{margin-top:1.75rem}
+.method-prose .method-obj:first-child{margin-top:0}
+
+/* Hero pull-quote — promoted from inline-quote */
+.hero-quote{
+  margin:2.5rem 0;padding:2rem 0;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.hero-quote-text{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:1.65rem;line-height:1.4;color:var(--ink);font-weight:400;
+  margin-bottom:.85rem;
+}
+.hero-quote-attr{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);
+}
+
+/* Full-width insight band — chapter break between methods */
+.insight-band{
+  background:var(--dark-surface);color:#fff;
+  margin:3rem -2rem 0;padding:3rem 2rem;
+  border-radius:0 0 var(--r-lg) var(--r-lg);
+}
+.insight-band-eyebrow{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--pink);margin-bottom:1rem;display:block;
+}
+.insight-band-text{
+  font-family:'Playfair Display',serif;font-size:1.85rem;line-height:1.35;
+  color:#fff;font-weight:400;max-width:780px;
+}
+.insight-band-text em{color:var(--pink);font-style:italic}
+
+/* Competitor cards — replaces .comp-table */
+.competitor-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+  margin:1.5rem 0 .5rem;
+}
+.competitor-card{
+  background:var(--alt);border:1px solid var(--border);
+  border-radius:var(--r-md);padding:1.5rem 1.4rem;
+  display:flex;flex-direction:column;gap:.75rem;
+}
+.competitor-name{
+  font-family:'Playfair Display',serif;font-size:1.15rem;
+  font-weight:900;color:var(--ink);line-height:1.2;
+}
+.competitor-type{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);
+  background:#fff;border:1px solid var(--border);border-radius:999px;
+  padding:.3rem .65rem;align-self:flex-start;
+}
+.competitor-gap-label{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--pink);margin-top:.25rem;
+}
+.competitor-gap-text{
+  font-size:.95rem;color:var(--ink);font-weight:300;line-height:1.55;
+}
+
+/* Synthesis line — bridges into Research Question callout */
+.synthesis-line{
+  text-align:center;padding:3rem 1.5rem 1rem;
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:1.85rem;line-height:1.4;color:var(--ink);font-weight:400;
+  max-width:780px;margin:0 auto;
+}
+.synthesis-line strong{color:var(--pink);font-style:normal;font-weight:900}
+
+/* Process strip — opens the section */
+.process-strip{
+  display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;
+  margin:1.5rem 0 2.5rem;padding:1rem 1.25rem;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r-md);
+}
+.process-step{
+  display:flex;align-items:center;gap:.6rem;
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);
+}
+.process-step-dot{
+  width:24px;height:24px;border-radius:50%;
+  background:var(--alt);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:var(--ink);font-weight:600;
+}
+.process-step.is-current .process-step-dot{background:var(--pink);border-color:var(--pink);color:#fff}
+.process-step.is-current{color:var(--ink)}
+.process-arrow{color:var(--border);font-size:.9rem}
 .finding-callout{
   background:var(--alt);border-left:3px solid var(--pink);
   border-radius:0 var(--r-sm) var(--r-sm) 0;
   padding:1rem 1.25rem;margin-top:1rem;
-  font-size:.9rem;color:var(--ink);line-height:1.65;
+  font-size:1rem;color:var(--ink);line-height:1.65;
 }
 .accordion-toggle{
   width:100%;text-align:left;background:none;border:none;
   border-top:1px solid var(--border);padding:1.1rem 2rem;
-  font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;
+  font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;
   color:var(--ink);cursor:pointer;
   display:flex;align-items:center;justify-content:space-between;
 }
@@ -490,7 +763,7 @@ section{padding:5.5rem 3rem}
   background:rgba(0,0,0,.01);
 }
 .accordion-body.open{display:block}
-.accordion-body p{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.75;margin-bottom:.75rem}
+.accordion-body p{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.75;margin-bottom:.75rem}
 .accordion-body p:last-child{margin-bottom:0}
 .inline-quote{
   font-family:'Playfair Display',serif;
@@ -508,7 +781,7 @@ section{padding:5.5rem 3rem}
   border-radius:var(--r-md);padding:1.5rem;
 }
 .finding-icon{font-size:1.3rem;margin-bottom:.6rem;display:block}
-.finding-text{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.65}
+.finding-text{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.65}
 
 /* ───────────────────────────────────────
    COMPETITIVE ANALYSIS
@@ -522,7 +795,7 @@ section{padding:5.5rem 3rem}
 }
 .comp-table td{
   padding:1.1rem 1rem;border-bottom:1px solid var(--border);
-  font-size:.9rem;line-height:1.55;vertical-align:top;
+  font-size:1rem;line-height:1.6;vertical-align:top;
   color:var(--muted);font-weight:300;
 }
 .comp-table td:first-child{color:var(--ink);font-weight:400}
@@ -542,7 +815,7 @@ section{padding:5.5rem 3rem}
   font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;
   color:var(--pink);min-width:2rem;padding-top:.15rem;
 }
-.ni-text{font-size:.9rem;color:var(--ink);font-weight:400;line-height:1.65}
+.ni-text{font-size:1rem;color:var(--ink);font-weight:400;line-height:1.65}
 
 /* ───────────────────────────────────────
    PROBLEM STATEMENT
@@ -571,7 +844,7 @@ section{padding:5.5rem 3rem}
 }
 .opp-table tbody td{
   padding:1.2rem 1.1rem;border-bottom:1px solid var(--border);
-  font-size:.9rem;vertical-align:top;line-height:1.6;
+  font-size:1rem;vertical-align:top;line-height:1.6;
 }
 .opp-table tbody td:first-child{color:var(--ink);font-weight:400;max-width:35ch}
 .opp-table tbody td:last-child{color:var(--muted);font-weight:300}
@@ -638,6 +911,17 @@ section{padding:5.5rem 3rem}
   .method-body{padding:1.5rem}
   .accordion-body{padding:1.25rem 1.5rem}
   .accordion-toggle{padding:.9rem 1.5rem}
+  .method-narrative{grid-template-columns:1fr;gap:1.5rem;padding:1.75rem 1.5rem}
+  .method-rail{position:static;flex-direction:row;flex-wrap:wrap;gap:.5rem}
+  .method-rail-item{padding:.35rem .65rem;border-left:none;border:1px solid var(--border);border-radius:999px;font-size:9px}
+  .method-rail-item.is-active{border-color:var(--pink)}
+  .competitor-grid{grid-template-columns:1fr}
+  .insight-band{margin:2rem -1.5rem 0;padding:2.25rem 1.5rem;border-radius:0}
+  .insight-band-text{font-size:1.4rem}
+  .hero-quote-text{font-size:1.25rem}
+  .synthesis-line{font-size:1.35rem;padding:2rem 1rem 0}
+  .process-strip{padding:.85rem 1rem}
+  .process-arrow{display:none}
 }
 @media(max-width:480px){
   .grid-stats{grid-template-columns:1fr}
@@ -804,6 +1088,7 @@ section{padding:5.5rem 3rem}
 }
 @media(max-width:900px){.barriers-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:580px){.barriers-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.barriers-intro{grid-template-columns:1fr!important;gap:1.25rem!important}}
 </style>
 </head>
 <body>
@@ -931,10 +1216,10 @@ section{padding:5.5rem 3rem}
   <h2 class="sec-title reveal reveal-delay-1">The scale of the<br><em>problem</em></h2>
   <p class="body reveal reveal-delay-2" style="max-width:720px">The data made the challenge clear.</p>
 
-  <div class="grid-stats reveal reveal-delay-2" style="grid-template-columns:repeat(4,1fr)">
+  <div class="grid-stats reveal reveal-delay-2" style="grid-template-columns:repeat(3,1fr)">
     <div class="stat-cell">
-      <span class="stat-num">67%</span>
-      <p class="stat-text">of adults in the UK are financially literate — leaving a third without the knowledge to plan for retirement.</p>
+      <span class="stat-num">1 in 3</span>
+      <p class="stat-text">UK adults lack basic financial literacy — leaving them without the knowledge to plan for retirement.</p>
       <span class="stat-source">— agediversity.org</span>
     </div>
     <div class="stat-cell">
@@ -943,14 +1228,9 @@ section{padding:5.5rem 3rem}
       <span class="stat-source">— OECD</span>
     </div>
     <div class="stat-cell">
-      <span class="stat-num">47%</span>
-      <p class="stat-text">of working adults do not have sufficient knowledge about pensions.</p>
-      <span class="stat-source">— OECD</span>
-    </div>
-    <div class="stat-cell">
-      <span class="stat-num">43%</span>
-      <p class="stat-text">of adults aged 50–65 are approaching retirement without a plan.</p>
-      <span class="stat-source">— UK Adult Financial Wellbeing Survey 2021</span>
+      <span class="stat-num">[XX%]</span>
+      <p class="stat-text">[Placeholder — behavioral / emotional stat: e.g. share who avoid retirement planning due to anxiety, overwhelm, or procrastination.]</p>
+      <span class="stat-source">— [source TBD]</span>
     </div>
   </div>
 
@@ -981,10 +1261,12 @@ section{padding:5.5rem 3rem}
   </div>
 
   <div class="stat-image-block reveal reveal-delay-3" style="margin-top:4rem">
-    <div style="margin-bottom:2rem">
-      <h3 class="sec-title" style="margin-bottom:.75rem">Six key barriers to retirement planning in the UK</h3>
-      <p class="body" style="margin-bottom:1.25rem">The 2021 UK Adult Financial Wellbeing Survey identified six distinct barriers that prevent people from engaging meaningfully with retirement planning: <b>psychological</b> (present bias), <b>cultural</b> (avoidance of money conversations), <b>awareness</b> (lack of pension literacy), <b>digital exclusion</b> (unequal access to planning tools), <b>trust</b> (scepticism toward financial institutions), and <b>socio-economic</b> (structural inequality in contributions and outcomes).</p>
-      <p class="body" style="margin-bottom:0">FutureScope was designed to address several of these barriers simultaneously — not through information alone, but through a guided experience that starts with reflection rather than calculation.</p>
+    <div class="barriers-intro" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:2rem;align-items:start">
+      <h3 class="sec-title" style="margin:0"><em style="color:var(--pink);font-style:normal">6</em> key barriers to retirement planning in the UK</h3>
+      <div>
+        <p class="body" style="margin-bottom:1.25rem">The 2021 UK Adult Financial Wellbeing Survey identified six distinct barriers that prevent people from engaging meaningfully with retirement planning: <b>psychological</b> (present bias), <b>cultural</b> (avoidance of money conversations), <b>awareness</b> (lack of pension literacy), <b>digital exclusion</b> (unequal access to planning tools), <b>trust</b> (scepticism toward financial institutions), and <b>socio-economic</b> (structural inequality in contributions and outcomes).</p>
+        <p class="body" style="margin-bottom:0">FutureScope was designed to address several of these barriers simultaneously — not through information alone, but through a guided experience that starts with reflection rather than calculation.</p>
+      </div>
     </div>
 
     <img src="uk-retirement-barriers.png" alt="Key barriers for retirement planning visualization" style="width:100%;height:auto;display:block;border-radius:var(--r-md)">
@@ -1002,47 +1284,118 @@ section{padding:5.5rem 3rem}
     <div class="user-card reveal reveal-delay-1">
       <span class="user-type-tag">Primary Users</span>
       <div class="user-title">Adults aged 35–50</div>
-      <p class="user-desc">Individuals who recognize the importance of retirement planning but struggle to navigate the process due to a lack of structured guidance and accessible resources.</p>
+      <p class="user-desc">These are individuals who have begun to recognize the importance of long-term financial planning but struggle to translate that awareness into action. They are often managing competing priorities — housing, family, travel, career progression — while retirement remains abstract and emotionally distant. They do not need more data. They need a way in.</p>
     </div>
     <div class="user-card reveal reveal-delay-2">
       <span class="user-type-tag">Secondary Users</span>
-      <div class="user-title">Younger & older individuals</div>
-      <p class="user-desc">Younger individuals interested in financial independence (e.g., FIRE community) and older individuals seeking ways to manage their savings efficiently.</p>
+      <div class="user-title">Younger &amp; older individuals</div>
+      <p class="user-desc">Younger individuals interested in financial independence and the FIRE(Financial Independence Retiring Early) community, and older individuals already in the process of managing accumulated savings, represent adjacent audiences who could benefit from the same underlying service philosophy.</p>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ────────── SOLUTION ────────── -->
+<!-- ────────── RESEARCH METHODS ────────── -->
 <section class="s-alt">
-  <div class="sec-label reveal">Solution</div>
-  <h2 class="sec-title reveal reveal-delay-1">FutureScope is designed to simplify and personalize retirement planning through <em>three core features</em></h2>
-  <p class="body reveal reveal-delay-2">We developed a high-level concept for a personalised retirement planning service, including a quiz, a financial consultation meeting, and routine financial updates. This service would be virtual, with monthly updates similar to a daily horoscope — designed to feel approachable and ease the anxiety surrounding future financial planning.</p>
+  <div class="sec-label reveal">Research Methods</div>
+  <h2 class="sec-title reveal reveal-delay-1">How we discovered the problem</h2>
 
-  <div style="margin-top:2.5rem">
-    <div class="feature-row reveal reveal-delay-1">
-      <div class="feat-num">01</div>
-      <div class="feat-content">
-        <div class="feat-title">Onboarding Quiz & Personalized Profiles</div>
-        <p class="feat-desc">Users complete a guided questionnaire to identify their lifestyle goals and savings needs. Drawing on our Buzzfeed boundary object research, the quiz uses imagery and personality indicators to make the process feel engaging rather than intimidating.</p>
+  <!-- Process strip -->
+  <div class="process-strip reveal reveal-delay-1">
+    <div class="process-step is-current"><span class="process-step-dot">1</span>Survey</div>
+    <span class="process-arrow">→</span>
+    <div class="process-step is-current"><span class="process-step-dot">2</span>Quiz boundary object</div>
+    <span class="process-arrow">→</span>
+    <div class="process-step is-current"><span class="process-step-dot">3</span>Interviews</div>
+    <span class="process-arrow">→</span>
+    <div class="process-step is-current"><span class="process-step-dot">4</span>Synthesis</div>
+  </div>
+
+  <!-- Method 1 -->
+  <div class="method-block reveal reveal-delay-2">
+    <div class="method-head">
+      <div class="method-n">01</div>
+      <div class="method-head-text">
+        <div class="method-tag-sm">Method</div>
+        <div class="method-name">Surveys and interviews</div>
       </div>
     </div>
-    <div class="feature-row reveal reveal-delay-2">
-      <div class="feat-num">02</div>
-      <div class="feat-content">
-        <div class="feat-title">Expert Consultation</div>
-        <p class="feat-desc">A financial advisor provides tailored recommendations based on the user's profile. This directly addresses our core research finding: personalized guidance is far more effective than generic advice at motivating real action.</p>
+
+    <div class="method-narrative">
+      <aside class="method-rail" aria-hidden="true">
+        <div class="method-rail-item is-active">Objective</div>
+        <div class="method-rail-item is-active">Approach</div>
+        <div class="method-rail-item is-active">Quote</div>
+        <div class="method-rail-item is-active">Key findings</div>
+      </aside>
+
+      <div class="method-prose">
+        <span class="method-obj">Objective</span>
+        <p>Understand user behaviors, attitudes, and pain points around retirement planning.</p>
+
+        <span class="method-obj">Approach</span>
+        <p>A survey was conducted with 12 participants (aged 25–50), recruited via Reddit and Discord. Four in-depth interviews followed, exploring user motivations and anxieties in greater depth. Both methods were anchored around a Buzzfeed-style quiz used as a boundary object — a research technique drawn from Frith et al. (2005) and Bagnoli (2009) — which used unlabelled imagery to help participants describe their future without the constraints of financial language.</p>
+        <p>At the end of each quiz, participants were shown an estimate of how much money they would need to support their chosen lifestyle, calculated using the HSBC Retirement Calculator. This moment consistently prompted surprise, reflection, and more grounded conversation about what retirement planning actually means.</p>
+
+        <div class="hero-quote">
+          <p class="hero-quote-text">"I'm nowhere near saving that amount, but this result makes me feel less anxious. It's about the sum I've been aiming for."</p>
+          <div class="hero-quote-attr">— Interview participant</div>
+        </div>
+
+        <p>The unlabelled format was deliberate. Removing category labels reduced researcher-imposed bias and allowed participants to respond more expressively. Several asked to select more than one option — a signal that lifestyle expectations resist clean categorisation and that any good design should reflect that nuance.</p>
+
+        <span class="method-obj">Key survey findings</span>
+        <p>The only measurable difference between age groups was expected retirement duration: those under 30 anticipated retiring for 10–15 years, while those over 30 expected 15–20 years. In all other respects, confusion and avoidance were consistent across age groups.</p>
+        <p>Around 50% of respondents said retirement did not factor into major purchasing decisions. Most described a desired retirement involving travel, hobbies, and downtime — but had no savings strategy aligned with those aspirations.</p>
       </div>
     </div>
-    <div class="feature-row reveal reveal-delay-3">
-      <div class="feat-num">03</div>
-      <div class="feat-content">
-        <div class="feat-title">Progress Tracking & Insights</div>
-        <p class="feat-desc">A mobile-first interface helps users monitor their savings progress with engaging visualizations and periodic updates — delivered like a monthly horoscope to maintain consistent engagement without creating additional anxiety.</p>
+
+    <!-- Insight band — chapter break -->
+    <div class="insight-band">
+      <span class="insight-band-eyebrow">The Core Insight</span>
+      <p class="insight-band-text">Regardless of age, people are aimless about retirement planning not because they lack information, but because they lack <em>imagination</em> about their future selves.</p>
+    </div>
+  </div>
+
+  <!-- Method 2 -->
+  <div class="method-block reveal">
+    <div class="method-head">
+      <div class="method-n">02</div>
+      <div class="method-head-text">
+        <div class="method-tag-sm">Method</div>
+        <div class="method-name">Competitive analysis</div>
+      </div>
+    </div>
+    <div class="method-body">
+      <span class="method-obj">Objective</span>
+      <p>Identify the gaps in existing retirement planning tools.</p>
+
+      <div class="competitor-grid">
+        <div class="competitor-card">
+          <div class="competitor-name">HSBC Retirement Calculator</div>
+          <span class="competitor-type">Traditional planning platform</span>
+          <span class="competitor-gap-label">Gap</span>
+          <p class="competitor-gap-text">Number-crunching only; no behavioral layer.</p>
+        </div>
+        <div class="competitor-card">
+          <div class="competitor-name">Mint</div>
+          <span class="competitor-type">Financial independence app</span>
+          <span class="competitor-gap-label">Gap</span>
+          <p class="competitor-gap-text">Broad budgeting focus; weak on retirement visualisation.</p>
+        </div>
+        <div class="competitor-card">
+          <div class="competitor-name">YNAB</div>
+          <span class="competitor-type">Budgeting tool</span>
+          <span class="competitor-gap-label">Gap</span>
+          <p class="competitor-gap-text">Goal-based but not retirement-specific; steep learning curve.</p>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Synthesis line bridging into Research Question -->
+  <p class="synthesis-line reveal">Most tools <strong>count</strong>. None help you <strong>imagine</strong>.</p>
 </section>
 
 <div class="divider"></div>
@@ -1053,104 +1406,8 @@ section{padding:5.5rem 3rem}
   <p class="rq-text">"How can we support individuals in the UK between the ages of 35–50 to envision the realities of their retirement and determine what they will need to sustain a certain lifestyle?"</p>
 </div>
 
-<!-- ────────── RESEARCH METHODS ────────── -->
-<section class="s-white">
-  <div class="sec-label reveal">Research Methods</div>
-  <h2 class="sec-title reveal reveal-delay-1">How we discovered the problem</h2>
-
-  <!-- Method 1 -->
-  <div class="method-block reveal reveal-delay-2">
-    <div class="method-head">
-      <div class="method-n">01</div>
-      <div class="method-head-text">
-        <div class="method-tag-sm">Method</div>
-        <div class="method-name">Surveys & Interviews</div>
-      </div>
-    </div>
-    <div class="method-body">
-      <span class="method-obj">Objective</span>
-      <p>Understand user behaviors, attitudes, and pain points regarding retirement planning.</p>
-      <span class="method-obj">Approach</span>
-      <p>Conducted a survey (12 participants, aged 25–50) via Reddit & Discord. Conducted 4 in-depth interviews to explore user motivations and challenges. Used a Buzzfeed-style quiz as a boundary object to help participants visualize their future lifestyles.</p>
-    </div>
-
-    <button class="accordion-toggle" onclick="toggleAccordion(this)">
-      Buzzfeed as a Boundary Object <span class="chevron">▾</span>
-    </button>
-    <div class="accordion-body">
-      <p>We created a boundary object using a custom Buzzfeed quiz to help initiate a discussion about lifestyle expectations in retirement. The quiz consisted of multiple-choice questions with captioned images representing response options.</p>
-      <p>The quiz included questions on daily activities and lifestyle choices. Each response included a set of <strong>unlabelled images</strong> — the rationale was to reduce researcher bias and allow participants to be more expressive in their answers.</p>
-      <p style="font-style:italic;color:var(--muted);font-size:.83rem">Imagery is an effective interview tool to elicit deeper introspection and establish a rapport with the interviewee while giving the participant more control in picking imagery that is more meaningful to them. — (Frith et al., 2005; Bagnoli, 2009)</p>
-    </div>
-
-    <button class="accordion-toggle" onclick="toggleAccordion(this)">
-      Survey Execution <span class="chevron">▾</span>
-    </button>
-    <div class="accordion-body">
-      <p>The survey was posted on Reddit and Discord, receiving 12 responses. Of the 12, 11 indicated they reside in the UK. Around 35% of respondents were between 25–30 years old, and 63% were between 35–45. Most respondents were male (90%), and nearly half worked in the tech sector.</p>
-      <p>A key difference between age groups was expected retirement length. Those under 30 anticipated retiring for 10–15 years, while those over 30 expected 15–20 years — possibly due to rising living costs and fewer projected earning years.</p>
-      <div class="finding-callout">💡 <strong>Key takeaway:</strong> Regardless of age, people are somewhat aimless about their retirement planning and struggle to envision their realistic needs. There was no clear distinction between age groups when it came to retirement planning.</div>
-    </div>
-
-    <button class="accordion-toggle" onclick="toggleAccordion(this)">
-      Interview Execution <span class="chevron">▾</span>
-    </button>
-    <div class="accordion-body">
-      <p>We conducted four in-depth interviews with individuals aged 27–40 using the Buzzfeed quiz as a boundary object. At the end of each quiz, participants were presented with a result estimating how much money they would need to maintain their desired lifestyle. Estimates were based on the HSBC Retirement Calculator.</p>
-      <div class="inline-quote">"I'm nowhere near saving that amount, but this result makes me feel less anxious. It's about the sum I've been aiming for."</div>
-      <p>3 participants expressed interest in a more luxury lifestyle but were surprised by the savings necessary to sustain it. Using a boundary object allowed for more introspection into personality types through prompted questions such as:</p>
-      <div class="inline-quote">"Would you consider yourself an optimist or realist?"</div>
-      <p>For one participant who expressed a more optimistic life perspective:</p>
-      <div class="inline-quote">"I don't consider myself someone with a luxury lifestyle, but I think it's good to have ambitious goals."</div>
-    </div>
-
-    <div class="method-body" style="border-top:1px solid var(--border)">
-      <span class="method-obj">Findings</span>
-      <div class="finding-cards">
-        <div class="finding-card"><span class="finding-icon">🗺️</span><p class="finding-text">Users struggled to translate their ideal retirement lifestyle into concrete financial plans.</p></div>
-        <div class="finding-card"><span class="finding-icon">💰</span><p class="finding-text">Many users felt anxious about savings estimates and were unsure where to start.</p></div>
-        <div class="finding-card"><span class="finding-icon">🤝</span><p class="finding-text">Personalized support — consultations and progress tracking — was strongly preferred over generic financial advice.</p></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Method 2 -->
-  <div class="method-block reveal">
-    <div class="method-head">
-      <div class="method-n">02</div>
-      <div class="method-head-text">
-        <div class="method-tag-sm">Method</div>
-        <div class="method-name">Competitive Analysis</div>
-      </div>
-    </div>
-    <div class="method-body">
-      <span class="method-obj">Objective</span>
-      <p>Identify strengths and weaknesses of existing retirement planning tools.</p>
-      <span class="method-obj">Competitors Analyzed</span>
-      <div class="table-wrap"><table class="comp-table">
-        <thead><tr><th>Competitor</th><th>Type</th><th>Gap identified</th></tr></thead>
-        <tbody>
-          <tr><td>HSBC Retirement Calculator</td><td>Traditional planning platform</td><td>Number-crunching only; no behavioral layer</td></tr>
-          <tr><td>Mint</td><td>Financial independence app</td><td>Broad budgeting focus; weak on retirement visualization</td></tr>
-          <tr><td>YNAB</td><td>Budgeting tool</td><td>Goal-based but not retirement-specific; steep learning curve</td></tr>
-        </tbody>
-      </table></div>
-      <div class="finding-callout" style="margin-top:1rem">🔍 <strong>Most tools focus on number-crunching rather than behavior-driven financial planning.</strong> Users need an intuitive, engaging way to track savings progress over time.</div>
-      <span class="method-obj" style="margin-top:1.5rem">Key Insights</span>
-      <ol class="numbered-insights">
-        <li><span class="ni-num">01</span><span class="ni-text">Users need a way to visualize their future to make realistic financial decisions.</span></li>
-        <li><span class="ni-num">02</span><span class="ni-text">Financial planning should be engaging and jargon-free to reduce anxiety.</span></li>
-        <li><span class="ni-num">03</span><span class="ni-text">Personalized financial guidance increases trust and motivation.</span></li>
-      </ol>
-      <p style="margin-top:1rem">Surveys and research showed that access to financial planning resources alone wasn't enough. Many users do not seek out this information due to anxiety or fear — the resources needed to be made more approachable. These insights led to the development of a goal-oriented, personalized approach that integrates education, expert consultations, and an intuitive digital experience.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
 <!-- ────────── RESEARCH TAKEAWAYS ────────── -->
-<section class="s-alt">
+<section class="s-white">
   <div class="sec-label reveal">Summarizing Research / Takeaways</div>
   <h2 class="sec-title reveal reveal-delay-1">What was the<br><em>take away</em> from the research?</h2>
 
@@ -1213,11 +1470,269 @@ section{padding:5.5rem 3rem}
   </div>
 </section>
 
+<div class="divider"></div>
+
+<!-- ────────── SOLUTION ────────── -->
+<section class="s-alt">
+  <div class="sec-label reveal">Solution</div>
+  <h2 class="sec-title reveal reveal-delay-1">Access to financial information is not the barrier — <em>emotional accessibility is</em></h2>
+  <p class="body reveal reveal-delay-2">The research pointed consistently toward one conclusion: access to financial information is not the barrier. Emotional accessibility is. FutureScope was therefore designed not as a calculator, but as a guided experience — one that begins with self-reflection, builds confidence gradually, and keeps users engaged over time.</p>
+
+  <div style="margin-top:2.5rem">
+    <div class="feature-row reveal reveal-delay-1">
+      <div class="feat-num">01</div>
+      <div class="feat-content">
+        <div class="feat-title">Onboarding quiz and personalized profiles</div>
+        <p class="feat-desc">Users begin with a guided questionnaire that helps them define their aspirations, habits, and expectations for later life. Drawing directly from the Buzzfeed boundary object used in research, the quiz uses imagery and personality-based prompts rather than financial inputs. The goal is to help users articulate the life they want before confronting the numbers required to get there.</p>
+        <p class="feat-desc" style="margin-top:1rem">Each quiz result maps to a lifestyle profile — such as <em>The Comfortable Life</em> or <em>The Adventure Profile</em> — which becomes the foundation for everything that follows.</p>
+      </div>
+      <div class="feat-visual">
+        <span class="feat-visual-label">[ Image placeholder ]<br>Quiz screens / lifestyle profile cards<br>e.g. "The Comfortable Life", "The Adventure Profile"</span>
+      </div>
+    </div>
+
+    <div class="feature-row reverse reveal reveal-delay-2">
+      <div class="feat-num">02</div>
+      <div class="feat-content">
+        <div class="feat-title">Expert consultation</div>
+        <p class="feat-desc">After completing the quiz, users are matched with a financial advisor who reviews their profile and translates it into practical, personalized recommendations. This component directly addressed the clearest finding from the research: generic advice does not move people to act. Personalized guidance does.</p>
+        <p class="feat-desc" style="margin-top:1rem">The consultation also allows users to plan for scenarios in which their aspirational goals may not be immediately achievable — setting realistic expectations alongside motivating targets.</p>
+      </div>
+      <div class="feat-visual">
+        <span class="feat-visual-label">[ Image placeholder ]<br>Consultation flow / advisor matching screen<br>or annotated recommendation example</span>
+      </div>
+    </div>
+
+    <!-- Feature 03 — Extended horoscope treatment -->
+    <div class="feature-extended reveal reveal-delay-3">
+      <div class="feature-extended-head">
+        <div class="feat-num">03</div>
+        <div class="feat-content">
+          <div class="feat-title">Progress tracking and insights, framed as a horoscope</div>
+          <p class="feat-lead">This is where FutureScope's most distinctive design decision lives.</p>
+          <p class="feat-desc">Most financial apps present progress as a dashboard: a set of numbers, charts, and completion percentages waiting to be interpreted. The problem is that interpretation requires motivation, and motivation requires engagement — and engagement is exactly what users in financial anxiety tend to withhold. A dashboard you dread opening stops working the moment you close it.</p>
+          <p class="feat-desc" style="margin-top:1rem">The horoscope offered a different model entirely. People read their horoscope not because they are obligated to, but because it speaks directly to them, arrives on its own schedule, and frames their situation in language that feels personal rather than clinical. It is low-pressure. It is recurring. It rewards a few seconds of attention without demanding more. And crucially — it tells a story about the future, not just a report on the present.</p>
+        </div>
+      </div>
+
+      <!-- Hero horoscope visual placeholder -->
+      <div class="horoscope-visual">
+        <div class="horoscope-visual-text">
+          <strong>[ Hero visual placeholder ]</strong>
+          Mockup of weekly horoscope card<br>
+          mystical/celestial styling<br>
+          warm copy + real numbers underneath
+        </div>
+        <div class="horoscope-visual-text">
+          <strong>[ Sample copy ]</strong>
+          "The stars align for your nest egg this week."<br><br>
+          "You are on track to reach £2,400 saved by month-end."
+        </div>
+      </div>
+
+      <p class="feat-desc">FutureScope borrowed that structure and applied it to financial progress. Rather than asking users to log in and interpret their own data, the app delivers a personalised weekly forecast. Each update is framed around the user's specific lifestyle profile and written in the voice of the oracle — warm, slightly mystical, but grounded in real numbers underneath. The data is unchanged. The feeling is entirely different.</p>
+
+      <!-- Dread vs curiosity contrast -->
+      <div class="contrast-row" style="margin-top:2.5rem">
+        <div class="contrast-card dread">
+          <span class="contrast-label">Dashboard register</span>
+          <p class="contrast-quote">"You overspent this week."</p>
+        </div>
+        <div class="contrast-card curiosity">
+          <span class="contrast-label">Horoscope register</span>
+          <p class="contrast-quote">"Mercury warns of misalignment."</p>
+        </div>
+      </div>
+
+      <p class="feat-desc" style="margin-top:2rem;font-weight:400;color:var(--ink)">Five recurring card types anchor the experience, each serving a distinct emotional function:</p>
+
+      <div class="card-types">
+        <!-- Card 01 — The Savings Forecast -->
+        <div class="card-type">
+          <div class="card-type-inner">
+            <span class="card-type-numeral">I</span>
+            <svg class="card-type-corner tl" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner tr" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner bl" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner br" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <div class="card-type-illus">
+              <svg class="sparkle s1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <!-- Crescent moon over coins -->
+              <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M55 15 A 25 25 0 1 0 75 50 A 20 20 0 1 1 55 15 Z" fill="currentColor" opacity=".15"/>
+                <path d="M55 15 A 25 25 0 1 0 75 50 A 20 20 0 1 1 55 15 Z"/>
+                <ellipse cx="40" cy="78" rx="14" ry="5" fill="currentColor" opacity=".2"/>
+                <ellipse cx="40" cy="78" rx="14" ry="5"/>
+                <ellipse cx="40" cy="72" rx="14" ry="5"/>
+                <ellipse cx="40" cy="66" rx="14" ry="5"/>
+                <ellipse cx="78" cy="82" rx="12" ry="4" fill="currentColor" opacity=".2"/>
+                <ellipse cx="78" cy="82" rx="12" ry="4"/>
+                <ellipse cx="78" cy="76" rx="12" ry="4"/>
+              </svg>
+            </div>
+            <div class="card-type-banner">The Forecast</div>
+          </div>
+          <p class="card-type-desc"><strong style="color:var(--ink);font-weight:500">Savings forecast.</strong> Confirms momentum and projects forward. Gives users a reason to feel good about what they are already doing.</p>
+        </div>
+
+        <!-- Card 02 — The Spending Alert -->
+        <div class="card-type">
+          <div class="card-type-inner">
+            <span class="card-type-numeral">II</span>
+            <svg class="card-type-corner tl" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner tr" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner bl" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner br" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <div class="card-type-illus">
+              <svg class="sparkle s1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <!-- All-seeing eye -->
+              <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M15 50 Q 60 15 105 50 Q 60 85 15 50 Z" fill="currentColor" opacity=".1"/>
+                <path d="M15 50 Q 60 15 105 50 Q 60 85 15 50 Z"/>
+                <circle cx="60" cy="50" r="14" fill="currentColor" opacity=".2"/>
+                <circle cx="60" cy="50" r="14"/>
+                <circle cx="60" cy="50" r="6" fill="currentColor"/>
+                <line x1="60" y1="22" x2="60" y2="14"/>
+                <line x1="60" y1="78" x2="60" y2="86"/>
+                <line x1="35" y1="35" x2="29" y2="29"/>
+                <line x1="85" y1="35" x2="91" y2="29"/>
+                <line x1="35" y1="65" x2="29" y2="71"/>
+                <line x1="85" y1="65" x2="91" y2="71"/>
+              </svg>
+            </div>
+            <div class="card-type-banner">The Warning</div>
+          </div>
+          <p class="card-type-desc"><strong style="color:var(--ink);font-weight:500">Spending alert.</strong> Surfaces a drift without accusation. <em>Mercury warns of misalignment</em> lands differently than <em>You overspent this week</em>.</p>
+        </div>
+
+        <!-- Card 03 — The Milestone Celebration -->
+        <div class="card-type">
+          <div class="card-type-inner">
+            <span class="card-type-numeral">III</span>
+            <svg class="card-type-corner tl" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner tr" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner bl" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner br" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <div class="card-type-illus">
+              <svg class="sparkle s1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <!-- Chalice / trophy -->
+              <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M40 20 L80 20 L75 50 Q 60 65 45 50 Z" fill="currentColor" opacity=".2"/>
+                <path d="M40 20 L80 20 L75 50 Q 60 65 45 50 Z"/>
+                <line x1="60" y1="58" x2="60" y2="78"/>
+                <path d="M48 78 L72 78 L75 86 L45 86 Z" fill="currentColor" opacity=".2"/>
+                <path d="M48 78 L72 78 L75 86 L45 86 Z"/>
+                <path d="M40 28 Q 25 32 30 45" stroke-linecap="round"/>
+                <path d="M80 28 Q 95 32 90 45" stroke-linecap="round"/>
+                <circle cx="60" cy="35" r="3" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="card-type-banner">The Triumph</div>
+          </div>
+          <p class="card-type-desc"><strong style="color:var(--ink);font-weight:500">Milestone celebration.</strong> Marks progress in real-world terms — <em>six weeks of your retirement lifestyle</em> rather than <em>34% of goal reached</em>.</p>
+        </div>
+
+        <!-- Card 04 — The Opportunity Insight -->
+        <div class="card-type">
+          <div class="card-type-inner">
+            <span class="card-type-numeral">IV</span>
+            <svg class="card-type-corner tl" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner tr" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner bl" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner br" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <div class="card-type-illus">
+              <svg class="sparkle s1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <!-- Hand holding key -->
+              <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="45" cy="40" r="14" fill="currentColor" opacity=".15"/>
+                <circle cx="45" cy="40" r="14"/>
+                <circle cx="45" cy="40" r="5" fill="currentColor"/>
+                <line x1="58" y1="40" x2="95" y2="40"/>
+                <line x1="80" y1="40" x2="80" y2="50"/>
+                <line x1="90" y1="40" x2="90" y2="52"/>
+                <path d="M30 70 Q 40 80 60 78 Q 80 76 90 82 L 88 92 Q 75 88 60 90 Q 40 92 28 82 Z" fill="currentColor" opacity=".2"/>
+                <path d="M30 70 Q 40 80 60 78 Q 80 76 90 82 L 88 92 Q 75 88 60 90 Q 40 92 28 82 Z"/>
+              </svg>
+            </div>
+            <div class="card-type-banner">The Opportunity</div>
+          </div>
+          <p class="card-type-desc"><strong style="color:var(--ink);font-weight:500">Opportunity insight.</strong> A nudge toward a specific, achievable action. Personalised to the user's profile, never generic.</p>
+        </div>
+
+        <!-- Card 05 — The Weekly Wisdom -->
+        <div class="card-type">
+          <div class="card-type-inner">
+            <span class="card-type-numeral">V</span>
+            <svg class="card-type-corner tl" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner tr" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner bl" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <svg class="card-type-corner br" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+            <div class="card-type-illus">
+              <svg class="sparkle s1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <svg class="sparkle s4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg>
+              <!-- Open book with stars -->
+              <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M20 35 L60 30 L60 80 L20 85 Z" fill="currentColor" opacity=".15"/>
+                <path d="M20 35 L60 30 L60 80 L20 85 Z"/>
+                <path d="M100 35 L60 30 L60 80 L100 85 Z" fill="currentColor" opacity=".15"/>
+                <path d="M100 35 L60 30 L60 80 L100 85 Z"/>
+                <line x1="30" y1="48" x2="50" y2="46"/>
+                <line x1="30" y1="56" x2="50" y2="54"/>
+                <line x1="30" y1="64" x2="50" y2="62"/>
+                <line x1="70" y1="46" x2="90" y2="48"/>
+                <line x1="70" y1="54" x2="90" y2="56"/>
+                <line x1="70" y1="62" x2="90" y2="64"/>
+                <path d="M60 12 L62 18 L68 20 L62 22 L60 28 L58 22 L52 20 L58 18 Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="card-type-banner">The Sage</div>
+          </div>
+          <p class="card-type-desc"><strong style="color:var(--ink);font-weight:500">Weekly wisdom.</strong> A single piece of financial education, delivered at low stakes. Builds literacy gradually, without overwhelm.</p>
+        </div>
+      </div>
+
+      <p class="feat-desc" style="margin-top:2rem">The horoscope framing did something no dashboard feature could: it gave users a reason to look forward to hearing about their finances. The emotional register shifted from dread to curiosity. That shift is not cosmetic — it is the mechanism through which a passive user becomes an engaged one.</p>
+
+      <p class="feat-desc" style="margin-top:1rem">Progress is further made tangible through real-world equivalences throughout the app. Savings milestones are expressed as weeks of retirement funded, not raw figures. Each milestone earns a named tarot-style card — <em>The Tower, The Moon, The World</em> — turning an abstract accumulation into a collection of achievements with weight and narrative. The language of the mystic, deliberately, in service of the very practical goal of keeping someone saving for thirty years.</p>
+
+      <!-- Tarot card strip placeholder -->
+      <div class="tarot-strip">
+        <div class="tarot-card">
+          <div class="tarot-name">The Tower</div>
+          <span class="tarot-placeholder">[ Card art placeholder ]</span>
+        </div>
+        <div class="tarot-card">
+          <div class="tarot-name">The Moon</div>
+          <span class="tarot-placeholder">[ Card art placeholder ]</span>
+        </div>
+        <div class="tarot-card">
+          <div class="tarot-name">The World</div>
+          <span class="tarot-placeholder">[ Card art placeholder ]</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ────────── CTA SECTION ────────── -->
 <section style="background:var(--card);padding:4rem 2.5rem;border-top:1px solid var(--border)">
   <div style="max-width:960px;margin:0 auto;text-align:center">
     <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;margin-bottom:1rem">More case studies</h3>
-    <p style="color:var(--muted);margin-bottom:2rem;font-size:.95rem">Explore other projects or get in touch about collaboration.</p>
+    <p style="color:var(--muted);margin-bottom:2rem;font-size:1rem">Explore other projects or get in touch about collaboration.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
       <a href="../work.html" style="display:inline-block;padding:.65rem 1.8rem;background:var(--ink);color:#fff;border-radius:999px;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s;font-size:.9rem" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.15)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">← All Projects</a>
       <a href="mailto:swetha.ramachandran17@gmail.com" style="display:inline-block;padding:.65rem 1.8rem;background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:999px;font-weight:600;text-decoration:none;transition:all .2s;font-size:.9rem" onmouseover="this.style.borderColor='var(--ink)';this.style.backgroundColor='#f7f5f2'" onmouseout="this.style.borderColor='var(--border)';this.style.backgroundColor='transparent'">Get in Touch</a>
