@@ -2,3 +2,9 @@
 [2026-06-25 13:21:50] Created session_log.md and session_close.md; updated CLAUDE.md with session logging instructions[2026-06-25 13:25:58] Updated session logging setup: added session_close.md and updated CLAUDE.md with session logging instructions.
 [2026-06-25 14:02:39] Configured session logging, added session_close.md, updated CLAUDE.md, set credential helper, prepared for push.
 [2026-06-25 14:42:45] Pushed to GitHub via token in remote URL; updated session log and activity log.
+2026-06-28 19:30 — Read sip-scones.html; created sip-scones-improvements.md with 10 prioritised improvement suggestions covering content gaps, code quality, and UX case study structure
+2026-06-29 14:42 — sip-scones.html: renamed --orange to --teal, reframed 'What comes next' to 'If I built this again' with intro paragraph, replaced inline JS hover handlers with CSS classes on CTA buttons
+2026-06-29 14:57 — Created sip-scones-v2.html: editorial two-column layout inspired by reference screenshot (numbered section rows, comparison table, diamond flow diagram, screens strip on dark bg, minimal color palette)
+2026-07-02 20:40 — index.html: implemented Claude Design handoff — dark mode (CSS vars, theme toggle, localStorage, prefers-color-scheme), animated 24-ray burst-sun replacing static starburst
+2026-07-02 20:50 — index.html: reduced hero bg opacity to 0.45 via ::before pseudo-element; anchored burst-sun to top of final N in RAMACHANDRAN heading
+2026-07-02 21:00 — index.html: fixed responsive layout — corrected burst media queries for n-anchor context, reduced gap at 1100px, added 600px breakpoint, hid burst on mobile, cleaned deco element sizing across all breakpoints

@@ -4,6 +4,35 @@ A running log of meaningful updates to the portfolio. Newest entries on top.
 
 ---
 
+## 2026-07-02 — Dark mode, animated burst, hero responsive fixes + Sip & Scones v2
+
+**Files:** `index.html`, `Projects/sip-scones.html`, `Projects/sip-scones-v2.html`
+
+**Dark mode (`index.html`)**
+- Added full `[data-theme="dark"]` CSS variable set covering background, borders, text, and pill colours.
+- Added sun/moon theme toggle button to the nav (left side).
+- Inline script at top of `<body>` reads `localStorage` and applies the theme before first paint, preventing flash. Falls back to `prefers-color-scheme` on first visit.
+
+**Animated sunburst (`index.html`)**
+- Replaced the static 8-ray starburst with a 24-ray `burst-sun` that simultaneously spins (7s) and folds flat and back open (3.6s scaleY cycle), from the Claude Design handoff.
+- Anchored the burst to the top of the final N in RAMACHANDRAN using an `.n-anchor` inline-block span — burst tracks the letter at all font sizes via `bottom:100%`.
+- Hero background image moved to a `::before` pseudo-element at `opacity:.45` so it fades independently of the hero content.
+
+**Responsive fixes (`index.html`)**
+- Shifted primary breakpoint from 1024px → 1100px; reduced hero gap from 5rem → 3rem to stop the right column being squeezed on mid-range viewports.
+- Fixed burst media queries: the old `right`/`top` overrides were no longer effective after the n-anchor change; now correctly scopes `width`/`height` only, and hides the burst entirely at ≤860px.
+- Added 600px breakpoint: shrinks photo, blob, flower; hides squig on large phones.
+
+**Sip & Scones — code quality (`Projects/sip-scones.html`)**
+- Renamed `--orange` CSS variable to `--teal` (value was `#387470`, a teal-green).
+- Reframed "What comes next" section to "If I built this again" with a first-person reflective intro paragraph.
+- Replaced inline `onmouseover`/`onmouseout` JS on CTA buttons with `.cta-btn-primary` / `.cta-btn-secondary` CSS classes.
+
+**Sip & Scones v2 (`Projects/sip-scones-v2.html`)**
+- New alternative layout inspired by editorial reference: numbered two-column section rows, comparison table (full-tier vs single-tier), CSS diamond flow diagram, dark full-bleed screens strip, minimal colour palette.
+
+---
+
 ## 2026-06-03 — FutureScope Research Methods revamp + landing hero sizing
 
 **Files:** `Projects/futurescope_Remix.html`, `index.html`

@@ -30,7 +30,57 @@
   --lavender:   #c8caff;
   --ink:        #0d0d0d;
   --muted:      #6b6b6b;
+  /* themed surfaces */
+  --bg:         #ffffff;
+  --surface:    #ffffff;
+  --strip-bg:   #000000;
+  --squig:      #000000;
 }
+
+/* ── Dark theme ─────────────────────────────────────────── */
+:root[data-theme="dark"]{
+  --white:      #15131c;
+  --black:      #ece9f2;
+  --gray-1:     #221f2c;
+  --gray-2:     #4f4a5e;
+  --gray-3:     #a39db5;
+  --border:     #2c2836;
+  --blue:       #8f8fff;
+  --pink:       #ef626c;
+  --yellow:     #f5e33a;
+  --lavender:   #3a3a66;
+  --ink:        #0d0d0d;
+  --muted:      #a39db5;
+  --bg:         #15131c;
+  --surface:    #1b1824;
+  --strip-bg:   #221f2c;
+  --squig:      #ece9f2;
+}
+@media(prefers-reduced-motion:no-preference){
+  body,.nav-inner,.project-card,.about-strip,.footer{transition:background-color .35s ease,border-color .35s ease,color .35s ease}
+}
+
+/* ── Theme toggle ───────────────────────────────────────── */
+.theme-toggle{
+  display:flex;align-items:center;justify-content:center;
+  width:38px;height:38px;
+  border-radius:999px;
+  background:var(--gray-1);
+  border:1px solid var(--border);
+  color:var(--black);
+  flex:none;
+}
+@media(prefers-reduced-motion:no-preference){
+  .theme-toggle{transition:transform .15s,background-color .2s,color .2s}
+}
+.theme-toggle:hover{transform:scale(1.08)}
+.theme-toggle svg{width:18px;height:18px;display:block}
+.theme-toggle .icon-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .icon-sun{display:none}
+:root[data-theme="dark"] .theme-toggle .icon-moon{display:block}
+
+:root[data-theme="dark"] .hero-squig path{stroke:var(--squig)}
+:root[data-theme="dark"] .pl{background:#cdcdff;color:#1c1c4d}
 
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body{
@@ -157,10 +207,17 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   gap:5rem;
   position:relative;
   overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;inset:0;
   background-image:url('hero-bg.png');
   background-size:cover;
   background-position:center top;
   background-repeat:no-repeat;
+  opacity:.45;
+  pointer-events:none;
+  z-index:0;
 }
 
 /* LEFT — photo column */
@@ -198,6 +255,32 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .d-squig       {right:-20px;bottom:40px;width:150px;height:60px;
                  animation:sway 2.5s ease-in-out infinite}
 .d-burst-blue  {right:-10px;top:-16px;width:100px;height:100px}
+
+/* Blue sunburst — continuous spin while folding open/closed */
+.burst-sun{
+  width:100%;height:100%;
+  transform-origin:50% 50%;
+  animation:burst-spin 7s linear infinite;
+}
+.burst-sun svg{
+  display:block;width:100%;height:100%;
+  transform-origin:50% 50%;
+  animation:burst-fold 3.6s cubic-bezier(0.65,0,0.35,1) infinite;
+}
+.burst-sun line{
+  stroke:#3b3bea;
+  stroke-width:2.4;
+  stroke-linecap:round;
+}
+@keyframes burst-spin{to{transform:rotate(360deg)}}
+@keyframes burst-fold{
+  0%,18% {transform:scaleY(1)}
+  46%,54%{transform:scaleY(0.02)}
+  82%,100%{transform:scaleY(1)}
+}
+@media(prefers-reduced-motion:reduce){
+  .burst-sun,.burst-sun svg{animation:none}
+}
 
 @keyframes spin-slow{to{transform:rotate(360deg)}}
 @keyframes fade-zoom-in{
@@ -352,7 +435,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
    ABOUT STRIP — scrolling marquee
 ═══════════════════════════════════════════════════════════ */
 .about-strip{
-  background:var(--black);
+  background:var(--strip-bg);
   padding:.85rem 0;
   overflow:hidden;
   white-space:nowrap;
@@ -473,46 +556,64 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 }
 [data-animate].is-visible{opacity:1;transform:translateY(0)}
 
+/* ── N anchor for burst ─────────────────────────────── */
+.n-anchor{position:relative;display:inline-block}
+.n-anchor .d-burst-blue{top:auto;right:auto;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:6px}
+
 /* ══════════════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════════════ */
-@media(max-width:1024px){
+@media(max-width:1100px){
   .hero{
-    grid-template-columns:340px 1fr;
+    grid-template-columns:320px 1fr;
+    gap:3rem;
     padding:2.5rem 2rem;
   }
   .hero-left{height:440px}
-  .hero-blob{width:240px;height:340px;left:50px;top:40px}
-  .hero-photo-wrap{left:16px;width:260px;height:390px}
-  .d-flower{right:-14px;top:50px;width:84px;height:84px}
+  .hero-blob{width:240px;height:340px;left:40px;top:40px}
+  .hero-photo-wrap{left:0;width:260px;height:390px}
+  .d-flower{right:-10px;top:50px;width:84px;height:84px}
   .d-squig{right:-8px;bottom:50px;width:120px;height:50px}
-  .d-burst-blue{right:-8px;top:-12px;width:82px;height:82px}
-  .d-burst-purple{left:48px;top:24px;width:120px;height:120px}
+  .d-burst-purple{left:40px;top:24px;width:120px;height:120px}
+  .n-anchor .d-burst-blue{width:80px;height:80px}
 }
 @media(max-width:860px){
   .hamburger{display:flex}
   .nav-right{display:none}
   .nav-name{display:none}
+  .navbar{margin:.7rem .7rem 0}
+  .nav-inner{padding:.85rem 1.25rem}
   .hero{
     grid-template-columns:1fr;
     min-height:auto;
     padding:2rem 1.5rem 3rem;
+    gap:0;
   }
-  .hero-left{height:340px;margin-bottom:1rem}
-  .hero-blob{width:180px;height:260px;left:36px;top:30px}
-  .hero-photo-wrap{left:12px;width:210px;height:320px}
-  .d-flower{right:-10px;top:36px;width:70px;height:70px}
-  .d-squig{right:-6px;bottom:36px;width:100px;height:42px}
-  .d-burst-blue{right:-6px;top:-10px;width:70px;height:70px}
-  .d-burst-purple{left:40px;top:20px;width:98px;height:98px}
+  .hero-left{height:320px;margin-bottom:2rem}
+  .hero-blob{width:180px;height:260px;left:36px;top:20px}
+  .hero-photo-wrap{left:0;width:210px;height:300px}
+  .d-flower{right:0;top:30px;width:68px;height:68px}
+  .d-squig{right:-4px;bottom:30px;width:90px;height:38px}
+  .d-burst-purple{left:32px;top:16px;width:90px;height:90px}
+  /* hide burst on mobile — too large relative to small heading */
+  .n-anchor .d-burst-blue{display:none}
   .projects{padding:3rem 1.5rem 4rem}
   .projects-grid{grid-template-columns:1fr}
   .section-rule{margin:0 1.5rem}
   .footer-top{grid-template-columns:1fr;text-align:left}
   .footer-contact{text-align:left}
 }
+@media(max-width:600px){
+  .hero-left{height:260px}
+  .hero-blob{width:140px;height:200px;left:24px;top:16px}
+  .hero-photo-wrap{width:170px;height:245px}
+  .d-flower{width:52px;height:52px;top:20px;right:0}
+  .d-squig{display:none}
+  .d-burst-purple{width:72px;height:72px;left:20px;top:10px}
+}
 @media(max-width:480px){
   .hero-name{font-size:clamp(1.76rem,10.4vw,3.2rem)}
+  .hero{padding:1.5rem 1.25rem 2.5rem}
   .projects-grid{gap:1rem}
 }
 
@@ -522,6 +623,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 </style>
 </head>
 <body>
+<script>
+(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+</script>
 
 <!-- ════════════════════════ NAV ═══════════════════════════ -->
 <nav class="navbar" id="navbar">
@@ -529,6 +633,15 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
     <!-- LEFT: About Me pill + divider + name -->
     <div class="nav-left">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="4.2"/>
+          <path d="M12 2.5v2.4M12 19.1v2.4M21.5 12h-2.4M4.9 12H2.5M18.7 5.3l-1.7 1.7M7 17l-1.7 1.7M18.7 18.7L17 17M7 7L5.3 5.3"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/>
+        </svg>
+      </button>
       <a href="aboutme.html" class="npill pp">About Me</a>
       <span class="nav-cross">✛</span>
       <a href="#home" class="nav-name">Swetha Ramachandran</a>
@@ -592,22 +705,36 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <!-- RIGHT — name + role -->
   <div class="hero-right" data-animate>
 
-    <!-- Blue starburst (top-right of text area) -->
-    <div class="deco d-burst-blue">
-      <svg viewBox="0 0 100 100" fill="none">
-        <circle cx="50" cy="50" r="11" fill="#1a6aff"/>
-        <line x1="50" y1="4"  x2="50" y2="24" stroke="#1a6aff" stroke-width="4.5" stroke-linecap="round"/>
-        <line x1="50" y1="76" x2="50" y2="96" stroke="#1a6aff" stroke-width="4.5" stroke-linecap="round"/>
-        <line x1="4"  y1="50" x2="24" y2="50" stroke="#1a6aff" stroke-width="4.5" stroke-linecap="round"/>
-        <line x1="76" y1="50" x2="96" y2="50" stroke="#1a6aff" stroke-width="4.5" stroke-linecap="round"/>
-        <line x1="18" y1="18" x2="33" y2="33" stroke="#1a6aff" stroke-width="3.5" stroke-linecap="round"/>
-        <line x1="67" y1="67" x2="82" y2="82" stroke="#1a6aff" stroke-width="3.5" stroke-linecap="round"/>
-        <line x1="82" y1="18" x2="67" y2="33" stroke="#1a6aff" stroke-width="3.5" stroke-linecap="round"/>
-        <line x1="33" y1="67" x2="18" y2="82" stroke="#1a6aff" stroke-width="3.5" stroke-linecap="round"/>
-      </svg>
-    </div>
-
-    <h1 class="hero-name">SWETHA<br>RAMACHANDRAN</h1>
+    <h1 class="hero-name">SWETHA<br>RAMACHANDRА<span class="n-anchor">N<div class="deco d-burst-blue">
+      <div class="burst-sun">
+        <svg viewBox="0 0 100 100" fill="none">
+          <line x1="50.00" y1="30.00" x2="50.00" y2="3.00"/>
+          <line x1="55.18" y1="30.68" x2="62.16" y2="4.60"/>
+          <line x1="60.00" y1="32.68" x2="73.50" y2="9.30"/>
+          <line x1="64.14" y1="35.86" x2="83.23" y2="16.77"/>
+          <line x1="67.32" y1="40.00" x2="90.70" y2="26.50"/>
+          <line x1="69.32" y1="44.82" x2="95.40" y2="37.84"/>
+          <line x1="70.00" y1="50.00" x2="97.00" y2="50.00"/>
+          <line x1="69.32" y1="55.18" x2="95.40" y2="62.16"/>
+          <line x1="67.32" y1="60.00" x2="90.70" y2="73.50"/>
+          <line x1="64.14" y1="64.14" x2="83.23" y2="83.23"/>
+          <line x1="60.00" y1="67.32" x2="73.50" y2="90.70"/>
+          <line x1="55.18" y1="69.32" x2="62.16" y2="95.40"/>
+          <line x1="50.00" y1="70.00" x2="50.00" y2="97.00"/>
+          <line x1="44.82" y1="69.32" x2="37.84" y2="95.40"/>
+          <line x1="40.00" y1="67.32" x2="26.50" y2="90.70"/>
+          <line x1="35.86" y1="64.14" x2="16.77" y2="83.23"/>
+          <line x1="32.68" y1="60.00" x2="9.30" y2="73.50"/>
+          <line x1="30.68" y1="55.18" x2="4.60" y2="62.16"/>
+          <line x1="30.00" y1="50.00" x2="3.00" y2="50.00"/>
+          <line x1="30.68" y1="44.82" x2="4.60" y2="37.84"/>
+          <line x1="32.68" y1="40.00" x2="9.30" y2="26.50"/>
+          <line x1="35.86" y1="35.86" x2="16.77" y2="16.77"/>
+          <line x1="40.00" y1="32.68" x2="26.50" y2="9.30"/>
+          <line x1="44.82" y1="30.68" x2="37.84" y2="4.60"/>
+        </svg>
+      </div>
+    </div></span></h1>
 
     <svg class="hero-squig" viewBox="0 0 250 14" fill="none">
       <path d="M2 9 Q32 3 58 9 Q84 15 114 8 Q142 1 174 8 Q198 14 248 7"
@@ -659,6 +786,14 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 <script>
 (function(){
   'use strict';
+
+  /* ── Theme toggle ────────────────────────────────────── */
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next); }catch(e){}
+  });
 
   /* ── Navbar scroll shadow ─────────────────────────────── */
   const navbar = document.getElementById('navbar');
