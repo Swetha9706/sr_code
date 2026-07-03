@@ -4,3 +4,4 @@
 |-----------|------------------|----------------|---------------|
 | 1 | 2026-06-25 13:21:50 | 2026-06-25 14:42:25 | Pushed to GitHub via token in remote URL; updated logs |
 | 2 | 2026-07-02 15:30:00 | 2026-07-02 16:49:40 | Dark mode + animated burst on index.html; sip-scones code quality fixes + v2 editorial layout; fixed responsive layout; resolved GitHub Pages deployment (switched to deploy from branch); added permission allowlist to settings.json |
+| 3 | 2026-07-03 04:10:00 | 2026-07-03 04:28:30 | Debugged GitHub Pages 404: 4 consecutive legacy builds had errored; retriggered via Pages API, build succeeded, site live with latest code. Made deploy verification a mandatory step 4 in session_close.md and referenced it in CLAUDE.md |
