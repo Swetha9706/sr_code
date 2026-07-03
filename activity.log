@@ -10,3 +10,4 @@
 2026-07-02 21:00 — index.html: fixed responsive layout — corrected burst media queries for n-anchor context, reduced gap at 1100px, added 600px breakpoint, hid burst on mobile, cleaned deco element sizing across all breakpoints
 [2026-07-02 16:49:40] Session 2 close: dark mode + animated burst on index.html, sip-scones improvements + v2 layout, responsive fixes, GitHub Pages deployment fixed (deploy from branch), permission allowlist added
 2026-07-03 09:48 — Debugged GitHub Pages 404: last 4 legacy builds had errored ('Page build failed') despite clean repo; retriggered build via Pages API, build succeeded, site live at commit 977911b with dark mode and all pages returning 200
+[2026-07-03 04:26:16] Added mandatory Pages deploy verification loop to session_close.md (step 4) and CLAUDE.md deployment section: check build status via API after every push, retrigger on error, confirm live site returns 200

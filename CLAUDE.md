@@ -14,6 +14,7 @@ This is a static HTML/CSS website with no build steps or dependencies.
 - **Session logging**: Before ending a session (e.g., before running '/clear'), update `session_log.md` with the session end time and a brief summary, then follow the session close procedure outlined in `session_close.md`.
 - **Deployment**:
   - GitHub Pages: Push to the `main` branch; the site deploys automatically to https://swetha9706.github.io/sr_code/
+  - **Mandatory after every push**: verify the Pages build succeeded and the live site returns 200, following step 4 of `session_close.md` (Pages builds can fail silently and leave the site at a 404; retrigger the build via the API until it reports `built`).
   - cPanel hosting: After pushing to GitHub, log in to cPanel → File Manager → `public_html`, and re-upload the changed file(s), preserving the folder structure.
   - **Important**: Always push changes to the `main` branch only; do not create or push to other branches unless explicitly instructed.
   - **Commit message**: Use clear, concise messages describing the change.
