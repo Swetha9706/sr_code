@@ -54,3 +54,23 @@ The site is a simple multi-page static site built with plain HTML and CSS. No Ja
 At the end of each session, follow the session close procedure in `session_close.md` before clearing context (e.g., running '/clear').
 
 There are no build scripts, package managers, or preprocessing steps. All edits are made directly to the source files.
+
+## Frontend Aesthetics
+
+Avoid generic, "AI slop" design. Make creative, distinctive frontends that surprise and delight. Specifically:
+
+**Typography**: Choose fonts that are beautiful, unique, and interesting. Avoid generic families (Arial, Inter, Roboto, system fonts); opt for distinctive choices that elevate the aesthetic.
+
+**Color & Theme**: Commit to a cohesive aesthetic. Use CSS variables for consistency. Dominant colors with sharp accents outperform timid, evenly-distributed palettes. Draw from IDE themes and cultural aesthetics for inspiration.
+
+**Motion**: Use animations for effects and micro-interactions. Prioritize CSS-only solutions. Focus on high-impact moments: one well-orchestrated page load with staggered reveals (`animation-delay`) creates more delight than scattered micro-interactions.
+
+**Backgrounds**: Create atmosphere and depth rather than defaulting to solid colors. Layer CSS gradients, use geometric patterns, or add contextual effects that match the overall aesthetic.
+
+**Avoid**:
+- Overused font families (Inter, Roboto, Arial, Space Grotesk, system fonts)
+- Clichéd color schemes (particularly purple gradients on white backgrounds)
+- Predictable layouts and component patterns
+- Cookie-cutter design that lacks context-specific character
+
+Interpret creatively and make unexpected choices that feel genuinely designed for this specific portfolio context. Vary between light and dark approaches, different fonts, different aesthetics — think outside the box.
