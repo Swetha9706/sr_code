@@ -12,3 +12,4 @@
 2026-07-03 09:48 — Debugged GitHub Pages 404: last 4 legacy builds had errored ('Page build failed') despite clean repo; retriggered build via Pages API, build succeeded, site live at commit 977911b with dark mode and all pages returning 200
 [2026-07-03 04:26:16] Added mandatory Pages deploy verification loop to session_close.md (step 4) and CLAUDE.md deployment section: check build status via API after every push, retrigger on error, confirm live site returns 200
 [2026-07-03 04:28:30] Session 3 close: debugged and fixed GitHub Pages 404 (retriggered errored builds via API), made deploy verification mandatory in session_close.md and CLAUDE.md, updated session log
+2026-07-05 — Responsive fixes: work.html — added overflow-x:hidden to html/body, changed work grid from 3→1 column jump to 3→2→1 step; index.html — footer-nav left-aligns on mobile; aboutme.html — reduced about-hero gap from 4rem to 2rem when stacked on mobile
