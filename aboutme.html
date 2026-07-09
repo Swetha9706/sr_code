@@ -13,9 +13,9 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 body{
   background-color:#f8f6f1;
   background-image:
-    linear-gradient(to right,#ddd8ce 1px,transparent 1px),
-    linear-gradient(to bottom,#ddd8ce 1px,transparent 1px);
-  background-size:34px 34px;
+    linear-gradient(rgba(216,211,200,.4) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(216,211,200,.4) 1px,transparent 1px);
+  background-size:48px 48px;
   color:#1a1917;
   font-family:'Hanken Grotesk',sans-serif;
   overflow-x:hidden;
@@ -101,27 +101,12 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   min-height:92svh;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;
-  padding:5rem 2rem 4rem;
+  padding:5rem 2rem 6rem;
   position:relative;overflow:hidden;
 }
 
-/* Floating sticker badges */
-.sticker{
-  position:absolute;
-  font-family:'DM Mono',monospace;font-size:.68rem;font-weight:500;
-  letter-spacing:.06em;text-transform:uppercase;
-  background:var(--white);border:1.5px solid var(--border);
-  padding:.4rem 1rem;border-radius:999px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);color:var(--ink);
-  pointer-events:none;white-space:nowrap;
-}
-.sticker-a{top:18%;left:5%;transform:rotate(-5deg);background:var(--pink-bg);border-color:var(--pink-border)}
-.sticker-b{top:22%;right:5%;transform:rotate(4deg);background:var(--mint-bg);border-color:var(--mint-border)}
-.sticker-c{bottom:24%;left:7%;transform:rotate(3deg);background:var(--yellow-bg);border-color:var(--yellow-border)}
-.sticker-d{bottom:28%;right:6%;transform:rotate(-3deg);background:var(--white);border-color:var(--border)}
-
 .hero-eyebrow{
-  display:inline-flex;align-items:center;gap:.5rem;
+  display:inline-flex;align-items:center;gap:.6rem;
   font-family:'DM Mono',monospace;font-size:.7rem;
   font-weight:500;letter-spacing:.1em;text-transform:uppercase;
   background:var(--white);border:1.5px solid var(--border);
@@ -130,6 +115,16 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   box-shadow:0 2px 8px rgba(0,0,0,.06);
 }
 .hero-eyebrow::before{content:'✦';color:var(--coral);font-size:.6rem}
+.avail-dot{
+  display:inline-block;width:7px;height:7px;border-radius:50%;
+  background:#4caf7d;margin-left:.1rem;
+  box-shadow:0 0 0 0 rgba(76,175,125,.5);
+  animation:pulse-dot 2.2s ease-in-out infinite;
+}
+@keyframes pulse-dot{
+  0%,100%{box-shadow:0 0 0 0 rgba(76,175,125,.45)}
+  60%{box-shadow:0 0 0 5px rgba(76,175,125,0)}
+}
 
 .hero-title{
   font-family:'Fraunces',serif;
@@ -141,7 +136,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 }
 .hero-title em{font-style:italic}
 
-/* Marker highlight — matches reference's pink highlight behind text */
+/* Marker highlight */
 .hi{
   background:var(--pink);
   padding:2px 10px 4px;
@@ -176,24 +171,25 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   border:1.5px solid var(--border);
   font-size:.82rem;font-weight:600;letter-spacing:.02em;
   display:inline-block;
-  transition:border-color .18s,transform .18s;
+  transition:border-color .18s,transform .18s,box-shadow .18s;
 }
-.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 20px rgba(26,25,23,.1)}
 
-/* ── MARQUEE ────────────────────────────────── */
-.marquee{
-  background:var(--ink);
-  border-top:1.5px solid var(--border);
-  border-bottom:1.5px solid var(--border);
-  padding:.6rem 0;overflow:hidden;white-space:nowrap;
+/* Scroll indicator */
+.scroll-hint{
+  position:absolute;bottom:2.25rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.45rem;
+  font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);
+  animation:hint-fade 1.8s ease .8s both;
+  cursor:pointer;background:none;border:none;padding:.5rem;
+  transition:color .2s;
 }
-.mq-track{display:inline-flex;animation:mq-scroll 24s linear infinite}
-.mq-item{
-  font-family:'DM Mono',monospace;font-size:.7rem;
-  letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(248,246,241,.45);padding:0 2.5rem;display:inline-block;
-}
-.mq-item b{color:var(--coral);font-weight:400;margin:0 .4rem}
+.scroll-hint:hover{color:var(--ink)}
+.scroll-hint:hover svg{stroke:var(--ink)}
+.scroll-hint svg{width:16px;height:16px;stroke:var(--muted);transition:stroke .2s;animation:bounce-y 1.6s ease-in-out infinite}
+@keyframes bounce-y{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+@keyframes hint-fade{from{opacity:0;transform:translateX(-50%) translateY(6px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 
 /* ── ABOUT / BIO ──────────────────────────── */
 .about-wrap{max-width:1080px;margin:0 auto;padding:6rem 2.5rem}
@@ -201,15 +197,29 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 .about-photo{
   position:sticky;top:5.5rem;
-  width:100%;aspect-ratio:1;border-radius:50%;
-  background:var(--pink-bg);border:2px solid var(--pink-border);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Fraunces',serif;font-size:6rem;font-weight:900;
-  font-style:italic;color:var(--pink);
-  overflow:hidden;flex-shrink:0;
+  width:100%;aspect-ratio:1;border-radius:20px;
+  background:var(--white);border:1.5px solid var(--border);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.6rem;overflow:hidden;flex-shrink:0;padding:2rem;
+}
+.photo-initial{
+  font-family:'Fraunces',serif;
+  font-size:clamp(3.5rem,6vw,5rem);
+  font-weight:900;font-style:italic;
+  color:var(--coral);line-height:1;letter-spacing:-.04em;
+}
+.photo-divider{width:1.75rem;height:1.5px;background:var(--coral);flex-shrink:0}
+.photo-name{
+  font-family:'DM Mono',monospace;
+  font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink);text-align:center;
+}
+.photo-loc{
+  font-family:'DM Mono',monospace;
+  font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);
 }
 
-.about-content{}
 .eyebrow{
   font-family:'DM Mono',monospace;font-size:.68rem;
   letter-spacing:.15em;text-transform:uppercase;color:var(--muted);
@@ -254,7 +264,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* ── SKILLS ─────────────────────────────────── */
 .skills-band{
-  background:var(--white);
   border-top:1.5px solid var(--border);
   border-bottom:1.5px solid var(--border);
   padding:5rem 2.5rem;
@@ -267,21 +276,24 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   color:var(--ink);margin-bottom:2.5rem;
 }
 .sec-title em{font-style:italic}
-.sk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.sk-card{
-  padding:1.75rem 1.5rem;border-radius:20px;border:1.5px solid transparent;
-  transition:transform .2s cubic-bezier(0.22,1,0.36,1),box-shadow .2s;
+.sk-list{margin-top:0}
+.sk-item{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem 5rem;
+  padding:1.75rem 0;border-top:1.5px solid var(--border);
+  align-items:baseline;
 }
-.sk-card:hover{transform:translateY(-5px);box-shadow:0 14px 36px rgba(0,0,0,.09)}
-.sk-card:nth-child(3n+1){background:var(--pink-bg);border-color:var(--pink-border)}
-.sk-card:nth-child(3n+2){background:var(--mint-bg);border-color:var(--mint-border)}
-.sk-card:nth-child(3n+3){background:var(--yellow-bg);border-color:var(--yellow-border)}
-.sk-icon{font-size:1.65rem;display:block;margin-bottom:1rem}
-.sk-name{
-  font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;
-  color:var(--ink);margin-bottom:.4rem;
+.sk-item:last-child{border-bottom:1.5px solid var(--border)}
+.sk-discipline{
+  font-family:'Fraunces',serif;
+  font-size:clamp(1.3rem,2.2vw,1.75rem);
+  font-weight:900;font-style:italic;
+  color:var(--ink);line-height:1.1;
 }
-.sk-tools{font-size:.8rem;color:var(--muted);line-height:1.7}
+.sk-detail{
+  font-family:'DM Mono',monospace;
+  font-size:.73rem;letter-spacing:.03em;
+  color:var(--muted);line-height:1.9;
+}
 
 /* ── EXPERIENCE ──────────────────────────── */
 .exp-wrap{max-width:1080px;margin:0 auto;padding:6rem 2.5rem}
@@ -316,9 +328,10 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   position:relative;overflow:hidden;
 }
 .contact::before{
-  content:'✦';
+  content:'SR';
   position:absolute;font-family:'Fraunces',serif;
-  font-size:30vw;color:rgba(242,179,190,.2);
+  font-size:28vw;color:rgba(242,179,190,.2);
+  font-weight:900;font-style:italic;letter-spacing:-.04em;
   top:50%;left:50%;transform:translate(-50%,-50%);
   pointer-events:none;line-height:1;
 }
@@ -333,7 +346,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   font-weight:900;line-height:.93;
   color:var(--ink);margin-bottom:.85rem;position:relative;
 }
-.ct-title em{font-style:italic}
+.ct-title em{font-style:italic;color:var(--coral)}
 .ct-sub{
   font-size:.92rem;color:var(--muted);
   max-width:38ch;margin:0 auto 2.5rem;line-height:1.72;position:relative;
@@ -349,14 +362,13 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .cb-light{
   background:var(--white);color:var(--ink);
   padding:.7rem 1.75rem;border-radius:999px;
-  border:1.5px solid var(--border);
+  border:1.5px solid var(--pink-border);
   font-size:.78rem;font-weight:600;letter-spacing:.04em;display:inline-block;
-  transition:border-color .18s,transform .18s;
+  transition:border-color .18s,transform .18s,box-shadow .18s;
 }
-.cb-light:hover{border-color:var(--ink);transform:translateY(-2px)}
+.cb-light:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 20px rgba(26,25,23,.08)}
 
 /* ── ANIMATIONS ──────────────────────────── */
-@keyframes mq-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── SCROLL REVEAL ───────────────────────── */
 [data-sr]{
@@ -368,15 +380,14 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 [data-sr="2"]{transition-delay:.22s}
 @media(prefers-reduced-motion:reduce){
   [data-sr]{opacity:1;transform:none;transition:none}
-  .mq-track{animation:none}
+  .avail-dot,.scroll-hint svg{animation:none}
 }
 
 /* ── RESPONSIVE ──────────────────────────── */
 @media(max-width:960px){
   .about-grid{grid-template-columns:1fr;gap:2.5rem}
-  .about-photo{max-width:200px;position:static;margin:0 auto;font-size:4rem}
-  .sk-grid{grid-template-columns:repeat(2,1fr)}
-  .hero .sticker{display:none}
+  .about-photo{max-width:220px;position:static;margin:0 auto}
+  .sk-item{grid-template-columns:1fr;gap:.5rem}
 }
 @media(max-width:700px){
   .nav-links .nav-link:not(.nav-cta){display:none}
@@ -389,7 +400,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   .contact{padding:5rem 1.25rem}
 }
 @media(max-width:480px){
-  .sk-grid{grid-template-columns:1fr}
   .stats{gap:.5rem}
   .spill{min-width:0;flex:1 1 40%}
 }
@@ -420,53 +430,39 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 <!-- ── HERO ─────────────────────────── -->
 <section class="hero">
-  <div class="sticker sticker-a">📍 Pune, India</div>
-  <div class="sticker sticker-b">✓ Available for work</div>
-  <div class="sticker sticker-c">✦ 5+ Years experience</div>
-  <div class="sticker sticker-d">🎨 UX · UI · Brand</div>
 
-  <div class="hero-eyebrow">UX · UI · Graphic Design</div>
+  <div class="hero-eyebrow">UX · UI · Graphic Design <span class="avail-dot" title="Available for work"></span> Available for work</div>
 
   <h1 class="hero-title">
-    I design<br>
-    things that<br>
-    <span class="hi">feel good.</span>
+    Design that<br>
+    thinks, then<br>
+    <span class="hi"><em>looks good.</em></span>
   </h1>
 
   <p class="hero-sub">Hi, I'm Swetha — a designer based in Pune who makes interfaces that click, brands that breathe, and products that actually work for people.</p>
 
   <div class="hero-btns">
-    <a href="work.html" class="btn-solid">See my work</a>
-    <a href="mailto:swetha.ramachandran17@gmail.com" class="btn-ghost">Email me</a>
+    <a href="work.html" class="btn-solid">View selected work</a>
+    <a href="mailto:swetha.ramachandran17@gmail.com" class="btn-ghost">Get in touch →</a>
   </div>
-</section>
 
-<!-- ── MARQUEE ───────────────────────── -->
-<div class="marquee" aria-hidden="true">
-  <div class="mq-track">
-    <span class="mq-item">Swetha Ramachandran <b>✦</b></span>
-    <span class="mq-item">UX Researcher <b>✦</b></span>
-    <span class="mq-item">UI Designer <b>✦</b></span>
-    <span class="mq-item">Graphic Designer <b>✦</b></span>
-    <span class="mq-item">Brand Identity <b>✦</b></span>
-    <span class="mq-item">Design Systems <b>✦</b></span>
-    <span class="mq-item">Pune, India <b>✦</b></span>
-    <span class="mq-item">Open to work <b>✦</b></span>
-    <span class="mq-item">Swetha Ramachandran <b>✦</b></span>
-    <span class="mq-item">UX Researcher <b>✦</b></span>
-    <span class="mq-item">UI Designer <b>✦</b></span>
-    <span class="mq-item">Graphic Designer <b>✦</b></span>
-    <span class="mq-item">Brand Identity <b>✦</b></span>
-    <span class="mq-item">Design Systems <b>✦</b></span>
-    <span class="mq-item">Pune, India <b>✦</b></span>
-    <span class="mq-item">Open to work <b>✦</b></span>
-  </div>
-</div>
+  <button class="scroll-hint" aria-label="Scroll to about section" onclick="document.querySelector('.about-wrap').scrollIntoView({behavior:'smooth'})">
+    <span>Scroll</span>
+    <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3v10M4 9l4 4 4-4"/>
+    </svg>
+  </button>
+</section>
 
 <!-- ── BIO ──────────────────────────── -->
 <div class="about-wrap">
   <div class="about-grid">
-    <div class="about-photo" data-sr>S</div>
+    <div class="about-photo" data-sr>
+      <span class="photo-initial">SR</span>
+      <div class="photo-divider"></div>
+      <div class="photo-name">Swetha Ramachandran</div>
+      <div class="photo-loc">Pune · India</div>
+    </div>
     <div>
       <div class="eyebrow">Get to know me</div>
       <h2 class="about-title" data-sr>A designer who <em>actually</em> likes the messy parts.</h2>
@@ -488,36 +484,30 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <div class="skills-inner">
     <div class="eyebrow" data-sr>What I do</div>
     <h2 class="sec-title" data-sr>Skills &amp; <em>Tools</em></h2>
-    <div class="sk-grid">
-      <div class="sk-card" data-sr>
-        <span class="sk-icon">🔍</span>
-        <div class="sk-name">UX Research</div>
-        <div class="sk-tools">User interviews, usability testing, affinity mapping, journey mapping</div>
+    <div class="sk-list">
+      <div class="sk-item" data-sr>
+        <div class="sk-discipline">UX Research</div>
+        <div class="sk-detail">User interviews · usability testing<br>Affinity mapping · journey mapping</div>
       </div>
-      <div class="sk-card" data-sr="1">
-        <span class="sk-icon">🎨</span>
-        <div class="sk-name">UI Design</div>
-        <div class="sk-tools">Figma, wireframing, prototyping, design systems, component libraries</div>
+      <div class="sk-item" data-sr="1">
+        <div class="sk-discipline">UI Design</div>
+        <div class="sk-detail">Figma · wireframing · prototyping<br>Design systems · component libraries</div>
       </div>
-      <div class="sk-card" data-sr="2">
-        <span class="sk-icon">✏️</span>
-        <div class="sk-name">Graphic Design</div>
-        <div class="sk-tools">Illustrator, Photoshop, InDesign, editorial, print, packaging</div>
+      <div class="sk-item" data-sr="2">
+        <div class="sk-discipline">Graphic Design</div>
+        <div class="sk-detail">Illustrator · Photoshop · InDesign<br>Editorial · print · packaging</div>
       </div>
-      <div class="sk-card" data-sr>
-        <span class="sk-icon">📐</span>
-        <div class="sk-name">Brand Identity</div>
-        <div class="sk-tools">Logo systems, brand guidelines, typography, visual language</div>
+      <div class="sk-item" data-sr>
+        <div class="sk-discipline">Brand Identity</div>
+        <div class="sk-detail">Logo systems · brand guidelines<br>Typography · visual language</div>
       </div>
-      <div class="sk-card" data-sr="1">
-        <span class="sk-icon">🧩</span>
-        <div class="sk-name">Design Systems</div>
-        <div class="sk-tools">Tokens, documentation, component specs, accessibility standards</div>
+      <div class="sk-item" data-sr="1">
+        <div class="sk-discipline">Design Systems</div>
+        <div class="sk-detail">Tokens · documentation · component specs<br>Accessibility standards</div>
       </div>
-      <div class="sk-card" data-sr="2">
-        <span class="sk-icon">📊</span>
-        <div class="sk-name">Strategy</div>
-        <div class="sk-tools">Competitive analysis, stakeholder mapping, design ops, workshops</div>
+      <div class="sk-item" data-sr="2">
+        <div class="sk-discipline">Strategy</div>
+        <div class="sk-detail">Competitive analysis · stakeholder mapping<br>Design ops · workshops</div>
       </div>
     </div>
   </div>

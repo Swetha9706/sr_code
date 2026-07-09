@@ -65,12 +65,13 @@ Avoid generic, "AI slop" design. Make creative, distinctive frontends that surpr
 
 **Motion**: Use animations for effects and micro-interactions. Prioritize CSS-only solutions. Focus on high-impact moments: one well-orchestrated page load with staggered reveals (`animation-delay`) creates more delight than scattered micro-interactions.
 
-**Backgrounds**: Create atmosphere and depth rather than defaulting to solid colors. Layer CSS gradients, use geometric patterns, or add contextual effects that match the overall aesthetic.
+**Backgrounds**: Create atmosphere and depth rather than defaulting to solid colors. Layer CSS gradients, use geometric patterns, or add contextual effects that match the overall aesthetic. Keep backgrounds light — avoid solid dark backgrounds entirely, even as a variation. Depth and atmosphere should come from subtle gradients, texture, or layered light tones, not from darkness.
 
 **Avoid**:
+- Solid dark backgrounds, in any section or component
 - Overused font families (Inter, Roboto, Arial, Space Grotesk, system fonts)
 - Clichéd color schemes (particularly purple gradients on white backgrounds)
 - Predictable layouts and component patterns
 - Cookie-cutter design that lacks context-specific character
 
-Interpret creatively and make unexpected choices that feel genuinely designed for this specific portfolio context. Vary between light and dark approaches, different fonts, different aesthetics — think outside the box.
+Interpret creatively and make unexpected choices that feel genuinely designed for this specific portfolio context. Vary fonts, textures, and aesthetics within a light overall palette — think outside the box.
