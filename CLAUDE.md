@@ -75,3 +75,47 @@ Avoid generic, "AI slop" design. Make creative, distinctive frontends that surpr
 - Cookie-cutter design that lacks context-specific character
 
 Interpret creatively and make unexpected choices that feel genuinely designed for this specific portfolio context. Vary fonts, textures, and aesthetics within a light overall palette — think outside the box.
+
+## Portfolio — Design Direction (3a: Warm Editorial-Minimalist, pastel)
+
+When building or extending this portfolio, follow this direction. It is warm, restrained, calm, and human — avoid dark-mode, neon, brutalism, dense data-heavy layouts, and stock corporate imagery. **Never use pure white (#ffffff) or pure black (#000000).**
+
+### Layout & structure
+- Generous whitespace throughout; nothing cramped.
+- Centered, oversized hero with short, confident headline copy ("Hi, I'm ___").
+- Asymmetric bento/collage grid for work: mix photography, video stills, and UI screenshots at varied sizes (e.g. one large 2×2 image, a wide accent card, two small icon tiles, a wide motion card) — never uniform equal cards.
+- Each work card carries its own accent color/mood; the page shell stays neutral so the work provides the visual "loud" moments.
+- Soft rounded corners (~20px) on all cards and buttons; no sharp edges.
+- A warm "off the clock" personal section near the footer (casual portrait + a few human lines of story).
+- Thin accent-colored marquee strip, then a soft footer with a "Say hello →" CTA.
+- Small hand-drawn accents used sparingly for personality: a squiggle underline beneath the hero, a little rainbow, a flower. Keep SVGs to simple primitives (arcs, circles).
+
+### Typography
+- **Display — Self Modern**: hero signature name ONLY (fallback: Cormorant Garamond).
+- **Editorial serif — Cormorant Garamond**: section headings, nav brand, tagline, card names.
+- **Body — Lora**: body text and hero tagline.
+- **Utility/data — DM Mono**: nav links, eyebrows, tags, CTAs, card labels.
+- Do **NOT** load or reference Playfair Display.
+- Headlines oversized and confident, but weight stays light-to-regular — never heavy/bold.
+
+### Color palette (pastel)
+
+| Role | Token | Hex |
+|---|---|---|
+| Page background | Paper | `#FCFBFA` |
+| Surfaces / footer | Cotton Candy | `#F8D9FF` |
+| Borders / dividers | — | `#ddd6ec` |
+| Primary accent (nav CTA, squiggle, eyebrows, marquee, hover) | Ultraviolet | `#5642EA` |
+| Card accent | Highlighter | `#EBF985` |
+| Card accent | Nectar | `#FFCAA6` |
+| Card accent | Ice Blue | `#D4F5F9` |
+| Card accent | Lavender | `#CACAFF` |
+| Dark accent / labels on tinted cards | Plum | `#630F49` |
+| Primary text | Ink | `#141018` |
+| Secondary text | Muted | `#575165` |
+
+Accents are used sparingly against the neutral base — page chrome (nav, shell, footer) stays quiet; only the work cards introduce color to show range.
+
+### Motion & tone
+- Smooth scroll-triggered fades and gentle reveals; no snappy or glitchy transitions. Micro-interactions feel unhurried — motion supports calmness.
+- Copy is conversational and warm ("Chat with me", "Think we vibe?", "Hi, I'm ___") — approachable over corporate polish.

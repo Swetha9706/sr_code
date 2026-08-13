@@ -1,1 +1,14 @@
 .DS_Store
+
+# tooling / skill installs — not part of the site
+.agents/
+.claude/skills/
+skills-lock.json
+
+# heavy source & recording artifacts
+*.psd
+*.mov
+*.zip
+screen-recording-for-index-html/
+ServiceBlueprint_Kretha.pdf
+About Me — Swetha Ramachandran.png

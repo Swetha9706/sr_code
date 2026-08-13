@@ -4,6 +4,62 @@ A running log of meaningful updates to the portfolio. Newest entries on top.
 
 ---
 
+## 2026-08-06 — Design system captured; About page promoted & reworked; Krētha case study restructured (draft)
+
+**Files:** `PRODUCT.md`, `DESIGN.md`, `.impeccable/`, `aboutme.html`, `Projects/kretha-restructured.html`, `Swetha-Ramachandran-Resume.pdf`
+
+**Design system captured (impeccable plugin)**
+- Added `PRODUCT.md` (product truth: recruiter-first audience, positioning, real bio, brand commitments).
+- Added `DESIGN.md` documenting the Warm Editorial-Minimalist pastel system — "The Soft Playground" north star, Cormorant Garamond / Lora / DM Mono / Self Modern, Paper #FCFBFA + Ultraviolet #5642EA + pastel palette, named rules, and an enumerated `typography.scale`.
+- Added `.impeccable/design.json` sidecar (tonal ramps, shadows, motion, component snippets).
+
+**About page (`aboutme.html`)**
+- Promoted the on-brand v2 draft into the live file (real bio: iMedhas/Krētha, Goldsmiths, Rage, Remidio, Stirred, Srishti); retired the old Hanken Grotesk/Fraunces design; removed `aboutme-v2.html`.
+- Merged the duplicate Contact section and Footer into one Cotton Candy footer (contact CTA + button row, then sign-off + copyright, with a subtle "SR" watermark).
+- Converted the auto-scrolling skills marquee into a static wrapping disciplines strip (all labels visible); kept the footer marquee but added pause-on-hover/focus.
+- Removed the Dribbble button and the email · instagram · read.cv line.
+- Wired the "Resume ↓" button to the new `Swetha-Ramachandran-Resume.pdf` (download) and LinkedIn to `linkedin.com/in/swetharux`.
+- Split the single Experience section into **Work Experience** and **Education**.
+
+**Krētha case study (`Projects/kretha-restructured.html` — new draft)**
+- Standalone restructure of the case study onto the portfolio design system (replaced the original Playfair/DM Sans/dark/orange with Cormorant/Lora/DM Mono, Paper+Ultraviolet+pastel).
+- Skimmable, question-headed format with quick-facts bar, named research methods, a research→decision mapping table, hypothesis band, three solution flows, and reflection.
+- Real content only; missing assets/figures flagged inline with `[NEEDS REAL NUMBER]` / `[NEEDS REAL SCREENSHOT]`. Live `Projects/kretha.html` left untouched.
+
+**Tooling**
+- Added a shared detector ignore for the documented Elevation shadow `rgba(30,18,10,.14)` in `.impeccable/config.json`; refreshed the `.impeccable/design.json` sidecar.
+
+_Note: all of the above remains uncommitted in the working tree (not pushed / not deployed) pending review._
+
+---
+
+## 2026-08-02 — Full homepage redesign: nav, hero, projects, footer, off-the-clock section
+
+**File:** `index.html`
+
+**Design direction locked in:** Warm Editorial-Minimalist, pastel palette — Paper #FCFBFA, Ultraviolet #5642EA, Cotton Candy #F8D9FF, Ink #141018, Muted #6a6273. Added full spec to `CLAUDE.md`. No pure white or black anywhere.
+
+**Nav**
+- Rebuilt top nav: solid Paper background, 26px 44px padding, 1px border.
+- Brand wordmark in Cormorant Garamond 24px weight-500; links in DM Mono 13px muted (work, about, journal); ultraviolet pill CTA reading "Chat with me".
+
+**Hero**
+- Replaced two-column photo layout with a centered, single-column editorial hero.
+- Eyebrow in DM Mono 13px uppercase ultraviolet; name in Self Modern Text 104px weight-400 (switched CDN from Self Modern to Self Modern Text for an upright, non-calligraphic cut); ultraviolet wavy SVG squiggle; tagline in Lora 21px 1.65 line-height muted.
+
+**Projects**
+- Project cards (Krētha, FutureScope, Sip & Scones) placed in a single centred column.
+- Flanked by two decorative cotton-candy tiles: hand-drawn SVG rainbow (three concentric arcs: #ddd6ec, Nectar, Ultraviolet) top-left; four-petal Nectar flower with Ultraviolet centre bottom-right. Tiles hidden on mobile.
+
+**Off the clock**
+- Added a personal section between projects and the footer: 280px portrait placeholder + story block (eyebrow, Cormorant heading, Lora body), centred at max-width 860px.
+
+**Footer**
+- Two-part footer: full-width Ultraviolet marquee strip ("THINK WE VIBE? ✦ LET'S MAKE SOMETHING WARM") above a Cotton Candy footer.
+- Footer: "Say hello →" in Cormorant Garamond 34px left-aligned; email · instagram · read.cv contact line; "© 2026 — made with paper & ink" bottom-right.
+
+---
+
 ## 2026-07-02 — Dark mode, animated burst, hero responsive fixes + Sip & Scones v2
 
 **Files:** `index.html`, `Projects/sip-scones.html`, `Projects/sip-scones-v2.html`

@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-06T00:00:00Z",
+  "title": "Design System: Swetha Ramachandran — Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "ultraviolet": { "role": "primary", "displayName": "Ultraviolet", "canonical": "#5642EA", "tonalRamp": ["#0f0a3d", "#1c1560", "#2b2088", "#3a2fb5", "#5642EA", "#7d6df0", "#a99ef5", "#d4cdfb"] },
+      "highlighter": { "role": "secondary", "displayName": "Highlighter", "canonical": "#EBF985", "tonalRamp": ["#3d4a10", "#5a6c18", "#7a9022", "#9cb63a", "#c4dd5c", "#EBF985", "#f2fbab", "#f9fdd4"] },
+      "ice-blue": { "role": "secondary", "displayName": "Ice Blue", "canonical": "#D4F5F9", "tonalRamp": ["#1c4d54", "#2a6f78", "#3b939e", "#5cb6c1", "#8fd6de", "#D4F5F9", "#e6fafc", "#f3fdfe"] },
+      "nectar": { "role": "secondary", "displayName": "Nectar", "canonical": "#FFCAA6", "tonalRamp": ["#6b3312", "#94491f", "#bd6432", "#e08551", "#f7a878", "#FFCAA6", "#ffdcc4", "#ffece0"] },
+      "lavender": { "role": "secondary", "displayName": "Lavender", "canonical": "#CACAFF", "tonalRamp": ["#2b2b6b", "#3d3d94", "#5252bd", "#7070e0", "#9c9cf7", "#CACAFF", "#e0e0ff", "#f0f0ff"] },
+      "cotton-candy": { "role": "tertiary", "displayName": "Cotton Candy", "canonical": "#F8D9FF", "tonalRamp": ["#5a1a6b", "#7d2694", "#a13bbd", "#c65ce0", "#e694f5", "#F8D9FF", "#fbe8ff", "#fdf3ff"] },
+      "plum": { "role": "tertiary", "displayName": "Plum", "canonical": "#630F49", "tonalRamp": ["#2b0620", "#3d0930", "#500c3c", "#630F49", "#8a1c68", "#b03688", "#d35fa9", "#eaa0cd"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#FCFBFA", "tonalRamp": ["#2b2a29", "#4a4847", "#6f6c6a", "#96928f", "#c2beba", "#e6e3e0", "#f4f2f0", "#FCFBFA"] },
+      "card-base": { "role": "neutral", "displayName": "Card Base", "canonical": "#EEEAF6", "tonalRamp": ["#2c2838", "#3f3a52", "#564f6f", "#726b8f", "#9891b5", "#c2bdd8", "#ddd8ec", "#EEEAF6"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#141018", "tonalRamp": ["#141018", "#2a2430", "#413a49", "#5c5366", "#7a7085", "#9d94a7", "#c4bccd", "#e6e0ec"] },
+      "muted": { "role": "neutral", "displayName": "Muted", "canonical": "#6a6273", "tonalRamp": ["#26232b", "#38343f", "#4c4756", "#6a6273", "#8b8394", "#aca5b3", "#cbc6d0", "#e6e3ea"] },
+      "border": { "role": "neutral", "displayName": "Border", "canonical": "#ddd6ec", "tonalRamp": ["#3a3550", "#524c6f", "#6f6790", "#9089b0", "#b3aecf", "#ddd6ec", "#ebe6f4", "#f6f3fb"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display / Signature Name", "purpose": "The signature name in the hero only. Self Modern, fallback Cormorant Garamond." },
+      "headline": { "displayName": "Editorial Headline", "purpose": "Oversized italic section headings." },
+      "title": { "displayName": "Title", "purpose": "Work card names and footer CTA." },
+      "body": { "displayName": "Body", "purpose": "Hero tagline and running prose in Lora." },
+      "label": { "displayName": "Utility Label", "purpose": "Eyebrows, nav, tags, marquees, captions in DM Mono uppercase." }
+    },
+    "shadows": [
+      { "name": "floating-image-lift", "value": "0 12px 36px rgba(30,18,10,0.14)", "purpose": "Soft warm lift under rotated collage images inside work cards. The only routine shadow." },
+      { "name": "soft-card-rest", "value": "0 8px 20px rgba(26,25,23,0.08)", "purpose": "Barely-there ambient shadow for standalone tiles; use sparingly." }
+    ],
+    "motion": [
+      { "name": "ease-soft", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "The signature easing — gentle, unhurried settle for color swaps, reveals, and CTA gaps." },
+      { "name": "reveal", "value": "opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1)", "purpose": "Staggered scroll/page-load fade-and-rise reveals." },
+      { "name": "color-swap", "value": "background 0.45s cubic-bezier(0.22,1,0.36,1)", "purpose": "Work card neutral-to-accent hover fill." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "760px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (Nav CTA)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The pill contact CTA in the nav — Ultraviolet fill, the one saturated accent on the chrome.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Chat with me</a>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; background:#5642EA; color:#FCFBFA; font-family:'DM Mono',monospace; font-size:13px; letter-spacing:0.04em; padding:9px 18px; border-radius:999px; text-decoration:none; transition:opacity 0.2s; } .ds-btn-primary:hover { opacity:0.88; } .ds-btn-primary:focus-visible { outline:2px solid #5642EA; outline-offset:3px; }"
+    },
+    {
+      "name": "Text CTA",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Fill-less arrow link; the gap widens on hover as the micro-interaction.",
+      "html": "<a class=\"ds-cta-text\" href=\"#\">View work <span>&rarr;</span></a>",
+      "css": ".ds-cta-text { display:inline-flex; align-items:center; gap:0.55rem; font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.1em; color:#5642EA; text-decoration:none; transition:gap 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-cta-text:hover { gap:0.9rem; }"
+    },
+    {
+      "name": "Work Card",
+      "kind": "card",
+      "refersTo": "card-work",
+      "description": "Neutral at rest, swaps to a pastel accent on hover; rounded 28px, flat surface.",
+      "html": "<a class=\"ds-card-work\" href=\"#\"><span class=\"ds-card-name\">Krētha</span><span class=\"ds-card-cat\">B2B SaaS · UX/UI</span></a>",
+      "css": ".ds-card-work { position:relative; display:flex; flex-direction:column; justify-content:flex-end; height:360px; padding:2.2rem 2.2rem 1.8rem; border-radius:28px; background:#EEEAF6; color:#141018; text-decoration:none; overflow:hidden; transition:background 0.45s cubic-bezier(0.22,1,0.36,1); } .ds-card-work:hover { background:#EBF985; } .ds-card-name { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:600; letter-spacing:-0.01em; } .ds-card-cat { font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:0.04em; color:rgba(20,16,24,0.5); margin-top:0.3rem; }"
+    },
+    {
+      "name": "Eyebrow Label",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Ultraviolet mono eyebrow with a short leading rule; marks section starts.",
+      "html": "<span class=\"ds-eyebrow\">Selected work</span>",
+      "css": ".ds-eyebrow { display:inline-flex; align-items:center; gap:0.65rem; font-family:'DM Mono',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.14em; color:#5642EA; } .ds-eyebrow::before { content:''; width:1.5rem; height:1px; background:#5642EA; }"
+    },
+    {
+      "name": "Marquee Strip",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Full-bleed Ultraviolet strip of scrolling uppercase mono; rhythmic divider.",
+      "html": "<div class=\"ds-marquee\"><span class=\"ds-marquee-text\">Think we vibe? <em>✦</em> Let's make something warm <em>✦</em> Think we vibe? <em>✦</em> Let's make something warm <em>✦</em></span></div>",
+      "css": ".ds-marquee { background:#5642EA; padding:0.9rem 0; overflow:hidden; white-space:nowrap; } .ds-marquee-text { display:inline-block; font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.82); padding:0 3rem; } .ds-marquee-text em { color:rgba(255,255,255,0.38); font-style:normal; margin:0 0.65rem; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "label",
+      "description": "Muted mono link that warms to Ultraviolet on hover.",
+      "html": "<a class=\"ds-nav-link\" href=\"#\">work</a>",
+      "css": ".ds-nav-link { font-family:'DM Mono',monospace; font-size:0.78rem; letter-spacing:0.04em; color:#6a6273; text-decoration:none; transition:color 0.18s; } .ds-nav-link:hover { color:#5642EA; } .ds-nav-link:focus-visible { outline:2px solid #5642EA; outline-offset:3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Soft Playground",
+    "overview": "This is a warm, pastel, personality-forward system built on paper and ink. The page shell is deliberately quiet — a soft off-white ground, restrained type, generous air — so that the work itself supplies every loud moment. Rounded pill shapes, scrolling marquee strips, hand-drawn squiggles, and tactile color-swap cards give the whole thing a friendly, made-by-a-human feel rather than corporate polish. It should read like an editorial magazine that decided to relax and play.\n\nColor is the primary tool for depth and delight, not shadow. Surfaces sit flat on the paper; interest comes from tonal pastel layering, gently rotated floating images, and interaction that swaps a neutral card to a saturated accent. Ultraviolet is the one strong voice — it owns the chrome accents while the pastels stay reserved for the work cards. The result is calm at rest and warm on touch.",
+    "keyCharacteristics": [
+      "A neutral paper shell that frames loud, colorful work.",
+      "Warm and tactile: soft pill shapes, rounded 28px cards, friendly fills.",
+      "Depth from color and layering, not shadows.",
+      "One accent voice (Ultraviolet) against a pastel supporting cast.",
+      "Hand-made touches — marquees, squiggles, 'paper & ink' tone."
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "Ultraviolet is the only saturated color allowed on the page shell (nav, eyebrows, marquees, CTAs, hover). Pastels belong to the work cards, never the chrome. Its rarity against the paper is what makes it read as intentional.", "section": "colors" },
+      { "name": "The Color-Is-The-Hover Rule", "body": "A work card's accent is hidden at rest (neutral Card Base) and only fills in on hover. Color is earned by interaction, not spent up front.", "section": "colors" },
+      { "name": "The Signature-Name Rule", "body": "Self Modern appears exactly once — the hero name. Everywhere else the serif voice is Cormorant Garamond.", "section": "typography" },
+      { "name": "The Mono-For-Utility Rule", "body": "Every small functional string (labels, tags, nav, timestamps, CTAs) is DM Mono uppercase with tracking; serifs are never used for utility text and mono is never used for headlines.", "section": "typography" },
+      { "name": "The No-Fraunces Rule", "body": "Do not load Playfair Display or Fraunces. The serif is Cormorant Garamond; the display face is Self Modern.", "section": "typography" },
+      { "name": "The Flat-Paper Rule", "body": "Surfaces are flat. If you reach for a shadow to create hierarchy, use color, tonal layering, or rotation instead. Shadows are reserved for lifting collage imagery, never for signalling interactivity.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the page shell neutral (Paper) and let the work cards supply all the saturated color.",
+      "Do reserve Ultraviolet for chrome accents only, on ≤10% of any screen (The One Voice Rule).",
+      "Do use full pills (999px) for buttons/tags and 28px corners for cards; nothing sharp.",
+      "Do create depth with color, tonal layering, and slight rotation — not shadows (The Flat-Paper Rule).",
+      "Do set utility text in DM Mono uppercase with tracking, and headlines in Cormorant Garamond italic.",
+      "Do keep motion gentle and unhurried — cubic-bezier(0.22,1,0.36,1), 0.2–0.65s, staggered reveals over scattered micro-interactions."
+    ],
+    "donts": [
+      "Don't use pure white (#ffffff), pure black (#000000), or any solid dark background, in any section.",
+      "Don't load Playfair Display or Fraunces; reconcile aboutme.html back to Cormorant Garamond (The No-Fraunces Rule).",
+      "Don't put pastel accents on the nav, marquee, or footer chrome — pastels belong to work cards.",
+      "Don't reach for shadows to signal interactivity; swap color instead.",
+      "Don't set headlines heavy/bold — weight stays light-to-regular even when oversized."
+    ]
+  }
+}
