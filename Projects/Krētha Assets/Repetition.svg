@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 494.13 243.01">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #5642ea;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 25px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g id="Generative_Object" data-name="Generative Object">
+      <path class="cls-1" d="M219.13,67.18C180.26,2.02,79.88-7.13,34.4,56.15c-44.54,56.06-17.63,143.32,48.95,167,51.79,20.96,111.12-4.89,138.68-51.86,20.45-31.71,29.82-68.55,50.27-100.28,26.58-42.84,74.27-67.11,123.7-55.69,70.76,14.24,109.64,101.57,69.42,162.53-42.45,72.1-149.68,66.37-190.19-1.48"/>
+    </g>
+  </g>
+</svg>

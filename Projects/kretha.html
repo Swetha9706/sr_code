@@ -3,743 +3,387 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Krētha — Swetha Ramachandran</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Krētha Case Study · Swetha Ramachandran</title>
+<!--
+  DRAFT: restructured case study for review (do not merge as-is).
+  Built on the portfolio design system (DESIGN.md): Cormorant Garamond / Lora / DM Mono,
+  Paper + Ultraviolet + pastel palette. Self Modern is intentionally NOT used here
+  (reserved for the signature name). Placeholders for missing assets/numbers are flagged
+  inline with [NEEDS REAL SCREENSHOT] / [NEEDS REAL NUMBER] so they're easy to find.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400;1,600&family=DM+Mono:wght@400;500&family=Lora:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ── RESET & TOKENS ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
 :root{
-  --bg:#f7f5f2;
-  --ink:#0d0d0d;
-  --pink:#f03f8f;
-  --yellow:#f5e33a;
-  --blue:#3b3bea;
-  --lavender:#e8e0fa;
-  --orange:#f05a28;
-  --green:#3ecf8e;
-  --muted:#6b6b6b;
-  --border:#e4dfd6;
-  --card:#ffffff;
-  --alt:#ede9df;
-  --dark:#181614;
-  --ease:cubic-bezier(0.25,0.46,0.45,0.94);
-  --fs-body:17px;
-  --lh-body:1.8;
-  --color-body:#3a3530;
-  --color-body-dark:rgba(255,255,255,0.65);
+  --paper:        #FCFBFA;
+  --card-base:    #EEEAF6;
+  --cotton-candy: #F8D9FF;
+  --border:       #ddd6ec;
+  --ultraviolet:  #5642EA;
+  --highlighter:  #EBF985;
+  --nectar:       #FFCAA6;
+  --ice-blue:     #D4F5F9;
+  --lavender:     #CACAFF;
+  --plum:         #630F49;
+  --ink:          #141018;
+  --muted:        #6a6273;
+  --ease:         cubic-bezier(0.22,1,0.36,1);
 }
-@media(max-width:1199px){:root{--fs-body:16px;--lh-body:1.75}}
-@media(max-width:767px){:root{--fs-body:15px;--lh-body:1.7}}
-html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-/* ── PROGRESS ── */
-#progress{position:fixed;top:0;left:0;height:2px;background:var(--orange);width:0%;z-index:999}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--paper);color:var(--ink);font-family:'Lora',serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ══ SCROLL PROGRESS ══ */
+#progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--ultraviolet);transform:scaleX(0);transform-origin:0 50%;z-index:999}
+@supports (animation-timeline:scroll()){
+  #progress{animation:progress-grow linear both;animation-timeline:scroll(root block)}
+}
+@keyframes progress-grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){#progress{animation:none;transform:scaleX(0)}}
+
+/* ══ SCROLL REVEAL ══ */
+[data-sr]{opacity:0;transform:translateY(20px)}
 @media(prefers-reduced-motion:no-preference){
-  #progress{transition:width 0.08s linear}
+  [data-sr]{transition:opacity .65s var(--ease),transform .65s var(--ease)}
+}
+[data-sr].visible{opacity:1;transform:none}
+[data-sr="1"]{transition-delay:.1s}[data-sr="2"]{transition-delay:.2s}[data-sr="3"]{transition-delay:.3s}
+@media(prefers-reduced-motion:reduce){[data-sr]{opacity:1;transform:none;transition:none}}
+
+/* ══ NAV ══ */
+.navbar{position:sticky;top:0;z-index:200;background:var(--paper);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:22px 44px}
+.nav-crumb{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.55rem}
+.nav-crumb a{color:var(--muted);transition:color .18s}
+.nav-crumb a:hover{color:var(--ultraviolet)}
+.nav-crumb .cur{color:var(--ink)}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:var(--ink)}
+.nav-cta{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;background:var(--ultraviolet);color:var(--paper);padding:9px 18px;border-radius:999px;transition:opacity .2s}
+.nav-cta:hover{opacity:.88}
+@media(max-width:720px){.nav-brand{display:none}.nav-inner{padding:16px 20px}}
+
+/* ══ SHARED SECTION ══ */
+section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ultraviolet);display:inline-flex;align-items:center;gap:.65rem;margin-bottom:1.4rem}
+.eyebrow::before{content:'';width:1.6rem;height:1px;background:var(--ultraviolet)}
+.q-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem,3.6vw,2.8rem);line-height:1.1;letter-spacing:-.01em;color:var(--ink)}
+.q-title em{font-style:italic;color:var(--ultraviolet)}
+.body{font-family:'Lora',serif;font-size:1rem;line-height:1.85;color:var(--muted);max-width:64ch;margin-top:1.25rem}
+.body strong{color:var(--ink);font-weight:500}
+.divider{max-width:1180px;margin:0 auto;height:1px;background:var(--border)}
+.flag{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ultraviolet);border:1px dashed var(--ultraviolet);border-radius:999px;padding:.2rem .6rem;display:inline-block;vertical-align:middle;white-space:nowrap}
+
+/* ══ HERO ══ */
+.hero{max-width:1180px;margin:0 auto;padding:5.5rem 3rem 3rem;text-align:center;display:flex;flex-direction:column;align-items:center}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:1.75rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(3.5rem,12vw,6.2rem);line-height:.95;letter-spacing:-.02em;color:var(--ink)}
+.hero-squig{display:block;width:200px;height:20px;margin:1.5rem auto 1.75rem}
+.hero-sub{font-family:'Lora',serif;font-size:clamp(1rem,1.6vw,1.25rem);line-height:1.7;color:var(--muted);max-width:60ch}
+.hero-img{margin:3.5rem auto 0;width:100%;max-width:1080px;border-radius:14px;overflow:hidden;box-shadow:0 12px 36px rgba(30,18,10,.14);position:relative;transform:rotate(-.6deg)}
+.hero-img img{width:100%;aspect-ratio:16/7;object-fit:cover}
+.hero-cap{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:1.1rem}
+
+/* ══ QUICK FACTS ══ */
+.facts{max-width:1180px;margin:0 auto;padding:0 3rem}
+.facts-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:28px;overflow:hidden;background:var(--card-base)}
+.fact{padding:1.6rem 1.5rem;border-right:1px solid var(--border)}
+.fact:last-child{border-right:none}
+.fact-l{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:.5rem}
+.fact-v{font-family:'Lora',serif;font-size:.9rem;line-height:1.5;color:var(--ink)}
+@media(max-width:860px){.facts-grid{grid-template-columns:1fr 1fr}.fact:nth-child(2){border-right:none}.fact:nth-child(1),.fact:nth-child(2){border-bottom:1px solid var(--border)}}
+@media(max-width:480px){.facts-grid{grid-template-columns:1fr}.fact{border-right:none;border-bottom:1px solid var(--border)}.fact:last-child{border-bottom:none}}
+
+/* ══ PROBLEM STATEMENT ══ */
+.statement{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.8rem,3.2vw,2.6rem);line-height:1.28;letter-spacing:-.01em;color:var(--ink);max-width:22ch;margin-top:1.5rem}
+.statement em{font-style:italic;color:var(--ultraviolet)}
+
+/* ══ NUMBERED CARDS ══ */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.card{background:var(--card-base);border:1px solid var(--border);border-radius:28px;padding:2rem;transition:background .45s var(--ease)}
+.card:hover{background:var(--highlighter)}
+.card-tag{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);display:block;margin-bottom:.6rem}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:.55rem;line-height:1.2}
+.card-text{font-family:'Lora',serif;font-size:.92rem;line-height:1.7;color:var(--muted)}
+@media(max-width:860px){.cards3{grid-template-columns:1fr}}
+/* Audience: each card carries its own pastel mood (DESIGN.md) */
+.card.tinted{background:var(--tint);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.card.tinted:hover{background:var(--tint);transform:translateY(-4px);box-shadow:0 12px 30px rgba(30,18,10,.14)}
+
+/* ══ CHALLENGES: NUMBERED STACK ══ */
+.stack{margin-top:2.5rem;border-top:1px solid var(--border)}
+.stack-row{display:grid;grid-template-columns:auto 1fr;gap:1.75rem;align-items:start;padding:1.9rem 0;border-bottom:1px solid var(--border)}
+.stack-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:2.6rem;line-height:1;color:var(--ultraviolet);min-width:2.6rem}
+.stack-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:.4rem;line-height:1.2}
+.stack-text{font-family:'Lora',serif;font-size:.95rem;line-height:1.75;color:var(--muted);max-width:72ch}
+@media(max-width:720px){.stack-row{gap:1rem}.stack-num{font-size:2rem;min-width:2rem}}
+
+/* ══ FINDINGS: ASYMMETRIC 1-BIG + 2-SMALL ══ */
+.findings{display:grid;grid-template-columns:1.15fr 1fr;gap:1.25rem;margin-top:3.5rem}
+.find-lead{background:var(--highlighter);border:1px solid var(--border);border-radius:28px;padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem}
+.find-lead .card-title{font-size:1.9rem;margin-bottom:.6rem}
+.find-side{display:grid;grid-template-rows:1fr 1fr;gap:1.25rem}
+.find-small{background:var(--card-base);border:1px solid var(--border);border-radius:28px;padding:1.75rem}
+@media(max-width:860px){.findings{grid-template-columns:1fr}.find-side{grid-template-rows:none}}
+
+/* ══ IA LAYERS: contained vertical progression ══ */
+.layers{display:grid;gap:1rem;margin-top:2.5rem}
+.layer{background:var(--card-base);border:1px solid var(--border);border-radius:28px;padding:1.7rem 2rem}
+.layer-k{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ultraviolet);display:block;margin-bottom:.5rem}
+.layer-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:.4rem;line-height:1.2}
+.layer-text{font-family:'Lora',serif;font-size:.93rem;line-height:1.7;color:var(--muted);max-width:78ch}
+
+/* ══ MY ROLE GRID ══ */
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2.5rem}
+.role-item{background:var(--card-base);border:1px solid var(--border);border-radius:28px;padding:1.75rem}
+.role-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.6rem;font-weight:600;color:var(--ultraviolet);line-height:1;margin-bottom:.6rem}
+.role-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--ink);margin-bottom:.45rem;line-height:1.2}
+.role-text{font-family:'Lora',serif;font-size:.9rem;line-height:1.7;color:var(--muted)}
+@media(max-width:720px){.role-grid{grid-template-columns:1fr}}
+
+/* ══ RESEARCH METHODS ══ */
+.method{border-top:1px solid var(--border);padding-top:2.5rem;margin-top:2.5rem}
+.method-label{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:.9rem}
+.method-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;margin-top:1.25rem}
+@media(max-width:860px){.method-grid{grid-template-columns:1fr;gap:1.5rem}}
+.stat-callout{background:var(--card-base);border:1px solid var(--border);border-radius:28px;padding:2.5rem 2rem;text-align:center}
+.stat-callout.hl{background:var(--highlighter)}
+.stat-num{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(3rem,7vw,5rem);line-height:1;color:var(--ink);letter-spacing:-.02em}
+.stat-num em{font-style:italic;color:var(--ultraviolet)}
+.stat-cap{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--plum);margin-top:1rem;line-height:1.6}
+.stat-src{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.06em;color:var(--muted);margin-top:.8rem}
+.stat-src a{color:var(--ultraviolet);text-decoration:underline;text-underline-offset:2px}
+
+/* ══ RESEARCH → DECISION MAP ══ */
+.map{margin-top:2.5rem;border:1px solid var(--border);border-radius:28px;overflow:hidden}
+.map-row{display:grid;grid-template-columns:1fr 1.4rem 1.15fr;align-items:stretch;border-top:1px solid var(--border)}
+.map-row:first-child{border-top:none}
+.map-find,.map-dec{padding:1.5rem 1.6rem}
+.map-find{background:var(--card-base)}
+.map-arrow{display:flex;align-items:center;justify-content:center;color:var(--ultraviolet);background:var(--card-base);font-family:'DM Mono',monospace}
+.map-k{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);display:block;margin-bottom:.4rem}
+.map-find p{font-family:'Cormorant Garamond',serif;font-size:1.12rem;font-weight:600;line-height:1.3;color:var(--ink)}
+.map-dec p{font-family:'Lora',serif;font-size:.92rem;line-height:1.65;color:var(--muted)}
+.map-dec .map-k{color:var(--plum)}
+@media(max-width:720px){
+  .map-row{grid-template-columns:1fr}
+  .map-arrow{padding:.4rem 0;transform:rotate(90deg)}
+  .map-find,.map-arrow{border-bottom:1px solid var(--border)}
 }
 
-/* ── SCROLL REVEAL ── */
-.sr{opacity:0;transform:translateY(28px)}
-@media(prefers-reduced-motion:no-preference){
-  .sr{transition:opacity .65s var(--ease),transform .65s var(--ease)}
-}
-.sr.in{opacity:1;transform:none}
-.sr-l{opacity:0;transform:translateX(-24px)}
-@media(prefers-reduced-motion:no-preference){
-  .sr-l{transition:opacity .65s var(--ease),transform .65s var(--ease)}
-}
-.sr-l.in{opacity:1;transform:none}
-.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+/* ══ PRINCIPLES CODA ══ */
+.coda{margin-top:3rem;border-top:1px solid var(--border);padding-top:2rem}
+.coda-label{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:1.5rem}
+.coda-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.coda-item{padding:0 2rem;border-left:1px solid var(--border)}
+.coda-item:first-child{padding-left:0;border-left:none}
+.coda-k{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--plum);display:block;margin-bottom:.5rem}
+.coda-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;line-height:1.2}
+.coda-text{font-family:'Lora',serif;font-size:.88rem;line-height:1.65;color:var(--muted)}
+@media(max-width:720px){.coda-grid{grid-template-columns:1fr}.coda-item{padding:1.5rem 0 0;border-left:none;border-top:1px solid var(--border)}.coda-item:first-child{padding-top:0;border-top:none}}
 
-/* ── NAV ── */
-nav{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1rem 2.5rem;background:rgba(247,245,242,.92);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border:1px solid var(--border);border-radius:20px;
-  margin:1.1rem 1.5rem 0;position:sticky;top:1.1rem;z-index:200;
-  box-shadow:0 2px 24px rgba(0,0,0,.05);
-}
-.nav-back{display:flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:.4rem 1rem;border-radius:999px}
-@media(prefers-reduced-motion:no-preference){
-  .nav-back{transition:all .2s}
-}
-.nav-back:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-.nav-center{font-family:'Playfair Display',serif;font-size:14px;font-weight:900;text-decoration:underline;text-decoration-color:var(--orange);cursor:pointer}
-.nav-pills{display:flex;gap:.5rem}
-.np{padding:.4rem 1.1rem;border-radius:999px;font-size:12px;font-weight:500;cursor:pointer;border:none;font-family:'DM Sans',sans-serif}
-@media(prefers-reduced-motion:no-preference){
-  .np{transition:transform .15s,box-shadow .15s}
-}
-.np:hover{transform:scale(1.06)}
-.np-y{background:var(--yellow);color:var(--ink)}
-.np-l{background:var(--lavender);color:var(--blue)}
+/* ══ HYPOTHESIS BAND ══ */
+.band{background:var(--ultraviolet);padding:4.5rem 3rem;text-align:center}
+.band p{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.4;color:var(--paper);max-width:60ch;margin:0 auto}
 
-/* ── HERO ── */
-.hero{
-  position:relative;overflow:hidden;
-  background:var(--dark);
-  padding:7rem 3rem 5rem;
-  min-height:94vh;
-  display:flex;flex-direction:column;justify-content:flex-end;
-}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:55px 55px;pointer-events:none}
-.hero-blob{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(240,90,40,.12) 0%,transparent 70%);right:-150px;top:-100px;pointer-events:none}
-.hero-blob2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(59,59,234,.09) 0%,transparent 70%);left:-80px;bottom:-60px;pointer-events:none}
-.hero-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem}
-.h-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:.6rem}
-.h-tag::before{content:'';width:2rem;height:1px;background:var(--orange)}
-.h-pill{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.1);padding:.28rem .85rem;border-radius:999px}
-.hero-title{font-family:'Playfair Display',serif;font-size:clamp(4.5rem,11vw,10rem);font-weight:900;line-height:.86;letter-spacing:-.04em;color:#fff;margin-bottom:1.5rem}
-.hero-title em{font-style:italic;color:var(--orange)}
-.hero-sub{font-size:clamp(.95rem,1.5vw,1.15rem);font-weight:300;color:rgba(255,255,255,.5);line-height:1.72;max-width:62ch;margin-bottom:4rem}
-.hero-meta{display:flex;gap:0;border-top:1px solid rgba(255,255,255,.07);padding-top:2rem;flex-wrap:wrap}
-.hm-item{flex:1;min-width:160px;padding-right:2rem;border-right:1px solid rgba(255,255,255,.07);margin-right:2rem;margin-bottom:1rem}
-.hm-item:last-child{border-right:none;margin-right:0}
-.hm-l{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:.4rem}
-.hm-v{font-size:.85rem;color:rgba(255,255,255,.65);font-weight:300;line-height:1.4}
-.scroll-cue{position:absolute;right:3rem;bottom:3rem;display:flex;flex-direction:column;align-items:center;gap:.45rem;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.18)}
-@media(prefers-reduced-motion:no-preference){
-  .scroll-cue{animation:bob 2.2s ease-in-out infinite}
-}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+/* ══ SOLUTION FEATURES ══ */
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:4rem}
+.feature:nth-child(even) .feature-media{order:-1}
+.feature-tag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:.8rem}
+.feature-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,2.6vw,2rem);font-weight:600;line-height:1.15;color:var(--ink);margin-bottom:1rem}
+.feature-title em{font-style:italic;color:var(--ultraviolet)}
+.feature-text{font-family:'Lora',serif;font-size:1rem;line-height:1.8;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+.chip{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--plum);background:var(--paper);border:1px solid var(--border);border-radius:999px;padding:.4rem .9rem}
+/* floating-image treatment for screenshots (DESIGN.md Elevation) */
+.shot{border-radius:14px;overflow:hidden;box-shadow:0 12px 36px rgba(30,18,10,.14);background:var(--card-base);aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transform:rotate(-1.5deg);border:1px solid var(--border)}
+.feature:nth-child(even) .shot{transform:rotate(1.5deg)}
+.shot-label{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center;padding:0 1.5rem}
+@media(max-width:860px){.feature{grid-template-columns:1fr;gap:1.75rem}.feature:nth-child(even) .feature-media{order:0}}
 
-/* ── SHARED ── */
-section{padding:5.5rem 3rem}
-.s-white{background:var(--card)}
-.s-alt{background:var(--alt)}
-.s-dark{background:var(--dark)}
-.divider{height:1px;background:var(--border)}
+/* ══ SYSTEMS EMBEDS ══ */
+.embed-block{margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border)}
+.embed-block .method-label{margin-bottom:.6rem}
+.embed-block iframe{border:1px solid var(--border);border-radius:28px;width:100%;height:640px;display:block;margin-top:1.5rem}
+.embed-figlink{position:relative;display:block;margin-top:1.5rem;width:120%;max-width:calc(100vw - 2rem);margin-left:50%;transform:translateX(-50%);border:1px solid var(--border);border-radius:28px;overflow:hidden;background:var(--card-base)}
+@media(max-width:860px){.embed-figlink{width:100%;max-width:100%;margin-left:0;transform:none}}
+.embed-figlink img{width:100%;display:block}
+.open-badge{position:absolute;top:1rem;right:1rem;background:var(--paper);border:1px solid var(--border);color:var(--ultraviolet);font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:.5rem .9rem;border-radius:999px}
+@media(prefers-reduced-motion:no-preference){.embed-figlink,.open-badge{transition:box-shadow .25s var(--ease),background .2s,color .2s}}
+.embed-figlink:hover{box-shadow:0 12px 36px rgba(30,18,10,.14)}
+.embed-figlink:hover .open-badge{background:var(--ultraviolet);color:var(--paper)}
 
-.sec-label{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:.7rem;margin-bottom:1.5rem}
-.sec-label::before{content:'';width:1.75rem;height:1px;background:var(--orange)}
+/* ══ REFLECTION: TWO-COLUMN TEXT (kretha.html layout) ══ */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 4rem;align-items:start;margin-top:1.75rem}
+.two-col .body:first-child{margin-top:0}
+@media(max-width:860px){.two-col{grid-template-columns:1fr;gap:1.5rem}}
 
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.05;margin-bottom:2.5rem;letter-spacing:-.01em}
-.sec-title em{font-style:italic;color:var(--orange)}
-.sec-title-sm{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;line-height:1.1;margin-bottom:1rem}
-.body-t{font-size:var(--fs-body);color:var(--color-body);line-height:var(--lh-body);font-weight:300;max-width:64ch;margin-bottom:1.25rem}
-.body-dk{color:rgba(255,255,255,.85)}
+/* ══ FOOTER ══ */
+.footer{background:var(--cotton-candy)}
+.footer-inner{max-width:1180px;margin:0 auto;padding:44px;display:flex;flex-direction:row;align-items:flex-end;justify-content:space-between}
+.footer-cta{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:var(--ink);display:block;line-height:1.1;margin-bottom:.8rem;text-decoration:none;transition:color .2s}
+.footer-cta:hover{color:var(--ultraviolet)}
+.footer-contact-line{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;color:var(--muted)}
+.footer-contact-line a{color:var(--muted);transition:color .15s}
+.footer-contact-line a:hover{color:var(--ultraviolet)}
+.footer-contact-line .sep{margin:0 .55rem;opacity:.45}
+.footer-copyright{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--muted);text-align:right}
 
-/* ── LAYOUT ── */
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
-.g2-wide{display:grid;grid-template-columns:1.3fr 1fr;gap:5rem;align-items:start}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+@media(max-width:720px){section{padding:4rem 1.5rem}.hero{padding:3.5rem 1.5rem 2rem}.facts{padding:0 1.5rem}.band{padding:3rem 1.5rem}.footer-inner{flex-direction:column;align-items:flex-start;gap:2rem;padding:3.5rem 1.5rem}.footer-copyright{text-align:left}}
 
-/* ── OVERVIEW IMAGE ── */
-.hero-img-wrap{width:100%;border-radius:16px;overflow:hidden;margin-bottom:4rem;aspect-ratio:16/6;position:relative}
-.hero-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
-.hero-img-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(8px);padding:.5rem 1rem;border-radius:999px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-
-/* ── META ROW ── */
-.meta-row{display:flex;flex-wrap:wrap;gap:2rem;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:.5rem 0}
-.meta-item-lgt .lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem;display:block}
-.meta-item-lgt .val{font-size:.87rem;color:var(--ink);font-weight:400;line-height:1.45}
-
-/* ── CALLOUT ── */
-.callout-box{border:2px solid var(--orange);border-radius:16px;padding:2.5rem;position:relative;background:rgba(240,90,40,.025)}
-.callout-tag{position:absolute;top:-12px;left:1.5rem;background:var(--card);padding:0 .75rem;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--orange)}
-.callout-box p{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;line-height:1.65;color:var(--ink)}
-.callout-box-alt .callout-tag{background:var(--alt)}
-
-/* ── CONTEXT CARDS ── */
-.ctx-item{display:flex;gap:1.1rem;align-items:flex-start;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:14px}
-@media(prefers-reduced-motion:no-preference){
-  .ctx-item{transition:border-color .2s,box-shadow .2s}
-}
-.ctx-item:hover{border-color:var(--orange);box-shadow:0 4px 20px rgba(240,90,40,.07)}
-.ctx-dot{width:9px;height:9px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:5px}
-.ctx-text{font-size:.88rem;color:var(--muted);font-weight:300;line-height:1.72}
-
-/* ── PULL QUOTE ── */
-.pq{background:var(--dark);border-radius:16px;padding:3.5rem;position:relative;overflow:hidden}
-.pq::before{content:'\201C';font-family:'Playfair Display',serif;font-size:14rem;line-height:.8;color:rgba(255,255,255,.03);position:absolute;top:-.5rem;left:.5rem;pointer-events:none;font-style:italic}
-.pq blockquote{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.2vw,1.5rem);font-style:italic;color:#fff;line-height:1.5;max-width:54ch;position:relative;z-index:1;margin-bottom:.8rem}
-.pq cite{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);font-style:normal}
-
-/* ── INSIGHT CARDS ── */
-.ic{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.65rem}
-@media(prefers-reduced-motion:no-preference){
-  .ic{transition:transform .2s,box-shadow .2s}
-}
-.ic:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.07)}
-.ic-title{font-weight:500;font-size:.93rem;margin-bottom:.35rem}
-.ic-text{font-size:.82rem;color:var(--muted);font-weight:300;line-height:1.65}
-
-/* ── USER CARDS ── */
-.uc{border:1px solid var(--border);border-radius:16px;padding:2rem;background:var(--card)}
-@media(prefers-reduced-motion:no-preference){
-  .uc{transition:border-color .2s,box-shadow .2s}
-}
-.uc:hover{border-color:var(--orange);box-shadow:0 0 0 3px rgba(240,90,40,.06)}
-.uc-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:.7rem;display:block}
-.uc-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;margin-bottom:.6rem}
-.uc-desc{font-size:.84rem;color:var(--muted);font-weight:300;line-height:1.7}
-
-/* ── PROCESS STEPS ── */
-.process-steps{display:flex;flex-direction:column;gap:0}
-.ps-item{display:flex;gap:2rem;align-items:flex-start;padding:2rem 0;border-bottom:1px solid var(--border)}
-.ps-item:last-child{border-bottom:none}
-.ps-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--orange);line-height:1;min-width:4rem;flex-shrink:0;opacity:.35}
-.ps-title{font-weight:500;font-size:1rem;margin-bottom:.4rem}
-.ps-desc{font-size:.88rem;color:var(--muted);font-weight:300;line-height:1.75}
-
-/* ── LAYER CARDS ── */
-.layer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin:2.5rem 0;border-radius:16px;overflow:hidden}
-.layer-cell{background:var(--card);padding:2.25rem 2rem}
-@media(prefers-reduced-motion:no-preference){
-  .layer-cell{transition:background .2s}
-}
-.layer-cell:hover{background:var(--bg)}
-.layer-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.7rem;display:block}
-.layer-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:900;margin-bottom:.5rem}
-.layer-desc{font-size:.83rem;color:var(--muted);font-weight:300;line-height:1.65}
-
-/* ── FLOW BLOCKS ── */
-.flow-block{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:1.5rem}
-.flow-head{background:var(--dark);padding:1.5rem 2rem;display:flex;align-items:center;gap:1.25rem}
-.flow-n{font-family:'Playfair Display',serif;font-size:2.25rem;font-weight:900;color:var(--orange);line-height:1}
-.flow-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.2rem}
-.flow-name{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;font-weight:900}
-.flow-body{padding:2.25rem 2rem}
-.flow-body p{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.78;margin-bottom:.9rem}
-.flow-body p:last-child{margin-bottom:0}
-.obj-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem;display:block;margin-top:1.25rem}
-.finding-note{background:var(--alt);border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:1rem 1.25rem;margin-top:.75rem;font-size:.85rem;color:var(--ink);line-height:1.65}
-
-/* ── TIMELINE ── */
-.timeline{position:relative;padding-left:2rem;margin:1.5rem 0}
-.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border)}
-.tl-item{position:relative;padding:0 0 2.5rem 2rem}
-.tl-item:last-child{padding-bottom:0}
-.tl-dot{position:absolute;left:-2rem;width:9px;height:9px;background:var(--orange);top:5px;transform:translateX(-4px)}
-.tl-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.3rem}
-.tl-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:900;margin-bottom:.4rem}
-.tl-desc{font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.65;max-width:52ch}
-
-/* ── HIGHLIGHT BAND ── */
-.hl-band{background:var(--orange);padding:4.5rem 3rem;text-align:center}
-.hl-band p{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-style:italic;color:#fff;line-height:1.45;max-width:64ch;margin:0 auto}
-
-/* ── FOOTER ── */
-.site-footer{background:var(--dark);padding:5rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2.5rem;border-top:1px solid rgba(255,255,255,.05)}
-.ft-lead{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;font-weight:900}
-.ft-lead em{font-style:italic;color:var(--orange)}
-.ft-links{display:flex;gap:.75rem;flex-wrap:wrap}
-.fl{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.18);padding:.65rem 1.3rem;border-radius:999px}
-@media(prefers-reduced-motion:no-preference){
-  .fl{transition:all .2s}
-}
-.fl:hover{border-color:var(--orange);color:var(--orange)}
-
-/* ── MOBILE ── */
-@media(max-width:900px){
-  nav{padding:.9rem 1.25rem;margin:.7rem .7rem 0}
-  .hero{padding:4rem 1.5rem 3.5rem;min-height:auto}
-  section{padding:3.5rem 1.5rem}
-  .g2,.g2-wide,.g3,.layer-grid{grid-template-columns:1fr}
-  .hero-meta{gap:1.5rem}
-  .pq{padding:2rem 1.5rem}
-  .hl-band{padding:3rem 1.5rem}
-  .site-footer{padding:3rem 1.5rem;flex-direction:column;align-items:flex-start}
-}
-@media(max-width:560px){
-  .nav-center{display:none}
-  section{padding:2.5rem 1.25rem}
-  .hl-band{padding:2rem 1.25rem}
-  .hero{padding:3rem 1.25rem 2.5rem}
-  .site-footer{padding:2.5rem 1.25rem}
-  .hm-item{min-width:100%;padding-right:0;border-right:none;margin-right:0}
-  .flow-body{padding:1.5rem 1.25rem}
-  .pq{padding:1.75rem 1.25rem}
-  .callout-box{padding:2rem 1.5rem}
-  .layer-cell{padding:1.75rem 1.25rem}
-}
+::selection{background:var(--lavender);color:var(--ink)}
+:focus-visible{outline:2px solid var(--ultraviolet);outline-offset:3px;border-radius:2px}
 </style>
 </head>
 <body>
 
 <div id="progress"></div>
 
-<!-- ══════ NAV ══════ -->
-<nav style="flex-wrap:wrap">
-  <div style="display:flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);">
-    <a href="../work.html" style="color:inherit;text-decoration:none;transition:color .2s;border:none;padding:0;background:none">Work</a>
-    <span style="margin:0 .3rem">/</span>
-    <span style="color:var(--ink);font-weight:500">Krētha</span>
-  </div>
-  <span class="nav-center" onclick="window.location='../index.html'">Swetha Ramachandran</span>
-  <div class="nav-pills">
-    <button class="np np-y" onclick="window.location='../index.html'">Home</button>
-    <button class="np np-l" onclick="window.location='../work.html'">Work</button>
+<!-- ══ NAV ══ -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-crumb"><a href="../work.html">Work</a><span>/</span><span class="cur">Krētha</span></div>
+    <a href="../index.html" class="nav-brand">Swetha Ramachandran</a>
+    <a href="mailto:swetha.ramachandran17@gmail.com" class="nav-cta">Chat with me</a>
   </div>
 </nav>
 
-<!-- ══════ HERO ══════ -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-blob"></div>
-  <div class="hero-blob2"></div>
+<!-- ══ 1. HERO ══ -->
+<header class="hero">
+  <div class="hero-eyebrow" data-sr>B2B Procurement Case Study · Systems Design</div>
+  <h1 class="hero-title" data-sr="1">Krētha</h1>
+  <svg class="hero-squig" viewBox="0 0 250 20" fill="none" aria-hidden="true" data-sr="1">
+    <path d="M4 13 Q36 4 68 13 Q100 22 132 12 Q162 2 196 12 Q218 18 246 11" stroke="var(--ultraviolet)" stroke-width="3" stroke-linecap="round" fill="none"/>
+  </svg>
+  <p class="hero-sub" data-sr="2">A B2B procurement platform that helps retailers, wholesalers, and manufacturers move ordering out of scattered calls, chats, and spreadsheets, into one structured system for coordinated business action.</p>
 
-  <div class="hero-eyebrow sr">
-    <span class="h-tag">Case Study</span>
-    <span class="h-pill">B2B UX · Procurement · Systems Design</span>
+  <div class="hero-img" data-sr="2">
+    <img src="Kr%C4%93tha%20Assets/overview-image.jpg" alt="Workspace and planning materials for the Krētha procurement platform">
   </div>
+  <p class="hero-cap" data-sr="2">B2B procurement platform · active development</p>
+</header>
 
-  <h1 class="hero-title sr d1">Krē<em>tha</em></h1>
-
-  <p class="hero-sub sr d2">
-    A systems-focused B2B procurement platform for retailers, wholesalers, and manufacturers — moving procurement from fragmented calls, chats, and manual ordering into a structured environment for coordinated business action.
-  </p>
-
-  <div class="hero-meta sr d3">
-    <div class="hm-item">
-      <div class="hm-l">Project Type</div>
-      <div class="hm-v">UX strategy, systems design, and implementation support for an ongoing B2B platform.</div>
+<!-- ══ 2. QUICK FACTS ══ -->
+<div class="facts">
+  <div class="facts-grid" data-sr>
+    <div class="fact">
+      <div class="fact-l">Role</div>
+      <div class="fact-v">UI/UX Designer: UX strategy, systems design &amp; implementation support · iMedhas Consultancy Services</div>
     </div>
-    <div class="hm-item">
-      <div class="hm-l">Team</div>
-      <div class="hm-v">Collaborative project with developers and business stakeholders throughout live development.</div>
+    <div class="fact">
+      <div class="fact-l">Platform</div>
+      <div class="fact-v">B2B procurement platform (web) for retailers, wholesalers &amp; manufacturers</div>
     </div>
-    <div class="hm-item">
-      <div class="hm-l">Focus</div>
-      <div class="hm-v">Order flow, purchase lists, subscription models, organisation structure, and design system.</div>
+    <div class="fact">
+      <div class="fact-l">Stakeholders</div>
+      <div class="fact-v">Developers &amp; business stakeholders, working in parallel with live development</div>
     </div>
-    <div class="hm-item">
-      <div class="hm-l">Principle</div>
-      <div class="hm-v">Design for operational complexity — handle exceptions, support repeat behaviour, and scale with the business.</div>
-    </div>
-  </div>
-
-  <div class="scroll-cue">
-    <svg width="18" height="24" viewBox="0 0 18 24" fill="none"><rect x="1" y="1" width="16" height="22" rx="8" stroke="white" stroke-width="1.5"/><circle cx="9" cy="8" r="2" fill="white"/></svg>
-    scroll
-  </div>
-</section>
-
-<!-- ══════ OVERVIEW ══════ -->
-<section class="s-white" id="overview">
-  <div class="hero-img-wrap sr">
-    <img src="overview-image.jpg" alt="Workspace and planning materials">
-    <span class="hero-img-badge">B2B Procurement Platform · Active Development</span>
-  </div>
-
-  <!-- 2-col meta strip -->
-  <div class="sr" style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:3.5rem">
-    <div style="padding:1.25rem 2rem 1.25rem 0;border-right:1px solid var(--border)">
-      <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.35rem">Project Type</span>
-      <span style="font-size:.87rem;color:var(--ink);font-weight:400;line-height:1.45">UX strategy, systems design, and implementation support for an ongoing B2B platform</span>
-    </div>
-    <div style="padding:1.25rem 0 1.25rem 2rem">
-      <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.35rem">Focus Areas</span>
-      <span style="font-size:.87rem;color:var(--ink);font-weight:400;line-height:1.45">Order flow, purchase lists, subscription models, organisation structure, and design system</span>
+    <div class="fact">
+      <div class="fact-l">Timeline</div>
+      <div class="fact-v">Nov 2023 to present · active, ongoing product</div>
     </div>
   </div>
-
-  <div class="sec-label sr">Platform Overview</div>
-  <h2 class="sec-title sr d1">Between informal tools and <em>enterprise complexity</em></h2>
-
-  <div class="g2" style="margin-top:1.5rem">
-    <div>
-      <p class="body-t sr d2">Krētha is an ongoing B2B retail procurement platform designed to bring retailers, wholesalers, and manufacturers into one connected operational system — instead of leaving procurement scattered across calls, chats, spreadsheets, and memory.</p>
-      <p class="body-t sr d3">At its core, the product responds to a practical business reality: small and mid-sized businesses often manage high-volume purchasing through fragmented workflows that were never built for visibility, accountability, or scale. Orders are discussed in one place, tracked in another, adjusted informally, and remembered manually. Over time, that creates friction across the entire procurement cycle.</p>
-    </div>
-    <div>
-      <p class="body-t sr d2">Krētha was shaped as a product that sits between two extremes. On one side are informal tools like WhatsApp and spreadsheets, which are familiar but structurally weak. On the other are heavyweight ERP and CRM systems, which can be too complex, expensive, or rigid for smaller businesses. The opportunity was to design something more structured than the first, but much lighter and more accessible than the second.</p>
-      <p class="body-t sr d3">India's B2B online marketplace is expected to become a US$200 billion opportunity by 2030, supported by broader digital adoption, stronger infrastructure, and policy support around e-commerce and digital business systems. That broader shift created the right conditions for procurement tools that are operationally useful, mobile-friendly, and designed for the way smaller businesses actually work.<span style="display:block;margin-top:.6rem;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--muted)">Source: <a href="https://www.ibef.org/industry/ecommerce" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">IBEF — India E-commerce Industry Overview</a></span></p>
-    </div>
-  </div>
-
-  <div class="callout-box sr" style="margin-top:2rem">
-    <span class="callout-tag">Design Position</span>
-    <p>More structured than informal tools. Much lighter than enterprise software. Built for the way smaller businesses actually work.</p>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════ THE PROBLEM ══════ -->
-<section class="s-alt" id="problem">
-  <div class="sec-label sr">The Problem Space</div>
-
-  <div class="g2" style="margin-top:1.5rem;align-items:stretch">
-
-    <div style="display:flex;flex-direction:column">
-      <h2 class="sec-title sr">Procurement here is rarely<br> <em>a single-screen task</em></h2>
-      <p class="body-t sr d1">Retailers often need to compare suppliers, repeat known purchases, coordinate with staff, edit quantities, confirm changes, and keep operational continuity even when stock decisions are distributed across people and time. For many retailers, placing an order means comparing suppliers, checking stock rhythm, adjusting quantities, coordinating with internal staff, confirming changes, and making sure the final order still reflects business reality.</p>
-
-      <div class="callout-box callout-box-alt sr d2" style="margin-top:1.5rem">
-        <span class="callout-tag">Design framing</span>
-        <p>Fragmentation is not the absence of a tool — it is what happens when each part of the process uses a different one, with no shared record of what was agreed.</p>
-      </div>
-    </div>
-
-    <div>
-      <h3 class="sec-title-sm sr">Three core challenges</h3>
-      <div class="process-steps sr d1" style="margin-top:1.25rem">
-        <div class="ps-item">
-          <div class="ps-num">01</div>
-          <div class="ps-content">
-            <div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:900;margin-bottom:.5rem">Fragmented, multi-channel coordination</div>
-            <p class="ps-desc">When that process happens through messaging threads, calls, spreadsheets, and memory, the result is slower ordering, avoidable errors, poor visibility, and weak auditability.</p>
-          </div>
-        </div>
-        <div class="ps-item">
-          <div class="ps-num">02</div>
-          <div class="ps-content">
-            <div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:900;margin-bottom:.5rem">Repetition without infrastructure</div>
-            <p class="ps-desc">Retailers rarely buy in isolated moments. They reorder familiar products in recurring cycles shaped by seasonality, storage limits, sales velocity, cash flow, and supplier availability. Without a system that supports repeat purchasing well, every order starts to feel like it is being rebuilt from scratch — increasing cognitive load and making procurement harder to manage across multiple people or locations.</p>
-          </div>
-        </div>
-        <div class="ps-item">
-          <div class="ps-num">03</div>
-          <div class="ps-content">
-            <div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:900;margin-bottom:.5rem">Organisational complexity at small scale</div>
-            <p class="ps-desc">B2B procurement is not just a buyer action; it is an organisational process. Accounts need to represent businesses, not only individuals. That introduces questions around roles, permissions, pricing, collaboration, approvals, and accountability. The design challenge was to support that complexity without overwhelming smaller operators who still need speed, clarity, and affordability.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════ RESEARCH & DISCOVERY ══════ -->
-<section class="s-white">
-  <div class="sec-label sr">Research & Discovery</div>
-  <h2 class="sec-title sr d1">Operational behaviour over <em>abstract personas</em></h2>
-
-  <div class="g2" style="margin-top:1.5rem">
-    <div>
-      <p class="body-t sr d2">The discovery phase focused less on abstract personas and more on operational behavior. The central question was not simply what interface should come next, but how procurement actually happens inside working businesses and where the current process starts to break down.</p>
-      <p class="body-t sr d3">That shift changed the nature of the research. Instead of focusing primarily on isolated user preferences, the work centered on workflows, dependencies, recurring actions, accountability, exception handling, and the relationship between procurement and broader business operations. The goal was to understand how inventory planning, supplier coordination, repeat ordering, and internal collaboration connect in real life.</p>
-      <p class="body-t sr d3">The market context reinforced the relevance of this problem. India's B2B online marketplace is projected to reach US$200 billion by 2030, supported by digital infrastructure growth and broader e-commerce momentum. At the same time, adoption among MSMEs still depends on products being simple, trustworthy, and practical rather than enterprise-heavy. That made it clear that Krētha should not imitate complex enterprise systems. It needed to fit naturally into the operating patterns of smaller businesses.
-        <span style="display:block;margin-top:.6rem;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--muted)">Source: <a href="https://www.ibef.org/industry/ecommerce" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">IBEF — India E-commerce Industry Overview</a></span>
-      </p>
-    </div>
-    <div>
-      <p class="body-t sr d2">The available product documentation reinforced the same structural assumptions. Krētha was explicitly designed for retailers, wholesalers, and manufacturers, which confirmed that the platform needed to support multiple business actors rather than a simple buyer-seller interaction model. The documentation also pointed to business accounts, organization details, and platform-based information sharing, validating the need for role-aware workflows and organization-level structures rather than consumer-style assumptions.</p>
-      <p class="body-t sr d3">This phase produced workflow maps, role relationships, and decision paths for key procurement events such as draft order creation, supplier review, changes, confirmations, and post-order follow-up. It also surfaced practical constraints that would directly shape the design quality of the MVP, including backend dependencies, phased development, permission complexity, and the need to keep the early product understandable without compromising its long-term integrity.</p>
-    </div>
-  </div>
-
-  <div class="g3 sr d1" style="margin-top:2.5rem">
-    <div class="uc">
-      <span class="uc-tag">Finding 01</span>
-      <div class="uc-title">Procurement is collaborative</div>
-      <p class="uc-desc">Even when one person appears to place the order, decisions are often distributed across people and time — the platform needed to support that coordination, not assume a single decision-maker.</p>
-    </div>
-    <div class="uc">
-      <span class="uc-tag">Finding 02</span>
-      <div class="uc-title">Repeat ordering is critical</div>
-      <p class="uc-desc">Reordering familiar SKUs in cycles is one of the strongest behavioural patterns in retail. It deserves first-class feature design, not an afterthought — because it directly affects operational efficiency.</p>
-    </div>
-    <div class="uc">
-      <span class="uc-tag">Finding 03</span>
-      <div class="uc-title">Business users need control</div>
-      <p class="uc-desc">Speed matters for high-volume ordering, but only when it does not remove reviewability, auditability, or the ability to handle exceptions and incomplete states gracefully.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════ TARGET AUDIENCE ══════ -->
-<section class="s-alt" id="audience">
-  <div class="sec-label sr">Target Audience</div>
-  <h2 class="sec-title sr d1">Designing for retailers, suppliers, and <em>the networks around them</em></h2>
-  <p class="body-t sr d2">The platform needed to serve both sides of procurement while respecting the behaviours already common among small business users. Rather than designing for a single actor, Krētha had to accommodate distinct operational needs across the full supply network — from the kirana shop placing a weekly order to the regional distributor managing dozens of incoming purchase requests.</p>
-
-  <div class="g3 sr d1" style="margin-top:2.5rem">
-    <div class="uc">
-      <span class="uc-tag">Primary</span>
-      <div class="uc-title">Retailers</div>
-      <p class="uc-desc">Kirana shops, specialty stores, pharmacies, and apparel sellers that need simple order placement, supplier discovery, repeat purchasing, and transaction history — without a steep learning curve or high monthly costs.</p>
-    </div>
-    <div class="uc">
-      <span class="uc-tag">Primary</span>
-      <div class="uc-title">Suppliers & Distributors</div>
-      <p class="uc-desc">Regional wholesalers and FMCG distributors managing fragmented orders from multiple small retail clients, who need centralised order intake, clearer fulfilment visibility, and consistent communication.</p>
-    </div>
-    <div class="uc">
-      <span class="uc-tag">Secondary</span>
-      <div class="uc-title">Agents & Networks</div>
-      <p class="uc-desc">Agents, brokers, and SME associations that can facilitate platform adoption and support digital procurement at scale across their networks — acting as trusted intermediaries.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════ MY ROLE ══════ -->
-<section class="s-white" id="role">
-  <div class="g2-wide">
-    <div>
-      <div class="sec-label sr">My Role</div>
-      <h2 class="sec-title sr d1">Product thinking, systems design, and <em>live implementation support</em></h2>
-      <p class="body-t sr d2">The work on Krētha extended beyond interface design into product thinking, systems design, and implementation support. The role included UX strategy, workflow definition, interaction design, information architecture, edge-case planning, and translating operational requirements into product flows that could be built iteratively in a live environment.</p>
-      <p class="body-t sr d3">This was not a project where design happened in isolation and then moved downstream. Decisions were shaped through continuous collaboration with developers and business stakeholders. Feasibility, sequencing, backend constraints, permission logic, and phased rollout all influenced the way features were structured and prioritized.</p>
-    </div>
-    <div class="sr d2">
-      <h3 class="sec-title-sm" style="margin-bottom:1.25rem">Core ownership</h3>
-      <div class="process-steps">
-        <div class="ps-item">
-          <div class="ps-num">01</div>
-          <div class="ps-content"><div class="ps-title">Workflow mapping & architecture</div><p class="ps-desc">Mapping procurement workflows across retailer, supplier, and organisation contexts; defining and iterating the order flow, purchase lists, and organisation structures.</p></div>
-        </div>
-        <div class="ps-item">
-          <div class="ps-num">02</div>
-          <div class="ps-content"><div class="ps-title">Interaction design for scale</div><p class="ps-desc">Designing patterns that reduce friction for large-volume ordering — bulk actions, fast quantity controls, predictable review states, and role-based approval logic.</p></div>
-        </div>
-        <div class="ps-item">
-          <div class="ps-num">03</div>
-          <div class="ps-content"><div class="ps-title">Reusable systems & scalability</div><p class="ps-desc">Building reusable components and decision patterns that support future features without redesigning the platform from scratch — keeping the system coherent as scope expanded.</p></div>
-        </div>
-        <div class="ps-item">
-          <div class="ps-num">04</div>
-          <div class="ps-content"><div class="ps-title">Developer-informed iteration</div><p class="ps-desc">Validating flows against implementation realities, revisiting decisions once build exposed friction, and treating developers as product collaborators rather than downstream executors.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════ SYSTEMS THINKING & IA ══════ -->
-<section class="s-alt">
-  <div class="sec-label sr">Systems Thinking & Information Architecture</div>
-  <h2 class="sec-title sr d1">The platform had to behave like <em>a connected system</em>, not a menu of tools</h2>
-  <div class="g2" style="margin-top:1.5rem;align-items:start">
-    <div>
-      <p class="body-t sr d2">One of the most important realizations in the project was that Krētha could not be treated as a collection of isolated features. Order placement, purchase history, saved lists, account roles, subscriptions, and supplier interaction all influence one another. The information architecture therefore had to function as a connected system rather than a menu of independent tools.</p>
-      <p class="body-t sr d3" style="margin-top:1.5rem">This systems view changed the way product decisions were made. An order was no longer treated as a simple transaction record, but as part of a larger lifecycle involving procurement intent, internal coordination, supplier response, revisions, and fulfillment visibility. In the same way, a purchase list was not just a saved cart. It became a planning object connected to recurring buying behavior, stock management, and business efficiency.</p>
-      <p class="body-t sr d3" style="margin-top:1rem">The navigation and hierarchy were shaped by the same logic. The design needed to make relationships clear: who belongs to which organization, who is allowed to prepare or approve an order, which lists are personal or shared, what each subscription tier unlocks, and how order states change based on business logic. Clarity in these relationships became as important as visual simplicity.</p>
-    </div>
-    <div class="sr d1" style="display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:16px;overflow:hidden">
-      <div class="layer-cell">
-        <span class="layer-tag">Layer 01</span>
-        <div class="layer-title">Business Entities</div>
-        <p class="layer-desc">Retailers, wholesalers, and manufacturers interact on the platform as distinct business actors — each with different ordering behaviours, data needs, and operational responsibilities.</p>
-      </div>
-      <div class="layer-cell">
-        <span class="layer-tag">Layer 02</span>
-        <div class="layer-title">Organisational Structure</div>
-        <p class="layer-desc">Accounts are tied to organisation details, multi-user access, and role-specific permissions. The system had to support real business identity — not just individual users — from early in the architecture.</p>
-      </div>
-      <div class="layer-cell">
-        <span class="layer-tag">Layer 03</span>
-        <div class="layer-title">Operational Workflows</div>
-        <p class="layer-desc">Browsing, ordering, editing, approving, fulfilling, and repeating purchases form a lifecycle — not a series of isolated screens. Design decisions had to hold across the full arc of a procurement event.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="sr" style="margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border)">
-    <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:.85rem;font-weight:500">Service Blueprint — FigJam</span>
-    <p class="body-t" style="margin-bottom:2rem;max-width:72ch">The service blueprint maps the end-to-end procurement journey across three swim lanes: the retailer's visible actions, the platform's frontstage responses, and the backstage processes that support them. It traces how a procurement event moves from intent through supplier interaction, internal coordination, order confirmation, and fulfilment — making the dependencies between user actions and system behaviour explicit.</p>
-    <iframe style="border:1px solid var(--border);border-radius:16px;width:100%;height:800px;display:block" src="https://embed.figma.com/board/hoFypYgZl0GxD9iKI6apUd/Customer-Service-Blueprint?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-  </div>
-
-  <div class="sr" style="margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border)">
-    <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:.85rem;font-weight:500">Product Flowchart — FigJam</span>
-    <p class="body-t" style="margin-bottom:2rem;max-width:72ch">The product flowchart defines the end-to-end information architecture of the application. It maps how the platform's core objects — accounts, organisations, orders, purchase lists, and subscriptions — are structured and connected, and how users navigate between them based on their role and permission level.</p>
-    <iframe style="border:1px solid var(--border);border-radius:16px;width:100%;height:800px;display:block" src="https://embed.figma.com/board/0waIfP1SuceBhxs1WcjJYF/Untitled?node-id=0-28&embed-host=share" allowfullscreen></iframe>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════ CORE FLOWS ══════ -->
-<section class="s-white" id="flows">
-  <div class="sec-label sr">Designing the Core Flows</div>
-  <h2 class="sec-title sr d1">Three systems that <em>define the platform</em></h2>
-  <p class="body-t sr d2">These are the primary procurement systems designed — each reflecting a distinct aspect of how businesses buy, plan, and coordinate within a structured operational environment. Each flow had to support both the ideal path and the realistic exceptions that define live operational work.</p>
-
-  <!-- Flow 1: Order Flow -->
-  <div class="flow-block sr d1">
-    <div class="flow-head">
-      <div class="flow-n">01</div>
-      <div><div class="flow-tag">Core Flow</div><div class="flow-name">Order Flow</div></div>
-    </div>
-    <div class="flow-body">
-
-      <div style="margin-bottom:2rem">
-        <p>The order flow became the most important systems problem in the product. In consumer commerce, checkout is often designed around compression and speed. In Krētha, speed still mattered, but it had to coexist with reviewability, supplier coordination, order accuracy, and the ability to manage operational exceptions without undermining trust.</p>
-        <p>The experience evolved around a multi-step procurement journey rather than a single compressed checkout. A key design question was how much information should be visible upfront and how much should be progressively disclosed. Too much information created fatigue, especially for high-volume orders. Too little information hid the implications of supplier dependency, edits, and fulfillment conditions.</p>
-      </div>
-
-      <div class="g2" style="margin-bottom:2rem;gap:1rem">
-        <div style="border:1px dashed var(--border);border-radius:12px;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:var(--bg)">
-          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Wireframe 01</span>
-          <span style="font-size:.78rem;color:var(--muted);font-weight:300">Order entry &amp; line items</span>
-        </div>
-        <div style="border:1px dashed var(--border);border-radius:12px;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:var(--bg)">
-          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Wireframe 02</span>
-          <span style="font-size:.78rem;color:var(--muted);font-weight:300">Review &amp; submission</span>
-        </div>
-      </div>
-
-      <p style="margin-bottom:2rem">The final direction prioritized a structured sequence: build the order through clear line items and quantity controls, preserve visibility into supplier and business context, support review before submission, create room for edits or approval logic, and keep fulfillment status understandable after the order is placed.</p>
-
-      <div style="margin-bottom:2rem">
-        <p>A major design priority was reducing friction without oversimplifying the process. Procurement tasks are often repetitive and cognitively heavy, so the interface needed bulk actions, fast quantity changes, and predictable review states. But it also needed to respect the reality that B2B orders are often subject to confirmation, revision, and controlled change management rather than instant final submission.</p>
-        <p>Edge cases were especially important here. Draft orders, supplier-side changes, partially edited orders, role-restricted approvals, and users who can prepare but not finalize an order all shaped the flow. Designing for those cases made the product feel credible inside a real operating environment rather than merely polished in a static prototype.</p>
-      </div>
-
-      <div style="border:1px dashed var(--border);border-radius:12px;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:var(--bg)">
-        <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Flowchart</span>
-        <span style="font-size:.78rem;color:var(--muted);font-weight:300">Order flow — end-to-end states &amp; transitions</span>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Flow 2: Purchase Lists -->
-  <div class="flow-block sr">
-    
-    <div class="flow-head">
-      <div class="flow-n">02</div>
-      <div><div class="flow-tag">Core Flow</div><div class="flow-name">Purchase Lists</div></div>
-    </div>
-    <div class="flow-body">
-
-      <div style="margin-bottom:2rem">
-        <p>Purchase Lists emerged from one of the clearest behavioral patterns in the research: repeat ordering is central to retail procurement. Retailers often buy the same products repeatedly, but timing, quantity, and supplier choice change based on stock, sales, and cash position. Reconstructing those orders manually every time is inefficient and unnecessary.</p>
-        <p>The feature was therefore designed as an operational shortcut rather than a convenience add-on. Its purpose was to reduce repeat effort, support bulk buying behavior, and help users initiate routine procurement with fewer clicks and less dependence on memory.</p>
-      </div>
-
-      <div style="margin-bottom:2rem">
-        <p>Several decisions shaped the feature. Lists were treated as reusable procurement assets rather than temporary carts. Naming and organizing lists needed to reflect real business behavior, whether by supplier, category, or seasonal need. Bulk selection and list-to-order transitions had to be easy, while still allowing users to adapt saved patterns to current inventory needs.</p>
-        <p>This also introduced a planning dimension. A list should support speed, but it should not imply that procurement is static. Quantities change, availability changes, and business priorities change. That made Purchase Lists a bridge between planning and execution rather than just a faster path to checkout.</p>
-      </div>
-
-      <div style="border:1px dashed var(--border);border-radius:12px;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:var(--bg);margin-bottom:2rem">
-        <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Flowchart</span>
-        <span style="font-size:.78rem;color:var(--muted);font-weight:300">Purchase list — states &amp; transitions</span>
-      </div>
-
-      <div class="g2" style="margin-bottom:2rem;gap:1rem">
-        <div style="border:1px dashed var(--border);border-radius:12px;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:var(--bg)">
-          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Wireframe 01</span>
-          <span style="font-size:.78rem;color:var(--muted);font-weight:300">List creation &amp; management</span>
-        </div>
-        <div style="border:1px dashed var(--border);border-radius:12px;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:var(--bg)">
-          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Wireframe 02</span>
-          <span style="font-size:.78rem;color:var(--muted);font-weight:300">List-to-order transition</span>
-        </div>
-      </div>
-
-      <span class="obj-tag">Design decisions</span>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:12px;overflow:hidden;margin:.75rem 0 2rem">
-        <div style="background:var(--bg);padding:1.5rem 1.25rem">
-          <div style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:900;margin-bottom:.5rem;color:var(--ink)">Reusable assets, not carts</div>
-          <p style="font-size:.81rem;color:var(--muted);font-weight:300;line-height:1.65;margin:0">Lists are persistent procurement objects — not temporary selections. They can be named, organised by category or supplier, and maintained across purchasing cycles.</p>
-        </div>
-        <div style="background:var(--bg);padding:1.5rem 1.25rem">
-          <div style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:900;margin-bottom:.5rem;color:var(--ink)">Bulk selection and fast transitions</div>
-          <p style="font-size:.81rem;color:var(--muted);font-weight:300;line-height:1.65;margin:0">Users can select items in bulk and convert a list to an order with minimal rework — reducing the gap between planning intent and procurement action.</p>
-        </div>
-        <div style="background:var(--bg);padding:1.5rem 1.25rem">
-          <div style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:900;margin-bottom:.5rem;color:var(--ink)">Flexible for live inventory</div>
-          <p style="font-size:.81rem;color:var(--muted);font-weight:300;line-height:1.65;margin:0">Lists adapt to live conditions: quantities can be adjusted, items can be swapped, and the structure leaves room for the inventory realities that repeat ordering must accommodate.</p>
-        </div>
-        <div style="background:var(--bg);padding:1.5rem 1.25rem">
-          <div style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:900;margin-bottom:.5rem;color:var(--ink)">Supports planning, not just execution</div>
-          <p style="font-size:.81rem;color:var(--muted);font-weight:300;line-height:1.65;margin:0">Because lists persist over time, they carry planning context — seasonal patterns, supplier preferences, stock cycles — making them useful reference points beyond the immediate order.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Flow 3: Subscription & Organisation Structure -->
-  <div class="flow-block sr">
-    <div class="flow-head">
-      <div class="flow-n">03</div>
-      <div><div class="flow-tag">Core Flow</div><div class="flow-name">Subscription & Organisation Structure</div></div>
-    </div>
-    <div class="flow-body">
-
-      <div style="margin-bottom:2rem">
-        <p>Subscription and organization design introduced another layer of complexity because business model logic had to coexist with usability. Krētha was not being designed for single operators alone. The documentation showed that accounts included organization details and that the platform facilitated information exchange across multiple business actor types, making it necessary to think early about permissions, scale, and multi-user structures.</p>
-        <p>The challenge was to create a structure that could support growth without making smaller businesses feel administratively burdened or priced out. That led to a tiered way of thinking: lightweight access for smaller teams, clearer value as organizations expand, and role-based capabilities that match real business responsibilities.</p>
-      </div>
-
-      <p style="margin-bottom:2rem">This area required especially close alignment between UX, business strategy, and engineering. Interface decisions such as who can invite team members, how shared information behaves, and what each plan unlocks have downstream implications for backend models, access control, support complexity, and long-term scalability.</p>
-
-      <div style="border:1px dashed var(--border);border-radius:12px;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:var(--bg);margin-bottom:2rem">
-        <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Flowchart</span>
-        <span style="font-size:.78rem;color:var(--muted);font-weight:300">Subscription tiers &amp; permission structure</span>
-      </div>
-
-      <div style="border:1px dashed var(--border);border-radius:12px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:var(--bg);margin-bottom:2rem">
-        <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Wireframe</span>
-        <span style="font-size:.78rem;color:var(--muted);font-weight:300">Organisation setup &amp; role management</span>
-      </div>
-
-      <span class="obj-tag">Design considerations</span>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:12px;overflow:hidden;margin:.75rem 0">
-        <div style="background:var(--bg);padding:1.5rem 1.25rem">
-          <div style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:900;margin-bottom:.5rem;color:var(--ink)">Accounts reflect real business identity</div>
-          <p style="font-size:.81rem;color:var(--muted);font-weight:300;line-height:1.65;margin:0">Account creation establishes an organisational context from the start — not just an individual profile. This shapes how access, data sharing, and platform behaviour work across the whole team.</p>
-        </div>
-        <div style="background:var(--bg);padding:1.5rem 1.25rem">
-          <div style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:900;margin-bottom:.5rem;color:var(--ink)">Access follows responsibility</div>
-          <p style="font-size:.81rem;color:var(--muted);font-weight:300;line-height:1.65;margin:0">Roles for order preparation, approval, and administration mean users have the access their work requires — without every team member needing to manage functions that belong elsewhere.</p>
-        </div>
-        <div style="background:var(--bg);padding:1.5rem 1.25rem">
-          <div style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:900;margin-bottom:.5rem;color:var(--ink)">Tiers grow with the organisation</div>
-          <p style="font-size:.81rem;color:var(--muted);font-weight:300;line-height:1.65;margin:0">Subscription tiers were designed to expand naturally — lightweight for smaller teams getting started, with more coordination and administration capabilities becoming available as the business scales.</p>
-        </div>
-        <div style="background:var(--bg);padding:1.5rem 1.25rem">
-          <div style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:900;margin-bottom:.5rem;color:var(--ink)">Coordination without confusion</div>
-          <p style="font-size:.81rem;color:var(--muted);font-weight:300;line-height:1.65;margin:0">Multi-user access patterns needed to make clear what is personal versus shared, who can bring in teammates, and how organisation-wide data behaves — enabling collaboration without removing accountability.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══════ HIGHLIGHT BAND ══════ -->
-<div class="hl-band sr">
-  <p>"A major design priority was reducing friction without oversimplifying. Large procurement tasks are often repetitive and cognitively heavy — the interface needed bulk actions, fast quantity modification, and predictable review states. At the same time, the system needed to respect that B2B orders may require confirmation, revision, or controlled change management."</p>
 </div>
 
-<!-- ══════ HOW THE WORK HAPPENED ══════ -->
-<section class="s-alt">
-  <div class="g2-wide" style="align-items:stretch">
-    <div>
-      <div class="sec-label sr">How the Work Happened</div>
-      <h2 class="sec-title sr d1">Designing in parallel, <em>not ahead</em></h2>
-      <p class="body-t sr d2">A defining part of the project was designing in parallel with development rather than handing off completed concepts in isolation. Because Krētha is a live product, the work naturally involved trade-offs between ideal user flows and practical implementation sequencing.</p>
-      <p class="body-t sr d3">That collaboration influenced the product in several ways. Feasibility checks helped validate whether interaction patterns matched the available data models and timelines. Constraint-based iteration helped simplify or restructure flows when dependencies or states were not yet practical to build. Clear documentation of behaviors, conditions, and edge cases reduced ambiguity during implementation. As features moved into development, new friction points also created opportunities to refine not just the interface, but the product model itself.</p>
-      <p class="body-t sr d3" style="margin-top:1rem">This was especially important in areas such as order-state handling, role restrictions, and organization-based permissions, where UX decisions and system architecture are tightly connected. Treating developers as product collaborators rather than downstream executors improved the quality and realism of the work.</p>
-      <p class="body-t sr d3" style="margin-top:1rem">It also made the project more honest. Instead of presenting design as a polished final artifact, Krētha reflects the actual nature of product work: proposing, testing, adapting, negotiating constraints, and improving the system through iteration.</p>
+<!-- ══ 3. BRIEF + OVERVIEW ══ -->
+<section>
+  <div class="eyebrow" data-sr>What is Krētha?</div>
+  <h2 class="q-title" data-sr>A product that sits between informal tools and <em>enterprise complexity</em></h2>
+  <p class="body" data-sr="1">Krētha is an ongoing B2B retail procurement platform. It brings retailers, wholesalers, and manufacturers into one connected operational system instead of leaving purchasing scattered across WhatsApp, spreadsheets, phone calls, and memory. My role has been UX strategy, systems design, and implementation support, working directly with developers and business stakeholders as the product is built.</p>
+  <p class="body" data-sr="1">The design opportunity was a gap in the middle: informal tools are familiar but structurally weak, while ERP and CRM systems are too heavy, expensive, and rigid for smaller businesses. Krētha aims to be <strong>more structured than the first, and much lighter than the second</strong>, built for how small and mid-sized businesses actually work.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ 3b. TARGET AUDIENCE ══ -->
+<section>
+  <div class="eyebrow" data-sr>Who is this for?</div>
+  <h2 class="q-title" data-sr>Designing for the network around the order, <em>not just the order</em></h2>
+  <p class="body" data-sr="1">Krētha serves a full supply network rather than a single actor, so the design had to hold several roles at once, each with different needs, incentives, and levels of technical comfort.</p>
+
+  <div class="cards3">
+    <div class="card tinted" style="--tint:var(--nectar)" data-sr="1">
+      <span class="card-tag">Primary audience</span>
+      <div class="card-title">Retailers</div>
+      <p class="card-text">Kirana shops, specialty stores, pharmacies, and apparel sellers who need simple order placement, supplier discovery, repeat purchasing, and transaction history, without a steep learning curve or high cost.</p>
     </div>
-    <div class="sr d2" style="display:flex;flex-direction:column">
-      <div class="timeline" style="flex:1;display:flex;flex-direction:column;justify-content:space-between">
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-label">Principle</div>
-          <div class="tl-title">Feasibility alignment</div>
-          <p class="tl-desc">Checking early whether an interaction idea was grounded in available data structures and timelines meant fewer false starts — and helped the team commit to directions that were buildable, not just desirable.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-label">Principle</div>
-          <div class="tl-title">Constraint-based iteration</div>
-          <p class="tl-desc">When certain states, rules, or backend dependencies were not yet practical to build, constraints became a design tool rather than a blocker — sharpening what the flow actually needed to be rather than weakening the process.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-label">Principle</div>
-          <div class="tl-title">Handoff clarity</div>
-          <p class="tl-desc">Documenting behaviors, conditions, and edge cases with enough specificity meant implementation stayed close to intent — and when friction surfaced during build, it opened up conversations about improving the product model, not just the interface.</p>
-        </div>
+    <div class="card tinted" style="--tint:var(--ice-blue)" data-sr="2">
+      <span class="card-tag">Primary audience</span>
+      <div class="card-title">Suppliers &amp; Distributors</div>
+      <p class="card-text">Regional wholesalers and FMCG distributors managing fragmented orders from multiple retail clients, who need centralised order intake and visible fulfilment status.</p>
+    </div>
+    <div class="card tinted" style="--tint:var(--lavender)" data-sr="3">
+      <span class="card-tag">Secondary audience</span>
+      <div class="card-title">Agents &amp; Networks</div>
+      <p class="card-text">Agents, brokers, and SME associations who facilitate platform adoption as trusted intermediaries, bringing retailers and suppliers onto the platform.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ 3c. MY ROLE ══ -->
+<section>
+  <div class="eyebrow" data-sr>What was my role, exactly?</div>
+  <h2 class="q-title" data-sr>Product thinking, systems design, and <em>live implementation support</em></h2>
+  <p class="body" data-sr="1">I worked continuously with developers and business stakeholders as the product was built, rather than designing in isolation and handing off a finished spec.</p>
+
+  <div class="role-grid">
+    <div class="role-item" data-sr="1">
+      <div class="role-num">01</div>
+      <div class="role-title">Workflow mapping &amp; architecture</div>
+      <p class="role-text">Mapping procurement workflows across retailer, supplier, and organisation contexts; defining the order flow, purchase lists, and organisation structures.</p>
+    </div>
+    <div class="role-item" data-sr="1">
+      <div class="role-num">02</div>
+      <div class="role-title">Interaction design for scale</div>
+      <p class="role-text">Bulk actions, fast quantity controls, predictable review states, and role-based approval logic built to hold up under high-volume ordering.</p>
+    </div>
+    <div class="role-item" data-sr="2">
+      <div class="role-num">03</div>
+      <div class="role-title">Reusable systems &amp; scalability</div>
+      <p class="role-text">Reusable components and decision patterns that support future features without forcing a full redesign each time the product grows.</p>
+    </div>
+    <div class="role-item" data-sr="2">
+      <div class="role-num">04</div>
+      <div class="role-title">Developer-informed iteration</div>
+      <p class="role-text">Validating flows against implementation reality, revisiting decisions once the build exposed friction the mocks couldn't surface.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ 4. PROBLEM DISCOVERY ══ -->
+<section>
+  <div class="eyebrow" data-sr>What problem am I solving?</div>
+  <p class="statement" data-sr="1">Procurement here is rarely a single-screen task. It's scattered across people, channels, and time, with <em>no shared record of what was agreed.</em></p>
+  <p class="body" data-sr="1">For many retailers, placing an order means comparing suppliers, checking stock rhythm, adjusting quantities, coordinating with staff, confirming changes, and making sure the final order still reflects business reality. When that happens across messaging threads, calls, spreadsheets, and memory, the result is slower ordering, avoidable errors, and weak visibility.</p>
+
+  <div class="stack">
+    <div class="stack-row" data-sr="1">
+      <div class="stack-num">01</div>
+      <div>
+        <div class="stack-title">Fragmented, multi-channel coordination</div>
+        <p class="stack-text">Ordering spread across chats, calls, and spreadsheets means slower turnaround, avoidable errors, poor visibility, and weak auditability.</p>
+      </div>
+    </div>
+    <div class="stack-row" data-sr="1">
+      <div class="stack-num">02</div>
+      <div>
+        <div class="stack-title">Repetition without infrastructure</div>
+        <p class="stack-text">Retailers reorder familiar products in recurring cycles, but with no system to support that, every order feels rebuilt from scratch.</p>
+      </div>
+    </div>
+    <div class="stack-row" data-sr="1">
+      <div class="stack-num">03</div>
+      <div>
+        <div class="stack-title">Organisational complexity at small scale</div>
+        <p class="stack-text">Accounts need to represent businesses, not just individuals. That raises roles, permissions, approvals, and accountability, without overwhelming small operators.</p>
       </div>
     </div>
   </div>
@@ -747,94 +391,312 @@ section{padding:5.5rem 3rem}
 
 <div class="divider"></div>
 
-<!-- ══════ DESIGN SYSTEM & SCALABILITY ══════ -->
-<section class="s-white">
-  <div class="sec-label sr">Design System & Scalability</div>
-  <h2 class="sec-title sr d1">Consistency as a <em>product property</em>, not a visual one</h2>
-  <p class="body-t sr d2" style="max-width:72ch;margin-top:1.5rem">As the platform expanded, consistency became less about visual polish and more about operational predictability. Reusable components were necessary not only to speed up design and development, but to make different workflows feel familiar and trustworthy.</p>
-  <p class="body-t sr d3" style="max-width:72ch;margin-top:1.25rem">The system design focused on reusable form and table patterns for dense business workflows, shared interaction logic for status and permissions, modular structures for procurement and account-related features, and standardized patterns for bulk actions, decision states, alerts, and confirmations.</p>
-  <p class="body-t sr d3" style="max-width:72ch;margin-top:1.25rem">This consistency matters because complex products become difficult to trust when each section behaves differently. A coherent design system lowers the learning curve, supports future expansion, and helps the platform move from an early-stage product toward a more mature operational environment.</p>
-  <p class="body-t sr d3" style="max-width:72ch;margin-top:1.25rem">Scalability also extended beyond components. Navigation, entity relationships, and content density all needed to support the current product while leaving room for future supplier workflows, richer fulfillment logic, larger organizations, and more advanced business administration features.</p>
-  <div class="sr d1" style="margin-top:3rem;border:1px dashed var(--border);border-radius:16px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;background:var(--bg)">
-    <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)">Design System</span>
-    <span style="font-size:.8rem;color:var(--muted);font-style:italic">Component library & pattern reference</span>
+<!-- ══ 5. RESEARCH / VALIDATION ══ -->
+<section>
+  <div class="eyebrow" data-sr>How did I get to the problem?</div>
+  <h2 class="q-title" data-sr>I studied operational behaviour, <em>not abstract personas</em></h2>
+  <p class="body" data-sr="1">The central question wasn't "what screen comes next?" It was how procurement actually happens inside working businesses, and where it breaks down. That shifted the research toward workflows, dependencies, recurring actions, accountability, and exception handling.</p>
+
+  <!-- Method 01 -->
+  <div class="method">
+    <div class="method-label" data-sr>Research Method 01 · Market &amp; Context Analysis</div>
+    <h3 class="q-title" data-sr>How big is the opportunity, really?</h3>
+    <div class="method-grid">
+      <p class="body" style="margin-top:0" data-sr="1">India's B2B online marketplace is projected to become a major opportunity by 2030, supported by digital infrastructure growth and e-commerce momentum. But adoption among MSMEs depends on products being simple, trustworthy, and practical, not enterprise-heavy. That told me Krētha should fit naturally into how smaller businesses already operate, rather than imitate complex enterprise software.</p>
+      <div class="stat-callout hl" data-sr="1">
+        <div class="stat-num">$200<em>B</em></div>
+        <div class="stat-cap">Projected India B2B online<br>marketplace by 2030</div>
+        <div class="stat-src">Source: <a href="https://www.ibef.org/industry/ecommerce" target="_blank" rel="noopener noreferrer">IBEF · India E-commerce Overview</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Method 02 -->
+  <div class="method">
+    <div class="method-label" data-sr>Research Method 02 · Stakeholders &amp; Platform Scope</div>
+    <h3 class="q-title" data-sr>Who is this really for?</h3>
+    <div class="method-grid">
+      <p class="body" style="margin-top:0" data-sr="1">Working with the business stakeholders, I pinned down who Krētha serves and what it has to be. It is built for retailers, wholesalers, and manufacturers: several business actors, not a simple buyer-seller pair. It also has to carry business accounts, organisation details, and information shared across roles. That ruled out consumer-style assumptions and pointed straight at role-aware workflows and organisation-level structure.</p>
+      <div class="stat-callout" data-sr="1">
+        <div class="stat-num">3</div>
+        <div class="stat-cap">Distinct business actor types<br>the platform must serve</div>
+        <div class="stat-src">Retailers · Suppliers/Distributors · Agents &amp; Networks</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Findings: the combined output of Methods 01 + 02 -->
+  <div class="method">
+    <div class="method-label" data-sr>What Methods 01 and 02 told me, together</div>
+    <h3 class="q-title" data-sr>Three findings that <em>shaped everything after</em></h3>
+    <p class="body" data-sr="1">Put the market picture next to the platform's scope, and the same three things kept surfacing. These are the read on the problem that the rest of the work is built on.</p>
+    <div class="findings">
+      <div class="find-lead" data-sr="1">
+        <span class="card-tag">Finding 01 · Key insight</span>
+        <div>
+          <div class="card-title">Procurement is collaborative</div>
+          <p class="card-text">Even when one person places the order, decisions are spread across people and time. The platform had to support that coordination, not assume a single decision-maker.</p>
+        </div>
+      </div>
+      <div class="find-side">
+        <div class="find-small" data-sr="1">
+          <span class="card-tag">Finding 02</span>
+          <div class="card-title">Repeat ordering is critical</div>
+          <p class="card-text">Reordering familiar SKUs in cycles is one of the strongest behaviours in retail. It deserves first-class feature design, not an afterthought.</p>
+        </div>
+        <div class="find-small" data-sr="2">
+          <span class="card-tag">Finding 03</span>
+          <div class="card-title">Business users need control</div>
+          <p class="card-text">Speed matters for high-volume ordering, but only when it keeps reviewability, auditability, and room to handle exceptions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Consequence: what the research led to (was Method 03) -->
+  <div class="method">
+    <div class="method-label" data-sr>What the research led to</div>
+    <h3 class="q-title" data-sr>From findings to <em>a mapped system</em></h3>
+    <div class="method-grid">
+      <p class="body" style="margin-top:0" data-sr="1">The findings gave me something to build from. Next I mapped the workflows, role relationships, and decision paths for the key procurement events: draft order creation, supplier review, changes, confirmations, and follow-up after an order. Mapping them surfaced the real constraints too. Backend dependencies, phased development, and permission complexity all shaped what the MVP could be.</p>
+      <div class="stat-callout" data-sr="1">
+        <div class="stat-num"><span class="flag">NEEDS REAL NUMBER</span></div>
+        <div class="stat-cap">Workflows &amp; roles mapped<br>during discovery</div>
+        <div class="stat-src">Swetha: add real counts (e.g. sessions held, workflows or roles mapped) if available</div>
+      </div>
+    </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══════ REFLECTION ══════ -->
-<section class="s-dark" id="reflection" style="padding:5.5rem 3rem">
-  <div style="max-width:960px;margin:0 auto">
-    <div class="sec-label sr">Reflection & Learnings</div>
-    <h2 class="sec-title sr d1" style="color:#fff">Strong product design makes systems <em>understandable</em>, not screens look finished</h2>
-    <div class="g2" style="margin-top:1.5rem;align-items:start">
-      <div>
-        <p class="body-t body-dk sr d2">Krētha reinforced that strong product design is often less about making screens look finished and more about making systems understandable. The most valuable work in the project came from clarifying relationships, sequencing actions carefully, surfacing the right information at the right time, and designing for the messiness of real operational behavior.</p>
-        <p class="body-t body-dk sr d3" style="margin-top:1.25rem">The project also strengthened the importance of designing with implementation in mind. Technical constraints did not reduce the quality of the process; they sharpened it. They forced clearer prioritization, more explicit assumptions, and more durable decisions about what the product needed to be now versus what it could become later.</p>
+<!-- ══ 6. RESEARCH → DECISION MAPPING ══ -->
+<section>
+  <div class="eyebrow" data-sr>How did research shape the design?</div>
+  <h2 class="q-title" data-sr>Every finding pointed to <em>a specific decision</em></h2>
+  <p class="body" data-sr="1">The piece a case study can leave implicit: which research finding led to which design move. Here's the direct mapping.</p>
+
+  <div class="map" data-sr="1">
+    <div class="map-row">
+      <div class="map-find"><span class="map-k">Finding</span><p>Procurement is collaborative and distributed across people and time</p></div>
+      <div class="map-arrow">→</div>
+      <div class="map-dec"><span class="map-k">Design decision</span><p>Role-aware accounts and organisation-level structure with approval logic, so preparing, reviewing, and confirming an order can live with different people, not one.</p></div>
+    </div>
+    <div class="map-row">
+      <div class="map-find"><span class="map-k">Finding</span><p>Repeat ordering is the strongest behavioural pattern in retail</p></div>
+      <div class="map-arrow">→</div>
+      <div class="map-dec"><span class="map-k">Design decision</span><p>Purchase Lists as first-class, reusable procurement assets (not temporary carts), so routine buying starts with fewer clicks and less reliance on memory.</p></div>
+    </div>
+    <div class="map-row">
+      <div class="map-find"><span class="map-k">Finding</span><p>Business users need reviewability and control, not just speed</p></div>
+      <div class="map-arrow">→</div>
+      <div class="map-dec"><span class="map-k">Design decision</span><p>A multi-step order flow with draft, review, edit, and approval states before submission, rather than a compressed consumer-style checkout.</p></div>
+    </div>
+    <div class="map-row">
+      <div class="map-find"><span class="map-k">Finding</span><p>MSMEs need something light, not enterprise-heavy</p></div>
+      <div class="map-arrow">→</div>
+      <div class="map-dec"><span class="map-k">Design decision</span><p>Tiered subscriptions and progressive disclosure: lightweight access for small teams, more coordination capability as an organisation scales.</p></div>
+    </div>
+    <div class="map-row">
+      <div class="map-find"><span class="map-k">Finding</span><p>The platform serves multiple business actors who share information</p></div>
+      <div class="map-arrow">→</div>
+      <div class="map-dec"><span class="map-k">Design decision</span><p>Organisation-level identity and role-based permissions built into the architecture from day one, rather than bolted onto an individual-user model.</p></div>
+    </div>
+  </div>
+
+  <div class="coda" data-sr="1">
+    <div class="coda-label">How the work happened</div>
+    <div class="coda-grid">
+      <div class="coda-item">
+        <span class="coda-k">Principle</span>
+        <div class="coda-title">Feasibility alignment</div>
+        <p class="coda-text">Checking early whether an interaction idea was grounded in available data and timelines meant fewer false starts down the line.</p>
       </div>
-      <div>
-        <p class="body-t body-dk sr d3">Several lessons became especially clear. Real procurement flows need exception handling as much as ideal-path design. Repeat behavior deserves first-class support because it directly shapes efficiency. Multi-user business products need early systems thinking around identity, permission, and coordination. And scalability is often an information architecture problem before it becomes a visual design problem.</p>
-        <p class="body-t body-dk sr d3" style="margin-top:1.25rem">If the next phase were expanded further, the strongest opportunities would likely be deeper fulfillment visibility, stronger inventory-linked planning, more advanced approval logic, and sharper team administration tools. Those areas would continue strengthening the relationship between procurement, operations, and business coordination.</p>
+      <div class="coda-item">
+        <span class="coda-k">Principle</span>
+        <div class="coda-title">Constraint-based iteration</div>
+        <p class="coda-text">Backend and state constraints became a design tool that sharpened decisions, rather than a blocker to work around.</p>
+      </div>
+      <div class="coda-item">
+        <span class="coda-k">Principle</span>
+        <div class="coda-title">Handoff clarity</div>
+        <p class="coda-text">Documenting behaviours, conditions, and edge cases kept implementation close to intent as the build progressed.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════ CURRENT STATUS & NEXT STEPS ══════ -->
-<section class="s-alt">
-  <div class="sec-label sr">Current Status & Next Steps</div>
-  <h2 class="sec-title sr d1">An active product, <em>not a closed artifact</em></h2>
-  <div class="g2" style="margin-top:1.5rem;align-items:stretch">
-    <div>
-      <p class="body-t sr d2">Krētha is best understood as an active product in development rather than a closed portfolio artifact. Its current state is shaped by live constraints, iterative delivery, and a platform vision that continues to evolve around retailer, wholesaler, and manufacturer workflows.</p>
-      <p class="body-t sr d3" style="margin-top:1.25rem">The next phase would build on the foundations that are already in place. That includes expanding visibility across post-order states, strengthening shared workflows for teams and organizations, refining Purchase Lists into stronger planning tools, and evolving subscription tiers around collaboration depth, role management, and business scale.</p>
-      <p class="body-t sr d3" style="margin-top:1.25rem">What makes Krētha strategically meaningful is not simply that it enables ordering. The product reframes procurement as a system of coordinated business actions. That makes it a strong example of systems-focused UX design: work that supports operations, handles complexity, and grows through collaboration rather than surface-level polish.</p>
+<!-- ══ 7. HYPOTHESIS / SO-WHAT ══ -->
+<div class="band" data-sr>
+  <p>When procurement is treated as a coordinated system of business actions, not a string of one-off transactions, a lighter role-aware platform can give small businesses real operational structure without the weight of heavy enterprise software.</p>
+</div>
+
+<!-- ══ 7b. SYSTEMS THINKING & IA ══ -->
+<section>
+  <div class="eyebrow" data-sr>How is the platform structured?</div>
+  <h2 class="q-title" data-sr>It had to behave like <em>a connected system</em>, not a menu of tools</h2>
+  <p class="body" data-sr="1">Krētha isn't a set of separate features. Order placement, purchase history, saved lists, account roles, subscriptions, and supplier interaction all shape one another. So the information architecture had to work as one connected system, not a menu of independent tools.</p>
+  <p class="body" data-sr="1">That view changed how I made decisions. An order stopped being a single transaction record. It became part of a lifecycle: intent, internal coordination, supplier response, revisions, and fulfilment. A purchase list stopped being a saved cart. It became a planning object tied to recurring buying, stock, and how efficiently a business runs.</p>
+  <p class="body" data-sr="1">Navigation and hierarchy followed the same logic. The design had to make relationships obvious: who belongs to which organisation, who can prepare or approve an order, which lists are personal and which are shared, and what each subscription tier unlocks. Clarity about those relationships mattered as much as a clean screen.</p>
+
+  <div class="layers">
+    <div class="layer" data-sr="1">
+      <span class="layer-k">Layer 01 · Business entities</span>
+      <div class="layer-title">Retailers, wholesalers, and manufacturers</div>
+      <p class="layer-text">Each acts as a distinct business type on the platform. They order differently, need different data, and carry different operational responsibilities.</p>
     </div>
-    <div class="sr d1" style="border:1px dashed var(--border);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:var(--bg)">
-      <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)">Image</span>
-      <span style="font-size:.8rem;color:var(--muted);font-style:italic">Product screenshot or visual</span>
+    <div class="layer" data-sr="1">
+      <span class="layer-k">Layer 02 · Organisational structure</span>
+      <div class="layer-title">Accounts that represent businesses, not individuals</div>
+      <p class="layer-text">Accounts tie to organisation details, multi-user access, and role-specific permissions. The system had to support real business identity from early in the architecture, not bolt it on later.</p>
+    </div>
+    <div class="layer" data-sr="1">
+      <span class="layer-k">Layer 03 · Operational workflows</span>
+      <div class="layer-title">One lifecycle, not a series of isolated screens</div>
+      <p class="layer-text">Browsing, ordering, editing, approving, fulfilling, and reordering form a single lifecycle. Design decisions had to hold across the whole arc of a procurement event, not just one screen at a time.</p>
+    </div>
+  </div>
+
+  <!-- Supporting artefacts: FigJam -->
+  <div class="embed-block" data-sr="1">
+    <div class="method-label">Service Blueprint · FigJam</div>
+    <h3 class="q-title">How the procurement journey holds together</h3>
+    <p class="body">The blueprint maps the journey across three swim lanes: the retailer's visible actions, the platform's frontstage responses, and the backstage processes behind them. It makes the dependencies between what a user does and how the system responds explicit.</p>
+    <a class="embed-figlink" href="https://www.figma.com/board/hoFypYgZl0GxD9iKI6apUd/Customer-Service-Blueprint?node-id=0-1" target="_blank" rel="noopener noreferrer" title="Open the Krētha service blueprint in FigJam">
+      <img src="Kr%C4%93tha%20Assets/service-blueprint.png" alt="Krētha service blueprint: swim-lane map of the procurement journey across retailer actions, platform frontstage responses, and backstage processes" loading="lazy">
+      <span class="open-badge">Open in FigJam ↗</span>
+    </a>
+  </div>
+
+  <div class="embed-block" data-sr="1">
+    <div class="method-label">Product Flowchart · FigJam</div>
+    <h3 class="q-title">How the core objects connect</h3>
+    <p class="body">The flowchart lays out the information architecture: how accounts, organisations, orders, purchase lists, and subscriptions are structured and linked, and how people move between them based on role and permission.</p>
+    <iframe loading="lazy" src="https://embed.figma.com/board/0waIfP1SuceBhxs1WcjJYF/Untitled?node-id=0-28&embed-host=share" allowfullscreen title="Krētha product flowchart (FigJam)"></iframe>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ 8. THE SOLUTION ══ -->
+<section>
+  <div class="eyebrow" data-sr>What did I design?</div>
+  <h2 class="q-title" data-sr>Three systems that <em>define the platform</em></h2>
+  <p class="body" data-sr="1">Each core flow reflects a distinct part of how businesses buy, plan, and coordinate, and each had to support both the ideal path and the realistic exceptions of live operational work.</p>
+
+  <!-- Feature 1 -->
+  <div class="feature">
+    <div class="feature-copy" data-sr="1">
+      <div class="feature-tag">Solution 01 · Core Flow</div>
+      <h3 class="feature-title">Order Flow: built for <em>review, not just speed</em></h3>
+      <p class="feature-text">Instead of a compressed checkout, ordering is a multi-step journey: build the order through clear line items and quantity controls, keep supplier and business context visible, and support review before submission. Edge cases like draft orders, supplier-side changes, and role-restricted approvals shaped the flow so it feels credible in a real operating environment.</p>
+      <div class="chips">
+        <span class="chip">Line-item entry</span><span class="chip">Bulk quantity controls</span><span class="chip">Review states</span><span class="chip">Role-based approval</span>
+      </div>
+    </div>
+    <div class="feature-media" data-sr="1">
+      <div class="shot"><span class="shot-label">Order flow · build → review → submit</span><span class="flag">NEEDS REAL SCREENSHOT</span></div>
+    </div>
+  </div>
+
+  <!-- Feature 2 -->
+  <div class="feature">
+    <div class="feature-copy" data-sr="1">
+      <div class="feature-tag">Solution 02 · Core Flow</div>
+      <h3 class="feature-title">Purchase Lists: <em>planning objects</em>, not carts</h3>
+      <p class="feature-text">Because repeat ordering is central to retail, Purchase Lists are persistent, reusable procurement assets, named and organised by supplier, category, or seasonal need. Bulk selection and list-to-order transitions keep routine buying fast, while quantities and items stay flexible for live inventory. They bridge planning and execution rather than just speeding up checkout.</p>
+      <div class="chips">
+        <span class="chip">Reusable assets</span><span class="chip">Bulk selection</span><span class="chip">List → order</span><span class="chip">Flexible for live stock</span>
+      </div>
+    </div>
+    <div class="feature-media" data-sr="1">
+      <div class="shot"><span class="shot-label">Purchase Lists · create, organise, reorder</span><span class="flag">NEEDS REAL SCREENSHOT</span></div>
+    </div>
+  </div>
+
+  <!-- Feature 3 -->
+  <div class="feature">
+    <div class="feature-copy" data-sr="1">
+      <div class="feature-tag">Solution 03 · Core Flow</div>
+      <h3 class="feature-title">Subscription &amp; Organisation: <em>access follows responsibility</em></h3>
+      <p class="feature-text">Accounts establish an organisational context from the start, not just an individual profile. Roles for preparing, approving, and administering orders mean people get the access their work requires, and tiered subscriptions grow with the business: lightweight for small teams, richer coordination as organisations scale.</p>
+      <div class="chips">
+        <span class="chip">Org-level identity</span><span class="chip">Role permissions</span><span class="chip">Tiered plans</span><span class="chip">Shared vs personal</span>
+      </div>
+    </div>
+    <div class="feature-media" data-sr="1">
+      <div class="shot"><span class="shot-label">Organisation setup &amp; role management</span><span class="flag">NEEDS REAL SCREENSHOT</span></div>
     </div>
   </div>
 </section>
 
-<!-- ══════ CTA SECTION ══════ -->
-<section class="s-white" style="padding:4rem 3rem;border-top:1px solid var(--border)">
-  <div style="max-width:960px;margin:0 auto;text-align:center">
-    <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;margin-bottom:1rem">Want to see more?</h3>
-    <p style="color:var(--muted);margin-bottom:2rem;font-size:.95rem">Explore other case studies or get in touch to discuss your project.</p>
-    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-      <a href="../work.html" style="display:inline-block;padding:.65rem 1.8rem;background:var(--ink);color:#fff;border-radius:999px;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s;font-size:.9rem" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.15)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">← All Projects</a>
-      <a href="mailto:swetha.ramachandran17@gmail.com" style="display:inline-block;padding:.65rem 1.8rem;background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:999px;font-weight:600;text-decoration:none;transition:all .2s;font-size:.9rem" onmouseover="this.style.borderColor='var(--ink)';this.style.backgroundColor='var(--alt)'" onmouseout="this.style.borderColor='var(--border)';this.style.backgroundColor='transparent'">Get in Touch</a>
+<div class="divider"></div>
+
+<!-- ══ 8b. CONSISTENCY (ported from previous version) ══ -->
+<section>
+  <div class="eyebrow" data-sr>What held it together?</div>
+  <h2 class="q-title" data-sr>Consistency as a <em>product property</em>, not a visual one</h2>
+  <div class="two-col">
+    <div data-sr="1">
+      <p class="body">As the platform expanded, consistency became less about visual polish and more about operational predictability. Reusable components weren't just there to speed up design and development — they made different workflows feel familiar and trustworthy.</p>
+      <p class="body">The system leaned on reusable form and table patterns for dense business workflows, shared interaction logic for status and permissions, modular structures for procurement and account features, and standardised patterns for bulk actions, decision states, alerts, and confirmations.</p>
     </div>
+    <div data-sr="1">
+      <p class="body">This matters because complex products become hard to trust when each section behaves differently. A coherent system lowers the learning curve, supports future expansion, and helps the platform mature from an early-stage tool toward a real operational environment.</p>
+      <p class="body">Scalability extended beyond components, too. Navigation, entity relationships, and content density all had to support the product today while leaving room for future supplier workflows, richer fulfilment logic, larger organisations, and deeper business administration.</p>
+    </div>
+  </div>
+  <div class="chips" data-sr="1" style="margin-top:1.5rem">
+    <span class="chip">Reusable form &amp; table patterns</span><span class="chip">Shared status &amp; permission logic</span><span class="chip">Modular feature structures</span><span class="chip">Standardised bulk actions &amp; alerts</span>
   </div>
 </section>
 
-<!-- ══════ FOOTER ══════ -->
-<footer class="site-footer">
-  <div class="ft-lead">Let's connect — <em>Swetha Ramachandran</em></div>
-  <div class="ft-links">
-    <a class="fl" href="../work.html">← All Work</a>
-    <a class="fl" href="../index.html">Home</a>
+<div class="divider"></div>
+
+<!-- ══ 9. REFLECTION ══ -->
+<section>
+  <div class="eyebrow" data-sr>What did I learn?</div>
+  <h2 class="q-title" data-sr>Strong product design makes systems <em>understandable</em>, not screens look finished</h2>
+  <div class="two-col">
+    <div data-sr="1">
+      <p class="body">Krētha taught me that strong product design is less about making screens look finished and more about making systems understandable. The most valuable work came from clarifying relationships, sequencing actions carefully, surfacing the right information at the right moment, and designing for the mess of real operational behaviour.</p>
+      <p class="body">It also showed me the value of designing with implementation in mind. Technical constraints didn't lower the quality of the process. They sharpened it. They forced clearer priorities, more explicit assumptions, and more durable decisions about what the product needed to be now versus what it could become later.</p>
+    </div>
+    <div data-sr="1">
+      <p class="body">A few lessons stuck. Real procurement flows need exception handling as much as ideal-path design. Draft states, supplier-side changes, and partial edits are where credibility lives. Repeat behaviour deserves first-class support, because it directly shapes efficiency. Multi-user products need early systems thinking around identity, permission, and coordination, not a retrofit onto an individual-user model. And scalability is usually an information-architecture problem before it becomes a visual one.</p>
+      <p class="body">If the next phase grows, the strongest opportunities are deeper post-order fulfilment visibility, inventory-linked planning, stronger approval logic, and sharper team-administration tools. Those areas would keep tightening the link between procurement, operations, and business coordination.</p>
+    </div>
+  </div>
+
+  <div class="method" style="border-top:1px solid var(--border)">
+    <div class="method-label" data-sr>Where is Krētha now?</div>
+    <p class="body" data-sr="1"><strong>Krētha is an active product in development, not a closed portfolio artifact.</strong> Its current state is shaped by live constraints and iterative delivery, and the platform vision keeps evolving around retailer, wholesaler, and manufacturer workflows. That's the honest status. This isn't a wrapped-up project with a tidy ending; the case study reflects the real nature of product work: proposing, testing, adapting, and improving the system through collaboration.</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-cta-block">
+      <a href="mailto:swetha.ramachandran17@gmail.com" class="footer-cta">Say hello →</a>
+      <p class="footer-contact-line">
+        <a href="mailto:swetha.ramachandran17@gmail.com">email me</a><span class="sep">·</span><a href="https://www.linkedin.com/in/swetharux" target="_blank" rel="noopener noreferrer">linkedin</a><span class="sep">·</span><a href="../Swetha-Ramachandran-Resume.pdf" download target="_blank" rel="noopener">resume ↓</a>
+      </p>
+    </div>
+    <p class="footer-copyright">© 2026 — made with paper &amp; ink</p>
   </div>
 </footer>
 
 <script>
-// scroll progress bar
-const bar = document.getElementById('progress');
-window.addEventListener('scroll', () => {
-  const h = document.documentElement;
-  const pct = (h.scrollTop || document.body.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-  bar.style.width = pct + '%';
-});
-
-// scroll reveal
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll('.sr, .sr-l').forEach(el => obs.observe(el));
+(function(){
+  'use strict';
+  // scroll progress bar is CSS scroll-driven (animation-timeline); no JS scroll listener.
+  // scroll reveal
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('[data-sr]').forEach(function(el){ obs.observe(el); });
+})();
 </script>
 </body>
 </html>
