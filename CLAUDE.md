@@ -73,6 +73,7 @@ Avoid generic, "AI slop" design. Make creative, distinctive frontends that surpr
 - Clichéd color schemes (particularly purple gradients on white backgrounds)
 - Predictable layouts and component patterns
 - Cookie-cutter design that lacks context-specific character
+- New card components (bordered/tinted containers, rounded surfaces wrapping grouped content) outside the established work-card grid — see "Cards" under Portfolio Design Direction
 
 Interpret creatively and make unexpected choices that feel genuinely designed for this specific portfolio context. Vary fonts, textures, and aesthetics within a light overall palette — think outside the box.
 
@@ -119,3 +120,11 @@ Accents are used sparingly against the neutral base — page chrome (nav, shell,
 ### Motion & tone
 - Smooth scroll-triggered fades and gentle reveals; no snappy or glitchy transitions. Micro-interactions feel unhurried — motion supports calmness.
 - Copy is conversational and warm ("Chat with me", "Think we vibe?", "Hi, I'm ___") — approachable over corporate polish.
+
+### Cards
+**The No-New-Cards Rule.** The card pattern (bordered/tinted container, rounded surface, internal padding wrapping grouped content) is scoped to the existing work-card grid only. Do not introduce card components anywhere else — new sections, page restructures, or your own layout suggestions — unless explicitly requested for that specific instance. Default to whitespace, hairline borders, or typographic hierarchy to group or separate content instead.
+
+**Card Audit Workflow.** When asked to "scan" a page for cards, do not remove or modify anything unprompted. Instead:
+1. Walk the page section by section and flag every card instance (anything matching the card pattern, including borderline cases that only partially match).
+2. For each, note its location (section/heading it sits under), what it currently contains, and whether it's part of the established work-card grid (protected under The No-New-Cards Rule) or a case that crept in elsewhere.
+3. Present the full list for review. Removal or reworking of any specific card only happens after explicit sign-off on that item — one blanket "yes" does not authorize touching all of them.

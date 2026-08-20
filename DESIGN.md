@@ -113,7 +113,7 @@ This is a warm, pastel, personality-forward system built on paper and ink. The p
 
 Color is the primary tool for depth and delight, not shadow. Surfaces sit flat on the paper; interest comes from tonal pastel layering, gently rotated floating images, and interaction that swaps a neutral card to a saturated accent. Ultraviolet is the one strong voice — it owns the chrome accents (eyebrows, marquees, CTAs, hover states) while the pastels stay reserved for the work cards. The result is calm at rest and warm on touch.
 
-Explicitly rejected: dark mode, pure white (#ffffff) and pure black (#000000), neon, brutalism, dense data-heavy layouts, solid dark backgrounds anywhere, and heavy/bold type. Playfair Display is banned; Fraunces has crept into `aboutme.html` and is off-system.
+Explicitly rejected: dark mode, pure white (#ffffff) and pure black (#000000), neon, brutalism, dense data-heavy layouts, solid dark backgrounds anywhere, and heavy/bold type. Playfair Display is banned; Fraunces has crept into `aboutme.html` and is off-system. New card components outside the established work-card pattern are also off-system by default — see The No-New-Cards Rule under Components.
 
 **Key Characteristics:**
 - A neutral paper shell that frames loud, colorful work.
@@ -210,6 +210,13 @@ Soft and rounded throughout — no sharp edges. The radius scale is deliberate: 
 - **Internal Padding:** 2.2rem sides, 1.8–2.2rem top/bottom; fixed height ~360px desktop / 300px mobile.
 - **Behavior:** At rest the card shows rotated collage imagery; on hover the imagery fades out and a Cormorant Garamond description + arrow fade in over the accent fill. A gentle `background .45s cubic-bezier(0.22,1,0.36,1)` carries the color swap.
 
+**The No-New-Cards Rule.** The card pattern (bordered/tinted container, 28px radius, internal padding, hover fill-swap) is scoped to the existing work-card grid only. Do not introduce card components anywhere else — new sections, page restructures, or AI-generated layout suggestions — unless explicitly requested for that specific instance. Default to whitespace, Border hairlines, or typographic hierarchy to group or separate content instead. Cards are an easy default that flattens this system's editorial, whitespace-driven feel into a generic dashboard look if used too freely.
+
+**Card Audit Workflow.** When asked to "scan" a page for cards, do not remove or modify anything unprompted. Instead:
+1. Walk the page section by section and flag every card instance (anything matching the card pattern: bordered/tinted container, rounded surface, internal padding wrapping grouped content) — including borderline cases that only partially match the pattern.
+2. For each, note its location (section/heading it sits under), what it currently contains, and whether it's part of the established work-card grid (protected under The No-New-Cards Rule) or a case that crept in elsewhere.
+3. Present the full list for review. Removal or reworking of any specific card only happens after explicit sign-off on that item — one blanket "yes" does not authorize touching all of them.
+
 ### Navigation
 - **Style:** Sticky top bar on Paper; Cormorant Garamond brand mark left, DM Mono links + pill CTA right.
 - **Links:** DM Mono, Muted, → Ultraviolet on hover (color .18s).
@@ -237,3 +244,5 @@ Soft and rounded throughout — no sharp edges. The radius scale is deliberate: 
 - **Don't** put pastel accents on the nav, marquee, or footer chrome — pastels belong to work cards.
 - **Don't** reach for shadows to signal interactivity; swap color instead.
 - **Don't** set headlines heavy/bold — weight stays light-to-regular even when oversized.
+- **Don't** add new card components outside the established work-card grid without explicit sign-off (The No-New-Cards Rule).
+- **Don't** remove or rework any existing card without item-by-item sign-off, even after a card scan flags it (Card Audit Workflow).

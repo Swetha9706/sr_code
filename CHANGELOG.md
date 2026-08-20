@@ -4,6 +4,30 @@ A running log of meaningful updates to the portfolio. Newest entries on top.
 
 ---
 
+## 2026-08-20 — Sip & Scones §01–§02 rewrite: "The Concept", User Needs video split, mp4 video
+
+**File:** `Projects/sip-scones.html` · **New asset:** `Projects/Sip-Scones Assets/lauren-hemmert-jensen-dupe.mp4`
+
+**Sections 01–02 (completing `prompts/sip-scones-sections-1-2-rewrite-prompt.md` against the live file)**
+- The prompt originally targeted the since-deleted `sip-scones-v2.html` draft and had only partly landed in the Session-10 merge (only the 93% stat-callout). Applied the missing pieces to the **live** file.
+- **§02 → "The Concept"**: replaced the three Design Principles (`.coda`) with the verbatim concept copy, a new `.feature-list` (tiers / drink pairings / own-pace review / stacked-teacup loyalty) and the Bankar & Suresh (2015) closing paragraph; removed the now-dead `.coda` CSS.
+- **Band → "biggest concern" pull-quote**: repurposed the guiding-principle `.band` to the verbatim quote, attributed "Team reflection."
+
+**Section 01 — "User Needs" two-column layout**
+- Rebuilt Background into a two-column split: portrait **video left**, copy right, matching a supplied reference screenshot.
+- Applied the prompt's verbatim §01 copy: headline "What the *atmosphere* taught us about the design" + the Lin & Chen (2022) research paragraphs.
+- Removed the nectar 93% `.stat-callout` box (and its CSS); re-integrated the design challenge as an **editorial closer** — hairline top rule + DM Mono "The design challenge" eyebrow + the question in Cormorant italic with "the ritual, aesthetic, or mood" emphasized in Ultraviolet.
+
+**Video**
+- Transcoded `lauren-hemmert-jensen-dupe.mov` → **`.mp4`** with macOS `avconvert` (H.264, 1080×1920 portrait, 7.4s, 9.3 MB). `.mov` (QuickTime) doesn't decode in Chrome; mp4 does.
+- Rewired `<video>` to `<source>` mp4-primary + `.mov` fallback. Verified in Chrome (localhost): mp4 autoplays, loops, muted, `readyState` 4.
+
+**Housekeeping:** snapped two impeccable-hook-flagged font sizes back onto the DESIGN.md ramp.
+
+_Note: all of the above remains **uncommitted** in the working tree. The latest commit is still `430a2c9` "docs: log Session 10 push + close session 11" (2026-08-18); `main` is level with `origin/main`. Not pushed / not deployed — pending review. The new `.mp4` also needs a cPanel upload to `public_html/Projects/Sip-Scones Assets/` when published._
+
+---
+
 ## 2026-08-06 — Design system captured; About page promoted & reworked; Krētha case study restructured (draft)
 
 **Files:** `PRODUCT.md`, `DESIGN.md`, `.impeccable/`, `aboutme.html`, `Projects/kretha-restructured.html`, `Swetha-Ramachandran-Resume.pdf`

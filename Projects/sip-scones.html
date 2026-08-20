@@ -104,22 +104,30 @@ section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
 .method-label{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:.9rem}
 .method-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;margin-top:1.25rem}
 @media(max-width:860px){.method-grid{grid-template-columns:1fr;gap:1.5rem}}
-.stat-callout{background:var(--card-base);border:1px solid var(--border);border-radius:28px;padding:2.5rem 2rem;text-align:center}
-.stat-callout.nectar{background:var(--nectar);border-color:transparent}
-.stat-num{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(3rem,7vw,5rem);line-height:1;color:var(--ink);letter-spacing:-.02em}
-.stat-num em{font-style:italic;color:var(--ultraviolet)}
-.stat-cap{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--plum);margin-top:1rem;line-height:1.6}
-.stat-src{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.06em;color:var(--muted);margin-top:.8rem}
+/* ══ USER NEEDS: VIDEO + COPY, TWO-COLUMN ══ */
+.needs{display:grid;grid-template-columns:.82fr 1fr;gap:3.75rem;align-items:stretch}
+.needs-media{border-radius:28px;overflow:hidden;background:var(--card-base);box-shadow:0 12px 36px rgba(30,18,10,.14);min-height:520px}
+.needs-media video{width:100%;height:100%;object-fit:cover;display:block}
+.needs-copy{align-self:center}
+@media(max-width:860px){.needs{grid-template-columns:1fr;gap:2rem}.needs-media{min-height:0;aspect-ratio:3/4;max-height:74vh}}
 
-/* ══ PRINCIPLES CODA ══ */
-.coda{margin-top:2.75rem}
-.coda-grid{display:grid;grid-template-columns:repeat(3,1fr)}
-.coda-item{padding:0 2rem;border-left:1px solid var(--border)}
-.coda-item:first-child{padding-left:0;border-left:none}
-.coda-k{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--plum);display:block;margin-bottom:.5rem}
-.coda-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;line-height:1.2}
-.coda-text{font-family:'Lora',serif;font-size:.9rem;line-height:1.65;color:var(--muted)}
-@media(max-width:720px){.coda-grid{grid-template-columns:1fr}.coda-item{padding:1.5rem 0 0;border-left:none;border-top:1px solid var(--border)}.coda-item:first-child{padding-top:0;border-top:none}}
+/* ══ CONCEPT SPLIT ══ */
+.concept-grid{display:grid;grid-template-columns:1fr .82fr;gap:3.5rem;align-items:center;margin-top:.25rem}
+.concept-copy>*:first-child{margin-top:0}
+.concept-media{display:flex;align-items:center;justify-content:center}
+.concept-media img{width:100%;height:auto;display:block}
+@media(max-width:860px){.concept-grid{grid-template-columns:1fr;gap:2.25rem}.concept-media{max-width:420px;margin:0 auto}}
+
+/* ══ DESIGN-CHALLENGE CLOSER ══ */
+.challenge{margin-top:2.75rem;padding-top:2rem;border-top:1px solid var(--border)}
+.challenge-k{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);display:block;margin-bottom:1rem}
+.challenge .ask{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1.35;color:var(--ink)}
+.challenge .ask em{font-style:italic;color:var(--ultraviolet)}
+
+/* ══ FEATURE LIST ══ */
+.feature-list{list-style:none;margin-top:1.75rem;border-top:1px solid var(--border);max-width:82ch}
+.feature-list li{position:relative;font-family:'Lora',serif;font-size:1rem;line-height:1.6;color:var(--ink);padding:1.05rem 0 1.05rem 1.9rem;border-bottom:1px solid var(--border)}
+.feature-list li::before{content:'';position:absolute;left:0;top:1.5rem;width:.55rem;height:.55rem;border-radius:50%;background:var(--nectar)}
 
 /* ══ NUMBERED STACK ══ */
 .stack{margin-top:2.5rem;border-top:1px solid var(--border)}
@@ -251,59 +259,59 @@ figcaption{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.06em
   </div>
 </div>
 
-<!-- ══ 3. BACKGROUND ══ -->
-<section>
-  <div class="eyebrow" data-sr>What is Sip &amp; Scones?</div>
-  <h2 class="q-title" data-sr>Designing for <em>atmosphere</em>, not just ordering</h2>
-  <p class="body" data-sr="1">Afternoon tea is a social ritual shaped by tradition, pacing, and ambience. The brief called for a customisable food and drink ordering system on a restaurant tablet — but the real challenge was subtler: how do you bring a deeply human, unhurried experience into a digital interface without disrupting it?</p>
-  <p class="body" data-sr="1">The system needed to feel thematically coherent with afternoon tea culture — deliberate, calm, and intuitive enough to require no instruction. Instead of entrance kiosks or personal phones, a tablet sits at each table, so diners keep control of the order while the restaurant preserves its intimacy and mood.</p>
+<!-- ══ 3. USER NEEDS ══ -->
+<section class="needs">
+  <div class="needs-media" data-sr>
+    <video autoplay loop muted playsinline preload="metadata" aria-label="Afternoon tea served on a three-tiered stand — scones, finger sandwiches, sweets, and champagne">
+      <source src="Sip-Scones%20Assets/lauren-hemmert-jensen-dupe.mp4" type="video/mp4">
+      <source src="Sip-Scones%20Assets/lauren-hemmert-jensen-dupe.mov" type="video/quicktime">
+    </video>
+  </div>
+  <div class="needs-copy">
+    <div class="eyebrow" data-sr>What is Sip &amp; Scones?</div>
+    <h2 class="q-title" data-sr>What the <em>atmosphere</em> taught us about the design</h2>
+    <p class="body" data-sr="1">Designing for a digital afternoon tea experience meant thinking beyond functionality. It meant understanding what makes afternoon tea special in the first place.</p>
+    <p class="body" data-sr="1">Early research showed afternoon tea isn't just a meal. It's a social experience, steeped in tradition and ambiance. A study by Lin and Chen (2022) found that 93% of afternoon tea patrons, mostly young women aged 24 to 29, choose a restaurant based on atmosphere first. That insight shaped our design direction. Space, mood, and pacing mattered as much as the food.</p>
 
-  <div class="method">
-    <div class="method-label" data-sr>Why atmosphere led the design</div>
-    <div class="method-grid">
-      <p class="body" style="margin-top:0" data-sr="1">Atmosphere isn't a nice-to-have in this setting — it's the product. Research on afternoon-tea consumers put a number on it, and that framed every decision: the interface had to protect the mood of the room, never compete with it. So the digital system was designed to recede into the ritual rather than announce itself.</p>
-      <div class="stat-callout nectar" data-sr="1">
-        <div class="stat-num">93<em>%</em></div>
-        <div class="stat-cap">of afternoon-tea patrons rank<br>atmosphere as the top factor<br>when choosing a venue</div>
-        <div class="stat-src">Source: Lin &amp; Chen, 2022</div>
-      </div>
+    <div class="challenge" data-sr="1">
+      <span class="challenge-k" data-sr="1">The design challenge</span>
+      <p class="ask">How do we introduce a digital ordering system without interrupting <em>the ritual, aesthetic, or mood</em> of the experience?</p>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ 4. PRINCIPLES ══ -->
+<!-- ══ 4. THE CONCEPT ══ -->
 <section>
-  <div class="eyebrow" data-sr>What did it need to feel like?</div>
-  <h2 class="q-title" data-sr>Three ideas that shaped <em>every decision</em></h2>
-  <p class="body" data-sr="1">Before any wireframes, three principles anchored the design — each a direct response to what afternoon tea culture demands from a digital experience.</p>
+  <div class="eyebrow" data-sr>The Concept</div>
+  <h2 class="q-title" data-sr>A digital menu that <em>stays out of the way</em></h2>
 
-  <div class="coda" data-sr="1">
-    <div class="coda-grid">
-      <div class="coda-item">
-        <span class="coda-k">Principle 01</span>
-        <div class="coda-title">Unhurried interaction</div>
-        <p class="coda-text">Every screen should feel calm and deliberate — no urgency cues, no countdown timers, no pressure. Diners browse at their own pace.</p>
-      </div>
-      <div class="coda-item">
-        <span class="coda-k">Principle 02</span>
-        <div class="coda-title">Thematic coherence</div>
-        <p class="coda-text">Interface metaphors — tea trays, teacup loyalty icons, layered tiers — mirror the physical ritual, so the system feels familiar without instruction.</p>
-      </div>
-      <div class="coda-item">
-        <span class="coda-k">Principle 03</span>
-        <div class="coda-title">Constrained delight</div>
-        <p class="coda-text">Working within LiveCode's limits pushed every feature toward what users actually needed — simplicity became a design asset, not a compromise.</p>
-      </div>
+  <div class="concept-grid">
+    <div class="concept-copy">
+      <p class="body" data-sr="1">We envisioned Sip &amp; Scones as a fine-dining restaurant with a tech-enhanced twist. Instead of kiosks at the entrance or ordering through personal phones, we placed a tablet-based digital menu discreetly at each table. Diners keep control of the ordering process. The setting keeps its elegance and intimacy.</p>
+      <p class="body" data-sr="1">The interface replicates the iconic three-tiered tea stand, allowing diners to:</p>
+
+      <ul class="feature-list" data-sr="1">
+        <li>Customize each of the three afternoon tea tiers: Sandwiches, Scones, Sweets</li>
+        <li>Choose drink pairings from a curated menu</li>
+        <li>Review and complete their order at their own pace</li>
+        <li>Track loyalty rewards through a visual system of stacked teacups</li>
+      </ul>
+    </div>
+
+    <div class="concept-media" data-sr="1">
+      <img src="Sip-Scones%20Assets/swipe_tablet_outline_for_ui_ux_design.png" alt="Tablet showing the three-tiered afternoon tea stand interface: first course of savories and tea sandwiches, second course of scones with jam and cream, and third course of sweets.">
     </div>
   </div>
+
+  <p class="body" data-sr="1">Replacing traditional waitstaff with digital menus and robotic delivery carts struck a balance between efficiency and experience. Diners could enjoy a quiet, uninterrupted afternoon and still benefit from shorter wait times and fewer order errors (Bankar &amp; Suresh, 2015).</p>
 </section>
 
-<!-- ══ 5. GUIDING PRINCIPLE BAND ══ -->
+<!-- ══ 5. BIGGEST-CONCERN PULL-QUOTE BAND ══ -->
 <div class="band" data-sr>
-  <div class="band-eye">Guiding principle</div>
-  <p>Technology should enhance the experience, <em>not disrupt it.</em></p>
+  <div class="band-eye">Team reflection</div>
+  <p>“Our biggest concern was losing the essence of afternoon tea. We wanted technology that enhanced the experience, not one that disrupted it. The design needed to feel <em>intuitive, elegant, and invisible.</em>”</p>
 </div>
 
 <!-- ══ 6. SCREEN FLOW ══ -->

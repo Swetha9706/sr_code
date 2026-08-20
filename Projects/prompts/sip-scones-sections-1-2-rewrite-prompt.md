@@ -1,30 +1,27 @@
-# Prompt: Replace sections 01–02 content in Sip & Scones with the plainer-voice rewrite
+# Prompt: Replace sections 01–02 content in Sip & Scones (plain paragraphs, no callouts) + embed prototype video
 
 Read `CLAUDE.md`, `DESIGN.md`, and `PRODUCT.md` first.
 
-Edit `Projects/sip-scones-v2.html` in place — this file is already on the correct design system, so this is a content swap plus two small new components, not a re-skin.
+Edit `Projects/sip-scones.html` in place — this file is already on the correct design system, so this is a content swap, not a re-skin.
 
-## Before writing any code: ask me this question
+## Before writing any code: ask me these questions
 
-Section 02 currently holds the "Design Principles" content (Unhurried interaction / Thematic coherence / Constrained delight, in a 3-item `.principles` grid). The new copy below replaces that section's content entirely with "The Concept" instead. **Do you want the three-principles content dropped, or folded into a later section** (e.g. worked into Key Features or Design Principles kept as a short aside elsewhere)? Don't delete it silently — confirm first.
+1. Section 02 currently holds the "Design Principles" content (Unhurried interaction / Thematic coherence / Constrained delight, in a `.principles` grid). The new copy below replaces that section's content entirely with "The Concept" instead. **Drop the three-principles content, or fold it into a later section?** Don't delete it silently — confirm first.
+2. **The video file** — what's the filename and where does it live relative to `Projects/sip-scones.html` (e.g. alongside it in `/Projects/`)? What does it show — full prototype walkthrough, a single flow, the tiered-stand interaction specifically? That'll determine whether it belongs in section 02 (The Concept) near the interface description, or later in section 03/04 near the screen flow or prototype testing content. My default assumption is section 02, right after the feature list, but confirm placement.
+3. What video format is it, and should it autoplay muted/loop (common for a portfolio demo clip) or be a click-to-play embed with controls?
 
-## Replace section 01 ("Background") body copy with this text, verbatim
+## Replace section 01 ("Background") body copy with this text, verbatim — plain paragraphs, no callout boxes, no cards
 
-Keep the existing `sec-num` (01) and `sec-tag` ("Background"). Replace the two `<p class="body-t">` paragraphs and headline with:
+Keep the existing `sec-num` (01) and `sec-tag` ("Background"). Replace the current headline and `<p class="body-t">` paragraphs with:
 
 **Headline** (style consistent with the existing `<em>` accent pattern — pick the emphasized word/phrase that fits, e.g. something like "What the *atmosphere* taught us about the design"):
 
-**Body copy:**
+**Body copy — two plain paragraphs, nothing pulled into a separate box:**
 > Designing for a digital afternoon tea experience meant thinking beyond functionality. It meant understanding what makes afternoon tea special in the first place.
 >
-> Early research showed afternoon tea isn't just a meal. It's a social experience, steeped in tradition and ambiance. A study by Lin and Chen (2022) found that 93% of afternoon tea patrons, mostly young women aged 24 to 29, choose a restaurant based on atmosphere first. That insight shaped our design direction. Space, mood, and pacing mattered as much as the food.
+> Early research showed afternoon tea isn't just a meal. It's a social experience, steeped in tradition and ambiance. A study by Lin and Chen (2022) found that 93% of afternoon tea patrons, mostly young women aged 24 to 29, choose a restaurant based on atmosphere first. That insight shaped our design direction. Space, mood, and pacing mattered as much as the food. This led to a key design challenge: how do we introduce a digital ordering system without interrupting the ritual, aesthetic, or mood of the experience?
 
-**New: 93% stat callout** — this doesn't exist as a component in this file yet (unlike Krētha/FutureScope, which already have one). Add a new lightweight stat-callout component here, matching the established visual language: a large Cormorant Garamond number, a short DM Mono caption underneath, source attribution in Muted. Place it directly after the paragraph above, inside section 01. Content: "93%" as the number; caption something like "of afternoon tea patrons choose a restaurant based on atmosphere first — Lin & Chen, 2022."
-
-**New: design-challenge callout** — also new. This is not a quote (no attribution), so don't reuse `.pull-quote` for it — build a simple bordered or tinted callout box, italic Cormorant Garamond, no citation styling. Place it at the end of section 01:
-> This led to a key design challenge.
->
-> How do we introduce a digital ordering system without interrupting the ritual, aesthetic, or mood of the experience?
+That's the full section 01 body. The 93% stat and the design-challenge question both stay woven into the paragraph as continuous prose — do not pull either into a stat callout, a bordered box, a card, or any other separated component. No new components should be added to this section at all.
 
 ## Replace section 02 content entirely with "The Concept"
 
@@ -43,17 +40,19 @@ Change the `sec-tag` from "Design Principles" to "The Concept." Replace the curr
 - Review and complete their order at their own pace
 - Track loyalty rewards through a visual system of stacked teacups
 
+**Video embed** — insert here (or wherever confirmed in question 2 above), sized and framed consistently with how other media is presented elsewhere in this file (e.g. matching the rounded-corner/shadow treatment used on existing screenshots, if any). Use a native `<video>` element, not an external embed, unless the file is hosted elsewhere and you tell me otherwise.
+
 **Body copy, continued:**
 > Replacing traditional waitstaff with digital menus and robotic delivery carts struck a balance between efficiency and experience. Diners could enjoy a quiet, uninterrupted afternoon and still benefit from shorter wait times and fewer order errors (Bankar & Suresh, 2015).
 
-**Highlight the "biggest challenge" quote as a pull-quote** — reuse the existing `.pull-quote` component (the one currently holding "Technology should enhance the experience, not disrupt it." — Guiding design principle). Replace its content with:
+**Pull-quote** — reuse the existing `.pull-quote` component (currently holding "Technology should enhance the experience, not disrupt it." — Guiding design principle). Replace its content with:
 > "Our biggest concern was losing the essence of afternoon tea. We wanted technology that enhanced the experience, not one that disrupted it. The design needed to feel intuitive, elegant, and invisible."
 
-Since this is presented as a direct quote, keep the wording exactly as given — don't paraphrase or trim it. Drop the old "Guiding design principle" attribution line, since this quote isn't attributed to a named source in the original material — or replace it with something accurate if you want an attribution (e.g. "— Team reflection"), your call.
+Keep this quote's wording exactly as given. Drop the old "Guiding design principle" attribution, or replace it with something accurate (e.g. "— Team reflection") — your call.
 
 ## Constraints
 
-- Sections 03 onward (Screen Flow, Prototype Testing, etc.) are untouched by this prompt — don't renumber or edit them.
+- Sections 03 onward (Screen Flow, Prototype Testing, etc.) are untouched by this prompt — don't renumber or edit them, unless the video's confirmed placement (question 2) lands there instead.
 - Keep all citations (Lin & Chen 2022, Bankar & Suresh 2015) exactly as worded above.
-- New components (stat callout, design-challenge callout) should be built from the CSS variables already defined in this file's `:root` — no new colors or fonts.
-- This is still a draft file — confirm you're editing `Projects/sip-scones-v2.html`, not touching `Projects/sip-scones.html`.
+- No new visual components for section 01 — this section should read as plain prose only.
+- Confirm you're editing `Projects/sip-scones.html` and that this is the intended target file before making changes.
