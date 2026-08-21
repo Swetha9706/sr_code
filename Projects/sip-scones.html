@@ -196,6 +196,11 @@ figcaption{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.06em
 .finding-text{font-family:'Lora',serif;font-size:.98rem;line-height:1.65;color:var(--muted);max-width:64ch}
 @media(max-width:720px){.finding{grid-template-columns:1fr;gap:.85rem;padding:1.5rem 0}}
 
+/* ══ TESTING LEAD (task script + session photo) ══ */
+.testing-lead{display:grid;grid-template-columns:1fr .74fr;gap:3.5rem;align-items:center;margin-top:2.5rem}
+.testing-lead .callout,.testing-lead .figure{margin-top:0}
+@media(max-width:860px){.testing-lead{grid-template-columns:1fr;gap:2.25rem}.testing-lead .figure{max-width:440px}}
+
 /* ══ SCREEN GALLERY ══ */
 .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2.5rem}
 .gshot{display:flex;flex-direction:column;gap:.9rem}
@@ -503,10 +508,16 @@ figcaption{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.06em
   <div class="eyebrow" data-sr>What testing revealed</div>
   <h2 class="q-title" data-sr>What we asked participants <em>to do</em></h2>
 
-  <div class="callout" data-sr="1">
-    <span class="callout-k">Task script · round two, LiveCode prototype</span>
-    <p>"You have booked an afternoon tea experience for you and a friend at Sip &amp; Scones… You arrive and are impressed by the atmosphere; a host seats you and presents a digital touchscreen tablet menu for you to place your order."</p>
-    <p class="task"><strong>Task</strong> — Place and pay for an order using the digital ordering system. Your persona will be provided to you.</p>
+  <div class="testing-lead" data-sr="1">
+    <div class="callout">
+      <span class="callout-k">Task script · round two, LiveCode prototype</span>
+      <p>"You have booked an afternoon tea experience for you and a friend at Sip &amp; Scones… You arrive and are impressed by the atmosphere; a host seats you and presents a digital touchscreen tablet menu for you to place your order."</p>
+      <p class="task"><strong>Task</strong> — Place and pay for an order using the digital ordering system. Your persona will be provided to you.</p>
+    </div>
+    <figure class="figure">
+      <div class="figure-frame"><img src="Sip-Scones%20Assets/UserTesting.jpg" width="638" height="849" loading="lazy" decoding="async" alt="A participant testing the LiveCode prototype on a laptop during round two: the Afternoon Tea Menu screen shows the tiered stand illustration beside radio-button categories for macarons, scones, sandwiches, and petit fours, with a Continue button."></div>
+      <figcaption>Round two in progress: a participant works through the Afternoon Tea Menu on the LiveCode prototype.</figcaption>
+    </figure>
   </div>
 
   <div class="findings">
