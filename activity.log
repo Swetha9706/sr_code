@@ -107,3 +107,4 @@
 2026-08-21 12:58 — sip-scones: revised tooling/evaluation section copy (LiveCode reflection) — tightened phrasing, active voice, and citation wording across the four body paragraphs.
 [2026-08-21 10:31:26] Session 14 close: logged Figma User-testing rebuild (findings-layout-v2) + tooling-section copy revision; both committed/pushed/verified live earlier this session.
 2026-08-21 16:09 — sip-scones: wired UserTesting.jpg into the User testing section — task-script callout + round-two session photo now sit in a two-column .testing-lead grid (photo in a figure-frame with figcaption). PaperPrototype-1/2 were already referenced in the Testing section.
+[2026-08-24 10:12:06] Session 14 close (extended): wired UserTesting.jpg into the User testing section + committed the three case-study images; updated session_log end time/summary. All changes committed, pushed, and verified live.
