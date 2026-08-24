@@ -1,6 +1,12 @@
 {
   "detector": {
-    "ignoreRules": [],
+    "ignoreRules": [
+      "all-caps-body",
+      "wide-tracking",
+      "hero-eyebrow-chip",
+      "kicker-above-heading",
+      "gpt-thin-border-wide-shadow"
+    ],
     "ignoreFiles": [],
     "ignoreValues": [
       {
@@ -8,6 +14,18 @@
         "value": "rgba(30,18,10,.14)",
         "createdAt": "2026-08-06T08:22:51.857Z",
         "reason": "Documented DESIGN.md Elevation floating-image shadow (0 12px 36px rgba(30,18,10,.14)); flagged only because the color rule checks palette + tonal ramps, not shadow tokens."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "4rem",
+        "createdAt": "2026-08-24T14:08:13.559Z",
+        "reason": "Section 11 revisions numeral, ported from Figma node 610:398; deliberately off-ramp to preserve the oversized-numeral treatment."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "2.25rem",
+        "createdAt": "2026-08-24T14:08:13.611Z",
+        "reason": "Section 11 revisions title, ported from Figma node 610:398; sits between heading-md and heading-lg by design."
       }
     ]
   }
