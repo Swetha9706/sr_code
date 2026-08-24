@@ -46,8 +46,8 @@ typography:
     lineHeight: 1.2
     letterSpacing: "0.18em"
   scale:
-    label-2xs: "0.5625rem"
-    label-xs: "0.62rem"
+    # label-sm is the floor: label-2xs (0.5625rem) and label-xs (0.62rem) were
+    # retired because 9-10px mono fell below a legible minimum for UI text.
     label-sm: "0.7rem"
     label-12: "12px"
     label-base: "13px"
@@ -169,7 +169,7 @@ Pastel card accents — each work card owns one, revealed on hover so color beco
 - **Label** (DM Mono, 400–500, 12–14px, uppercase, letter-spacing 0.04em–0.18em): Eyebrows, nav links, tags, categories, marquees, copyright. Wider tracking (0.14–0.18em) for eyebrows and marquees; tighter (0.04em) for inline captions.
 
 ### Scale
-The type ramp is intentionally broad and fluid — an editorial system, not a rigid 5-step scale. Serif headlines use `clamp()` across roughly 1.9rem → 6.2rem; DM Mono labels run fine, from ~9px (0.5625rem) micro-captions up to 14px. The enumerated steps in the frontmatter `typography.scale` are the discrete sizes the shipped system (this page and `index.html`) actually uses; stay on them rather than inventing new intermediate sizes.
+The type ramp is intentionally broad and fluid — an editorial system, not a rigid 5-step scale. Serif headlines use `clamp()` across roughly 1.9rem → 6.2rem; DM Mono labels run small, from 11.2px (0.7rem) up to 14px; 0.7rem is a hard floor, since anything under ~11px is not reliably legible in mono. The enumerated steps in the frontmatter `typography.scale` are the discrete sizes the shipped system (this page and `index.html`) actually uses; stay on them rather than inventing new intermediate sizes.
 
 ### Named Rules
 **The Signature-Name Rule.** Self Modern appears exactly once — the hero name. Everywhere else the serif voice is Cormorant Garamond.
