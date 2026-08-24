@@ -125,3 +125,4 @@
 2026-08-24 18:46 - sip-scones.html: removed the hairline under the section 11 tab rail
 2026-08-24 18:54 - sip-scones.html: rebuilt section 11 tab rail to Figma 610:399 - DM Mono italic number + DM Mono roman label at 13px, ink inactive / ultraviolet active, 4px gap, 54px rows; added DM Mono italic axis to the font link; rail sizes to content with 175px floor
 2026-08-24 18:57 - sip-scones.html: section 11 images - border + shadow on the img, dropped the fixed 360px frame so each screen renders whole at its own ratio; 360px min-height floor on the panel
+2026-08-24 19:16 - sip-scones.html: reconciled section 11 against DESIGN.md - image radius 18px -> 14px (rounded.img), body .9375rem -> .95rem (body-sm), mobile title 1.75rem -> 1.8rem (heading-sm); 36px title and 64px number kept per Figma
