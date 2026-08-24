@@ -108,3 +108,20 @@
 [2026-08-21 10:31:26] Session 14 close: logged Figma User-testing rebuild (findings-layout-v2) + tooling-section copy revision; both committed/pushed/verified live earlier this session.
 2026-08-21 16:09 — sip-scones: wired UserTesting.jpg into the User testing section — task-script callout + round-two session photo now sit in a two-column .testing-lead grid (photo in a figure-frame with figcaption). PaperPrototype-1/2 were already referenced in the Testing section.
 [2026-08-24 10:12:06] Session 14 close (extended): wired UserTesting.jpg into the User testing section + committed the three case-study images; updated session_log end time/summary. All changes committed, pushed, and verified live.
+2026-08-24 15:46 - sip-scones.html: removed tinted frame (border/background/padding) from the User testing image in the 'What testing revealed' section
+2026-08-24 16:09 - sip-scones.html: moved User testing photo beside the four findings (new .findings-lead two-column grid); callout now full width
+2026-08-24 16:14 - sip-scones.html: taste pass - removed all 8 visible em-dashes (rewrote to periods/colons/commas), reworded the 'What testing revealed' eyebrow that duplicated a later headline
+2026-08-24 17:06 - sip-scones.html: wired 5 Built-* screens into section 11 image slots (800px web copies, 16.9MB -> 2.1MB); removed the empty slot on row 06 (no matching asset)
+2026-08-24 17:08 - sip-scones.html: dropped the standalone sign-up figure at the end of section 11 (duplicated the row-05 Built-SignUp screen)
+2026-08-24 17:09 - sip-scones.html: removed the four numbered gallery captions (01 Tier selection etc) and their now-unused .gshot / .gshot-cap CSS
+2026-08-24 17:15 - sip-scones.html: replaced the four-screen gallery in section 9 with the LiveCode prototype walkthrough video (mp4 remux + mov fallback, poster frame, controls); reworded the lead paragraph; removed .gallery/.gshot CSS
+2026-08-24 17:51 - sip-scones.html: rebuilt section 11 six-item list as sticky index + scrolling detail (option C); new .revise block, IntersectionObserver scroll-spy, larger 1400px screens; removed .stack-main/.stack-media CSS; gated html scroll-behavior on prefers-reduced-motion
+2026-08-24 17:53 - sip-scones.html: fixed sticky index - body/html overflow-x:hidden was making body a scroll container and trapping position:sticky; switched to overflow-x:clip. Added align-self:start + viewport max-height guard on .revise-index
+2026-08-24 18:10 - sip-scones.html: replaced body copy for revise items 01-05 with supplied text; item 06 unchanged (no replacement supplied)
+2026-08-24 18:12 - sip-scones.html: dropped revise item 06 (Inclusive onboarding); capped revise-media at 45% column width (78% on mobile) and regenerated the five screens at 700px (5.8MB -> 1.7MB), width/height attrs updated
+2026-08-24 18:17 - sip-scones.html: retitled section 11 heading to 'What I'\''d change, given more time'
+2026-08-24 18:42 - sip-scones.html: rebuilt section 11 to the Figma tabbed-panel format (node 610:398) - 5-tab vertical rail + switching panel, ARIA tabs w/ arrow-key nav, no-JS fallback stacks all panels; project tokens substituted for Figma hex, Cormorant italic for Playfair; screens regenerated at 900px
+2026-08-24 18:45 - sip-scones.html: section 11 - object-fit cover -> contain on revise media (radius moved to img, frame border dropped); removed the card treatment from .revise (background, border, radius, shadow, inset padding)
+2026-08-24 18:46 - sip-scones.html: removed the hairline under the section 11 tab rail
+2026-08-24 18:54 - sip-scones.html: rebuilt section 11 tab rail to Figma 610:399 - DM Mono italic number + DM Mono roman label at 13px, ink inactive / ultraviolet active, 4px gap, 54px rows; added DM Mono italic axis to the font link; rail sizes to content with 175px floor
+2026-08-24 18:57 - sip-scones.html: section 11 images - border + shadow on the img, dropped the fixed 360px frame so each screen renders whole at its own ratio; 360px min-height floor on the panel
