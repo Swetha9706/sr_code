@@ -215,17 +215,21 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 .callout .task strong{color:var(--ink);font-weight:500}
 
 /* ══ COMPARISON TABLE ══ */
-.comp-note{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:1.5rem;line-height:1.6}
-.comp-wrap{margin-top:1.5rem;border:1px solid var(--border);border-radius:28px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
-.comp-table{width:100%;min-width:520px;border-collapse:collapse}
-.comp-table th{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:1.1rem 1.25rem;text-align:left;background:var(--card-base);font-weight:400;vertical-align:top;border-bottom:1px solid var(--border)}
-.comp-table td{font-family:'Lora',serif;font-size:.92rem;line-height:1.55;color:var(--muted);padding:1rem 1.25rem;border-bottom:1px solid var(--border);vertical-align:top}
-.comp-table tr:last-child td{border-bottom:none}
-.comp-table td:first-child{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--ink)}
-.comp-win{color:var(--plum);font-weight:500}
-.comp-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .7rem;border-radius:999px;margin-bottom:.6rem}
-.comp-tag.win{background:var(--nectar);color:var(--plum)}
-.comp-tag.alt{background:var(--paper);border:1px solid var(--border);color:var(--muted)}
+.comp-note{font-family:'Lora',serif;font-size:.875rem;line-height:1.5;color:#6d6b93;margin-top:1.5rem;max-width:66ch}
+.comp-wrap{margin-top:1.25rem;border:1px solid rgba(109,107,147,.11);border-radius:12px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
+.comp-table{width:100%;min-width:640px;border-collapse:collapse;table-layout:fixed}
+.comp-table col.comp-col-crit{width:240px}
+.comp-table thead th{padding:1.5rem;text-align:left;vertical-align:bottom;font-weight:400;background:#fbfbfc}
+.comp-table thead th:first-child{vertical-align:top}
+.comp-head-k{display:block;font-family:'Lora',serif;font-weight:600;font-size:.6875rem;letter-spacing:.04em;text-transform:uppercase;color:#6d6b93;margin-bottom:.25rem}
+.comp-head-t{display:block;font-family:'Lora',serif;font-weight:700;font-size:.9375rem;letter-spacing:-.01em;color:var(--ink)}
+.comp-head-crit{font-family:'Lora',serif;font-weight:700;font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:#6d6b93}
+.comp-table tbody th,.comp-table tbody td{padding:1.5rem;vertical-align:middle;border-top:1px solid rgba(109,107,147,.11);text-align:left}
+.comp-table tbody td{font-family:'Lora',serif;font-weight:400;font-size:.875rem;line-height:1.45;color:#4a4957}
+.comp-table tbody th{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:1.125rem;line-height:1.45;color:var(--ink)}
+.comp-table thead th:nth-child(2),.comp-table tbody td:first-of-type{background:rgba(87,85,255,.05)}
+.comp-table tbody td:first-of-type{color:var(--ink)}
+@media(max-width:720px){.comp-table thead th,.comp-table tbody th,.comp-table tbody td{padding:1.1rem}}
 
 /* ══ INSIGHTS (non-card, hairline-separated columns) ══ */
 .insights{display:grid;grid-template-columns:1fr 1fr;gap:2.25rem 3.5rem;margin-top:2rem}
@@ -467,32 +471,37 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 
   <div class="comp-wrap" data-sr="1">
     <table class="comp-table">
+      <colgroup>
+        <col class="comp-col-crit">
+        <col>
+        <col>
+      </colgroup>
       <thead>
         <tr>
-          <th>Criterion</th>
-          <th><span class="comp-tag win">Option 01 · Chosen</span><br>Full-tier view</th>
-          <th><span class="comp-tag alt">Option 02</span><br>Single-tier focus</th>
+          <th scope="col"><span class="comp-head-crit">Criterion</span></th>
+          <th scope="col"><span class="comp-head-k">Cohesive experience</span><span class="comp-head-t">Full-Tier View</span></th>
+          <th scope="col"><span class="comp-head-k">Condensed context</span><span class="comp-head-t">Single-Tier Focus</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Overall feel</td>
-          <td class="comp-win">Felt close to assembling a physical tea stand</td>
+          <th scope="row">Overall feel</th>
+          <td>Felt close to assembling a physical tea stand</td>
           <td>Cleaner per-screen, but lost context</td>
         </tr>
         <tr>
-          <td>Sense of control</td>
-          <td class="comp-win">Diners could see the whole order at once</td>
+          <th scope="row">Sense of control</th>
+          <td>Diners could see the whole order at once</td>
           <td>Diners felt less in control of the total meal</td>
         </tr>
         <tr>
-          <td>Visual metaphor</td>
-          <td class="comp-win">Reinforced the afternoon tea ritual</td>
+          <th scope="row">Visual metaphor</th>
+          <td>Reinforced the afternoon tea ritual</td>
           <td>Reduced clutter, but broke the metaphor</td>
         </tr>
         <tr>
-          <td>Task completion</td>
-          <td class="comp-win">Both users completed with minor issues</td>
+          <th scope="row">Task completion</th>
+          <td>Both users completed with minor issues</td>
           <td>Both users completed with minor issues</td>
         </tr>
       </tbody>

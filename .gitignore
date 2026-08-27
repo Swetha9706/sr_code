@@ -12,3 +12,6 @@ skills-lock.json
 screen-recording-for-index-html/
 ServiceBlueprint_Kretha.pdf
 About Me — Swetha Ramachandran.png
+
+# impeccable live-mode session state (tooling, not site content)
+.impeccable/
