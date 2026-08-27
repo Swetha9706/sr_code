@@ -16,6 +16,7 @@
   --ultraviolet:  #5642EA;
   --highlighter:  #EBF985;
   --nectar:       #FFCAA6;
+  --teal:         #487571;
   --ice-blue:     #D4F5F9;
   --lavender:     #CACAFF;
   --plum:         #630F49;
@@ -127,7 +128,12 @@ img{display:block;max-width:100%}
 }
 .project-card:first-child:hover{background:var(--highlighter)}
 .project-card:nth-child(2):hover{background:var(--ice-blue)}
-.project-card:nth-child(3):hover{background:var(--nectar)}
+.project-card:nth-child(3):hover{background:var(--teal)}
+/* teal is darker than the pastel accents, so this card reverses its text out */
+.project-card:nth-child(3):hover .card-desc,
+.project-card:nth-child(3):hover .card-name,
+.project-card:nth-child(3):hover .card-cat,
+.project-card:nth-child(3):hover .card-arrow{color:var(--paper)}
 
 .card-visuals{
   position:absolute;inset:0;pointer-events:none;
@@ -354,7 +360,7 @@ img{display:block;max-width:100%}
           <rect x="20" y="20" width="220" height="280" rx="24" fill="var(--lavender)" opacity=".45"/>
           <rect x="40" y="44" width="180" height="36" rx="10" fill="var(--ultraviolet)" opacity=".18"/>
           <rect x="40" y="44" width="80" height="36" rx="10" fill="var(--ultraviolet)" opacity=".24"/>
-          <circle cx="130" cy="148" r="44" fill="var(--nectar)" opacity=".6"/>
+          <circle cx="130" cy="148" r="44" fill="var(--teal)" opacity=".6"/>
           <circle cx="130" cy="148" r="28" fill="var(--ultraviolet)" opacity=".22"/>
           <rect x="52" y="212" width="156" height="12" rx="6" fill="var(--border)" opacity=".9"/>
           <rect x="52" y="232" width="110" height="9" rx="4.5" fill="var(--border)" opacity=".7"/>

@@ -7,7 +7,7 @@
 <!--
   DRAFT: Sip & Scones case study, reworked onto the shared portfolio case-study layout
   (matches kretha-restructured.html / futurescope-restructured.html): Cormorant Garamond /
-  Lora / DM Mono, Paper + Ultraviolet + pastel palette, Nectar as this project's accent.
+  Lora / DM Mono, Paper + pastel palette, deep teal (#487571) as this project's accent.
   Self Modern is intentionally NOT used (reserved for the signature name).
   Content sourced from the Group 5 software-functionality & evaluation report.
 -->
@@ -22,7 +22,7 @@
   --card-base:    #EEEAF6;
   --cotton-candy: #F8D9FF;
   --border:       #ddd6ec;
-  --ultraviolet:  #5642EA;
+  --accent:       #487571;   /* deep teal — this case study's voice */
   --highlighter:  #EBF985;
   --nectar:       #FFCAA6;
   --ice-blue:     #D4F5F9;
@@ -38,10 +38,10 @@ html{-webkit-font-smoothing:antialiased;overflow-x:clip}
 body{background:var(--paper);color:var(--ink);font-family:'Lora',serif;overflow-x:clip}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
-code{font-family:'DM Mono',monospace;font-size:.9em;color:var(--ultraviolet)}
+code{font-family:'DM Mono',monospace;font-size:.9em;color:var(--accent)}
 
 /* ══ SCROLL PROGRESS ══ */
-#progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--ultraviolet);transform:scaleX(0);transform-origin:0 50%;z-index:999}
+#progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;z-index:999}
 @supports (animation-timeline:scroll()){
   #progress{animation:progress-grow linear both;animation-timeline:scroll(root block)}
 }
@@ -62,46 +62,36 @@ code{font-family:'DM Mono',monospace;font-size:.9em;color:var(--ultraviolet)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:22px 44px}
 .nav-crumb{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.55rem}
 .nav-crumb a{color:var(--muted);transition:color .18s}
-.nav-crumb a:hover{color:var(--ultraviolet)}
+.nav-crumb a:hover{color:var(--accent)}
 .nav-crumb .cur{color:var(--ink)}
 .nav-brand{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:var(--ink)}
-.nav-cta{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;background:var(--ultraviolet);color:var(--paper);padding:9px 18px;border-radius:999px;transition:opacity .2s}
+.nav-cta{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;background:var(--accent);color:var(--paper);padding:9px 18px;border-radius:999px;transition:opacity .2s}
 .nav-cta:hover{opacity:.88}
 @media(max-width:720px){.nav-brand{display:none}.nav-inner{padding:16px 20px}}
 
 /* ══ SHARED SECTION ══ */
 section{padding:4rem 3rem;max-width:1180px;margin:0 auto}
-.eyebrow{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ultraviolet);display:inline-flex;align-items:center;gap:.65rem;margin-bottom:1.4rem}
-.eyebrow::before{content:'';width:1.6rem;height:1px;background:var(--ultraviolet)}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.65rem;margin-bottom:1.4rem}
+.eyebrow::before{content:'';width:1.6rem;height:1px;background:var(--accent)}
 .q-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem,3.6vw,2.8rem);line-height:1.1;letter-spacing:-.01em;color:var(--ink)}
-.q-title em{font-style:italic;color:var(--ultraviolet)}
+.q-title em{font-style:italic;color:var(--accent)}
 .body{font-family:'Lora',serif;font-size:1.125rem;line-height:1.65;color:var(--ink);max-width:82ch;margin-top:1.25rem}
 .body strong{color:var(--ink);font-weight:500}
 .divider{max-width:1180px;margin:0 auto;height:1px;background:var(--border)}
 
 /* ══ HERO (Grey-format: the artifact leads, the words follow, everything left-aligned) ══ */
-/* full-bleed stage — the built screen rises out of a Nectar-washed teapot ground */
-.hero-stage-wrap{margin:0;padding:1.25rem 1.5rem 0}
-.hero-stage{display:flex;justify-content:center;align-items:flex-end;padding:2.75rem 2rem 0;
-  border-radius:14px;overflow:hidden;border:1px solid var(--border);
-  background:linear-gradient(180deg,rgba(255,202,166,.5),rgba(255,202,166,.16)),
-             linear-gradient(rgba(252,251,250,.55),rgba(252,251,250,.55)),
-             url('Sip-Scones%20Assets/sip-scones-hero.png') center top/300px auto repeat,
-             var(--paper)}
-.hero-shot{display:block;width:min(720px,52%);height:auto;
-  border:1px solid var(--border);border-bottom:none;border-radius:8px 8px 0 0;
-  box-shadow:0 12px 36px rgba(30,18,10,.14)}
-.hero-cap{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted);max-width:1180px;margin:1.1rem auto 0;padding:0 3rem}
+/* full-bleed key visual — the composed hero leads the page */
+.hero-stage-wrap{max-width:1180px;margin:0 auto;padding:1.25rem 3rem 0}
+.hero-key{display:block;width:100%;height:auto;border-radius:14px}
 
 /* the naming block: left-aligned, oversized, tight */
 .hero{max-width:1180px;margin:0 auto;padding:2.5rem 3rem 0}
 .hero-name{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ultraviolet);margin-bottom:1.35rem}
+  color:var(--accent);margin-bottom:1.35rem}
 .hero-title{font-family:'Cormorant Garamond',serif;font-weight:600;
   font-size:clamp(2.4rem,6vw,5rem);line-height:1;letter-spacing:-.02em;color:var(--ink);
   max-width:24ch;text-wrap:balance}
-.hero-title em{font-style:italic;color:var(--ultraviolet)}
+.hero-title em{font-style:italic;color:var(--accent)}
 .hero-squig{display:block;width:180px;height:18px;margin:1.15rem 0 1.6rem}
 .hero-sub{font-family:'Lora',serif;font-size:clamp(1.125rem,1.5vw,21px);line-height:1.65;
   color:var(--muted);max-width:52ch}
@@ -111,16 +101,14 @@ section{padding:4rem 3rem;max-width:1180px;margin:0 auto}
 .facts-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.75rem 3.5rem;
   margin-top:4rem;padding-bottom:3.25rem;border-bottom:1px solid var(--border)}
 .fact-l{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ultraviolet);margin-bottom:.75rem}
+  color:var(--accent);margin-bottom:.75rem}
 .fact-v{font-family:'Lora',serif;font-size:18px;line-height:1.55;color:var(--ink);max-width:30ch}
 @media(max-width:860px){
-  .hero-stage{padding:2rem 1.5rem 0}
-  .hero-shot{width:min(520px,62%)}
   .facts-grid{grid-template-columns:1fr 1fr;gap:2.25rem 2.5rem;margin-top:3rem;padding-bottom:2.5rem}
 }
 @media(max-width:560px){
-  .hero-stage-wrap{padding:1.25rem 1rem 0}
-  .hero-shot{width:84%}
+  .hero-stage-wrap{padding:1.25rem 1.5rem 0}
+  .hero-key{border-radius:8px}
   .facts-grid{grid-template-columns:1fr;gap:1.75rem}
   .fact-v{font-size:1rem}
 }
@@ -134,22 +122,30 @@ section{padding:4rem 3rem;max-width:1180px;margin:0 auto}
 @media(max-width:860px){.needs{grid-template-columns:1fr;gap:2rem}.needs-media{min-height:0;aspect-ratio:3/4;max-height:74vh}}
 
 /* ══ CONCEPT SPLIT ══ */
-.concept-grid{display:grid;grid-template-columns:1fr .82fr;gap:3.5rem;align-items:center;margin-top:1.5rem}
+.concept-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:4rem;align-items:center;margin-top:2.5rem}
 .concept-copy>*:first-child{margin-top:0}
 .concept-media{display:flex;align-items:center;justify-content:center}
 .concept-media img{width:100%;height:auto;display:block}
-@media(max-width:860px){.concept-grid{grid-template-columns:1fr;gap:2.25rem}.concept-media{max-width:420px;margin:0 auto}}
+/* the capability run, set at title scale so the section reads as a peak, not a list */
+.concept-rows{margin-top:2rem;border-top:1px solid var(--border)}
+.concept-row{padding:1.35rem 0;border-bottom:1px solid var(--border)}
+.concept-row-k{display:block;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:.55rem}
+.concept-row-t{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.4rem;line-height:1.3;
+  letter-spacing:-.01em;color:var(--ink);margin:0}
+@media(max-width:860px){
+  .concept-grid{grid-template-columns:1fr;gap:2.5rem}
+  .concept-media{max-width:520px;margin:0 auto;order:-1}
+  .concept-row-t{font-size:1.3rem}
+}
 
 /* ══ DESIGN-CHALLENGE CLOSER ══ */
 .challenge{margin-top:2.75rem;padding-top:2rem;border-top:1px solid var(--border)}
-.challenge-k{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);display:block;margin-bottom:1rem}
+.challenge-k{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1rem}
 .challenge .ask{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1.35;color:var(--ink)}
-.challenge .ask em{font-style:italic;color:var(--ultraviolet)}
+.challenge .ask em{font-style:italic;color:var(--accent)}
 
 /* ══ FEATURE LIST ══ */
-.feature-list{list-style:none;margin-top:1.75rem;border-top:1px solid var(--border);max-width:82ch}
-.feature-list li{position:relative;font-family:'Lora',serif;font-size:1rem;line-height:1.6;color:var(--ink);padding:1.05rem 0 1.05rem 1.9rem;border-bottom:1px solid var(--border)}
-.feature-list li::before{content:'';position:absolute;left:0;top:1.5rem;width:.55rem;height:.55rem;border-radius:50%;background:var(--nectar)}
 
 /* ══ NUMBERED STACK ══ */
 .stack{margin-top:2.5rem;border-top:1px solid var(--border)}
@@ -167,9 +163,9 @@ section{padding:4rem 3rem;max-width:1180px;margin:0 auto}
 .revise-tab-n,.revise-tab-l{font-family:'DM Mono',monospace;font-weight:500;font-size:13px;line-height:1.2}
 .revise-tab-n{font-style:italic}
 .revise-tab-l{font-style:normal;letter-spacing:-.01em}
-.revise-tab:hover{color:var(--ultraviolet)}
-.revise-tab[aria-selected="true"]{color:var(--ultraviolet)}
-.revise-tab:focus-visible{outline:2px solid var(--ultraviolet);outline-offset:2px}
+.revise-tab:hover{color:var(--accent)}
+.revise-tab[aria-selected="true"]{color:var(--accent)}
+.revise-tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 @media(prefers-reduced-motion:no-preference){.revise-tab{transition:color .25s var(--ease)}}
 
 .revise-panels{flex:1 1 auto;min-width:0;padding-top:1.3rem}
@@ -177,13 +173,13 @@ section{padding:4rem 3rem;max-width:1180px;margin:0 auto}
 .revise-panel[hidden]{display:none}
 .revise:not(.is-tabbed) .revise-tabs{display:none}
 .revise:not(.is-tabbed) .revise-panel+.revise-panel{margin-top:3.5rem}
-.revise-panel:focus-visible{outline:2px solid var(--ultraviolet);outline-offset:6px;border-radius:8px}
+.revise-panel:focus-visible{outline:2px solid var(--accent);outline-offset:6px;border-radius:8px}
 .revise-copy{flex:1 1 auto;min-width:0;display:flex;align-items:flex-start}
 .revise-head{flex:1 1 auto;min-width:0}
 .revise-t{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:2.25rem;
   line-height:1.2;color:var(--ink);margin:0}
 .revise-x{font-family:'Lora',serif;font-size:.95rem;line-height:1.6;color:var(--muted);margin-top:1.125rem}
-.revise-x code{font-family:'DM Mono',monospace;font-size:.95em;color:var(--ultraviolet)}
+.revise-x code{font-family:'DM Mono',monospace;font-size:.95em;color:var(--accent)}
 .revise-media{flex:0 0 440px;margin:0}
 .revise-media img{width:100%;height:auto;display:block;border:1px solid var(--border);
   border-radius:14px;box-shadow:0 12px 36px rgba(30,18,10,.14)}
@@ -213,14 +209,14 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 
 /* ══ TASK-SCRIPT CALLOUT ══ */
 .callout{margin-top:2.5rem}
-.callout-k{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ultraviolet);display:block;margin-bottom:1rem}
+.callout-k{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1rem}
 .callout p{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:1.4rem;line-height:1.4;color:var(--ink)}
 .callout .task{font-family:'Lora',serif;font-style:normal;font-weight:400;font-size:.98rem;line-height:1.7;color:var(--muted);margin-top:1rem}
 .callout .task strong{color:var(--ink);font-weight:500}
 
 /* ══ TESTING: PROSE COLUMNS, PROTOTYPE FIGURES, MATRIX, VERDICT ══ */
 /* the two-column prose row reuses the shared .insights hairline-column pattern */
-.testing a{color:var(--ultraviolet)}
+.testing a{color:var(--accent)}
 .testing a:hover{color:var(--ink)}
 .test-title{max-width:24ch;text-wrap:pretty}
 .test-lede{max-width:60ch}
@@ -236,7 +232,7 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 .matrix-wrap::-webkit-scrollbar{height:6px}
 .matrix-wrap::-webkit-scrollbar-track{background:transparent}
 .matrix-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:999px}
-.matrix-wrap:hover::-webkit-scrollbar-thumb{background:var(--ultraviolet)}
+.matrix-wrap:hover::-webkit-scrollbar-thumb{background:var(--accent)}
 .matrix{--crit:200px;--col-gap:1.5rem;position:relative;min-width:640px}
 .matrix-wash{position:absolute;top:0;bottom:0;left:calc(var(--crit) + var(--col-gap) / 2);width:calc((100% - var(--crit) - var(--col-gap) * 2) / 2 + var(--col-gap));background:var(--nectar);opacity:.34;border-radius:14px;pointer-events:none}
 .matrix-row{display:grid;grid-template-columns:var(--crit) 1fr 1fr;gap:0 var(--col-gap);position:relative}
@@ -253,7 +249,7 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 /* verdict */
 .verdict{margin-top:4.5rem;border-top:1px solid var(--border);padding-top:2.5rem;display:grid;grid-template-columns:1.15fr 1fr;gap:3.5rem;align-items:start}
 .verdict-line{font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;font-size:clamp(1.6rem,3vw,2rem);line-height:1.3;letter-spacing:-.015em;color:var(--ink);text-wrap:pretty}
-.verdict-line em{font-style:normal;color:var(--ultraviolet)}
+.verdict-line em{font-style:normal;color:var(--accent)}
 .verdict-note{font-family:'Lora',serif;font-size:18px;line-height:1.7;color:var(--muted);max-width:52ch}
 @media(max-width:860px){
   .test-figs{grid-template-columns:1fr;gap:2.25rem;margin-top:2.75rem}
@@ -272,7 +268,7 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 /* ══ INSIGHTS (non-card, hairline-separated columns) ══ */
 .insights{display:grid;grid-template-columns:1fr 1fr;gap:2.25rem 3.5rem;margin-top:2rem}
 .insight{border-top:1px solid var(--border);padding-top:1.15rem}
-.insight-k{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);display:block;margin-bottom:.55rem}
+.insight-k{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.55rem}
 .insight-text{font-family:'Lora',serif;font-size:.95rem;line-height:1.7;color:var(--muted)}
 @media(max-width:720px){.insights{grid-template-columns:1fr;gap:1.75rem}}
 
@@ -280,7 +276,7 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 .findings{margin-top:2.75rem}
 .finding{display:grid;grid-template-columns:280px 1fr;gap:3rem;padding:1.9rem 0;border-top:1px solid var(--border)}
 .finding:first-child{border-top:none;padding-top:.4rem}
-.finding-k{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);display:block;margin-bottom:.6rem}
+.finding-k{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.6rem}
 .finding-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);line-height:1.25}
 .finding-text{font-family:'Lora',serif;font-size:.98rem;line-height:1.65;color:var(--muted);max-width:64ch}
 @media(max-width:720px){.finding{grid-template-columns:1fr;gap:.85rem;padding:1.5rem 0}}
@@ -299,7 +295,7 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 .proto-video video{width:100%;height:auto;display:block;border-radius:14px;box-shadow:0 12px 36px rgba(30,18,10,.14);background:var(--card-base)}
 
 /* ══ HYPOTHESIS / PRINCIPLE BAND ══ */
-.band{background:var(--ultraviolet);padding:4.5rem 3rem;text-align:center}
+.band{background:var(--accent);padding:4.5rem 3rem;text-align:center}
 .band-eye{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--paper);opacity:.85;margin-bottom:1.4rem}
 .band p{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.4;color:var(--paper);max-width:60ch;margin:0 auto}
 .band p em{font-style:normal;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px;text-decoration-color:rgba(252,251,250,.5)}
@@ -313,17 +309,17 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 .footer{background:var(--cotton-candy)}
 .footer-inner{max-width:1180px;margin:0 auto;padding:44px;display:flex;flex-direction:row;align-items:flex-end;justify-content:space-between}
 .footer-cta{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:var(--ink);display:block;line-height:1.1;margin-bottom:.8rem;text-decoration:none;transition:color .2s}
-.footer-cta:hover{color:var(--ultraviolet)}
+.footer-cta:hover{color:var(--accent)}
 .footer-contact-line{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;color:var(--muted)}
 .footer-contact-line a{color:var(--muted);transition:color .15s}
-.footer-contact-line a:hover{color:var(--ultraviolet)}
+.footer-contact-line a:hover{color:var(--accent)}
 .footer-contact-line .sep{margin:0 .55rem;opacity:.45}
 .footer-copyright{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--muted);text-align:right}
 
-@media(max-width:720px){section{padding:4rem 1.5rem}.hero{padding:2.5rem 1.5rem 0}.hero-cap{padding:0 1.5rem}.facts{padding:0 1.5rem}.band{padding:3rem 1.5rem}.footer-inner{flex-direction:column;align-items:flex-start;gap:2rem;padding:3.5rem 1.5rem}.footer-copyright{text-align:left}}
+@media(max-width:720px){section{padding:4rem 1.5rem}.hero{padding:2.5rem 1.5rem 0}.hero-stage-wrap{padding:1.25rem 1.5rem 0}.facts{padding:0 1.5rem}.band{padding:3rem 1.5rem}.footer-inner{flex-direction:column;align-items:flex-start;gap:2rem;padding:3.5rem 1.5rem}.footer-copyright{text-align:left}}
 
 ::selection{background:var(--nectar);color:var(--ink)}
-:focus-visible{outline:2px solid var(--ultraviolet);outline-offset:3px;border-radius:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 </style>
 </head>
 <body>
@@ -340,18 +336,15 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 </nav>
 
 <!-- ══ 1. HERO — the work first ══ -->
-<figure class="hero-stage-wrap" data-sr>
-  <div class="hero-stage">
-    <img class="hero-shot" src="Sip-Scones%20Assets/hero-afternoon-tea-screen.jpg" width="1027" height="737" fetchpriority="high" decoding="async" alt="The built afternoon tea menu screen: radio-button choices for macarons, pastries, petit fours, scones and sandwiches on the left, an illustrated three-tiered stand filling on the right, and a Continue button.">
-  </div>
-  <figcaption class="hero-cap">The afternoon tea menu screen, built in LiveCode</figcaption>
-</figure>
+<div class="hero-stage-wrap" data-sr>
+  <img class="hero-key" src="Sip-Scones%20Assets/hero-key-visual.jpg" width="2000" height="1330" fetchpriority="high" decoding="async" alt="Two tablets on a café table laid for afternoon tea. One shows the welcome screen — an engraved teapot pattern with the Sip &amp; Scones mark and a Start order button — and the other the afternoon tea menu, with radio-button choices for macarons, pastries, scones and sandwiches beside an illustrated three-tiered stand.">
+</div>
 
 <header class="hero">
   <div class="hero-name" data-sr>Sip &amp; Scones</div>
   <h1 class="hero-title" data-sr="1">A tablet ordering system that keeps <em>the ritual of afternoon tea</em> intact</h1>
   <svg class="hero-squig" viewBox="0 0 250 20" fill="none" aria-hidden="true" data-sr="1">
-    <path d="M4 13 Q36 4 68 13 Q100 22 132 12 Q162 2 196 12 Q218 18 246 11" stroke="var(--ultraviolet)" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M4 13 Q36 4 68 13 Q100 22 132 12 Q162 2 196 12 Q218 18 246 11" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" fill="none"/>
   </svg>
   <p class="hero-sub" data-sr="2">Diners customise a three-tiered tea tray, pair drinks, and track loyalty through a visual reward system.</p>
 </header>
@@ -407,21 +400,34 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
   <div class="eyebrow" data-sr>The Concept</div>
   <h2 class="q-title" data-sr>A digital menu that <em>stays out of the way</em></h2>
 
+  <p class="body" data-sr="1">We envisioned Sip &amp; Scones as a fine-dining restaurant with a tech-enhanced twist. Instead of kiosks at the entrance or ordering through personal phones, we placed a tablet-based digital menu discreetly at each table. Diners keep control of the ordering process. The setting keeps its elegance and intimacy.</p>
+
   <div class="concept-grid">
-    <div class="concept-copy">
-      <p class="body" data-sr="1">We envisioned Sip &amp; Scones as a fine-dining restaurant with a tech-enhanced twist. Instead of kiosks at the entrance or ordering through personal phones, we placed a tablet-based digital menu discreetly at each table. Diners keep control of the ordering process. The setting keeps its elegance and intimacy.</p>
-      <p class="body" data-sr="1">The interface replicates the iconic three-tiered tea stand, allowing diners to:</p>
-
-      <ul class="feature-list" data-sr="1">
-        <li>Customize each of the three afternoon tea tiers: Sandwiches, Scones, Sweets</li>
-        <li>Choose drink pairings from a curated menu</li>
-        <li>Review and complete their order at their own pace</li>
-        <li>Track loyalty rewards through a visual system of stacked teacups</li>
-      </ul>
-    </div>
-
     <div class="concept-media" data-sr="1">
       <img src="Sip-Scones%20Assets/swipe_tablet_outline-950.png" width="950" height="950" loading="lazy" decoding="async" alt="Tablet showing the three-tiered afternoon tea stand interface: first course of savories and tea sandwiches, second course of scones with jam and cream, and third course of sweets.">
+    </div>
+
+    <div class="concept-copy">
+      <p class="body" data-sr="1">The interface replicates the iconic three-tiered tea stand, allowing diners to:</p>
+
+      <div class="concept-rows" data-sr="1">
+        <div class="concept-row">
+          <span class="concept-row-k">The stand</span>
+          <p class="concept-row-t">Customize each of the three afternoon tea tiers: Sandwiches, Scones, Sweets</p>
+        </div>
+        <div class="concept-row">
+          <span class="concept-row-k">The pairing</span>
+          <p class="concept-row-t">Choose drink pairings from a curated menu</p>
+        </div>
+        <div class="concept-row">
+          <span class="concept-row-k">The pace</span>
+          <p class="concept-row-t">Review and complete their order at their own pace</p>
+        </div>
+        <div class="concept-row">
+          <span class="concept-row-k">The reward</span>
+          <p class="concept-row-t">Track loyalty rewards through a visual system of stacked teacups</p>
+        </div>
+      </div>
     </div>
   </div>
 

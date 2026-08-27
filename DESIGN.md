@@ -9,6 +9,7 @@ colors:
   ultraviolet: "#5642EA"
   highlighter: "#EBF985"
   nectar: "#FFCAA6"
+  teal: "#487571"
   ice-blue: "#D4F5F9"
   lavender: "#CACAFF"
   plum: "#630F49"
@@ -133,7 +134,14 @@ A soft pastel palette on warm paper, where a single saturated accent does all th
 Pastel card accents — each work card owns one, revealed on hover so color becomes an interaction reward:
 - **Highlighter** (#EBF985): Krētha card hover fill.
 - **Ice Blue** (#D4F5F9): FutureScope card hover fill.
-- **Nectar** (#FFCAA6): Sip & Scones card hover fill.
+- **Nectar** (#FFCAA6): Available pastel accent; on the Sip & Scones case study it tints the
+  comparison-matrix winning column and the feature-list bullets.
+- **Teal** (#487571): Sip & Scones' accent. It fills that card on hover in the work grid, and
+  inside `Projects/sip-scones.html` it replaces Ultraviolet outright as the page's single
+  saturated voice — eyebrows, headline italics, the squiggle, the nav CTA, the pull-quote
+  band, fact labels, links, code spans and focus rings. Drawn from the tea-stand illustration
+  and the hero key visual. 5.0:1 on Paper (AA for body text, not AAA), 5.0:1 for Paper text
+  reversed out on a teal band.
 - **Lavender** (#CACAFF): Available pastel accent for additional cards/tiles.
 
 ### Tertiary
@@ -148,7 +156,7 @@ Pastel card accents — each work card owns one, revealed on hover so color beco
 - **Border** (#ddd6ec): Hairline dividers, underlines, and 1px separators.
 
 ### Named Rules
-**The One Voice Rule.** Ultraviolet is the only saturated color allowed on the page shell (nav, eyebrows, marquees, CTAs, hover). Pastels belong to the work cards, never the chrome. Its rarity against the paper is what makes it read as intentional.
+**The One Voice Rule.** Exactly one saturated color is allowed on a page shell (nav, eyebrows, marquees, CTAs, hover); pastels belong to the work cards, never the chrome. Its rarity against the paper is what makes it read as intentional. Ultraviolet is that voice site-wide. A case study may substitute its own accent for Ultraviolet **throughout that page** when the work has a colour of its own — `Projects/sip-scones.html` uses Teal #487571 — but it swaps the voice, it never adds a second one.
 
 **The Color-Is-The-Hover Rule.** A work card's accent is hidden at rest (neutral Card Base) and only fills in on hover. Color is earned by interaction, not spent up front.
 
@@ -205,7 +213,7 @@ Soft and rounded throughout — no sharp edges. The radius scale is deliberate: 
 
 ### Cards / Containers
 - **Corner Style:** 28px (work cards); 14px (floating images).
-- **Background:** Card Base (#EEEAF6) at rest; swaps to the card's own pastel accent on hover (Highlighter / Ice Blue / Nectar).
+- **Background:** Card Base (#EEEAF6) at rest; swaps to the card's own accent on hover (Highlighter / Ice Blue / Teal).
 - **Depth Strategy:** Flat surface; only the inner floating images carry a soft shadow. See Elevation.
 - **Internal Padding:** 2.2rem sides, 1.8–2.2rem top/bottom; fixed height ~360px desktop / 300px mobile.
 - **Behavior:** At rest the card shows rotated collage imagery; on hover the imagery fades out and a Cormorant Garamond description + arrow fade in over the accent fill. A gentle `background .45s cubic-bezier(0.22,1,0.36,1)` carries the color swap.
