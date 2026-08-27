@@ -79,34 +79,53 @@ section{padding:4rem 3rem;max-width:1180px;margin:0 auto}
 .body strong{color:var(--ink);font-weight:500}
 .divider{max-width:1180px;margin:0 auto;height:1px;background:var(--border)}
 
-/* ══ HERO ══ */
-.hero{max-width:1180px;margin:0 auto;padding:5.5rem 3rem 3rem;text-align:center;display:flex;flex-direction:column;align-items:center}
-.hero-eyebrow{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:1.75rem}
-.hero-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(3.5rem,12vw,6.2rem);line-height:.95;letter-spacing:-.02em;color:var(--ink)}
-.hero-title em{font-style:italic;color:var(--ultraviolet)}
-.hero-squig{display:block;width:200px;height:20px;margin:1.5rem auto 1.75rem}
-.hero-sub{font-family:'Lora',serif;font-size:clamp(1.125rem,1.6vw,1.25rem);line-height:1.7;color:var(--muted);max-width:60ch}
-.hero-img{margin:3.5rem auto 0;width:100%;max-width:1080px;border-radius:14px;overflow:hidden;box-shadow:0 12px 36px rgba(30,18,10,.14);position:relative;transform:rotate(-.6deg)}
-.hero-img img{width:100%;aspect-ratio:16/7;object-fit:cover}
-.hero-cap{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:1.1rem}
+/* ══ HERO (Grey-format: the artifact leads, the words follow, everything left-aligned) ══ */
+/* full-bleed stage — the built screen rises out of a Nectar-washed teapot ground */
+.hero-stage-wrap{margin:0;padding:1.25rem 1.5rem 0}
+.hero-stage{display:flex;justify-content:center;align-items:flex-end;padding:2.75rem 2rem 0;
+  border-radius:14px;overflow:hidden;border:1px solid var(--border);
+  background:linear-gradient(180deg,rgba(255,202,166,.5),rgba(255,202,166,.16)),
+             linear-gradient(rgba(252,251,250,.55),rgba(252,251,250,.55)),
+             url('Sip-Scones%20Assets/sip-scones-hero.png') center top/300px auto repeat,
+             var(--paper)}
+.hero-shot{display:block;width:min(720px,52%);height:auto;
+  border:1px solid var(--border);border-bottom:none;border-radius:8px 8px 0 0;
+  box-shadow:0 12px 36px rgba(30,18,10,.14)}
+.hero-cap{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);max-width:1180px;margin:1.1rem auto 0;padding:0 3rem}
 
-/* ══ QUICK FACTS ══ */
+/* the naming block: left-aligned, oversized, tight */
+.hero{max-width:1180px;margin:0 auto;padding:2.5rem 3rem 0}
+.hero-name{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ultraviolet);margin-bottom:1.35rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:clamp(2.4rem,6vw,5rem);line-height:1;letter-spacing:-.02em;color:var(--ink);
+  max-width:24ch;text-wrap:balance}
+.hero-title em{font-style:italic;color:var(--ultraviolet)}
+.hero-squig{display:block;width:180px;height:18px;margin:1.15rem 0 1.6rem}
+.hero-sub{font-family:'Lora',serif;font-size:clamp(1.125rem,1.5vw,21px);line-height:1.65;
+  color:var(--muted);max-width:52ch}
+
+/* ══ QUICK FACTS — labelled grid, whitespace does the separating ══ */
 .facts{max-width:1180px;margin:0 auto;padding:0 3rem}
-.facts-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:28px;overflow:hidden;background:var(--card-base)}
-.fact{padding:1.6rem 1.5rem;border-right:1px solid var(--border)}
-.fact:last-child{border-right:none}
-.fact-l{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:.5rem}
-.fact-v{font-family:'Lora',serif;font-size:.9rem;line-height:1.5;color:var(--ink)}
-@media(max-width:860px){.facts-grid{grid-template-columns:1fr 1fr}.fact:nth-child(2){border-right:none}.fact:nth-child(1),.fact:nth-child(2){border-bottom:1px solid var(--border)}}
-@media(max-width:480px){.facts-grid{grid-template-columns:1fr}.fact{border-right:none;border-bottom:1px solid var(--border)}.fact:last-child{border-bottom:none}}
+.facts-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.75rem 3.5rem;
+  margin-top:4rem;padding-bottom:3.25rem;border-bottom:1px solid var(--border)}
+.fact-l{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ultraviolet);margin-bottom:.75rem}
+.fact-v{font-family:'Lora',serif;font-size:18px;line-height:1.55;color:var(--ink);max-width:30ch}
+@media(max-width:860px){
+  .hero-stage{padding:2rem 1.5rem 0}
+  .hero-shot{width:min(520px,62%)}
+  .facts-grid{grid-template-columns:1fr 1fr;gap:2.25rem 2.5rem;margin-top:3rem;padding-bottom:2.5rem}
+}
+@media(max-width:560px){
+  .hero-stage-wrap{padding:1.25rem 1rem 0}
+  .hero-shot{width:84%}
+  .facts-grid{grid-template-columns:1fr;gap:1.75rem}
+  .fact-v{font-size:1rem}
+}
 
 /* ══ METHOD + STAT CALLOUT ══ */
-.method{border-top:1px solid var(--border);padding-top:2.5rem;margin-top:2.5rem}
-.method-label{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:.9rem}
-.subhead{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.4rem,2.2vw,1.6rem);line-height:1.3;letter-spacing:-.01em;color:var(--ink);margin-top:2rem}
-.subhead em{font-style:italic;color:var(--ultraviolet)}
-.method-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;margin-top:1.25rem}
-@media(max-width:860px){.method-grid{grid-template-columns:1fr;gap:1.5rem}}
 /* ══ USER NEEDS: VIDEO + COPY, TWO-COLUMN ══ */
 .needs{display:grid;grid-template-columns:.82fr 1fr;gap:3.75rem;align-items:stretch}
 .needs-media{border-radius:28px;overflow:hidden;background:var(--card-base);box-shadow:0 8px 20px rgba(26,25,23,.08);min-height:520px}
@@ -115,7 +134,7 @@ section{padding:4rem 3rem;max-width:1180px;margin:0 auto}
 @media(max-width:860px){.needs{grid-template-columns:1fr;gap:2rem}.needs-media{min-height:0;aspect-ratio:3/4;max-height:74vh}}
 
 /* ══ CONCEPT SPLIT ══ */
-.concept-grid{display:grid;grid-template-columns:1fr .82fr;gap:3.5rem;align-items:center;margin-top:.25rem}
+.concept-grid{display:grid;grid-template-columns:1fr .82fr;gap:3.5rem;align-items:center;margin-top:1.5rem}
 .concept-copy>*:first-child{margin-top:0}
 .concept-media{display:flex;align-items:center;justify-content:center}
 .concept-media img{width:100%;height:auto;display:block}
@@ -134,13 +153,10 @@ section{padding:4rem 3rem;max-width:1180px;margin:0 auto}
 
 /* ══ NUMBERED STACK ══ */
 .stack{margin-top:2.5rem;border-top:1px solid var(--border)}
-.stack-row{display:grid;grid-template-columns:auto 1fr;gap:1.75rem;align-items:start;padding:1.9rem 0;border-bottom:1px solid var(--border)}
-.stack-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:2.6rem;line-height:1;color:var(--ultraviolet);min-width:2.6rem}
+.stack-row{padding:1.9rem 0;border-bottom:1px solid var(--border)}
 .stack-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:.4rem;line-height:1.2}
 .stack-text{font-family:'Lora',serif;font-size:.95rem;line-height:1.75;color:var(--muted);max-width:72ch}
 .stack-text code{font-size:.95em}
-.cite{display:block;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.6rem;line-height:1.5}
-@media(max-width:720px){.stack-row{gap:1rem}.stack-num{font-size:2rem;min-width:2rem}}
 
 /* ══ REVISIONS: tabbed panel (Figma 610:398) ══ */
 .revise{display:flex;gap:4rem;align-items:flex-start;margin-top:3.5rem}
@@ -163,9 +179,7 @@ section{padding:4rem 3rem;max-width:1180px;margin:0 auto}
 .revise:not(.is-tabbed) .revise-panel+.revise-panel{margin-top:3.5rem}
 .revise-panel:focus-visible{outline:2px solid var(--ultraviolet);outline-offset:6px;border-radius:8px}
 .revise-copy{flex:1 1 auto;min-width:0;display:flex;align-items:flex-start}
-.revise-n{flex:0 0 64px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;
-  font-size:4rem;line-height:.86;color:var(--ultraviolet)}
-.revise-head{flex:1 1 auto;min-width:0;padding-left:25px}
+.revise-head{flex:1 1 auto;min-width:0}
 .revise-t{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:2.25rem;
   line-height:1.2;color:var(--ink);margin:0}
 .revise-x{font-family:'Lora',serif;font-size:.95rem;line-height:1.6;color:var(--muted);margin-top:1.125rem}
@@ -181,13 +195,10 @@ section{padding:4rem 3rem;max-width:1180px;margin:0 auto}
 }
 @media(max-width:820px){
   .revise{flex-direction:column;gap:1.5rem}
-  .revise-tabs{flex:0 0 auto;min-width:0;flex-direction:row;width:100%;gap:0;overflow-x:auto;
-    -webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .revise-tabs::-webkit-scrollbar{display:none}
+  .revise-tabs{flex:0 0 auto;min-width:0;flex-direction:row;flex-wrap:wrap;width:100%;
+    gap:.15rem .35rem;margin-left:-.85rem;padding-bottom:0}
   .revise-tab{width:auto;flex:0 0 auto;min-height:0;padding:.6rem .85rem;white-space:nowrap}
   .revise-panels{padding-top:0}
-  .revise-n{flex-basis:48px;font-size:3rem}
-  .revise-head{padding-left:1rem}
   .revise-t{font-size:1.8rem}
 }
 @media(max-width:520px){
@@ -197,15 +208,8 @@ section{padding:4rem 3rem;max-width:1180px;margin:0 auto}
 
 /* ══ FRAMED FIGURE ══ */
 .figure{margin-top:2.5rem}
-.figure-frame{border:1px solid var(--border);border-radius:28px;background:var(--card-base);padding:1.25rem;overflow:hidden}
-.figure-frame img{width:100%;height:auto;border-radius:14px;display:block}
+.figure img{width:100%;height:auto;border-radius:14px;border:1px solid var(--border);display:block}
 figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--muted);margin-top:1rem;line-height:1.6;max-width:74ch}
-/* two paper-prototype figures shown side by side (portrait + landscape, no crop) */
-.proto-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:stretch;margin-top:2.5rem}
-.proto-pair .figure{margin-top:0;display:flex;flex-direction:column}
-.proto-pair .figure-frame{flex:1;display:flex;align-items:center;justify-content:center;border:none;background:none;padding:0;box-shadow:none}
-.proto-pair .figure-frame img{width:auto;max-width:100%;max-height:520px}
-@media(max-width:720px){.proto-pair{grid-template-columns:1fr}.proto-pair .figure-frame img{width:100%;max-height:none}}
 
 /* ══ TASK-SCRIPT CALLOUT ══ */
 .callout{margin-top:2.5rem}
@@ -214,28 +218,61 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 .callout .task{font-family:'Lora',serif;font-style:normal;font-weight:400;font-size:.98rem;line-height:1.7;color:var(--muted);margin-top:1rem}
 .callout .task strong{color:var(--ink);font-weight:500}
 
-/* ══ COMPARISON TABLE ══ */
-.comp-note{font-family:'Lora',serif;font-size:.875rem;line-height:1.5;color:#6d6b93;margin-top:1.5rem;max-width:66ch}
-.comp-wrap{margin-top:1.25rem;border:1px solid rgba(109,107,147,.11);border-radius:12px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
-.comp-table{width:100%;min-width:640px;border-collapse:collapse;table-layout:fixed}
-.comp-table col.comp-col-crit{width:240px}
-.comp-table thead th{padding:1.5rem;text-align:left;vertical-align:bottom;font-weight:400;background:#fbfbfc}
-.comp-table thead th:first-child{vertical-align:top}
-.comp-head-k{display:block;font-family:'Lora',serif;font-weight:600;font-size:.6875rem;letter-spacing:.04em;text-transform:uppercase;color:#6d6b93;margin-bottom:.25rem}
-.comp-head-t{display:block;font-family:'Lora',serif;font-weight:700;font-size:.9375rem;letter-spacing:-.01em;color:var(--ink)}
-.comp-head-crit{font-family:'Lora',serif;font-weight:700;font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:#6d6b93}
-.comp-table tbody th,.comp-table tbody td{padding:1.5rem;vertical-align:middle;border-top:1px solid rgba(109,107,147,.11);text-align:left}
-.comp-table tbody td{font-family:'Lora',serif;font-weight:400;font-size:.875rem;line-height:1.45;color:#4a4957}
-.comp-table tbody th{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:1.125rem;line-height:1.45;color:var(--ink)}
-.comp-table thead th:nth-child(2),.comp-table tbody td:first-of-type{background:rgba(87,85,255,.05)}
-.comp-table tbody td:first-of-type{color:var(--ink)}
-@media(max-width:720px){.comp-table thead th,.comp-table tbody th,.comp-table tbody td{padding:1.1rem}}
+/* ══ TESTING: PROSE COLUMNS, PROTOTYPE FIGURES, MATRIX, VERDICT ══ */
+/* the two-column prose row reuses the shared .insights hairline-column pattern */
+.testing a{color:var(--ultraviolet)}
+.testing a:hover{color:var(--ink)}
+.test-title{max-width:24ch;text-wrap:pretty}
+.test-lede{max-width:60ch}
+.test-cols{margin-top:3rem}
+.test-figs{display:grid;grid-template-columns:1.35fr .65fr;gap:2.5rem;align-items:start;margin-top:3.25rem}
+.test-figs figure{margin:0}
+.test-figs img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border)}
+
+/* comparison matrix: hairlines plus a single Nectar column wash, no card */
+.matrix-eyebrow{margin-top:4rem}
+.matrix-wrap{margin-top:1.5rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.matrix-wrap::-webkit-scrollbar{height:6px}
+.matrix-wrap::-webkit-scrollbar-track{background:transparent}
+.matrix-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:999px}
+.matrix-wrap:hover::-webkit-scrollbar-thumb{background:var(--ultraviolet)}
+.matrix{--crit:200px;--col-gap:1.5rem;position:relative;min-width:640px}
+.matrix-wash{position:absolute;top:0;bottom:0;left:calc(var(--crit) + var(--col-gap) / 2);width:calc((100% - var(--crit) - var(--col-gap) * 2) / 2 + var(--col-gap));background:var(--nectar);opacity:.34;border-radius:14px;pointer-events:none}
+.matrix-row{display:grid;grid-template-columns:var(--crit) 1fr 1fr;gap:0 var(--col-gap);position:relative}
+.matrix-head{align-items:end;padding:1.5rem 0 1.1rem;border-bottom:1px solid var(--ink)}
+.matrix-body{align-items:baseline;padding:1.6rem 0;border-bottom:1px solid var(--border)}
+.matrix-crit{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);line-height:1.5}
+.matrix-kicker{display:block;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+.matrix-name{display:block;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.5rem;line-height:1.15;color:var(--muted)}
+.matrix-cell{font-family:'Lora',serif;font-size:1rem;line-height:1.6;color:var(--muted)}
+.matrix-win{padding:0 var(--col-gap)}
+.matrix-win .matrix-kicker{color:var(--plum)}
+.matrix-win .matrix-name,.matrix-cell.matrix-win{color:var(--ink)}
+
+/* verdict */
+.verdict{margin-top:4.5rem;border-top:1px solid var(--border);padding-top:2.5rem;display:grid;grid-template-columns:1.15fr 1fr;gap:3.5rem;align-items:start}
+.verdict-line{font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;font-size:clamp(1.6rem,3vw,2rem);line-height:1.3;letter-spacing:-.015em;color:var(--ink);text-wrap:pretty}
+.verdict-line em{font-style:normal;color:var(--ultraviolet)}
+.verdict-note{font-family:'Lora',serif;font-size:18px;line-height:1.7;color:var(--muted);max-width:52ch}
+@media(max-width:860px){
+  .test-figs{grid-template-columns:1fr;gap:2.25rem;margin-top:2.75rem}
+  .verdict{grid-template-columns:1fr;gap:1.75rem;margin-top:3.5rem;padding-top:2rem}
+}
+/* narrow viewports: tighten the track so more of the comparison is readable before scrolling */
+@media(max-width:720px){
+  .matrix-eyebrow{margin-top:3.25rem}
+  .matrix{--crit:132px;--col-gap:1rem;min-width:520px}
+  .matrix-head{padding:1.25rem 0 .9rem}
+  .matrix-body{padding:1.35rem 0}
+  .matrix-name{font-size:1.3rem}
+  .matrix-cell{font-size:.95rem}
+}
 
 /* ══ INSIGHTS (non-card, hairline-separated columns) ══ */
 .insights{display:grid;grid-template-columns:1fr 1fr;gap:2.25rem 3.5rem;margin-top:2rem}
 .insight{border-top:1px solid var(--border);padding-top:1.15rem}
 .insight-k{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);display:block;margin-bottom:.55rem}
-.insight-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);line-height:1.2;margin-bottom:.45rem}
 .insight-text{font-family:'Lora',serif;font-size:.95rem;line-height:1.7;color:var(--muted)}
 @media(max-width:720px){.insights{grid-template-columns:1fr;gap:1.75rem}}
 
@@ -255,7 +292,6 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 .findings-lead .findings{margin-top:0}
 .findings-lead .finding{grid-template-columns:1fr;gap:.75rem}
 .findings-lead .figure{margin-top:.4rem}
-.findings-lead .figure-frame{border:none;background:none;padding:0;box-shadow:none}
 @media(max-width:860px){.findings-lead{grid-template-columns:1fr;gap:2.25rem}.findings-lead .figure{max-width:440px}}
 
 /* ══ SCREEN GALLERY ══ */
@@ -284,7 +320,7 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 .footer-contact-line .sep{margin:0 .55rem;opacity:.45}
 .footer-copyright{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--muted);text-align:right}
 
-@media(max-width:720px){section{padding:4rem 1.5rem}.hero{padding:3.5rem 1.5rem 2rem}.facts{padding:0 1.5rem}.band{padding:3rem 1.5rem}.footer-inner{flex-direction:column;align-items:flex-start;gap:2rem;padding:3.5rem 1.5rem}.footer-copyright{text-align:left}}
+@media(max-width:720px){section{padding:4rem 1.5rem}.hero{padding:2.5rem 1.5rem 0}.hero-cap{padding:0 1.5rem}.facts{padding:0 1.5rem}.band{padding:3rem 1.5rem}.footer-inner{flex-direction:column;align-items:flex-start;gap:2rem;padding:3.5rem 1.5rem}.footer-copyright{text-align:left}}
 
 ::selection{background:var(--nectar);color:var(--ink)}
 :focus-visible{outline:2px solid var(--ultraviolet);outline-offset:3px;border-radius:2px}
@@ -303,31 +339,33 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
   </div>
 </nav>
 
-<!-- ══ 1. HERO ══ -->
+<!-- ══ 1. HERO — the work first ══ -->
+<figure class="hero-stage-wrap" data-sr>
+  <div class="hero-stage">
+    <img class="hero-shot" src="Sip-Scones%20Assets/hero-afternoon-tea-screen.jpg" width="1027" height="737" fetchpriority="high" decoding="async" alt="The built afternoon tea menu screen: radio-button choices for macarons, pastries, petit fours, scones and sandwiches on the left, an illustrated three-tiered stand filling on the right, and a Continue button.">
+  </div>
+  <figcaption class="hero-cap">The afternoon tea menu screen, built in LiveCode</figcaption>
+</figure>
+
 <header class="hero">
-  <div class="hero-eyebrow" data-sr>Tablet UX · Low-Code Prototype · Restaurant Tech</div>
-  <h1 class="hero-title" data-sr="1">Sip <em>&amp;</em> Scones</h1>
+  <div class="hero-name" data-sr>Sip &amp; Scones</div>
+  <h1 class="hero-title" data-sr="1">A tablet ordering system that keeps <em>the ritual of afternoon tea</em> intact</h1>
   <svg class="hero-squig" viewBox="0 0 250 20" fill="none" aria-hidden="true" data-sr="1">
     <path d="M4 13 Q36 4 68 13 Q100 22 132 12 Q162 2 196 12 Q218 18 246 11" stroke="var(--ultraviolet)" stroke-width="3" stroke-linecap="round" fill="none"/>
   </svg>
-  <p class="hero-sub" data-sr="2">A tablet-based ordering system inspired by the elegance of English afternoon tea. Diners customise a three-tiered tea tray, pair drinks, and track loyalty through a visual reward system.</p>
-
-  <div class="hero-img" data-sr="2">
-    <img src="Sip-Scones%20Assets/sip-scones-hero.png" alt="Sip &amp; Scones tablet ordering interface: afternoon tea menu on a tiered stand">
-  </div>
-  <p class="hero-cap" data-sr="2">Tablet ordering system · LiveCode prototype</p>
+  <p class="hero-sub" data-sr="2">Diners customise a three-tiered tea tray, pair drinks, and track loyalty through a visual reward system.</p>
 </header>
 
 <!-- ══ 2. QUICK FACTS ══ -->
 <div class="facts">
-  <div class="facts-grid" data-sr>
+  <div class="facts-grid" data-sr="2">
     <div class="fact">
       <div class="fact-l">Role</div>
       <div class="fact-v">Research, user flows, usability testing &amp; LiveCode prototyping</div>
     </div>
     <div class="fact">
       <div class="fact-l">Platform</div>
-      <div class="fact-v">Tablet ordering system for in-restaurant afternoon tea</div>
+      <div class="fact-v">Digital Ordering System</div>
     </div>
     <div class="fact">
       <div class="fact-l">Tools</div>
@@ -343,7 +381,8 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 <!-- ══ 3. USER NEEDS ══ -->
 <section class="needs">
   <div class="needs-media" data-sr>
-    <video data-autoplay loop muted playsinline preload="metadata" aria-label="Afternoon tea served on a three-tiered stand: scones, finger sandwiches, sweets, and champagne">
+    <video data-autoplay loop muted playsinline preload="none"
+           poster="Sip-Scones%20Assets/afternoon-tea-video-poster.jpg" aria-label="Afternoon tea served on a three-tiered stand: scones, finger sandwiches, sweets, and champagne">
       <source src="Sip-Scones%20Assets/lauren-hemmert-jensen-dupe.mp4" type="video/mp4">
       <source src="Sip-Scones%20Assets/lauren-hemmert-jensen-dupe.mov" type="video/quicktime">
     </video>
@@ -382,7 +421,7 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
     </div>
 
     <div class="concept-media" data-sr="1">
-      <img src="Sip-Scones%20Assets/swipe_tablet_outline_for_ui_ux_design.png" width="9167" height="9167" loading="lazy" decoding="async" alt="Tablet showing the three-tiered afternoon tea stand interface: first course of savories and tea sandwiches, second course of scones with jam and cream, and third course of sweets.">
+      <img src="Sip-Scones%20Assets/swipe_tablet_outline-950.png" width="950" height="950" loading="lazy" decoding="async" alt="Tablet showing the three-tiered afternoon tea stand interface: first course of savories and tea sandwiches, second course of scones with jam and cream, and third course of sweets.">
     </div>
   </div>
 
@@ -402,7 +441,7 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
   <p class="body" data-sr="1">Before a single screen was built, the whole ordering journey was mapped in Figma: a guided path from the welcome screen through tier selection, drinks, an optional login, the loyalty reward, and payment. Branches stay shallow on purpose: the one real fork is whether a diner logs in to claim a reward or checks out as a guest, and it sits late enough that it never blocks the actual goal of ordering.</p>
 
   <figure class="figure" data-sr="1">
-    <div class="figure-frame"><img src="Sip-Scones%20Assets/sip-scones-user-flow.png" width="1018" height="825" loading="lazy" decoding="async" alt="Revised user-flow diagram for the Sip & Scones ordering system: welcome screen, three tier selections, a drinks branch, a login-or-guest fork for the loyalty reward, then checkout and payment."></div>
+    <img src="Sip-Scones%20Assets/sip-scones-user-flow.png" width="1018" height="825" loading="lazy" decoding="async" alt="Revised user-flow diagram for the Sip & Scones ordering system: welcome screen, three tier selections, a drinks branch, a login-or-guest fork for the loyalty reward, then checkout and payment.">
     <figcaption>Revised user flow, mapped in Figma. The login-for-reward vs. guest-checkout fork is the only meaningful branch in the journey.</figcaption>
   </figure>
 </section>
@@ -417,21 +456,18 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 
   <div class="stack" data-sr="1">
     <div class="stack-row">
-      <div class="stack-num">01</div>
       <div>
         <div class="stack-title">A taxonomy behind every tray</div>
         <p class="stack-text">Each menu item was modelled as an image object tied to a defined name and a unique variable, then set visible on the tiered stand the moment it was selected. The tray you watch assemble in real time is really a set of images switching on and off.</p>
       </div>
     </div>
     <div class="stack-row">
-      <div class="stack-num">02</div>
       <div>
         <div class="stack-title">One drink at a time</div>
         <p class="stack-text">Drink selection used LiveCode's <code>hilitebutton</code> function to highlight the chosen pot and disable the rest, so a diner clicks off their current choice before picking another. The single-choice rule stays visible rather than firing an error.</p>
       </div>
     </div>
     <div class="stack-row">
-      <div class="stack-num">03</div>
       <div>
         <div class="stack-title">A clean way to start over</div>
         <p class="stack-text">Cancelling an order opened a confirm dialog wired to a switch-case: "No" leaves the order untouched, "Yes" resets the stack back to the first screen.</p>
@@ -440,7 +476,7 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
   </div>
 
   <figure class="figure" data-sr="1">
-    <div class="figure-frame"><img src="Sip-Scones%20Assets/sip-scones-taxonomy.png" width="1381" height="317" loading="lazy" decoding="async" alt="Taxonomy table mapping each tiered-tea-stand menu item to its tier group and a unique LiveCode variable name, such as MB_Strawberry, CH_Creamcheese, and PF_Tiramisu."></div>
+    <img src="Sip-Scones%20Assets/sip-scones-taxonomy.png" width="1381" height="317" loading="lazy" decoding="async" alt="Taxonomy table mapping each tiered-tea-stand menu item to its tier group and a unique LiveCode variable name, such as MB_Strawberry, CH_Creamcheese, and PF_Tiramisu.">
     <figcaption>The menu taxonomy: every item mapped to a tier group and a unique variable (MB_Strawberry, CH_Creamcheese, PF_Tiramisu…) that toggles its image on the stand.</figcaption>
   </figure>
 </section>
@@ -448,68 +484,70 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 <div class="divider"></div>
 
 <!-- ══ 8. TESTING ══ -->
-<section>
+<section class="testing">
   <div class="eyebrow" data-sr>How was it tested?</div>
-  <h2 class="q-title" data-sr>Layout mattered <em>more than expected</em></h2>
-  <p class="body" data-sr="1">Testing happened in two rounds, on two different builds.</p>
-  <p class="body" data-sr="1">Before any code, the orders page was tested on paper. The prototype mirrored the three-tiered stand, with three buttons for Tier 1, Tier 2, and Tier 3. Each button opened a dialog of dishes for that tier. Diners could pick up to three dishes per layer, and tap again to remove one. Holding a selection showed allergy and ingredient information. Tapping outside closed the dialog. A drinks button sat top-right, continue bottom-right.</p>
+  <h2 class="q-title test-title" data-sr>Layout mattered <em>more than expected</em></h2>
+  <p class="body test-lede" data-sr="1">Paper prototypes are a useful tool for designers to develop and iterate on concepts in a low-cost manner. Before devoting time and resources to more complex prototypes, we tested a few initial interface options using paper prototypes to get user input early in the design process.</p>
 
-  <div class="proto-pair" data-sr="1">
-    <figure class="figure">
-      <div class="figure-frame"><img src="Sip-Scones%20Assets/PaperPrototype-2.png" width="1652" height="1050" loading="lazy" decoding="async" alt="Hand-drawn paper prototype of the full-tier concept: a three-tiered stand labelled Tier 1, Tier 2, and Tier 3, with paper strips of sandwiches, pastries, and sweets to place on each tier, a Recommended drink note, and a Continue button."></div>
+  <div class="insights test-cols" data-sr="1">
+    <div class="insight">
+      <span class="insight-k">Paper · Wizard of Oz</span>
+      <p class="insight-text">The orders page mirrors the three-tiered stand used to serve English afternoon tea. Three buttons sit on the left: Tier 1, Tier 2, Tier 3. Click one and a dialog opens with the dishes available for that tier. Diners pick up to three dishes per layer, and click a dish again to remove it. Holding a dish opens a second dialog with its allergy and ingredient information. Clicking anywhere outside closes it. A recommended-drinks button sits top right. Continue, bottom right, moves on to drink choices and confirming the order.</p>
+    </div>
+    <div class="insight">
+      <span class="insight-k">Two concepts, compared</span>
+      <p class="insight-text">We tested two versions of the main ordering screen with several peers. The first keeps all three tiers on screen for the whole ordering process. The second zooms in on the tier being customised and fades the others out. We used Wizard of Oz testing, where a person manually stands in for the interface's responses.</p>
+    </div>
+  </div>
+
+  <div class="test-figs" data-sr="1">
+    <figure>
+      <img src="Sip-Scones%20Assets/PaperPrototype-2.jpg" width="1450" height="921" loading="lazy" decoding="async" alt="Hand-drawn paper prototype of the full-tier concept: a three-tiered stand labelled Tier 1, Tier 2, and Tier 3, with paper strips of sandwiches, pastries, and sweets to place on each tier, a Recommended drink note, and a Continue button.">
       <figcaption>Option 1: the full-tier layout, with all three tiers and their dishes laid out on the stand at once.</figcaption>
     </figure>
-    <figure class="figure">
-      <div class="figure-frame"><img src="Sip-Scones%20Assets/PaperPrototype-1.png" width="864" height="1272" loading="lazy" decoding="async" alt="Hand-drawn paper prototype of a selection screen: rows of teacups and drinks in left-and-right carousels, a home icon top-left, and a Continue button top-right."></div>
+    <figure>
+      <img src="Sip-Scones%20Assets/PaperPrototype-1.jpg" width="516" height="760" loading="lazy" decoding="async" alt="Hand-drawn paper prototype of a selection screen: rows of teacups and drinks in left-and-right carousels, a home icon top-left, and a Continue button top-right.">
       <figcaption>Option 2: a selection screen, with tea and drink options in left-and-right carousels.</figcaption>
     </figure>
   </div>
-  <p class="body" data-sr="1">We tested two layout concepts against each other with several peers, using Wizard of Oz: manually simulating the interface's responses rather than building it. One version kept all three tiers visible throughout ordering. The other zoomed in on the tier being customised, fading the rest out.</p>
-  <p class="body" data-sr="1">Once the LiveCode prototype was built, we ran a second round. Two participants, each given a persona, had one task: place and pay for an order using the digital ordering system.</p>
 
-  <p class="comp-note" data-sr="1">Round one · layout comparison. Two concepts tested on paper with several peers via Wizard of Oz: formative validation, not statistical measurement.</p>
+  <div class="eyebrow matrix-eyebrow" data-sr>Layout comparison</div>
 
-  <div class="comp-wrap" data-sr="1">
-    <table class="comp-table">
-      <colgroup>
-        <col class="comp-col-crit">
-        <col>
-        <col>
-      </colgroup>
-      <thead>
-        <tr>
-          <th scope="col"><span class="comp-head-crit">Criterion</span></th>
-          <th scope="col"><span class="comp-head-k">Cohesive experience</span><span class="comp-head-t">Full-Tier View</span></th>
-          <th scope="col"><span class="comp-head-k">Condensed context</span><span class="comp-head-t">Single-Tier Focus</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Overall feel</th>
-          <td>Felt close to assembling a physical tea stand</td>
-          <td>Cleaner per-screen, but lost context</td>
-        </tr>
-        <tr>
-          <th scope="row">Sense of control</th>
-          <td>Diners could see the whole order at once</td>
-          <td>Diners felt less in control of the total meal</td>
-        </tr>
-        <tr>
-          <th scope="row">Visual metaphor</th>
-          <td>Reinforced the afternoon tea ritual</td>
-          <td>Reduced clutter, but broke the metaphor</td>
-        </tr>
-        <tr>
-          <th scope="row">Task completion</th>
-          <td>Both users completed with minor issues</td>
-          <td>Both users completed with minor issues</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="matrix-wrap" data-sr="1">
+    <div class="matrix" role="table" aria-label="Layout comparison: Full-Tier View versus Single-Tier Focus">
+      <div class="matrix-wash" aria-hidden="true"></div>
+      <div class="matrix-row matrix-head" role="row">
+        <div class="matrix-crit" role="columnheader">Criterion</div>
+        <div class="matrix-win" role="columnheader"><span class="matrix-kicker">Cohesive experience</span><span class="matrix-name">Full-Tier View</span></div>
+        <div role="columnheader"><span class="matrix-kicker">Condensed context</span><span class="matrix-name">Single-Tier Focus</span></div>
+      </div>
+      <div class="matrix-row matrix-body" role="row">
+        <div class="matrix-crit" role="rowheader">Overall feel</div>
+        <div class="matrix-cell matrix-win" role="cell">Felt close to assembling a physical tea stand</div>
+        <div class="matrix-cell" role="cell">Cleaner per-screen, but lost context</div>
+      </div>
+      <div class="matrix-row matrix-body" role="row">
+        <div class="matrix-crit" role="rowheader">Sense of control</div>
+        <div class="matrix-cell matrix-win" role="cell">Diners could see the whole order at once</div>
+        <div class="matrix-cell" role="cell">Diners felt less in control of the total meal</div>
+      </div>
+      <div class="matrix-row matrix-body" role="row">
+        <div class="matrix-crit" role="rowheader">Visual metaphor</div>
+        <div class="matrix-cell matrix-win" role="cell">Reinforced the afternoon tea ritual</div>
+        <div class="matrix-cell" role="cell">Reduced clutter, but broke the metaphor</div>
+      </div>
+      <div class="matrix-row matrix-body" role="row">
+        <div class="matrix-crit" role="rowheader">Task completion</div>
+        <div class="matrix-cell matrix-win" role="cell">Peers completed the task, with minor issues</div>
+        <div class="matrix-cell" role="cell">Peers completed the task, with minor issues</div>
+      </div>
+    </div>
   </div>
 
-  <h3 class="subhead" data-sr>The full-tier view felt more intuitive <em>and satisfying</em></h3>
-  <p class="body" data-sr="1">The paper-prototype round settled the layout question. Full-tier view won clearly. Peers found it easier to assess their choices in one glance, without jumping between tiers. Populating the tray as they ordered worked like a progress bar, a form of visual storytelling shown to improve user experience (Li et al., 2020).</p>
+  <div class="verdict" data-sr="1">
+    <p class="verdict-line">The full-tier view felt more intuitive <em>and satisfying</em></p>
+    <p class="verdict-note">Peers preferred keeping all three tiers in view. It let them read their picks in one linear pass, instead of jumping tier to tier to check whether the choices paired well. Populating the tiers as they ordered also read as progress through the order, a form of visual storytelling shown to improve user experience (Li et al., 2020).</p>
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -518,7 +556,6 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 <section>
   <div class="eyebrow" data-sr>What did the prototype look like?</div>
   <h2 class="q-title" data-sr>The journey, <em>screen by screen</em></h2>
-  <p class="body" data-sr="1">The paper prototype came first. Three tier buttons sat beside an empty stand graphic. Dialogs stood in for what would later become radio-button menus. A mouse-hold gesture did the job a real tap would later do for allergy info. It was meant to be disposable, cheap enough to throw away a layout that didn't work.</p>
   <p class="body" data-sr="1">The walkthrough below is what that paper version became, once the tier-selection concept was validated: one run through the LiveCode prototype, from the afternoon tea menu to payment.</p>
 
   <figure class="proto-video" data-sr="1">
@@ -597,7 +634,7 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
       </div>
     </div>
     <figure class="figure" data-sr="2">
-      <div class="figure-frame"><img src="Sip-Scones%20Assets/UserTesting.jpg" width="638" height="849" loading="lazy" decoding="async" alt="A participant testing the LiveCode prototype on a laptop during round two: the Afternoon Tea Menu screen shows the tiered stand illustration beside radio-button categories for macarons, scones, sandwiches, and petit fours, with a Continue button."></div>
+      <img src="Sip-Scones%20Assets/UserTesting.jpg" width="638" height="849" loading="lazy" decoding="async" alt="A participant testing the LiveCode prototype on a laptop during round two: the Afternoon Tea Menu screen shows the tiered stand illustration beside radio-button categories for macarons, scones, sandwiches, and petit fours, with a Continue button.">
       <figcaption>Round two in progress: a participant works through the Afternoon Tea Menu on the LiveCode prototype.</figcaption>
     </figure>
   </div>
@@ -623,66 +660,61 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
     <div class="revise-panels">
       <div class="revise-panel" role="tabpanel" id="rp-01" aria-labelledby="rt-01" tabindex="0">
         <div class="revise-copy">
-          <div class="revise-n" aria-hidden="true">01</div>
           <div class="revise-head">
             <h3 class="revise-t">Menu switching &amp; backtracking</h3>
             <p class="revise-x">Let diners move freely between the food tiers and the drinks menu, and back to change an earlier choice, instead of following one fixed sequence. Right now, revisiting a tier resets it: the <code>on openCard</code> function disables every option again, so changing your mind means starting the whole order over. Back buttons work well in ordering and shopping interfaces (Obendorf et al., 2007), and would need this iteration's missing piece: a system to store and recall variables.</p>
           </div>
         </div>
         <figure class="revise-media">
-          <img src="Sip-Scones%20Assets/Built-Navigation-web.png" width="674" height="531" loading="lazy" decoding="async" alt="Prototype detail with a Return button annotation pointing at the Go Back control beside Continue, below the tiered tea stand.">
+          <img src="Sip-Scones%20Assets/Built-Navigation-web.jpg" width="674" height="531" loading="lazy" decoding="async" alt="Prototype detail with a Return button annotation pointing at the Go Back control beside Continue, below the tiered tea stand.">
         </figure>
       </div>
 
       <div class="revise-panel" role="tabpanel" id="rp-02" aria-labelledby="rt-02" tabindex="0">
         <div class="revise-copy">
-          <div class="revise-n" aria-hidden="true">02</div>
           <div class="revise-head">
             <h3 class="revise-t">Smarter dialogs</h3>
             <p class="revise-x">Replace LiveCode's standard dialog boxes with modal ones. Modal dialogs block every other action until closed (LiveCode, 2023a). Standard dialogs work fine functionally, but modal dialogs run as substacks, which means they can be styled beyond the default look, so dialogs would finally match the rest of the interface.</p>
           </div>
         </div>
         <figure class="revise-media">
-          <img src="Sip-Scones%20Assets/Built-smartdialog-web.png" width="900" height="675" loading="lazy" decoding="async" alt="Questions? screen: a hand-bell icon above the line &quot;A server will be at your table shortly&quot; and a Return to order button, set against the hand-drawn teapot pattern.">
+          <img src="Sip-Scones%20Assets/Built-smartdialog-web.jpg" width="900" height="675" loading="lazy" decoding="async" alt="Questions? screen: a hand-bell icon above the line &quot;A server will be at your table shortly&quot; and a Return to order button, set against the hand-drawn teapot pattern.">
         </figure>
       </div>
 
       <div class="revise-panel" role="tabpanel" id="rp-03" aria-labelledby="rt-03" tabindex="0">
         <div class="revise-copy">
-          <div class="revise-n" aria-hidden="true">03</div>
           <div class="revise-head">
             <h3 class="revise-t">Visual checkout summary</h3>
             <p class="revise-x">Show the full tea tray and drink selections before payment, a moment to catch mistakes and see what's been built. Arrays could hold that data (LiveCode, 2023b) and, based on user feedback, extend to showing the actual selected imagery, not just a list.</p>
           </div>
         </div>
         <figure class="revise-media">
-          <img src="Sip-Scones%20Assets/Built-checkoutsummary-web.png" width="900" height="675" loading="lazy" decoding="async" alt="Checkout summary screen: a printed-receipt panel listing the chosen pastries, scones, sandwiches and drink beside the assembled three-tiered stand.">
+          <img src="Sip-Scones%20Assets/Built-checkoutsummary-web.jpg" width="900" height="675" loading="lazy" decoding="async" alt="Checkout summary screen: a printed-receipt panel listing the chosen pastries, scones, sandwiches and drink beside the assembled three-tiered stand.">
         </figure>
       </div>
 
       <div class="revise-panel" role="tabpanel" id="rp-04" aria-labelledby="rt-04" tabindex="0">
         <div class="revise-copy">
-          <div class="revise-n" aria-hidden="true">04</div>
           <div class="revise-head">
             <h3 class="revise-t">Checkout validation</h3>
             <p class="revise-x">Prevent progress without at least one selection made. Right now nothing stops a diner from moving forward empty-handed; a future version should block that, keeping the order flow logical from start to finish.</p>
           </div>
         </div>
         <figure class="revise-media">
-          <img src="Sip-Scones%20Assets/Built-Validation-web.png" width="900" height="675" loading="lazy" decoding="async" alt="Make a selection! validation screen: an exclamation icon above the line &quot;Please ensure you&#39;ve selected at least one item&quot; and a Return to order button.">
+          <img src="Sip-Scones%20Assets/Built-Validation-web.jpg" width="900" height="675" loading="lazy" decoding="async" alt="Make a selection! validation screen: an exclamation icon above the line &quot;Please ensure you&#39;ve selected at least one item&quot; and a Return to order button.">
         </figure>
       </div>
 
       <div class="revise-panel" role="tabpanel" id="rp-05" aria-labelledby="rt-05" tabindex="0">
         <div class="revise-copy">
-          <div class="revise-n" aria-hidden="true">05</div>
           <div class="revise-head">
             <h3 class="revise-t">Real sign-up flow</h3>
             <p class="revise-x">Add a real sign-up option on the log-in page, where diners trade their information for rewards. A loyalty system that collects customer data does two things: it brings diners back, and it gives the business insight to grow (Piccoli, 2008). Recalling login details would need the same kind of memory system as backtracking above, using an array-based data structure (LiveCode, 2023b).</p>
           </div>
         </div>
         <figure class="revise-media">
-          <img src="Sip-Scones%20Assets/Built-SignUp%20Screen-web.png" width="900" height="675" loading="lazy" decoding="async" alt="Create Account screen: first name, last name, email and password fields with a Sign up button, over the hand-drawn teapot pattern.">
+          <img src="Sip-Scones%20Assets/Built-SignUp%20Screen-web.jpg" width="900" height="675" loading="lazy" decoding="async" alt="Create Account screen: first name, last name, email and password fields with a Sign up button, over the hand-drawn teapot pattern.">
         </figure>
       </div>
     </div>
@@ -708,9 +740,23 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
   // scroll progress bar is CSS scroll-driven (animation-timeline); no JS scroll listener.
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // ambient video autoplays only when the visitor hasn't asked for reduced motion
+  // the poster carries the panel until the visitor is nearly there; only then is the
+  // file worth fetching, so the ambient clip never competes with the rest of the page
   document.querySelectorAll('video[data-autoplay]').forEach(function(v){
-    if(reduceMotion){ v.removeAttribute('autoplay'); v.pause(); }
-    else { v.play().catch(function(){}); }
+    if(reduceMotion){ v.removeAttribute('autoplay'); v.pause(); return; }
+    var started = false;
+    var start = function(){
+      if(started){ return; }
+      started = true;
+      v.preload = 'auto';
+      var p = v.play();
+      if(p && p.catch){ p.catch(function(){}); }
+    };
+    if(!('IntersectionObserver' in window)){ start(); return; }
+    var vo = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ vo.disconnect(); start(); } });
+    }, { rootMargin: '400px 0px' });
+    vo.observe(v);
   });
   // scroll reveal
   var obs = new IntersectionObserver(function(entries){
