@@ -1,40 +1,285 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-06T00:00:00Z",
+  "generatedAt": "2026-08-28T07:44:46Z",
   "title": "Design System: Swetha Ramachandran — Portfolio",
   "extensions": {
     "colorMeta": {
-      "ultraviolet": { "role": "primary", "displayName": "Ultraviolet", "canonical": "#5642EA", "tonalRamp": ["#0f0a3d", "#1c1560", "#2b2088", "#3a2fb5", "#5642EA", "#7d6df0", "#a99ef5", "#d4cdfb"] },
-      "highlighter": { "role": "secondary", "displayName": "Highlighter", "canonical": "#EBF985", "tonalRamp": ["#3d4a10", "#5a6c18", "#7a9022", "#9cb63a", "#c4dd5c", "#EBF985", "#f2fbab", "#f9fdd4"] },
-      "ice-blue": { "role": "secondary", "displayName": "Ice Blue", "canonical": "#D4F5F9", "tonalRamp": ["#1c4d54", "#2a6f78", "#3b939e", "#5cb6c1", "#8fd6de", "#D4F5F9", "#e6fafc", "#f3fdfe"] },
-      "nectar": { "role": "secondary", "displayName": "Nectar", "canonical": "#FFCAA6", "tonalRamp": ["#6b3312", "#94491f", "#bd6432", "#e08551", "#f7a878", "#FFCAA6", "#ffdcc4", "#ffece0"] },
-      "lavender": { "role": "secondary", "displayName": "Lavender", "canonical": "#CACAFF", "tonalRamp": ["#2b2b6b", "#3d3d94", "#5252bd", "#7070e0", "#9c9cf7", "#CACAFF", "#e0e0ff", "#f0f0ff"] },
-      "cotton-candy": { "role": "tertiary", "displayName": "Cotton Candy", "canonical": "#F8D9FF", "tonalRamp": ["#5a1a6b", "#7d2694", "#a13bbd", "#c65ce0", "#e694f5", "#F8D9FF", "#fbe8ff", "#fdf3ff"] },
-      "plum": { "role": "tertiary", "displayName": "Plum", "canonical": "#630F49", "tonalRamp": ["#2b0620", "#3d0930", "#500c3c", "#630F49", "#8a1c68", "#b03688", "#d35fa9", "#eaa0cd"] },
-      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#FCFBFA", "tonalRamp": ["#2b2a29", "#4a4847", "#6f6c6a", "#96928f", "#c2beba", "#e6e3e0", "#f4f2f0", "#FCFBFA"] },
-      "card-base": { "role": "neutral", "displayName": "Card Base", "canonical": "#EEEAF6", "tonalRamp": ["#2c2838", "#3f3a52", "#564f6f", "#726b8f", "#9891b5", "#c2bdd8", "#ddd8ec", "#EEEAF6"] },
-      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#141018", "tonalRamp": ["#141018", "#2a2430", "#413a49", "#5c5366", "#7a7085", "#9d94a7", "#c4bccd", "#e6e0ec"] },
-      "muted": { "role": "neutral", "displayName": "Muted", "canonical": "#6a6273", "tonalRamp": ["#26232b", "#38343f", "#4c4756", "#6a6273", "#8b8394", "#aca5b3", "#cbc6d0", "#e6e3ea"] },
-      "border": { "role": "neutral", "displayName": "Border", "canonical": "#ddd6ec", "tonalRamp": ["#3a3550", "#524c6f", "#6f6790", "#9089b0", "#b3aecf", "#ddd6ec", "#ebe6f4", "#f6f3fb"] }
+      "ultraviolet": {
+        "role": "primary",
+        "displayName": "Ultraviolet",
+        "canonical": "#5642EA",
+        "tonalRamp": [
+          "#0f0a3d",
+          "#1c1560",
+          "#2b2088",
+          "#3a2fb5",
+          "#5642EA",
+          "#7d6df0",
+          "#a99ef5",
+          "#d4cdfb"
+        ]
+      },
+      "teal": {
+        "role": "secondary",
+        "displayName": "Teal",
+        "canonical": "#487571",
+        "tonalRamp": [
+          "#0f1a19",
+          "#16302d",
+          "#1f4542",
+          "#2d5c58",
+          "#487571",
+          "#6f9793",
+          "#9dbbb8",
+          "#cfdedd"
+        ]
+      },
+      "highlighter": {
+        "role": "secondary",
+        "displayName": "Highlighter",
+        "canonical": "#EBF985",
+        "tonalRamp": [
+          "#3d4a10",
+          "#5a6c18",
+          "#7a9022",
+          "#9cb63a",
+          "#c4dd5c",
+          "#EBF985",
+          "#f2fbab",
+          "#f9fdd4"
+        ]
+      },
+      "ice-blue": {
+        "role": "secondary",
+        "displayName": "Ice Blue",
+        "canonical": "#D4F5F9",
+        "tonalRamp": [
+          "#1c4d54",
+          "#2a6f78",
+          "#3b939e",
+          "#5cb6c1",
+          "#8fd6de",
+          "#D4F5F9",
+          "#e6fafc",
+          "#f3fdfe"
+        ]
+      },
+      "nectar": {
+        "role": "secondary",
+        "displayName": "Nectar",
+        "canonical": "#FFCAA6",
+        "tonalRamp": [
+          "#6b3312",
+          "#94491f",
+          "#bd6432",
+          "#e08551",
+          "#f7a878",
+          "#FFCAA6",
+          "#ffdcc4",
+          "#ffece0"
+        ]
+      },
+      "lavender": {
+        "role": "secondary",
+        "displayName": "Lavender",
+        "canonical": "#CACAFF",
+        "tonalRamp": [
+          "#2b2b6b",
+          "#3d3d94",
+          "#5252bd",
+          "#7070e0",
+          "#9c9cf7",
+          "#CACAFF",
+          "#e0e0ff",
+          "#f0f0ff"
+        ]
+      },
+      "cotton-candy": {
+        "role": "tertiary",
+        "displayName": "Cotton Candy",
+        "canonical": "#F8D9FF",
+        "tonalRamp": [
+          "#5a1a6b",
+          "#7d2694",
+          "#a13bbd",
+          "#c65ce0",
+          "#e694f5",
+          "#F8D9FF",
+          "#fbe8ff",
+          "#fdf3ff"
+        ]
+      },
+      "plum": {
+        "role": "tertiary",
+        "displayName": "Plum",
+        "canonical": "#630F49",
+        "tonalRamp": [
+          "#2b0620",
+          "#3d0930",
+          "#500c3c",
+          "#630F49",
+          "#8a1c68",
+          "#b03688",
+          "#d35fa9",
+          "#eaa0cd"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#FCFBFA",
+        "tonalRamp": [
+          "#2b2a29",
+          "#4a4847",
+          "#6f6c6a",
+          "#96928f",
+          "#c2beba",
+          "#e6e3e0",
+          "#f4f2f0",
+          "#FCFBFA"
+        ]
+      },
+      "card-base": {
+        "role": "neutral",
+        "displayName": "Card Base",
+        "canonical": "#EEEAF6",
+        "tonalRamp": [
+          "#2c2838",
+          "#3f3a52",
+          "#564f6f",
+          "#726b8f",
+          "#9891b5",
+          "#c2bdd8",
+          "#ddd8ec",
+          "#EEEAF6"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#141018",
+        "tonalRamp": [
+          "#141018",
+          "#2a2430",
+          "#413a49",
+          "#5c5366",
+          "#7a7085",
+          "#9d94a7",
+          "#c4bccd",
+          "#e6e0ec"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "#575165",
+        "tonalRamp": [
+          "#14121a",
+          "#221f29",
+          "#332f3c",
+          "#443f50",
+          "#575165",
+          "#7a7389",
+          "#a49dae",
+          "#d2ced9"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Border",
+        "canonical": "#ddd6ec",
+        "tonalRamp": [
+          "#3a3550",
+          "#524c6f",
+          "#6f6790",
+          "#9089b0",
+          "#b3aecf",
+          "#ddd6ec",
+          "#ebe6f4",
+          "#f6f3fb"
+        ]
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display / Signature Name", "purpose": "The signature name in the hero only. Self Modern, fallback Cormorant Garamond." },
-      "headline": { "displayName": "Editorial Headline", "purpose": "Oversized italic section headings." },
-      "title": { "displayName": "Title", "purpose": "Work card names and footer CTA." },
-      "body": { "displayName": "Body", "purpose": "Hero tagline and running prose in Lora." },
-      "label": { "displayName": "Utility Label", "purpose": "Eyebrows, nav, tags, marquees, captions in DM Mono uppercase." }
+      "display": {
+        "displayName": "Display / Signature Name",
+        "purpose": "The signature name in the hero only. Self Modern, fallback Cormorant Garamond."
+      },
+      "headline": {
+        "displayName": "Editorial Headline",
+        "purpose": "Oversized italic section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Work card names and footer CTA."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Hero tagline and running prose in Lora."
+      },
+      "label": {
+        "displayName": "Utility Label",
+        "purpose": "Eyebrows, nav, tags, marquees, captions in DM Mono uppercase. 0.7rem (11.2px) is a hard floor — the 0.5625rem and 0.62rem steps were retired as illegible."
+      }
     },
     "shadows": [
-      { "name": "floating-image-lift", "value": "0 12px 36px rgba(30,18,10,0.14)", "purpose": "Soft warm lift under rotated collage images inside work cards. The only routine shadow." },
-      { "name": "soft-card-rest", "value": "0 8px 20px rgba(26,25,23,0.08)", "purpose": "Barely-there ambient shadow for standalone tiles; use sparingly." }
+      {
+        "name": "floating-image-lift",
+        "value": "0 12px 36px rgba(30,18,10,0.14)",
+        "purpose": "Soft warm lift under rotated collage images inside work cards. The only routine shadow."
+      },
+      {
+        "name": "soft-card-rest",
+        "value": "0 8px 20px rgba(26,25,23,0.08)",
+        "purpose": "Barely-there ambient shadow for standalone tiles; use sparingly."
+      }
     ],
     "motion": [
-      { "name": "ease-soft", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "The signature easing — gentle, unhurried settle for color swaps, reveals, and CTA gaps." },
-      { "name": "reveal", "value": "opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1)", "purpose": "Staggered scroll/page-load fade-and-rise reveals." },
-      { "name": "color-swap", "value": "background 0.45s cubic-bezier(0.22,1,0.36,1)", "purpose": "Work card neutral-to-accent hover fill." }
+      {
+        "name": "ease-soft",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "The signature easing — gentle, unhurried settle for color swaps, reveals, and CTA gaps."
+      },
+      {
+        "name": "reveal",
+        "value": "opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1)",
+        "purpose": "Staggered scroll/page-load fade-and-rise reveals."
+      },
+      {
+        "name": "color-swap",
+        "value": "background 0.45s cubic-bezier(0.22,1,0.36,1)",
+        "purpose": "Work card neutral-to-accent hover fill."
+      }
     ],
     "breakpoints": [
-      { "name": "mobile", "value": "760px" }
+      {
+        "name": "xs",
+        "value": "480px"
+      },
+      {
+        "name": "sm",
+        "value": "560px"
+      },
+      {
+        "name": "md",
+        "value": "720px"
+      },
+      {
+        "name": "lg",
+        "value": "820px"
+      },
+      {
+        "name": "xl",
+        "value": "860px"
+      },
+      {
+        "name": "2xl",
+        "value": "960px"
+      },
+      {
+        "name": "3xl",
+        "value": "1040px"
+      }
     ]
   },
   "components": [
@@ -42,7 +287,7 @@
       "name": "Primary Button (Nav CTA)",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The pill contact CTA in the nav — Ultraviolet fill, the one saturated accent on the chrome.",
+      "description": "The pill contact CTA in the nav — Ultraviolet fill, the one saturated accent on the chrome. A case study that substitutes its own voice fills this with that accent instead (Sip & Scones uses Teal #487571).",
       "html": "<a class=\"ds-btn-primary\" href=\"#\">Chat with me</a>",
       "css": ".ds-btn-primary { display:inline-flex; align-items:center; background:#5642EA; color:#FCFBFA; font-family:'DM Mono',monospace; font-size:13px; letter-spacing:0.04em; padding:9px 18px; border-radius:999px; text-decoration:none; transition:opacity 0.2s; } .ds-btn-primary:hover { opacity:0.88; } .ds-btn-primary:focus-visible { outline:2px solid #5642EA; outline-offset:3px; }"
     },
@@ -85,25 +330,75 @@
       "description": "Muted mono link that warms to Ultraviolet on hover.",
       "html": "<a class=\"ds-nav-link\" href=\"#\">work</a>",
       "css": ".ds-nav-link { font-family:'DM Mono',monospace; font-size:0.78rem; letter-spacing:0.04em; color:#6a6273; text-decoration:none; transition:color 0.18s; } .ds-nav-link:hover { color:#5642EA; } .ds-nav-link:focus-visible { outline:2px solid #5642EA; outline-offset:3px; }"
+    },
+    {
+      "name": "Hairline Labelled Row",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "The case-study workhorse: a mono accent kicker over a Cormorant line, separated by 1px hairlines. Groups content without a card, and is how the No-New-Cards Rule is satisfied in practice.",
+      "html": "<div class=\"ds-hairline-run\"><div class=\"ds-hairline-row\"><span class=\"ds-hairline-k\">The stand</span><p class=\"ds-hairline-t\">Pick a tier, watch the tray fill</p></div><div class=\"ds-hairline-row\"><span class=\"ds-hairline-k\">The pairing</span><p class=\"ds-hairline-t\">A drink recommended against the tray</p></div></div>",
+      "css": ".ds-hairline-run { border-top:1px solid #ddd6ec; } .ds-hairline-row { padding:1.35rem 0; border-bottom:1px solid #ddd6ec; } .ds-hairline-k { display:block; font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:#5642EA; margin-bottom:0.55rem; } .ds-hairline-t { font-family:'Cormorant Garamond',serif; font-weight:600; font-size:1.4rem; line-height:1.3; letter-spacing:-0.01em; color:#141018; margin:0; }"
+    },
+    {
+      "name": "Pull-Quote Band",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Full-bleed saturated band carrying one reflection in Cormorant italic, Paper text reversed out. The only place the accent covers a whole region, and the page's rhythmic break.",
+      "html": "<div class=\"ds-band\"><div class=\"ds-band-eye\">Team reflection</div><p>“The design needed to feel <em>intuitive, elegant, and invisible.</em>”</p></div>",
+      "css": ".ds-band { background:#5642EA; padding:4.5rem 3rem; text-align:center; } .ds-band-eye { font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:#FCFBFA; opacity:0.85; margin-bottom:1.4rem; } .ds-band p { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:clamp(1.5rem,3vw,2.4rem); line-height:1.4; color:#FCFBFA; max-width:60ch; margin:0 auto; } .ds-band p em { font-style:normal; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:5px; text-decoration-color:rgba(252,251,250,0.5); }"
     }
   ],
   "narrative": {
     "northStar": "The Soft Playground",
-    "overview": "This is a warm, pastel, personality-forward system built on paper and ink. The page shell is deliberately quiet — a soft off-white ground, restrained type, generous air — so that the work itself supplies every loud moment. Rounded pill shapes, scrolling marquee strips, hand-drawn squiggles, and tactile color-swap cards give the whole thing a friendly, made-by-a-human feel rather than corporate polish. It should read like an editorial magazine that decided to relax and play.\n\nColor is the primary tool for depth and delight, not shadow. Surfaces sit flat on the paper; interest comes from tonal pastel layering, gently rotated floating images, and interaction that swaps a neutral card to a saturated accent. Ultraviolet is the one strong voice — it owns the chrome accents while the pastels stay reserved for the work cards. The result is calm at rest and warm on touch.",
+    "overview": "This is a warm, pastel, personality-forward system built on paper and ink. The page shell is deliberately quiet — a soft off-white ground, restrained type, generous air — so that the work itself supplies every loud moment. Rounded pill shapes, scrolling marquee strips, hand-drawn squiggles, and tactile color-swap cards give the whole thing a friendly, made-by-a-human feel rather than corporate polish. It should read like an editorial magazine that decided to relax and play.\n\nColor is the primary tool for depth and delight, not shadow. Surfaces sit flat on the paper; interest comes from tonal pastel layering, gently rotated floating images, and interaction that swaps a neutral card to a saturated accent. Ultraviolet is the one strong voice — it owns the chrome accents (eyebrows, marquees, CTAs, hover states) while the pastels stay reserved for the work cards. The result is calm at rest and warm on touch.\n\nExplicitly rejected: dark mode, pure white (#ffffff) and pure black (#000000), neon, brutalism, dense data-heavy layouts, solid dark backgrounds anywhere, and heavy/bold type. Playfair Display is banned; Fraunces has crept into `aboutme.html` and is off-system. New card components outside the established work-card pattern are also off-system by default — see The No-New-Cards Rule under Components.",
     "keyCharacteristics": [
       "A neutral paper shell that frames loud, colorful work.",
       "Warm and tactile: soft pill shapes, rounded 28px cards, friendly fills.",
       "Depth from color and layering, not shadows.",
       "One accent voice (Ultraviolet) against a pastel supporting cast.",
-      "Hand-made touches — marquees, squiggles, 'paper & ink' tone."
+      "Hand-made touches — marquees, squiggles, \"paper & ink\" tone."
     ],
     "rules": [
-      { "name": "The One Voice Rule", "body": "Ultraviolet is the only saturated color allowed on the page shell (nav, eyebrows, marquees, CTAs, hover). Pastels belong to the work cards, never the chrome. Its rarity against the paper is what makes it read as intentional.", "section": "colors" },
-      { "name": "The Color-Is-The-Hover Rule", "body": "A work card's accent is hidden at rest (neutral Card Base) and only fills in on hover. Color is earned by interaction, not spent up front.", "section": "colors" },
-      { "name": "The Signature-Name Rule", "body": "Self Modern appears exactly once — the hero name. Everywhere else the serif voice is Cormorant Garamond.", "section": "typography" },
-      { "name": "The Mono-For-Utility Rule", "body": "Every small functional string (labels, tags, nav, timestamps, CTAs) is DM Mono uppercase with tracking; serifs are never used for utility text and mono is never used for headlines.", "section": "typography" },
-      { "name": "The No-Fraunces Rule", "body": "Do not load Playfair Display or Fraunces. The serif is Cormorant Garamond; the display face is Self Modern.", "section": "typography" },
-      { "name": "The Flat-Paper Rule", "body": "Surfaces are flat. If you reach for a shadow to create hierarchy, use color, tonal layering, or rotation instead. Shadows are reserved for lifting collage imagery, never for signalling interactivity.", "section": "elevation" }
+      {
+        "name": "The One Voice Rule",
+        "section": "colors",
+        "body": "Exactly one saturated color is allowed on a page shell (nav, eyebrows, marquees, CTAs, hover); pastels belong to the work cards, never the chrome. Its rarity against the paper is what makes it read as intentional. Ultraviolet is that voice site-wide. A case study may substitute its own accent for Ultraviolet throughout that page when the work has a colour of its own — Projects/sip-scones.html uses Teal #487571 — but it swaps the voice, it never adds a second one."
+      },
+      {
+        "name": "The Color-Is-The-Hover Rule",
+        "section": "colors",
+        "body": "A work card's accent is hidden at rest (neutral Card Base) and only fills in on hover. Color is earned by interaction, not spent up front."
+      },
+      {
+        "name": "The Signature-Name Rule",
+        "section": "typography",
+        "body": "Self Modern appears exactly once — the hero name. Everywhere else the serif voice is Cormorant Garamond."
+      },
+      {
+        "name": "The Mono-For-Utility Rule",
+        "section": "typography",
+        "body": "Every small functional string (labels, tags, nav, timestamps, CTAs) is DM Mono uppercase with tracking; serifs are never used for utility text and mono is never used for headlines."
+      },
+      {
+        "name": "The No-Fraunces Rule",
+        "section": "typography",
+        "body": "Do not load Playfair Display or Fraunces. The serif is Cormorant Garamond; the display face is Self Modern."
+      },
+      {
+        "name": "The Flat-Paper Rule",
+        "section": "elevation",
+        "body": "Surfaces are flat. If you reach for a shadow to create hierarchy, use color, tonal layering, or rotation instead. Shadows are reserved for lifting collage imagery, never for signalling interactivity."
+      },
+      {
+        "name": "The No-New-Cards Rule",
+        "section": "components",
+        "body": "The card pattern (bordered/tinted container, 28px radius, internal padding, hover fill-swap) is scoped to the existing work-card grid only. Do not introduce card components anywhere else — new sections, page restructures, or AI-generated layout suggestions — unless explicitly requested for that specific instance. Default to whitespace, Border hairlines, or typographic hierarchy to group or separate content instead. Cards are an easy default that flattens this system's editorial, whitespace-driven feel into a generic dashboard look if used too freely."
+      },
+      {
+        "name": "Card Audit Workflow",
+        "section": "components",
+        "body": "When asked to \"scan\" a page for cards, do not remove or modify anything unprompted. Instead: (1) walk the page section by section and flag every card instance, including borderline cases that only partially match the pattern; (2) for each, note its location, what it currently contains, and whether it is part of the established work-card grid (protected under The No-New-Cards Rule) or a case that crept in elsewhere; (3) present the full list for review. Removal or reworking of any specific card only happens after explicit sign-off on that item — one blanket \"yes\" does not authorize touching all of them."
+      }
     ],
     "dos": [
       "Do keep the page shell neutral (Paper) and let the work cards supply all the saturated color.",
@@ -118,7 +413,9 @@
       "Don't load Playfair Display or Fraunces; reconcile aboutme.html back to Cormorant Garamond (The No-Fraunces Rule).",
       "Don't put pastel accents on the nav, marquee, or footer chrome — pastels belong to work cards.",
       "Don't reach for shadows to signal interactivity; swap color instead.",
-      "Don't set headlines heavy/bold — weight stays light-to-regular even when oversized."
+      "Don't set headlines heavy/bold — weight stays light-to-regular even when oversized.",
+      "Don't add new card components outside the established work-card grid without explicit sign-off (The No-New-Cards Rule).",
+      "Don't remove or rework any existing card without item-by-item sign-off, even after a card scan flags it (Card Audit Workflow)."
     ]
   }
 }
