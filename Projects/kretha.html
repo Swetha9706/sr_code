@@ -79,41 +79,64 @@ section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
 .flag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ultraviolet);border:1px dashed var(--ultraviolet);border-radius:999px;padding:.2rem .6rem;display:inline-block;vertical-align:middle;white-space:nowrap}
 
 /* ══ HERO ══ */
-.hero{max-width:1180px;margin:0 auto;padding:5.5rem 3rem 3rem;text-align:center;display:flex;flex-direction:column;align-items:center}
-.hero-eyebrow{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:1.75rem}
-.hero-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(3.5rem,12vw,6.2rem);line-height:.95;letter-spacing:-.02em;color:var(--ink)}
-.hero-squig{display:block;width:200px;height:20px;margin:1.5rem auto 1.75rem}
-.hero-sub{font-family:'Lora',serif;font-size:clamp(1rem,1.6vw,1.25rem);line-height:1.7;color:var(--muted);max-width:60ch}
-.hero-img{margin:3.5rem auto 0;width:100%;max-width:1080px;border-radius:14px;overflow:hidden;box-shadow:0 12px 36px rgba(30,18,10,.14);position:relative;transform:rotate(-.6deg)}
-.hero-img img{width:100%;aspect-ratio:16/7;object-fit:cover}
-.hero-cap{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:1.1rem}
+/* full-bleed key visual — edge to edge, ignoring the 1180 column the rest of the page keeps.
+   Capped at 760px so a wide viewport gets a banner, not a screenful; object-fit crops evenly
+   from top and bottom, which keeps the centre phone inside the frame. Matches sip-scones.html. */
+.hero-stage-wrap{margin:0;padding:0}
+.hero-key{display:block;width:100%;height:auto;max-height:760px;
+  object-fit:cover;object-position:center}
+/* the artifact leads, the words follow, everything left-aligned against the page column
+   (composition after timmadeit.com/projects/critik: full-bleed visual, then an oversized
+   left-set headline in a tight measure, then the meta row) */
+.hero{max-width:1180px;margin:0 auto;padding:3.25rem 3rem 0;text-align:left;display:flex;flex-direction:column;align-items:flex-start}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:1.35rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(3.5rem,11vw,6.2rem);line-height:.92;letter-spacing:-.03em;color:var(--ink)}
+.hero-squig{display:block;width:200px;height:20px;margin:1.25rem 0 1.6rem}
+.hero-sub{font-family:'Lora',serif;font-size:clamp(1rem,1.6vw,1.25rem);line-height:1.7;color:var(--muted);max-width:54ch}
+.hero-cap{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:1.6rem}
 
 /* ══ QUICK FACTS ══ */
+/* a labelled row, not a card: whitespace separates the columns and one hairline closes
+   the block, matching the same row on sip-scones.html (The No-New-Cards Rule) */
 .facts{max-width:1180px;margin:0 auto;padding:0 3rem}
-.facts-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:28px;overflow:hidden;background:var(--card-base)}
-.fact{padding:1.6rem 1.5rem;border-right:1px solid var(--border)}
-.fact:last-child{border-right:none}
-.fact-l{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:.5rem}
-.fact-v{font-family:'Lora',serif;font-size:.9rem;line-height:1.5;color:var(--ink)}
-@media(max-width:860px){.facts-grid{grid-template-columns:1fr 1fr}.fact:nth-child(2){border-right:none}.fact:nth-child(1),.fact:nth-child(2){border-bottom:1px solid var(--border)}}
-@media(max-width:480px){.facts-grid{grid-template-columns:1fr}.fact{border-right:none;border-bottom:1px solid var(--border)}.fact:last-child{border-bottom:none}}
+.facts-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2.5rem 3rem;
+  margin-top:3.5rem;padding-bottom:3.25rem;border-bottom:1px solid var(--border)}
+.fact-l{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:.75rem}
+.fact-v{font-family:'Lora',serif;font-size:1rem;line-height:1.6;color:var(--ink);max-width:30ch}
+@media(max-width:860px){
+  .facts-grid{grid-template-columns:1fr 1fr;gap:2.25rem 2.5rem;margin-top:3rem;padding-bottom:2.5rem}
+}
+@media(max-width:480px){.facts-grid{grid-template-columns:1fr;gap:1.75rem}}
 
 /* ══ PROBLEM STATEMENT ══ */
 .statement{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.8rem,3.2vw,2.6rem);line-height:1.28;letter-spacing:-.01em;color:var(--ink);max-width:22ch;margin-top:1.5rem}
 .statement em{font-style:italic;color:var(--ultraviolet)}
 
-/* ══ NUMBERED CARDS ══ */
-.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
-.card{background:var(--card-base);border:1px solid var(--border);border-radius:28px;padding:2rem;transition:background .45s var(--ease)}
-.card:hover{background:var(--highlighter)}
+/* ══ AUDIENCE: the network, set as a hairline structure rather than three tinted cards.
+   The two sides of the transaction sit level; the intermediary that connects them sits
+   beneath on a different rhythm, so the layout states the hierarchy the copy claims. ══ */
+.aud{margin-top:3rem;border-top:1px solid var(--border)}
+.aud-primary{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;padding:2.5rem 0;
+  border-bottom:1px solid var(--border)}
+.aud-secondary{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:3.5rem;
+  align-items:start;padding:2.5rem 0;border-bottom:1px solid var(--border)}
+.aud-k{display:block;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ultraviolet);margin-bottom:.8rem}
+.aud-t{font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15;letter-spacing:-.015em;color:var(--ink);
+  margin:0 0 .9rem}
+.aud-x{font-family:'Lora',serif;font-size:1rem;line-height:1.75;color:var(--muted);margin:0}
+.aud-secondary .aud-k{color:var(--muted)}
+.aud-secondary .aud-t{font-size:1.4rem;margin-bottom:0}
+@media(max-width:860px){
+  .aud-primary,.aud-secondary{grid-template-columns:1fr;gap:1rem}
+  .aud-primary>*+*{margin-top:1.5rem}
+  .aud-t{font-size:1.5rem}
+}
+
 .card-tag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);display:block;margin-bottom:.6rem}
 .card-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:.55rem;line-height:1.2}
 .card-text{font-family:'Lora',serif;font-size:.92rem;line-height:1.7;color:var(--muted)}
-@media(max-width:860px){.cards3{grid-template-columns:1fr}}
-/* Audience: each card carries its own pastel mood (DESIGN.md) */
-.card.tinted{background:var(--tint);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
-.card.tinted:hover{background:var(--tint);transform:translateY(-4px);box-shadow:0 12px 30px rgba(30,18,10,.14)}
-
 /* ══ CHALLENGES: NUMBERED STACK ══ */
 .stack{margin-top:2.5rem;border-top:1px solid var(--border)}
 .stack-row{display:grid;grid-template-columns:auto 1fr;gap:1.75rem;align-items:start;padding:1.9rem 0;border-bottom:1px solid var(--border)}
@@ -121,6 +144,35 @@ section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
 .stack-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:.4rem;line-height:1.2}
 .stack-text{font-family:'Lora',serif;font-size:.95rem;line-height:1.75;color:var(--muted);max-width:72ch}
 @media(max-width:720px){.stack-row{gap:1rem}.stack-num{font-size:2rem;min-width:2rem}}
+
+/* the three problem marks: line drawings already authored in the accent, one per row */
+.stack.marked .stack-row{grid-template-columns:auto 1fr auto}
+.stack-mark{width:124px;align-self:center;opacity:.9}
+.stack-mark img{width:100%;height:auto;display:block}
+@media(max-width:860px){
+  .stack.marked .stack-row{grid-template-columns:auto 1fr}
+  .stack-mark{display:none}
+}
+
+/* the connected-system mark sits with the lede it illustrates */
+.system-mark{display:block;width:min(320px,100%);height:auto;margin:2.5rem 0 0}
+
+/* the built wholesaler home: a tall phone screen, bounded so it stays an artifact
+   in the flow rather than a 1000px column, with the full screen a click away */
+.screen{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:start;margin-top:2.75rem}
+.screen-frame{margin:0;width:300px}
+.screen-frame img{width:100%;height:340px;object-fit:cover;object-position:top;display:block;
+  border-radius:14px;border:1px solid var(--border);box-shadow:0 12px 36px rgba(30,18,10,.14)}
+.screen-open{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ultraviolet);margin-top:1rem}
+@media(prefers-reduced-motion:no-preference){.screen-open{transition:gap .25s var(--ease)}}
+.screen-open:hover{gap:.85rem}
+.screen-cap{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--muted);
+  line-height:1.6;max-width:56ch}
+@media(max-width:720px){
+  .screen{grid-template-columns:1fr;gap:1.5rem}
+  .screen-frame{width:100%;max-width:300px}
+}
 
 /* ══ FINDINGS: ASYMMETRIC 1-BIG + 2-SMALL ══ */
 .findings{display:grid;grid-template-columns:1.15fr 1fr;gap:1.25rem;margin-top:3.5rem}
@@ -253,6 +305,13 @@ section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
 </nav>
 
 <!-- ══ 1. HERO ══ -->
+<div class="hero-stage-wrap" data-sr>
+  <img class="hero-key" src="Kr%C4%93tha%20Assets/kretha-hero-2400.jpg"
+       srcset="Kr%C4%93tha%20Assets/kretha-hero-1400.jpg 1400w, Kr%C4%93tha%20Assets/kretha-hero-2400.jpg 2400w"
+       sizes="100vw" width="2400" height="1600" fetchpriority="high" decoding="async"
+       alt="The Kr&#275;tha key visual: a phone showing the app&rsquo;s home screen &mdash; a supplier card for Cozy Home Furnishings and a Product Inventory row &mdash; standing upright on a pale mint ground, surrounded by tilted screens for purchase order summaries, order status with expected delivery dates, and a product description page.">
+</div>
+
 <header class="hero">
   <div class="hero-eyebrow" data-sr>B2B Procurement Case Study · Systems Design</div>
   <h1 class="hero-title" data-sr="1">Krētha</h1>
@@ -261,9 +320,6 @@ section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
   </svg>
   <p class="hero-sub" data-sr="2">A B2B procurement platform that helps retailers, wholesalers, and manufacturers move ordering out of scattered calls, chats, and spreadsheets, into one structured system for coordinated business action.</p>
 
-  <div class="hero-img" data-sr="2">
-    <img src="Kr%C4%93tha%20Assets/overview-image.jpg" alt="Workspace and planning materials for the Krētha procurement platform" loading="lazy" decoding="async" width="1504" height="1728">
-  </div>
   <p class="hero-cap" data-sr="2">B2B procurement platform · active development</p>
 </header>
 
@@ -305,21 +361,25 @@ section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
   <h2 class="q-title" data-sr>Designing for the network around the order, <em>not just the order</em></h2>
   <p class="body" data-sr="1">Krētha serves a full supply network rather than a single actor, so the design had to hold several roles at once, each with different needs, incentives, and levels of technical comfort.</p>
 
-  <div class="cards3">
-    <div class="card tinted" style="--tint:var(--nectar)" data-sr="1">
-      <span class="card-tag">Primary audience</span>
-      <div class="card-title">Retailers</div>
-      <p class="card-text">Kirana shops, specialty stores, pharmacies, and apparel sellers who need simple order placement, supplier discovery, repeat purchasing, and transaction history, without a steep learning curve or high cost.</p>
+  <div class="aud">
+    <div class="aud-primary">
+      <div data-sr="1">
+        <span class="aud-k">Primary audience</span>
+        <h3 class="aud-t">Retailers</h3>
+        <p class="aud-x">Kirana shops, specialty stores, pharmacies, and apparel sellers who need simple order placement, supplier discovery, repeat purchasing, and transaction history, without a steep learning curve or high cost.</p>
+      </div>
+      <div data-sr="1">
+        <span class="aud-k">Primary audience</span>
+        <h3 class="aud-t">Suppliers &amp; Distributors</h3>
+        <p class="aud-x">Regional wholesalers and FMCG distributors managing fragmented orders from multiple retail clients, who need centralised order intake and visible fulfilment status.</p>
+      </div>
     </div>
-    <div class="card tinted" style="--tint:var(--ice-blue)" data-sr="2">
-      <span class="card-tag">Primary audience</span>
-      <div class="card-title">Suppliers &amp; Distributors</div>
-      <p class="card-text">Regional wholesalers and FMCG distributors managing fragmented orders from multiple retail clients, who need centralised order intake and visible fulfilment status.</p>
-    </div>
-    <div class="card tinted" style="--tint:var(--lavender)" data-sr="3">
-      <span class="card-tag">Secondary audience</span>
-      <div class="card-title">Agents &amp; Networks</div>
-      <p class="card-text">Agents, brokers, and SME associations who facilitate platform adoption as trusted intermediaries, bringing retailers and suppliers onto the platform.</p>
+    <div class="aud-secondary" data-sr="2">
+      <div>
+        <span class="aud-k">Secondary audience</span>
+        <h3 class="aud-t">Agents &amp; Networks</h3>
+      </div>
+      <p class="aud-x">Agents, brokers, and SME associations who facilitate platform adoption as trusted intermediaries, bringing retailers and suppliers onto the platform.</p>
     </div>
   </div>
 </section>
@@ -364,13 +424,14 @@ section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
   <p class="statement" data-sr="1">Procurement here is rarely a single-screen task. It's scattered across people, channels, and time, with <em>no shared record of what was agreed.</em></p>
   <p class="body" data-sr="1">For many retailers, placing an order means comparing suppliers, checking stock rhythm, adjusting quantities, coordinating with staff, confirming changes, and making sure the final order still reflects business reality. When that happens across messaging threads, calls, spreadsheets, and memory, the result is slower ordering, avoidable errors, and weak visibility.</p>
 
-  <div class="stack">
+  <div class="stack marked">
     <div class="stack-row" data-sr="1">
       <div class="stack-num">01</div>
       <div>
         <div class="stack-title">Fragmented, multi-channel coordination</div>
         <p class="stack-text">Ordering spread across chats, calls, and spreadsheets means slower turnaround, avoidable errors, poor visibility, and weak auditability.</p>
       </div>
+      <div class="stack-mark" aria-hidden="true"><img src="Kr%C4%93tha%20Assets/Functional.svg" alt="" loading="lazy" decoding="async"></div>
     </div>
     <div class="stack-row" data-sr="1">
       <div class="stack-num">02</div>
@@ -378,6 +439,7 @@ section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
         <div class="stack-title">Repetition without infrastructure</div>
         <p class="stack-text">Retailers reorder familiar products in recurring cycles, but with no system to support that, every order feels rebuilt from scratch.</p>
       </div>
+      <div class="stack-mark" aria-hidden="true"><img src="Kr%C4%93tha%20Assets/Repetition.svg" alt="" loading="lazy" decoding="async"></div>
     </div>
     <div class="stack-row" data-sr="1">
       <div class="stack-num">03</div>
@@ -385,6 +447,7 @@ section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
         <div class="stack-title">Organisational complexity at small scale</div>
         <p class="stack-text">Accounts need to represent businesses, not just individuals. That raises roles, permissions, approvals, and accountability, without overwhelming small operators.</p>
       </div>
+      <div class="stack-mark" aria-hidden="true"><img src="Kr%C4%93tha%20Assets/Complexity.svg" alt="" loading="lazy" decoding="async"></div>
     </div>
   </div>
 </section>
@@ -539,6 +602,8 @@ section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
   <p class="body" data-sr="1">That view changed how I made decisions. An order stopped being a single transaction record. It became part of a lifecycle: intent, internal coordination, supplier response, revisions, and fulfilment. A purchase list stopped being a saved cart. It became a planning object tied to recurring buying, stock, and how efficiently a business runs.</p>
   <p class="body" data-sr="1">Navigation and hierarchy followed the same logic. The design had to make relationships obvious: who belongs to which organisation, who can prepare or approve an order, which lists are personal and which are shared, and what each subscription tier unlocks. Clarity about those relationships mattered as much as a clean screen.</p>
 
+  <img class="system-mark" src="Kr%C4%93tha%20Assets/Functional.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" data-sr="1">
+
   <div class="layers">
     <div class="layer" data-sr="1">
       <span class="layer-k">Layer 01 · Business entities</span>
@@ -583,6 +648,16 @@ section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
   <div class="eyebrow" data-sr>What did I design?</div>
   <h2 class="q-title" data-sr>Three systems that <em>define the platform</em></h2>
   <p class="body" data-sr="1">Each core flow reflects a distinct part of how businesses buy, plan, and coordinate, and each had to support both the ideal path and the realistic exceptions of live operational work.</p>
+
+  <div class="screen" data-sr="1">
+    <figure class="screen-frame">
+      <img src="Kr%C4%93tha%20Assets/wholesaler-home.jpg" width="780" height="2578" loading="lazy" decoding="async" alt="The Kr&#275;tha wholesaler home screen on mobile: a supplier card for an admin account with a Manage Orders button, then horizontally scrolling rows for Product Inventory with unit counts and prices, Latest Orders showing order numbers and states such as New Order and Cancelled, and Supply Requests.">
+    </figure>
+    <div>
+      <p class="screen-cap">The wholesaler home screen as built: inventory, the latest orders with their live states, and incoming supply requests, all readable in one pass. It is the view the three flows below hang off.</p>
+      <a class="screen-open" href="Kr%C4%93tha%20Assets/wholesaler-home.jpg" target="_blank" rel="noopener">See the full screen <span aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
 
   <!-- Feature 1 -->
   <div class="feature">
