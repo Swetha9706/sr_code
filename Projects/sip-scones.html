@@ -400,6 +400,46 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 
 ::selection{background:var(--nectar);color:var(--ink)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* ══ PAGE TRANSITION (draft) ══════════════════════════
+   Paired with index.html. The names here must match the ones the
+   grid puts on the card being left: case-shell + case-title. */
+@view-transition{navigation:auto}
+
+.hero-stage-wrap{view-transition-name:case-shell}
+.hero-name{view-transition-name:case-title}
+
+/* Timing lives in variables so the four transition files cannot drift apart.
+   Custom properties on :root inherit into the ::view-transition pseudo tree.
+   Keep these four values identical across index.html and all three
+   case-study drafts — a mismatch makes the forward and back trips differ. */
+:root{
+  --vt-shell:340ms;   /* card <-> hero panel */
+  --vt-title:340ms;   /* card title <-> hero title */
+  --vt-root:260ms;    /* everything else, crossfaded */
+  --vt-ease:cubic-bezier(0.22,1,0.36,1);
+}
+
+@media(prefers-reduced-motion:no-preference){
+  ::view-transition-group(case-shell){
+    animation-duration:var(--vt-shell);
+    animation-timing-function:var(--vt-ease);
+  }
+  ::view-transition-group(case-title){
+    animation-duration:var(--vt-title);
+    animation-timing-function:var(--vt-ease);
+  }
+  ::view-transition-group(root){
+    animation-duration:var(--vt-root);
+    animation-timing-function:var(--vt-ease);
+  }
+  ::view-transition-old(root){animation:none}
+}
+@media(prefers-reduced-motion:reduce){
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*){animation:none!important}
+}
 </style>
 </head>
 <body>
@@ -416,7 +456,7 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 </nav>
 
 <!-- ══ 1. HERO — the work first ══ -->
-<div class="hero-stage-wrap" data-sr>
+<div class="hero-stage-wrap">
   <img class="hero-key" src="Sip-Scones%20Assets/hero-key-visual-2400.jpg"
        srcset="Sip-Scones%20Assets/hero-key-visual-1400.jpg 1400w, Sip-Scones%20Assets/hero-key-visual-2400.jpg 2400w"
        sizes="100vw" width="2400" height="1360" fetchpriority="high" decoding="async"
@@ -424,7 +464,7 @@ figcaption{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
 </div>
 
 <header class="hero">
-  <div class="hero-name" data-sr>Sip &amp; Scones</div>
+  <div class="hero-name">Sip &amp; Scones</div>
   <h1 class="hero-title" data-sr="1"> <em>A Low Code UX </em>Journey in Customizable Dining</h1>
   <svg class="hero-squig" viewBox="0 0 250 20" fill="none" aria-hidden="true" data-sr="1">
     <path d="M4 13 Q36 4 68 13 Q100 22 132 12 Q162 2 196 12 Q218 18 246 11" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" fill="none"/>

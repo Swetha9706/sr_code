@@ -289,6 +289,46 @@ section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
 
 ::selection{background:var(--lavender);color:var(--ink)}
 :focus-visible{outline:2px solid var(--ultraviolet);outline-offset:3px;border-radius:2px}
+
+/* ══ PAGE TRANSITION (draft) ══════════════════════════
+   Paired with index.html. The names here must match the ones the
+   grid puts on the card being left: case-shell + case-title. */
+@view-transition{navigation:auto}
+
+.hero-stage-wrap{view-transition-name:case-shell}
+.hero-title{view-transition-name:case-title}
+
+/* Timing lives in variables so the four transition files cannot drift apart.
+   Custom properties on :root inherit into the ::view-transition pseudo tree.
+   Keep these four values identical across index.html and all three
+   case-study drafts — a mismatch makes the forward and back trips differ. */
+:root{
+  --vt-shell:340ms;   /* card <-> hero panel */
+  --vt-title:340ms;   /* card title <-> hero title */
+  --vt-root:260ms;    /* everything else, crossfaded */
+  --vt-ease:cubic-bezier(0.22,1,0.36,1);
+}
+
+@media(prefers-reduced-motion:no-preference){
+  ::view-transition-group(case-shell){
+    animation-duration:var(--vt-shell);
+    animation-timing-function:var(--vt-ease);
+  }
+  ::view-transition-group(case-title){
+    animation-duration:var(--vt-title);
+    animation-timing-function:var(--vt-ease);
+  }
+  ::view-transition-group(root){
+    animation-duration:var(--vt-root);
+    animation-timing-function:var(--vt-ease);
+  }
+  ::view-transition-old(root){animation:none}
+}
+@media(prefers-reduced-motion:reduce){
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*){animation:none!important}
+}
 </style>
 </head>
 <body>
@@ -305,7 +345,7 @@ section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
 </nav>
 
 <!-- ══ 1. HERO ══ -->
-<div class="hero-stage-wrap" data-sr>
+<div class="hero-stage-wrap">
   <img class="hero-key" src="Kr%C4%93tha%20Assets/kretha-hero-2400.jpg"
        srcset="Kr%C4%93tha%20Assets/kretha-hero-1400.jpg 1400w, Kr%C4%93tha%20Assets/kretha-hero-2400.jpg 2400w"
        sizes="100vw" width="2400" height="1600" fetchpriority="high" decoding="async"
@@ -314,7 +354,7 @@ section{padding:6rem 3rem;max-width:1180px;margin:0 auto}
 
 <header class="hero">
   <div class="hero-eyebrow" data-sr>B2B Procurement Case Study · Systems Design</div>
-  <h1 class="hero-title" data-sr="1">Krētha</h1>
+  <h1 class="hero-title">Krētha</h1>
   <svg class="hero-squig" viewBox="0 0 250 20" fill="none" aria-hidden="true" data-sr="1">
     <path d="M4 13 Q36 4 68 13 Q100 22 132 12 Q162 2 196 12 Q218 18 246 11" stroke="var(--ultraviolet)" stroke-width="3" stroke-linecap="round" fill="none"/>
   </svg>
