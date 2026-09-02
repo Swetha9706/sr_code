@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="86" height="86" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="flower-wireframe">
+<circle id="petal-top" cx="26.8758" cy="25.7996" r="17.2" fill="#E8835C"/>
+<circle id="petal-bottom" cx="29.0242" cy="60.2" r="17.2" fill="#E8835C"/>
+<circle id="petal-left" cx="63.4246" cy="58.0496" r="17.2" fill="#E8835C"/>
+<circle id="petal-right" cx="61.2742" cy="23.65" r="17.2" fill="#E8835C"/>
+<ellipse id="center-core" cx="44.0754" cy="42.9998" rx="15.05" ry="17.2" fill="#F0F7A0"/>
+</g>
+</svg>

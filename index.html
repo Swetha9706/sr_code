@@ -152,28 +152,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hero-cta:hover{gap:.9rem}
 
 /* ══ PROJECTS DECO TILES ═════════════════════════════ */
-.projects-with-deco{
-  display:grid;
-  grid-template-columns:140px minmax(0,720px) 140px;
-  gap:18px;
-  justify-content:center;
-}
-.projects-deco--left{
-  display:flex;flex-direction:column;
-  justify-content:flex-start;padding-top:32px;
-}
-.projects-deco--right{
-  display:flex;flex-direction:column;
-  justify-content:flex-end;
-}
-.deco-tile{
-  border-radius:20px;
-  background:var(--cotton-candy);
-  border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  height:160px;
-}
-
 /* ── Animations ── */
 @keyframes spin-slow{to{transform:rotate(360deg)}}
 @keyframes fade-zoom-in{
@@ -221,132 +199,285 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 }
 .projects-see-all:hover{color:var(--ultraviolet);border-color:var(--ultraviolet)}
 
-/* ── Single centred column ── */
+/* ── Bento grid ──
+   One lead card spanning both columns, then the supporting pair beneath it.
+   The row gap is deliberately larger than the column gap so the pair reads as
+   one group sitting under the lead, rather than three equal siblings. */
 .projects-grid{
-  display:flex;
-  flex-direction:column;
-  gap:1rem;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:48px;
+  row-gap:52px;
 }
+.project-card--lead{grid-column:1 / -1}
 
-/* ── Card base ── */
+/* ── Card base ──
+   Each card carries its accent at rest and reverses its type out in Paper.
+   Fills are keyed by modifier class, not :nth-child, so the grid can be
+   reordered without the colours following the wrong project. */
 .project-card{
   position:relative;
-  display:block;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
   border-radius:28px;
-  background:#EEEAF6;
   overflow:hidden;
-  color:inherit;
-  padding:2.2rem 2.2rem 1.8rem;
-  height:360px;
+  color:var(--paper);
+  padding:2.2rem;
+  height:380px;
   cursor:pointer;
-  transition:background .45s cubic-bezier(0.22,1,0.36,1);
 }
-.project-card:first-child:hover{background:var(--highlighter)}
-.project-card:nth-child(2):hover{background:var(--ice-blue)}
-.project-card:nth-child(3):hover{background:var(--teal)}
-/* teal is darker than the pastel accents, so this card reverses its text out */
-.project-card:nth-child(3):hover .card-desc,
-.project-card:nth-child(3):hover .card-name,
-.project-card:nth-child(3):hover .card-cat,
-.project-card:nth-child(3):hover .card-arrow{color:var(--paper)}
+/* The hero image covers the card at rest, so the accent is what hover reveals
+   rather than what the card wears. --card-fg is the type colour over the
+   image; on hover every card reverses out to Paper over its accent. */
+.project-card--kretha{background:var(--ultraviolet);--card-fg:var(--ink)}
+.project-card--sip{background:var(--teal);--card-fg:var(--paper)}
+.project-card--future{background:var(--plum);--card-fg:var(--ink)}
+
+/* Lockup placement follows each image's quiet zone rather than one rule:
+   Krētha's collage is dense at the bottom so its lockup sits at the top; the
+   other two are quiet at the bottom. The description takes the opposite end. */
+.project-card--sip,
+.project-card--future{justify-content:flex-end}
 
 /* ── Floating images inside card ── */
 .card-visuals{
   position:absolute;
   inset:0;
   pointer-events:none;
-  transition:opacity .38s cubic-bezier(0.22,1,0.36,1);
+  transition:opacity 160ms cubic-bezier(0.22,1,0.36,1);
 }
-.project-card:hover .card-visuals{opacity:0}
+.project-card:focus-visible .card-visuals{opacity:0}
 
+/* Full-bleed: the image is the card's surface, clipped by its 28px radius.
+   No rotation, no lift, no radius of its own — the collage-thumbnail
+   treatment is gone. height:auto is load-bearing where it appears below,
+   because the width/height HTML attributes are presentational hints that
+   would otherwise pin the used height to the intrinsic pixel value. */
 .card-img{
   position:absolute;
-  border-radius:14px;
   object-fit:cover;
-  box-shadow:0 12px 36px rgba(30,18,10,.14);
 }
 
-/* Card 1 (Krētha) — two images stacked/rotated */
-.project-card:first-child .card-img-1{
-  width:52%;right:3%;top:6%;
-  transform:rotate(3deg);
-  aspect-ratio:16/10;
+/* One full-bleed rule; each card only chooses which part of its image to
+   frame. Cover everywhere means the card can never outgrow its image. */
+.card-img-1{
+  inset:0;width:100%;height:100%;
 }
-.project-card:first-child .card-img-2{
-  width:40%;right:18%;bottom:10%;
-  transform:rotate(-2.5deg);
-  aspect-ratio:4/3;
-}
+/* Krētha's collage is quiet at the top-left and dense below. */
+.project-card--kretha .card-img-1{object-position:center top}
+/* Sip & Scones: café on the left, tablet on the right. */
+.project-card--sip .card-img-1{object-position:center}
+/* FutureScope: cropped so the handset already sits right of centre. */
+.project-card--future .card-img-1{object-position:center}
 
-/* Card 2 (FutureScope) — single dominant image */
-.project-card:nth-child(2) .card-img-1{
-  width:60%;right:3%;top:6%;
-  transform:rotate(2deg);
-  aspect-ratio:4/3;
+/* ── Scrim ──
+   Guarantees the lockup's contrast over photography instead of trusting the
+   image to stay quiet where the type sits. Clears with the image on hover. */
+.card-scrim{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  transition:opacity 160ms cubic-bezier(0.22,1,0.36,1);
 }
-
-/* Card 3 (Sip & Scones) — placeholder art */
-.project-card:nth-child(3) .card-img-1{
-  width:52%;right:4%;top:8%;
-  transform:rotate(-2deg);
-  aspect-ratio:3/4;
+.project-card--kretha .card-scrim{
+  background:linear-gradient(to bottom,rgba(252,251,250,.92),rgba(252,251,250,0) 46%);
 }
+.project-card--future .card-scrim{
+  background:linear-gradient(to top,rgba(252,251,250,.96),rgba(252,251,250,0) 46%);
+}
+.project-card--sip .card-scrim{
+  background:linear-gradient(to top,rgba(12,22,20,.86),rgba(12,22,20,.08) 56%);
+}
+.project-card:focus-visible .card-scrim{opacity:0}
 
-/* ── Description overlay (hidden until hover) ── */
+/* ── Description overlay (hidden until hover) ──
+   The right reserve is derived from each card's own motif width, so the two
+   always clear each other by 28px no matter which motif the card carries.
+   Type steps down on the half-width cards: at the lead card's size their
+   ~325px column would run about 13 characters a line. */
 .card-desc{
   position:absolute;
-  top:2.2rem;left:2.2rem;right:2.2rem;
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.15rem,2.2vw,1.6rem);
-  font-weight:600;
-  line-height:1.35;
-  color:var(--ink);
-  opacity:0;
-  transition:opacity .38s cubic-bezier(0.22,1,0.36,1) .05s;
-  pointer-events:none;
-  max-width:62ch;
-}
-.project-card:hover .card-desc{opacity:1}
+  bottom:2.2rem;left:2.2rem;
+  right:calc(2.2rem + 90px);   /* clears the arrow at bottom-right */
 
-/* ── Card footer: name + tag + arrow ── */
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;
+  font-weight:600;
+  line-height:1.55;
+  color:var(--paper);
+  opacity:0;
+  transition:opacity 160ms cubic-bezier(0.22,1,0.36,1);
+  pointer-events:none;
+  max-width:44ch;
+}
+.project-card--lead .card-desc{
+  font-size:clamp(1.25rem,1.8vw,1.5rem);
+  line-height:1.45;
+  max-width:40ch;
+}
+/* Cards whose lockup is at the bottom put their description at the top. */
+.project-card--sip .card-desc,
+.project-card--future .card-desc{bottom:auto;top:2.2rem;right:calc(3.5rem + var(--motif-w,100px) + 28px)}
+.project-card:focus-visible .card-desc{opacity:1}
+
+/* ── Card lockup: title stacked over category, bottom-left ── */
 .card-footer{
-  position:absolute;
-  bottom:1.8rem;left:2.2rem;right:2.2rem;
-  display:flex;align-items:baseline;justify-content:space-between;
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 .card-name{
   font-family:'Cormorant Garamond',serif;
-  font-size:1.25rem;font-weight:600;
-  color:var(--ink);letter-spacing:-.01em;
+  font-size:clamp(1.6rem,2.6vw,34px);
+  font-weight:600;
+  line-height:1.05;
+  color:var(--card-fg);
+  letter-spacing:-.015em;
+  transition:color 160ms cubic-bezier(0.22,1,0.36,1);
 }
+/* Full Paper, not a tint: at 14px this is small text, and on Teal any alpha
+   below 1 drops under the 4.5:1 floor. Hierarchy comes from size and tracking
+   instead of opacity. */
 .card-cat{
   font-family:'DM Mono',monospace;
-  font-size:.7rem;letter-spacing:.04em;
-  color:rgba(20,16,24,.5);
-  margin-left:.6rem;
+  font-size:13px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--card-fg);
   font-weight:400;
+  transition:color 160ms cubic-bezier(0.22,1,0.36,1);
 }
 .card-arrow{
+  position:absolute;
+  right:2.2rem;bottom:2.2rem;
   font-family:'DM Mono',monospace;
   font-size:.8rem;letter-spacing:.04em;
-  color:var(--ink);
+  color:var(--paper);
   opacity:0;
   transform:translateX(-6px);
-  transition:opacity .3s ease,transform .3s ease;
+  transition:opacity 160ms cubic-bezier(0.22,1,0.36,1),
+             transform 160ms cubic-bezier(0.22,1,0.36,1);
   white-space:nowrap;
 }
-.project-card:hover .card-arrow{opacity:1;transform:translateX(0)}
+.project-card:focus-visible .card-arrow{opacity:1;transform:translateX(0)}
 
-/* ── Sip & Scones SVG placeholder ── */
-.card-svg-art{
+/* Once the image clears, everything sits on the accent field. */
+.project-card:focus-visible .card-name,
+.project-card:focus-visible .card-cat{color:var(--paper)}
+
+/* ── Corner motif: the hover reward, once the imagery clears ──
+   Each motif keeps its own exported dimensions; no shared sizing rule. */
+.card-motif{
   position:absolute;
-  right:4%;top:10%;
-  width:52%;
-  transform:rotate(-2deg);
+  display:block;
+  top:2.75rem;right:3.5rem;
   pointer-events:none;
-  transition:opacity .38s cubic-bezier(0.22,1,0.36,1);
+  opacity:0;
+  scale:.92;
+  transition:opacity 160ms cubic-bezier(0.22,1,0.36,1),
+             scale 160ms cubic-bezier(0.22,1,0.36,1),
+             translate 160ms cubic-bezier(0.22,1,0.36,1),
+             rotate 160ms cubic-bezier(0.22,1,0.36,1);
 }
-.project-card:hover .card-svg-art{opacity:0}
+
+/* Each motif arrives with its own gesture, taken from the Figma timeline
+   (node 709:19) and scaled from its page-entrance distances down to hover
+   range: the flower rises and grows, the rainbow slides in from the right,
+   the bloom spins into place (see the keyframes below).
+   Figma also rotates the flower -90deg, which is omitted deliberately — the
+   mark is four identical petals on a 4-fold axis, so a quarter turn is a
+   visual no-op. Its readable gesture is the rise, not the rotation.
+   translate/rotate/scale are the independent transform properties, so they
+   compose with each other and with the bloom's rotation animation instead of
+   fighting over one `transform` value. */
+.card-motif--flower{translate:0 14px}
+.card-motif--rainbow{translate:28px 0}
+
+.project-card:focus-visible .card-motif{opacity:1;scale:1;translate:0 0}
+
+/* Touch devices fire :hover on tap, so without this gate every tap on a
+   card plays the whole reveal — photo dissolving, accent flooding — and
+   then navigates away. :focus-visible stays ungated so keyboard access to
+   the same state works on every device. */
+@media (hover: hover) and (pointer: fine){
+  .project-card:hover .card-visuals{opacity:0}
+  .project-card:hover .card-scrim{opacity:0}
+  .project-card:hover .card-desc{opacity:1}
+  .project-card:hover .card-arrow{opacity:1;transform:translateX(0)}
+  .project-card:hover .card-name,
+  .project-card:hover .card-cat{color:var(--paper)}
+  .project-card:hover .card-motif{opacity:1;scale:1;translate:0 0}
+}
+
+/* Entering: each element carries its own duration and stagger here, on the
+   destination state. The base rules above own the exit, which is uniformly
+   160ms with no delay — leaving a card should snap, not linger. */
+.project-card:hover .card-visuals,
+.project-card:focus-visible .card-visuals,
+.project-card:hover .card-scrim,
+.project-card:focus-visible .card-scrim{
+  transition-duration:200ms;
+}
+.project-card:hover .card-desc,
+.project-card:focus-visible .card-desc{
+  transition-duration:220ms;
+  transition-delay:40ms;
+}
+.project-card:hover .card-motif,
+.project-card:focus-visible .card-motif{
+  transition-duration:220ms;
+  transition-delay:60ms;
+}
+.project-card:hover .card-arrow,
+.project-card:focus-visible .card-arrow{
+  transition-duration:200ms;
+  transition-delay:90ms;
+}
+.project-card:hover .card-name,
+.project-card:hover .card-cat,
+.project-card:focus-visible .card-name,
+.project-card:focus-visible .card-cat{
+  transition-duration:200ms;
+}
+/* The span carries the size so --motif-w drives the glyph and the
+   description's reserve from one value; the SVG just fills it. */
+.card-motif svg{display:block;width:100%;height:100%}
+.card-motif--flower{width:var(--motif-w);height:86px}
+.card-motif--rainbow{width:var(--motif-w);height:62px}
+.card-motif--bloom{width:var(--motif-w);height:98px}
+.project-card--kretha{--motif-w:86px}
+.project-card--sip{--motif-w:124px}
+.project-card--future{--motif-w:98px}
+
+/* The bloom is the one animated node in the Figma: a 2s rotation. It only
+   turns while the card is actually hovered. */
+@media(prefers-reduced-motion:no-preference){
+  .project-card:focus-visible .card-motif--bloom{
+    animation:card-bloom-spin 800ms cubic-bezier(0.23,1,0.32,1) 60ms both;
+  }
+}
+/* The hover half needs the pointer gate too, or tapping the card on a phone
+   starts a 2s infinite rotation on a motif that stays invisible until the
+   navigation lands. Same reason the other six hover rules are gated. */
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine){
+  .project-card:hover .card-motif--bloom{
+    animation:card-bloom-spin 800ms cubic-bezier(0.23,1,0.32,1) 60ms both;
+  }
+}
+/* One turn that lands at rest, matching Figma node 709:71 (-360deg -> 0 with
+   a settle), not an endless spinner. `both` holds the resting angle. */
+@keyframes card-bloom-spin{from{rotate:-360deg}to{rotate:0deg}}
+
+/* The gestures above are movement, so reduced motion drops them and keeps
+   only the fade. */
+@media(prefers-reduced-motion:reduce){
+  .card-motif,
+  .card-motif--flower,
+  .card-motif--rainbow{translate:none;rotate:none;scale:1}
+}
 
 /* ══ OFF THE CLOCK ═══════════════════════════════════ */
 .otc{
@@ -492,18 +623,45 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   .hero-name{font-size:clamp(3rem,14vw,104px)}
   .projects{padding:3.5rem 1.5rem 5rem}
   .projects-grid{max-width:100%}
-  .project-card{height:300px}
   .projects-header{flex-direction:column;align-items:flex-start;gap:1rem}
   .footer-inner{padding:4rem 1.25rem 2.5rem}
   .footer::before{font-size:44vw}
-  .projects-with-deco{grid-template-columns:minmax(0,1fr);gap:0}
-  .projects-deco--left,.projects-deco--right{display:none}
+}
+/* The pair stops being a pair once each half is too narrow to hold a
+   34px title beside its imagery — the grid becomes one column instead. */
+@media(max-width:760px){
+  .projects-grid{grid-template-columns:minmax(0,1fr);row-gap:24px}
+  .project-card--lead{grid-column:auto}
+  .project-card{height:320px;padding:1.9rem}
+  .card-arrow{right:1.9rem;bottom:1.9rem}
+  .card-motif{top:2rem;right:2rem}
+  .card-desc{left:1.9rem;bottom:1.9rem;right:calc(1.9rem + 74px)}
+  /* Cover on every card: at 327px wide Krētha's natural-height image is only
+     218px tall and would leave the bottom of a 280px card bare. These are
+     written at two-class specificity so they actually beat the desktop
+     per-card rules rather than losing to them inside the query. */
+  .project-card--kretha .card-img-1,
+  .project-card--sip .card-img-1,
+  .project-card--future .card-img-1{
+    inset:0;width:100%;height:100%;top:0;left:0;object-fit:cover;
+  }
+  .project-card--kretha .card-img-1{object-position:30% 0}
+  .project-card--future .card-img-1{object-position:58% 50%}
+  /* 12px keeps the longest category on one line at 390px. */
+  .card-cat{font-size:12px;letter-spacing:.1em}
 }
 @media(max-width:480px){
   .hero{padding:48px 20px 44px}
   .hero-name{font-size:clamp(2.6rem,16vw,104px)}
   .hero-tagline{font-size:18px}
-  .project-card{height:300px}
+  .project-card{height:280px}
+  .card-motif--flower{height:64px}
+  .card-motif--rainbow{height:46px}
+  .card-motif--bloom{height:72px}
+  .project-card--kretha{--motif-w:64px}
+  .project-card--sip{--motif-w:92px}
+  .project-card--future{--motif-w:72px}
+  .card-desc,.project-card--lead .card-desc{font-size:1rem;line-height:1.5}
 }
 
 ::selection{background:var(--lavender);color:var(--ink)}
@@ -553,7 +711,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 }
 
 /* Press feedback: the click has to register before the transition spins up */
-.project-card{transition:background .45s cubic-bezier(0.22,1,0.36,1),transform 140ms ease-out}
+.project-card{transition:transform 140ms ease-out}
 .project-card:active{transform:scale(.985)}
 </style>
 </head>
@@ -619,81 +777,111 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
       <a href="work.html" class="projects-see-all">All projects →</a>
     </div>
 
-    <div class="projects-with-deco">
+    <div class="projects-grid">
 
-      <!-- Left deco: rainbow -->
-      <div class="projects-deco--left">
-        <div class="deco-tile">
-          <svg width="72" height="42" viewBox="0 0 72 42" fill="none" aria-hidden="true">
-            <path d="M4 40 Q36 4 68 40" stroke="#ddd6ec" stroke-width="5.5" stroke-linecap="round" fill="none"/>
-            <path d="M13 40 Q36 13 59 40" stroke="#FFCAA6" stroke-width="5.5" stroke-linecap="round" fill="none"/>
-            <path d="M22 40 Q36 22 50 40" stroke="#5642EA" stroke-width="5.5" stroke-linecap="round" fill="none"/>
-          </svg>
+      <!-- Lead card: Krētha, spanning both columns -->
+      <a class="project-card project-card--lead project-card--kretha" href="Projects/kretha.html" data-animate>
+        <div class="card-visuals">
+          <img class="card-img card-img-1" src="card-kretha.jpg" alt="" loading="lazy" decoding="async" width="1600" height="1066">
+          <span class="card-scrim"></span>
         </div>
-      </div>
-
-      <!-- Centre: project cards -->
-      <div class="projects-grid">
-
-        <!-- Card 1: Krētha -->
-        <a class="project-card" href="Projects/kretha.html" data-animate>
-          <div class="card-visuals">
-            <img class="card-img card-img-1" src="Online world-connect 1.png" alt="" loading="lazy" decoding="async" width="512" height="332">
-            <img class="card-img card-img-2" src="Online world-connect 1.png" alt="" style="filter:brightness(.88) saturate(.9)" loading="lazy" decoding="async" width="512" height="332">
-          </div>
-          <p class="card-desc">A B2B SaaS platform redesign for a procurement marketplace, streamlining vendor workflows and elevating the buyer experience through research-driven UX and a refined interface system.</p>
-          <div class="card-footer">
-            <span class="card-name"><span class="card-title-text">Krētha</span> <span class="card-cat">B2B SaaS · UX/UI</span></span>
-            <span class="card-arrow">&gt;&gt;</span>
-          </div>
-        </a>
-
-        <!-- Card 2: FutureScope -->
-        <a class="project-card" href="Projects/futurescope_Remix.html" data-animate data-delay="80">
-          <div class="card-visuals">
-            <img class="card-img card-img-1" src="10 1.jpg" alt="" loading="lazy" decoding="async" width="1400" height="1091">
-          </div>
-          <p class="card-desc">A bold brand identity for a futurist consulting firm, building a visual language that bridges ambitious strategy with human imagination.</p>
-          <div class="card-footer">
-            <span class="card-name"><span class="card-title-text">FutureScope</span> <span class="card-cat">Brand Identity</span></span>
-            <span class="card-arrow">&gt;&gt;</span>
-          </div>
-        </a>
-
-        <!-- Card 3: Sip & Scones -->
-        <a class="project-card" href="Projects/sip-scones.html" data-animate data-delay="160">
-          <svg class="card-svg-art" viewBox="0 0 260 320" fill="none">
-            <rect x="20" y="20" width="220" height="280" rx="24" fill="var(--lavender)" opacity=".45"/>
-            <rect x="40" y="44" width="180" height="36" rx="10" fill="var(--ultraviolet)" opacity=".18"/>
-            <rect x="40" y="44" width="80" height="36" rx="10" fill="var(--ultraviolet)" opacity=".24"/>
-            <circle cx="130" cy="148" r="44" fill="var(--teal)" opacity=".6"/>
-            <circle cx="130" cy="148" r="28" fill="var(--ultraviolet)" opacity=".22"/>
-            <rect x="52" y="212" width="156" height="12" rx="6" fill="var(--border)" opacity=".9"/>
-            <rect x="52" y="232" width="110" height="9" rx="4.5" fill="var(--border)" opacity=".7"/>
-            <rect x="52" y="250" width="130" height="9" rx="4.5" fill="var(--border)" opacity=".6"/>
-            <rect x="52" y="268" width="90" height="9" rx="4.5" fill="var(--border)" opacity=".5"/>
-          </svg>
-          <p class="card-desc">A mobile UX design for a cozy café ordering app, crafted around delightful micro-interactions, warm visual hierarchy, and an intuitive flow from browse to checkout.</p>
-          <div class="card-footer">
-            <span class="card-name"><span class="card-title-text">Sip &amp; Scones</span> <span class="card-cat">UX Design · Mobile</span></span>
-            <span class="card-arrow">&gt;&gt;</span>
-          </div>
-        </a>
-
-      </div>
-
-      <!-- Right deco: flower -->
-      <div class="projects-deco--right">
-        <div class="deco-tile">
-          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" aria-hidden="true">
-            <circle cx="27" cy="10" r="10" fill="#FFCAA6"/>
-            <circle cx="44" cy="27" r="10" fill="#FFCAA6"/>
-            <circle cx="27" cy="44" r="10" fill="#FFCAA6"/>
-            <circle cx="10" cy="27" r="10" fill="#FFCAA6"/>
-            <circle cx="27" cy="27" r="10" fill="#5642EA"/>
-          </svg>
+        <span class="card-motif card-motif--flower"><svg aria-hidden="true" focusable="false" preserveAspectRatio="none" overflow="visible" style="display: block;" width="86" height="86" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="flower-wireframe">
+<circle id="petal-top" cx="26.8758" cy="25.7996" r="17.2" fill="#E8835C"/>
+<circle id="petal-bottom" cx="29.0242" cy="60.2" r="17.2" fill="#E8835C"/>
+<circle id="petal-left" cx="63.4246" cy="58.0496" r="17.2" fill="#E8835C"/>
+<circle id="petal-right" cx="61.2742" cy="23.65" r="17.2" fill="#E8835C"/>
+<ellipse id="center-core" cx="44.0754" cy="42.9998" rx="15.05" ry="17.2" fill="#F0F7A0"/>
+</g>
+</svg></span>
+        <p class="card-desc">A B2B SaaS platform redesign for a procurement marketplace, streamlining vendor workflows and elevating the buyer experience through research-driven UX and a refined interface system.</p>
+        <div class="card-footer">
+          <span class="card-name"><span class="card-title-text">Krētha</span></span>
+          <span class="card-cat">B2B SaaS · UI Design · UX Research</span>
         </div>
-      </div>
+        <span class="card-arrow">&gt;&gt;</span>
+      </a>
+
+      <!-- Sip &amp; Scones -->
+      <a class="project-card project-card--sip" href="Projects/sip-scones.html" data-animate data-delay="80">
+        <div class="card-visuals">
+          <img class="card-img card-img-1" src="card-sip.jpg" alt="" loading="lazy" decoding="async" width="1600" height="907">
+          <span class="card-scrim"></span>
+        </div>
+        <span class="card-motif card-motif--rainbow"><svg aria-hidden="true" focusable="false" preserveAspectRatio="none" overflow="visible" style="display: block;" width="124" height="62" viewBox="0 0 124 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="rainbow-wireframe">
+<g id="rainbow-outer">
+<mask id="path-1-inside-1_0_31" fill="white">
+<path d="M30 62C30 57.7977 30.8277 53.6365 32.4359 49.7541C34.044 45.8717 36.4011 42.3441 39.3726 39.3726C42.3441 36.4011 45.8717 34.044 49.7541 32.4359C53.6366 30.8277 57.7977 30 62 30C66.2023 30 70.3635 30.8277 74.2459 32.4359C78.1283 34.044 81.6559 36.4011 84.6274 39.3726C87.5989 42.3441 89.956 45.8717 91.5641 49.7541C93.1723 53.6366 94 57.7977 94 62L86 62C86 58.8483 85.3792 55.7274 84.1731 52.8156C82.967 49.9038 81.1992 47.258 78.9706 45.0294C76.742 42.8008 74.0962 41.033 71.1844 39.8269C68.2726 38.6208 65.1517 38 62 38C58.8483 38 55.7274 38.6208 52.8156 39.8269C49.9038 41.033 47.258 42.8008 45.0294 45.0294C42.8008 47.258 41.033 49.9038 39.8269 52.8156C38.6208 55.7274 38 58.8483 38 62L30 62Z"/>
+</mask>
+<path d="M30 62C30 57.7977 30.8277 53.6365 32.4359 49.7541C34.044 45.8717 36.4011 42.3441 39.3726 39.3726C42.3441 36.4011 45.8717 34.044 49.7541 32.4359C53.6366 30.8277 57.7977 30 62 30C66.2023 30 70.3635 30.8277 74.2459 32.4359C78.1283 34.044 81.6559 36.4011 84.6274 39.3726C87.5989 42.3441 89.956 45.8717 91.5641 49.7541C93.1723 53.6366 94 57.7977 94 62L86 62C86 58.8483 85.3792 55.7274 84.1731 52.8156C82.967 49.9038 81.1992 47.258 78.9706 45.0294C76.742 42.8008 74.0962 41.033 71.1844 39.8269C68.2726 38.6208 65.1517 38 62 38C58.8483 38 55.7274 38.6208 52.8156 39.8269C49.9038 41.033 47.258 42.8008 45.0294 45.0294C42.8008 47.258 41.033 49.9038 39.8269 52.8156C38.6208 55.7274 38 58.8483 38 62L30 62Z" stroke="#E8835C" stroke-width="8" mask="url(#path-1-inside-1_0_31)"/>
+</g>
+<g id="rainbow-outer_2">
+<mask id="path-2-inside-2_0_31" fill="white">
+<path d="M15 62C15 55.8279 16.2157 49.7162 18.5777 44.0139C20.9396 38.3116 24.4016 33.1303 28.766 28.766C33.1303 24.4016 38.3116 20.9396 44.0139 18.5777C49.7162 16.2157 55.8279 15 62 15C68.1721 15 74.2838 16.2157 79.9861 18.5777C85.6884 20.9396 90.8697 24.4016 95.234 28.766C99.5984 33.1303 103.06 38.3116 105.422 44.0139C107.784 49.7162 109 55.8279 109 62L99.6 62C99.6 57.0623 98.6275 52.173 96.7379 47.6111C94.8483 43.0493 92.0787 38.9043 88.5872 35.4128C85.0957 31.9213 80.9507 29.1517 76.3889 27.2621C71.8271 25.3726 66.9377 24.4 62 24.4C57.0623 24.4 52.1729 25.3725 47.6111 27.2621C43.0493 29.1517 38.9043 31.9213 35.4128 35.4128C31.9213 38.9043 29.1517 43.0493 27.2621 47.6111C25.3726 52.1729 24.4 57.0623 24.4 62L15 62Z"/>
+</mask>
+<path d="M15 62C15 55.8279 16.2157 49.7162 18.5777 44.0139C20.9396 38.3116 24.4016 33.1303 28.766 28.766C33.1303 24.4016 38.3116 20.9396 44.0139 18.5777C49.7162 16.2157 55.8279 15 62 15C68.1721 15 74.2838 16.2157 79.9861 18.5777C85.6884 20.9396 90.8697 24.4016 95.234 28.766C99.5984 33.1303 103.06 38.3116 105.422 44.0139C107.784 49.7162 109 55.8279 109 62L99.6 62C99.6 57.0623 98.6275 52.173 96.7379 47.6111C94.8483 43.0493 92.0787 38.9043 88.5872 35.4128C85.0957 31.9213 80.9507 29.1517 76.3889 27.2621C71.8271 25.3726 66.9377 24.4 62 24.4C57.0623 24.4 52.1729 25.3725 47.6111 27.2621C43.0493 29.1517 38.9043 31.9213 35.4128 35.4128C31.9213 38.9043 29.1517 43.0493 27.2621 47.6111C25.3726 52.1729 24.4 57.0623 24.4 62L15 62Z" stroke="#E97EC8" stroke-width="18" mask="url(#path-2-inside-2_0_31)"/>
+</g>
+<g id="rainbow-outer_3">
+<mask id="path-3-inside-3_0_31" fill="white">
+<path d="M0 62C7.11793e-07 53.858 1.60368 45.7958 4.71947 38.2736C7.83526 30.7514 12.4022 23.9166 18.1594 18.1594C23.9166 12.4021 30.7514 7.83526 38.2736 4.71947C45.7958 1.60368 53.8581 -1.06769e-06 62 0C70.142 1.06769e-06 78.2042 1.60368 85.7264 4.71947C93.2486 7.83527 100.083 12.4022 105.841 18.1594C111.598 23.9166 116.165 30.7514 119.281 38.2736C122.396 45.7958 124 53.8581 124 62L114.561 62C114.561 55.0976 113.201 48.2628 110.56 41.8858C107.918 35.5089 104.047 29.7146 99.1662 24.8339C94.2854 19.9531 88.4912 16.0815 82.1142 13.4401C75.7372 10.7987 68.9024 9.43913 62 9.43913C55.0976 9.43913 48.2628 10.7987 41.8858 13.4401C35.5089 16.0815 29.7146 19.9531 24.8339 24.8339C19.9531 29.7146 16.0815 35.5088 13.4401 41.8858C10.7987 48.2628 9.43913 55.0976 9.43913 62L0 62Z"/>
+</mask>
+<path d="M0 62C7.11793e-07 53.858 1.60368 45.7958 4.71947 38.2736C7.83526 30.7514 12.4022 23.9166 18.1594 18.1594C23.9166 12.4021 30.7514 7.83526 38.2736 4.71947C45.7958 1.60368 53.8581 -1.06769e-06 62 0C70.142 1.06769e-06 78.2042 1.60368 85.7264 4.71947C93.2486 7.83527 100.083 12.4022 105.841 18.1594C111.598 23.9166 116.165 30.7514 119.281 38.2736C122.396 45.7958 124 53.8581 124 62L114.561 62C114.561 55.0976 113.201 48.2628 110.56 41.8858C107.918 35.5089 104.047 29.7146 99.1662 24.8339C94.2854 19.9531 88.4912 16.0815 82.1142 13.4401C75.7372 10.7987 68.9024 9.43913 62 9.43913C55.0976 9.43913 48.2628 10.7987 41.8858 13.4401C35.5089 16.0815 29.7146 19.9531 24.8339 24.8339C19.9531 29.7146 16.0815 35.5088 13.4401 41.8858C10.7987 48.2628 9.43913 55.0976 9.43913 62L0 62Z" stroke="#F0F7A0" stroke-width="18" mask="url(#path-3-inside-3_0_31)"/>
+</g>
+<g id="rainbow-inner">
+<mask id="path-4-inside-4_0_31" fill="white">
+<path d="M44.5 62C44.5 59.6362 44.9656 57.2956 45.8702 55.1117C46.7748 52.9278 48.1006 50.9435 49.7721 49.2721C51.4435 47.6006 53.4278 46.2748 55.6117 45.3702C57.7956 44.4656 60.1362 44 62.5 44C64.8638 44 67.2044 44.4656 69.3883 45.3702C71.5722 46.2748 73.5565 47.6006 75.2279 49.2721C76.8994 50.9435 78.2252 52.9278 79.1298 55.1117C80.0344 57.2956 80.5 59.6362 80.5 62L73.3 62C73.3 60.5817 73.0207 59.1773 72.4779 57.867C71.9351 56.5567 71.1396 55.3661 70.1368 54.3632C69.1339 53.3604 67.9433 52.5649 66.633 52.0221C65.3227 51.4794 63.9183 51.2 62.5 51.2C61.0817 51.2 59.6773 51.4793 58.367 52.0221C57.0567 52.5649 55.8661 53.3604 54.8632 54.3632C53.8604 55.3661 53.0649 56.5567 52.5221 57.867C51.9794 59.1773 51.7 60.5817 51.7 62L44.5 62Z"/>
+</mask>
+<path d="M44.5 62C44.5 59.6362 44.9656 57.2956 45.8702 55.1117C46.7748 52.9278 48.1006 50.9435 49.7721 49.2721C51.4435 47.6006 53.4278 46.2748 55.6117 45.3702C57.7956 44.4656 60.1362 44 62.5 44C64.8638 44 67.2044 44.4656 69.3883 45.3702C71.5722 46.2748 73.5565 47.6006 75.2279 49.2721C76.8994 50.9435 78.2252 52.9278 79.1298 55.1117C80.0344 57.2956 80.5 59.6362 80.5 62L73.3 62C73.3 60.5817 73.0207 59.1773 72.4779 57.867C71.9351 56.5567 71.1396 55.3661 70.1368 54.3632C69.1339 53.3604 67.9433 52.5649 66.633 52.0221C65.3227 51.4794 63.9183 51.2 62.5 51.2C61.0817 51.2 59.6773 51.4793 58.367 52.0221C57.0567 52.5649 55.8661 53.3604 54.8632 54.3632C53.8604 55.3661 53.0649 56.5567 52.5221 57.867C51.9794 59.1773 51.7 60.5817 51.7 62L44.5 62Z" stroke="#630F49" stroke-width="8" mask="url(#path-4-inside-4_0_31)"/>
+</g>
+<g id="rainbow-inner_2">
+<mask id="path-5-inside-5_0_31" fill="white">
+<path d="M44.5 62C44.5 59.6362 44.9656 57.2956 45.8702 55.1117C46.7748 52.9278 48.1006 50.9435 49.7721 49.2721C51.4435 47.6006 53.4278 46.2748 55.6117 45.3702C57.7956 44.4656 60.1362 44 62.5 44C64.8638 44 67.2044 44.4656 69.3883 45.3702C71.5722 46.2748 73.5565 47.6006 75.2279 49.2721C76.8994 50.9435 78.2252 52.9278 79.1298 55.1117C80.0344 57.2956 80.5 59.6362 80.5 62L73.3 62C73.3 60.5817 73.0207 59.1773 72.4779 57.867C71.9351 56.5567 71.1396 55.3661 70.1368 54.3632C69.1339 53.3604 67.9433 52.5649 66.633 52.0221C65.3227 51.4794 63.9183 51.2 62.5 51.2C61.0817 51.2 59.6773 51.4793 58.367 52.0221C57.0567 52.5649 55.8661 53.3604 54.8632 54.3632C53.8604 55.3661 53.0649 56.5567 52.5221 57.867C51.9794 59.1773 51.7 60.5817 51.7 62L44.5 62Z"/>
+</mask>
+<path d="M44.5 62C44.5 59.6362 44.9656 57.2956 45.8702 55.1117C46.7748 52.9278 48.1006 50.9435 49.7721 49.2721C51.4435 47.6006 53.4278 46.2748 55.6117 45.3702C57.7956 44.4656 60.1362 44 62.5 44C64.8638 44 67.2044 44.4656 69.3883 45.3702C71.5722 46.2748 73.5565 47.6006 75.2279 49.2721C76.8994 50.9435 78.2252 52.9278 79.1298 55.1117C80.0344 57.2956 80.5 59.6362 80.5 62L73.3 62C73.3 60.5817 73.0207 59.1773 72.4779 57.867C71.9351 56.5567 71.1396 55.3661 70.1368 54.3632C69.1339 53.3604 67.9433 52.5649 66.633 52.0221C65.3227 51.4794 63.9183 51.2 62.5 51.2C61.0817 51.2 59.6773 51.4793 58.367 52.0221C57.0567 52.5649 55.8661 53.3604 54.8632 54.3632C53.8604 55.3661 53.0649 56.5567 52.5221 57.867C51.9794 59.1773 51.7 60.5817 51.7 62L44.5 62Z" stroke="#630F49" stroke-width="8" mask="url(#path-5-inside-5_0_31)"/>
+</g>
+<g id="rainbow-inner_3">
+<mask id="path-6-inside-6_0_31" fill="white">
+<path d="M44.5 62C44.5 59.6362 44.9656 57.2956 45.8702 55.1117C46.7748 52.9278 48.1006 50.9435 49.7721 49.2721C51.4435 47.6006 53.4278 46.2748 55.6117 45.3702C57.7956 44.4656 60.1362 44 62.5 44C64.8638 44 67.2044 44.4656 69.3883 45.3702C71.5722 46.2748 73.5565 47.6006 75.2279 49.2721C76.8994 50.9435 78.2252 52.9278 79.1298 55.1117C80.0344 57.2956 80.5 59.6362 80.5 62L73.3 62C73.3 60.5817 73.0207 59.1773 72.4779 57.867C71.9351 56.5567 71.1396 55.3661 70.1368 54.3632C69.1339 53.3604 67.9433 52.5649 66.633 52.0221C65.3227 51.4794 63.9183 51.2 62.5 51.2C61.0817 51.2 59.6773 51.4793 58.367 52.0221C57.0567 52.5649 55.8661 53.3604 54.8632 54.3632C53.8604 55.3661 53.0649 56.5567 52.5221 57.867C51.9794 59.1773 51.7 60.5817 51.7 62L44.5 62Z"/>
+</mask>
+<path d="M44.5 62C44.5 59.6362 44.9656 57.2956 45.8702 55.1117C46.7748 52.9278 48.1006 50.9435 49.7721 49.2721C51.4435 47.6006 53.4278 46.2748 55.6117 45.3702C57.7956 44.4656 60.1362 44 62.5 44C64.8638 44 67.2044 44.4656 69.3883 45.3702C71.5722 46.2748 73.5565 47.6006 75.2279 49.2721C76.8994 50.9435 78.2252 52.9278 79.1298 55.1117C80.0344 57.2956 80.5 59.6362 80.5 62L73.3 62C73.3 60.5817 73.0207 59.1773 72.4779 57.867C71.9351 56.5567 71.1396 55.3661 70.1368 54.3632C69.1339 53.3604 67.9433 52.5649 66.633 52.0221C65.3227 51.4794 63.9183 51.2 62.5 51.2C61.0817 51.2 59.6773 51.4793 58.367 52.0221C57.0567 52.5649 55.8661 53.3604 54.8632 54.3632C53.8604 55.3661 53.0649 56.5567 52.5221 57.867C51.9794 59.1773 51.7 60.5817 51.7 62L44.5 62Z" stroke="#F4BAE2" stroke-width="8" mask="url(#path-6-inside-6_0_31)"/>
+</g>
+</g>
+</svg></span>
+        <p class="card-desc">A mobile UX design for a cozy café ordering app, crafted around delightful micro-interactions, warm visual hierarchy, and an intuitive flow from browse to checkout.</p>
+        <div class="card-footer">
+          <span class="card-name"><span class="card-title-text">Sip &amp; Scones</span></span>
+          <span class="card-cat">Service Design · UI/UX Design</span>
+        </div>
+        <span class="card-arrow">&gt;&gt;</span>
+      </a>
+
+      <!-- FutureScope -->
+      <a class="project-card project-card--future" href="Projects/futurescope_Remix.html" data-animate data-delay="160">
+        <div class="card-visuals">
+          <img class="card-img card-img-1" src="card-future.jpg" alt="" loading="lazy" decoding="async" width="1400" height="940">
+          <span class="card-scrim"></span>
+        </div>
+        <span class="card-motif card-motif--bloom"><svg aria-hidden="true" focusable="false" preserveAspectRatio="none" overflow="visible" style="display: block;" width="98" height="98" viewBox="0 0 98 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group">
+<path id="Vector" d="M49 0.5C75.7858 0.5 97.5 22.2142 97.5 49C97.5 75.7858 75.7858 97.5 49 97.5C22.2142 97.5 0.5 75.7858 0.5 49C0.5 22.2142 22.2142 0.5 49 0.5Z" fill="#F0F7A0" stroke="#D2DC70"/>
+<g id="Group_2">
+<path id="Vector_2" d="M59.2792 77.1945C61.8982 84.0484 57.3897 91.6413 50.1152 92.3947H50.1142C49.7219 92.436 49.3182 92.4562 48.914 92.4562H48.5097C40.8529 92.1878 35.8159 84.2857 38.6113 77.1213L49.0341 50.4103L59.2792 77.1945Z" fill="#E97EC8" stroke="#C95BA7"/>
+<path id="Vector_3" d="M78.5667 54.2236V54.2246C85.802 55.3839 90.1234 63.0793 87.1448 69.7549C86.9768 70.1224 86.8008 70.474 86.596 70.8223C86.5568 70.8845 86.5204 70.9451 86.4886 70.999C86.4528 71.0595 86.4216 71.1118 86.389 71.1631L86.387 71.167C82.3317 77.6574 72.9651 78.0743 68.1614 72.0703L68.1604 72.0693L50.263 49.71L78.5667 54.2236Z" fill="#E97EC8" stroke="#C95BA7"/>
+<path id="Vector_4" d="M68.299 26.0082C72.9163 20.3143 81.7561 20.4203 86.0383 26.3422C86.2679 26.666 86.4863 26.9987 86.6935 27.351L86.6974 27.3588L86.7023 27.3656C86.7651 27.4642 86.813 27.5611 86.8879 27.6986V27.6996C90.4889 34.458 86.1592 42.7773 78.5597 43.9369L50.2365 48.266L68.299 26.0082Z" fill="#E97EC8" stroke="#C95BA7"/>
+<path id="Vector_5" d="M49.0976 5.54364H49.5009L49.8583 5.56122C57.3135 6.05843 62.151 13.8262 59.3993 20.8786L48.9755 47.5886L38.7314 20.8063C36.112 13.9524 40.6208 6.35971 47.8954 5.60614H47.8964C48.2889 5.56483 48.6933 5.54364 49.0976 5.54364Z" fill="#E97EC8" stroke="#C95BA7"/>
+<path id="Vector_6" d="M11.6134 26.8334C15.6688 20.3428 25.0354 19.9256 29.839 25.9301L47.7364 48.2895L19.4327 43.7758C12.1972 42.6164 7.87506 34.9194 10.8546 28.2436L10.8556 28.2445C11.0211 27.8824 11.1936 27.536 11.3946 27.1928C11.4376 27.1254 11.4774 27.0587 11.5118 27.0004C11.5474 26.9401 11.5779 26.8875 11.6105 26.8363L11.6134 26.8334Z" fill="#E97EC8" stroke="#C95BA7"/>
+<path id="Vector_7" d="M29.7112 71.9914C25.0945 77.6846 16.2566 77.58 11.9739 71.6604H11.9748C11.7444 71.3357 11.5254 71.002 11.3176 70.6487L11.3127 70.6418L11.3078 70.634L11.1203 70.2961C7.52334 63.5386 11.8528 55.2223 19.4504 54.0627H19.4514L47.7737 49.7327L29.7112 71.9914Z" fill="#E97EC8" stroke="#C95BA7"/>
+</g>
+</g>
+</svg></span>
+        <p class="card-desc">A bold brand identity for a futurist consulting firm, building a visual language that bridges ambitious strategy with human imagination.</p>
+        <div class="card-footer">
+          <span class="card-name"><span class="card-title-text">FutureScope</span></span>
+          <span class="card-cat">System Design · UX Design</span>
+        </div>
+        <span class="card-arrow">&gt;&gt;</span>
+      </a>
 
     </div>
   </div>

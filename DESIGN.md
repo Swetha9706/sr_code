@@ -150,7 +150,7 @@ Pastel card accents — each work card owns one, revealed on hover so color beco
 
 ### Neutral
 - **Paper** (#FCFBFA): The page ground everywhere. Never pure white.
-- **Card Base** (#EEEAF6): The resting fill of work cards before hover — a cool lavender-grey that reads as "waiting."
+- **Card Base** (#EEEAF6): Retired as the work-card resting fill on 2026-08-31, when the home grid moved to accents-at-rest. Still available as a quiet lavender-grey surface elsewhere.
 - **Ink** (#141018): Primary text and headlines. Never pure black.
 - **Muted** (#575165): Secondary text, taglines, captions, copyright. Darkened from #6a6273 for WCAG AA/AAA contrast (7.3:1 on Paper).
 - **Border** (#ddd6ec): Hairline dividers, underlines, and 1px separators.
@@ -158,7 +158,13 @@ Pastel card accents — each work card owns one, revealed on hover so color beco
 ### Named Rules
 **The One Voice Rule.** Exactly one saturated color is allowed on a page shell (nav, eyebrows, marquees, CTAs, hover); pastels belong to the work cards, never the chrome. Its rarity against the paper is what makes it read as intentional. Ultraviolet is that voice site-wide. A case study may substitute its own accent for Ultraviolet **throughout that page** when the work has a colour of its own — `Projects/sip-scones.html` uses Teal #487571 — but it swaps the voice, it never adds a second one.
 
-**The Color-Is-The-Hover Rule.** A work card's accent is hidden at rest (neutral Card Base) and only fills in on hover. Color is earned by interaction, not spent up front.
+**The Image-At-Rest Rule.** *(Replaced the Color-Is-The-Hover Rule on 2026-08-31.)* A work card wears its case study's own hero key visual at rest, full-bleed and clipped by the 28px radius — the same image the case study opens with, so the card-to-hero page transition morphs one into the other. Type sits directly on the photography, in Ink where the image is pale (Krētha, FutureScope) and Paper where it is dark (Sip & Scones), always over a gradient scrim that guarantees the contrast rather than trusting the image to stay quiet.
+
+What hover reveals is the accent. The image and scrim clear, the card floods with its colour — Krētha Ultraviolet, Sip & Scones Teal, FutureScope Plum — every lockup reverses out to Paper, and the card's hand-drawn motif fades into the top-right beside the description. Colour is still earned by interaction, never spent up front; it is simply the reward now rather than the resting state.
+
+Paper on each accent clears WCAG AA for normal text (Ultraviolet 6.04:1, Teal 5.01:1, Plum 11.99:1), which is why card categories sit at full Paper opacity rather than a tint: on Teal any alpha below 1 drops a 13px label under 4.5:1. Measured contrast for the resting lockups over their images is 16.8:1 (Krētha), 11.4:1 (Sip & Scones) and 14.9:1 (FutureScope) on the mean, and 6.2 / 5.0 / 6.5:1 against the worst single pixel behind the type.
+
+Lockup placement follows each image's quiet zone rather than one blanket rule: Krētha's collage is dense at the bottom so its lockup sits top-left, while Sip & Scones and FutureScope are quiet at the bottom and take bottom-left. The hover description always occupies the opposite end of the card.
 
 ## Typography
 
@@ -213,7 +219,7 @@ Soft and rounded throughout — no sharp edges. The radius scale is deliberate: 
 
 ### Cards / Containers
 - **Corner Style:** 28px (work cards); 14px (floating images).
-- **Background:** Card Base (#EEEAF6) at rest; swaps to the card's own accent on hover (Highlighter / Ice Blue / Teal).
+- **Background:** The case study's hero key visual at rest, full-bleed; the card's accent (Ultraviolet / Teal / Plum) is revealed underneath on hover.
 - **Depth Strategy:** Flat surface; only the inner floating images carry a soft shadow. See Elevation.
 - **Internal Padding:** 2.2rem sides, 1.8–2.2rem top/bottom; fixed height ~360px desktop / 300px mobile.
 - **Behavior:** At rest the card shows rotated collage imagery; on hover the imagery fades out and a Cormorant Garamond description + arrow fade in over the accent fill. A gentle `background .45s cubic-bezier(0.22,1,0.36,1)` carries the color swap.
