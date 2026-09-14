@@ -197,9 +197,6 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
   .prob-text{grid-column:1;grid-row:auto}
 }
 
-/* the connected-system mark sits with the lede it illustrates */
-.system-mark{display:block;width:min(320px,100%);height:auto;margin:2.5rem 0 0}
-
 /* the built wholesaler home: a tall phone screen, bounded so it stays an artifact
    in the flow rather than a 1000px column, with the full screen a click away */
 .screen{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:start;margin-top:2.75rem}
@@ -218,10 +215,16 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
 }
 
 /* ══ IA LAYERS: contained vertical progression ══ */
-.layers{display:grid;gap:1rem;margin-top:2.5rem}
-.layer{background:var(--card-base);border:1px solid var(--border);border-radius:28px;padding:1.7rem 2rem}
+/* two of the three layers restated the actor roster and the organisation-level decision
+   that already appear earlier on the page, so they were cut; the surviving one is the only
+   new idea in the block. With one child the grid and the tinted 28px card both stopped
+   earning their keep — it now uses the same top rule as .find and .coda-item. */
+/* sat ~20px under the paragraph above it while every other rule in this stretch cleared
+   48px, so the block read as glued to the prose instead of as its own beat */
+.layers{margin-top:3rem}
+.layer{padding-top:1.5rem;border-top:1px solid var(--border)}
 .layer-k{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ultraviolet);display:block;margin-bottom:.5rem}
-.layer-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:.4rem;line-height:1.2}
+.layer-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:.4rem;line-height:1.3}
 .layer-text{font-family:'Lora',serif;font-size:.93rem;line-height:1.7;color:var(--muted);max-width:78ch}
 
 /* ══ MY ROLE LEDGER ══ */
@@ -273,55 +276,88 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
 .method{border-top:1px solid var(--border);padding-top:2.5rem;margin-top:2.5rem}
 .method-label{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:.9rem}
 
-/* ══ RESEARCH: TWO PARALLEL STRANDS ══ */
-/* the two methods ran alongside one another, so they read alongside one another:
-   one hairline between them, and each strand's figure set as display type in the
-   flow instead of parked in a tinted box */
-.strands{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;
-  column-gap:5.5rem;row-gap:2.25rem;
+/* ══ RESEARCH: TWO ASYMMETRIC ZONES ══ */
+/* this ran as two mirrored columns, each opening with its own mono eyebrow. That put
+   three eyebrows in one section and made the whole block a slab of grey two-column
+   text, with the left column running out well before the right. Now the two research
+   questions stack as zones on different ratios, and the market question is anchored by
+   the shop photograph that was sitting unused in the assets folder: the MSME retail
+   this section is actually about. */
+.rs{display:grid;align-items:start;column-gap:4.5rem;row-gap:2.5rem;
   margin-top:3.25rem;padding-top:3rem;border-top:1px solid var(--border)}
-/* subgrid puts both strands' figures on one shared row, so the two rules line up
-   whatever length the bodies and captions run to. Without subgrid support the
-   strands simply stack as before. */
-.strand{position:relative;display:grid;grid-template-rows:subgrid;grid-row:span 2}
-.strand+.strand::before{content:'';position:absolute;left:-2.75rem;top:0;bottom:0;
-  width:1px;background:var(--border)}
-.strand-k{display:block;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--ultraviolet);margin-bottom:.9rem}
+/* deliberately different ratios so the two zones do not read as a repeated layout */
+.rs--market{grid-template-columns:1fr .8fr}
+.rs--scope{grid-template-columns:.9fr 1.1fr}
+.rs-fig{margin:0}
+/* height:auto is load-bearing: the width/height attributes (kept for CLS) land as
+   presentational hints, which makes both dimensions definite and aspect-ratio inert */
+.rs-fig img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;
+  border-radius:14px;background:var(--card-base)}
+/* with the eyebrows removed these questions are the only way into each zone, so they
+   carry the labelling the mono kicker used to do. Still stepped below h3.q-title (32px)
+   so the findings stay the section's peak. */
 .strand-h{font-family:'Cormorant Garamond',serif;font-weight:600;
-  font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15;letter-spacing:-.015em;
+  font-size:clamp(1.6rem,2.4vw,1.9rem);line-height:1.2;letter-spacing:-.015em;
   color:var(--ink);margin:0 0 1rem;text-wrap:balance}
+.strand-h em{font-style:italic;color:var(--ultraviolet)}
 .strand-x{font-family:'Lora',serif;font-size:1rem;line-height:1.75;color:var(--muted);margin:0}
-.datum{padding-top:2rem;border-top:1px solid var(--border);align-self:start}
+.datum{margin-top:2.25rem;padding-top:2rem;border-top:1px solid var(--border)}
 @media(max-width:860px){
-  .strands{grid-template-columns:1fr;grid-template-rows:none;column-gap:0;row-gap:0;padding-top:2.5rem}
-  .strand{display:block;grid-row:auto}
-  .strand-top .strand-x{margin-bottom:2.25rem}
-  .strand+.strand{margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid var(--border)}
-  .strand+.strand::before{display:none}
+  .rs{grid-template-columns:1fr;column-gap:0;row-gap:2rem;padding-top:2.5rem}
+  .rs--market,.rs--scope{grid-template-columns:1fr}
+  .rs-fig img{aspect-ratio:3/2}
 }
 
-/* ══ FINDINGS: HIERARCHY BY TYPE SCALE, NOT BY CARD SIZE ══ */
-/* the lead finding used to be a large highlighter panel and the other two small
-   tinted boxes. Same hierarchy, carried by scale and whitespace instead. */
-.finds{margin-top:3.25rem;padding-top:3rem;border-top:1px solid var(--border)}
-.find-key{margin-top:2.5rem}
+/* ══ FINDINGS: THREE PEERS, ONE BLOCK ══ */
+/* an earlier pass ran these full-width at 3.5rem, one per row. That read as three
+   identical headlines with the right 40% of every row empty, and it swamped the
+   research zones it was supposed to conclude. They are three peers, not three
+   sections: set side by side they read as one dense block the eye takes in at once. */
+.finds{margin-top:4.5rem;padding-top:3rem;border-top:1px solid var(--border)}
+.find-set{display:grid;grid-template-columns:repeat(3,1fr);column-gap:3.5rem;
+  margin-top:2.75rem}
+/* the rule is per column, not one line across the set: a single full-width border
+   showed grey through the two column gaps once the ultraviolet drew over it, which
+   read as a broken dash rather than three deliberate underscores. */
+.find{position:relative;padding-top:2.5rem;border-top:1px solid var(--border)}
+.find+.find::before{content:'';position:absolute;left:-1.75rem;top:0;bottom:0;
+  width:1px;background:var(--border)}
+/* two lines' worth, so a title that wraps does not drop its own paragraph out of
+   line with the other two */
 .find-t{font-family:'Cormorant Garamond',serif;font-weight:600;
-  font-size:clamp(1.8rem,2.8vw,2.4rem);line-height:1.2;letter-spacing:-.02em;
-  color:var(--ink);margin:0;max-width:30ch;text-wrap:balance}
-.find-x{font-family:'Lora',serif;font-size:1rem;line-height:1.75;color:var(--muted);
-  margin:1rem 0 0;max-width:58ch}
-.find-pair{display:grid;grid-template-columns:1fr 1fr;column-gap:5.5rem;
-  margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border)}
-.find-pair .find-t{font-size:clamp(1.3rem,1.9vw,1.6rem);letter-spacing:-.01em;max-width:none}
-.find-pair .find-x{font-size:.95rem;margin-top:.8rem;max-width:none}
-@media(max-width:860px){.find-pair{grid-template-columns:1fr;column-gap:0;row-gap:2.25rem}}
+  font-size:clamp(1.6rem,2.2vw,2rem);line-height:1.15;letter-spacing:-.015em;
+  color:var(--ink);margin:0;min-height:2.3em;text-wrap:balance}
+.find-t em{font-style:italic;color:var(--ultraviolet)}
+.find-x{font-family:'Lora',serif;font-size:.95rem;line-height:1.75;color:var(--muted);
+  margin:1rem 0 0}
+/* the one authored moment: each finding's rule draws left to right in sequence, so the
+   set assembles rather than appearing. Same gesture as the pen strokes on the actor
+   names, and it rides on top of the grey rule the block already has. */
+.find::after{content:'';position:absolute;left:0;right:0;top:-1px;height:1px;
+  background:var(--ultraviolet);transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .65s var(--ease)}
+.find:nth-child(1)::after{transition-delay:.25s}
+.find:nth-child(2)::after{transition-delay:.4s}
+.find:nth-child(3)::after{transition-delay:.55s}
+.find.visible::after{transform:scaleX(1)}
+@media(max-width:860px){
+  .finds{margin-top:3.25rem}
+  .find-set{grid-template-columns:1fr;column-gap:0;row-gap:0;margin-top:2rem}
+  .find{padding-top:1.75rem;padding-bottom:1.25rem}
+  .find-t{min-height:0}
+  .find+.find::before{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .find::after{transition:none;transform:scaleX(1)}
+}
 
 /* ══ WHAT THE RESEARCH LED TO ══ */
 .led{margin-top:3.25rem;padding-top:3rem;border-top:1px solid var(--border)}
 .led-note{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-top:1.75rem;
   font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--muted);line-height:1.7;max-width:78ch}
-.stat-num{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(3rem,7vw,5rem);line-height:1;color:var(--ink);letter-spacing:-.02em;
+/* stepped down from 5rem: these are supporting evidence inside a strand, and at
+   display scale they outranked the three findings they exist to support. */
+.stat-num{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1;color:var(--ink);letter-spacing:-.02em;
   /* Cormorant defaults to oldstyle figures, which left the '3' hanging below
      the baseline of its centred callout; lining figures match .role-num */
   font-variant-numeric:lining-nums}
@@ -332,35 +368,101 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
 .stat-num:has(.flag){font-size:1rem;line-height:1.4}
 .stat-cap{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--plum);margin-top:1rem;line-height:1.6;max-width:34ch}
 .stat-src{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--muted);margin-top:.8rem}
+/* the one link in this section that had no hover feedback, while every other anchor on
+   the page transitions its colour. Gated so touch devices do not latch it on tap. */
 .stat-src a{color:var(--ultraviolet);text-decoration:underline;text-underline-offset:2px}
+@media(hover:hover) and (pointer:fine){
+  .stat-src a{transition:color .18s ease}
+  .stat-src a:hover{color:var(--plum)}
+}
+
+/* ══ THE THREE BUSINESS ACTORS ══ */
+/* the scope finding IS "three actor types", so the three get named in the layout
+   instead of staying buried in the paragraph: the figure, then a hairline roster.
+   No panel — ruling, indices and one pen stroke per name carry it. */
+/* the rule and padding here used to separate this from the strand text above it. In the
+   zone layout it is the top of its own column, so that border drew a second stray
+   hairline just under the zone's own. */
+.actors{align-self:start;padding-top:.35rem}
+.actor-list{margin-top:1.5rem;border-top:1px solid var(--border)}
+.actor{display:grid;grid-template-columns:4.2rem 1fr;column-gap:1.25rem;
+  padding:1.1rem 0;border-bottom:1px solid var(--border)}
+/* was 01/02/03 — a count the reader already has from the "3" above it. The actor's
+   position in the chain is the thing that actually distinguishes the three rows. */
+.actor-i{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ultraviolet);padding-top:.55rem}
+/* the page-wide reveal stagger steps 100ms, which is long for three tight rows read as
+   one group. Scoped to the roster only so the rest of the page keeps its own cadence. */
+.actor[data-sr="1"]{transition-delay:0s}
+.actor[data-sr="2"]{transition-delay:.06s}
+.actor[data-sr="3"]{transition-delay:.12s}
+.actor-n{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.5rem;
+  line-height:1.2;letter-spacing:-.01em;color:var(--ink);margin:0}
+/* same pen stroke as the $200B figure, one accent per actor so the three read apart */
+.actor-n span{display:inline-block;background-image:linear-gradient(transparent 66%,var(--tone) 66%);
+  background-repeat:no-repeat;background-size:0 100%;
+  transition:background-size .45s var(--ease) .18s}
+.actor.visible .actor-n span{background-size:100% 100%}
+.actor:nth-child(1){--tone:var(--highlighter)}
+.actor:nth-child(2){--tone:var(--nectar)}
+.actor:nth-child(3){--tone:var(--lavender)}
+.actor-r{font-family:'Lora',serif;font-size:.9rem;line-height:1.65;color:var(--muted);margin:.4rem 0 0}
+/* reseated under the framing paragraph rather than trailing the list: it balances the
+   short left column and still follows the sentence that introduces the three actors */
+.actor-note{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;
+  line-height:1.7;color:var(--muted);max-width:44ch;
+  margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+@media(prefers-reduced-motion:reduce){
+  .actor-n span{transition:none;background-size:100% 100%}
+}
 
 /* ══ RESEARCH → DECISION MAP ══ */
-.map{margin-top:2.5rem;border:1px solid var(--border);border-radius:28px;overflow:hidden}
-.map-row{display:grid;grid-template-columns:1fr 1.4rem 1.15fr;align-items:stretch;border-top:1px solid var(--border)}
-.map-row:first-child{border-top:none}
-.map-find,.map-dec{padding:1.5rem 1.6rem}
-.map-find{background:var(--card-base)}
-.map-arrow{display:flex;align-items:center;justify-content:center;color:var(--ultraviolet);background:var(--card-base);font-family:'DM Mono',monospace}
-.map-k{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);display:block;margin-bottom:.4rem}
-.map-find p{font-family:'Cormorant Garamond',serif;font-size:1.12rem;font-weight:600;line-height:1.3;color:var(--ink)}
-.map-dec p{font-family:'Lora',serif;font-size:.92rem;line-height:1.65;color:var(--muted)}
+/* this was a bordered 28px card with tinted finding cells: the last card left on a page
+   whose every other section had already been decarded, and the type inside it ran at
+   17.9px, smaller than anything around it. The section's whole claim is that findings
+   became decisions, so the finding is now stated at editorial scale and the decision
+   answers it across the gutter, carried by hairlines and air instead of a container. */
+.map{margin-top:3rem;border-top:1px solid var(--border)}
+.map-row{display:grid;grid-template-columns:1fr 3rem 1.1fr;align-items:start;
+  padding:2.75rem 0;border-bottom:1px solid var(--border)}
+/* the coda's own border-top closes the list; keeping this one drew two parallel rules */
+.map-row:last-child{border-bottom:none}
+.map-find,.map-dec{padding:0}
+.map-k{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ultraviolet);display:block;margin-bottom:.9rem}
 .map-dec .map-k{color:var(--plum)}
+.map-find p{font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.3;letter-spacing:-.015em;
+  color:var(--ink);margin:0;text-wrap:balance}
+.map-dec p{font-family:'Lora',serif;font-size:1rem;line-height:1.75;color:var(--muted);margin:0}
+/* the arrow used to centre on the whole row, so it drifted 5-17px off the text it
+   connects depending on how many lines the finding wrapped to. Pinned to the first
+   line of the statements instead, which holds at every row height. */
+.map-arrow{display:flex;justify-content:center;line-height:1;
+  font-family:'DM Mono',monospace;color:var(--ultraviolet);padding-top:2.15rem}
 @media(max-width:720px){
-  .map-row{grid-template-columns:1fr}
-  .map-arrow{padding:.4rem 0;transform:rotate(90deg)}
-  .map-find,.map-arrow{border-bottom:1px solid var(--border)}
+  .map-row{grid-template-columns:1fr;row-gap:1.25rem;padding:2rem 0}
+  .map-find p{max-width:none}
+  .map-arrow{justify-content:flex-start;padding-top:0;transform:rotate(90deg);
+    transform-origin:0 50%;height:1rem}
 }
+
+/* the break between the two movements of the merged section: the decisions above, the
+   structure they produced below. Same rule-and-air device the section already uses. */
+.q-title.movement{margin-top:4.5rem;padding-top:3rem;border-top:1px solid var(--border)}
 
 /* ══ PRINCIPLES CODA ══ */
 .coda{margin-top:3rem;border-top:1px solid var(--border);padding-top:2rem}
 .coda-label{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:1.5rem}
-.coda-grid{display:grid;grid-template-columns:repeat(3,1fr)}
-.coda-item{padding:0 2rem;border-left:1px solid var(--border)}
-.coda-item:first-child{padding-left:0;border-left:none}
+/* the left borders ran the full column height with zero top padding, so each item's
+   text sat flush against the top of its own rule. Switched to the per-column top rule
+   the findings block already uses, which gives the inset and unifies the two devices. */
+.coda-grid{display:grid;grid-template-columns:repeat(3,1fr);column-gap:3.5rem}
+.coda-item{padding-top:1.5rem;border-top:1px solid var(--border)}
 .coda-k{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--plum);display:block;margin-bottom:.5rem}
 .coda-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;line-height:1.2}
 .coda-text{font-family:'Lora',serif;font-size:.88rem;line-height:1.65;color:var(--muted)}
-@media(max-width:720px){.coda-grid{grid-template-columns:1fr}.coda-item{padding:1.5rem 0 0;border-left:none;border-top:1px solid var(--border)}.coda-item:first-child{padding-top:0;border-top:none}}
+@media(max-width:720px){.coda-grid{grid-template-columns:1fr;column-gap:0;row-gap:1.75rem}}
 
 /* ══ HYPOTHESIS BAND ══ */
 .band{background:var(--ultraviolet);padding:4.5rem 3rem;text-align:center}
@@ -384,6 +486,9 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
 /* ══ SYSTEMS EMBEDS ══ */
 .embed-block{margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border)}
 .embed-block .method-label{margin-bottom:.6rem}
+/* an artefact caption head, not a section head: at the shared h3.q-title size it read as
+   loud as the movement heading that opens a whole half of the section */
+.embed-block h3.q-title{font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.2}
 .embed-block iframe{border:1px solid var(--border);border-radius:28px;width:100%;height:640px;display:block;margin-top:1.5rem}
 .embed-figlink{position:relative;display:block;margin-top:1.5rem;width:120%;max-width:calc(100vw - 2rem);margin-left:50%;transform:translateX(-50%);border:1px solid var(--border);border-radius:28px;overflow:hidden;background:var(--card-base)}
 @media(max-width:860px){.embed-figlink{width:100%;max-width:100%;margin-left:0;transform:none}}
@@ -613,30 +718,54 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
   <h2 class="q-title" data-sr>I studied operational behaviour, <em>not abstract personas</em></h2>
   <p class="body" data-sr="1">The central question wasn't "what screen comes next?" It was how procurement actually happens inside working businesses, and where it breaks down. That shifted the research toward workflows, dependencies, recurring actions, accountability, and exception handling.</p>
 
-  <div class="strands">
-    <div class="strand" data-sr="1">
-      <div class="strand-top">
-        <span class="strand-k">Market &amp; context analysis</span>
-      <h3 class="strand-h">How big is the opportunity, really?</h3>
+  <div class="rs rs--market">
+    <div class="rs-copy" data-sr="1">
+      <h3 class="strand-h">How big is the opportunity, <em>really</em>?</h3>
       <p class="strand-x">India's B2B online marketplace is projected to become a major opportunity by 2030, supported by digital infrastructure growth and e-commerce momentum. But adoption among MSMEs depends on products being simple, trustworthy, and practical, not enterprise-heavy. That told me Kr&#275;tha should fit naturally into how smaller businesses already operate, rather than imitate complex enterprise software.</p>
-      </div>
       <div class="datum">
         <div class="stat-num marked">$200<em>B</em></div>
         <div class="stat-cap">Projected India B2B online marketplace by 2030</div>
         <div class="stat-src">Source: <a href="https://www.ibef.org/industry/ecommerce" target="_blank" rel="noopener noreferrer">IBEF, India E-commerce Overview</a></div>
       </div>
     </div>
-    <div class="strand" data-sr="2">
-      <div class="strand-top">
-        <span class="strand-k">Stakeholders &amp; platform scope</span>
-      <h3 class="strand-h">Who is this really for?</h3>
-      <p class="strand-x">Working with the business stakeholders, I pinned down who Kr&#275;tha serves and what it has to be. It is built for retailers, wholesalers, and manufacturers: several business actors, not a simple buyer-seller pair. It also has to carry business accounts, organisation details, and information shared across roles. That ruled out consumer-style assumptions and pointed straight at role-aware workflows and organisation-level structure.</p>
-      </div>
-      <div class="datum">
-        <div class="stat-num">3</div>
-        <div class="stat-cap">Distinct business actor types the platform must serve</div>
-        <div class="stat-src">Retailers, suppliers and distributors, agents and networks</div>
-      </div>
+    <figure class="rs-fig" data-sr="2">
+      <img src="Kr%C4%93tha%20Assets/overview-image.jpg" width="1504" height="1728" loading="lazy" decoding="async"
+           alt="Shelves in a small Indian retail shop: glass jars of biscuits, packets of pasta and loose produce stacked on a painted yellow rack.">
+    </figure>
+  </div>
+
+  <div class="rs rs--scope">
+    <div class="rs-copy" data-sr="1">
+      <h3 class="strand-h">Who is this <em>really</em> for?</h3>
+      <p class="strand-x">Working with the business stakeholders, I pinned down who Kr&#275;tha serves and what it has to be. Not a buyer-seller pair, but three distinct business actors, each entering the same order from a different side of the chain. It also has to carry business accounts, organisation details, and information shared across roles. That ruled out consumer-style assumptions and pointed straight at role-aware workflows and organisation-level structure.</p>
+      <p class="actor-note">Each one acts as a business, not an individual, so every account carries an organisation behind it.</p>
+    </div>
+    <div class="actors" data-sr="2">
+      <div class="stat-num">3</div>
+      <div class="stat-cap">Distinct business actor types the platform must serve</div>
+      <div class="actor-list">
+          <div class="actor" data-sr="1">
+            <span class="actor-i">Buys</span>
+            <div>
+              <p class="actor-n"><span>Retailers</span></p>
+              <p class="actor-r">Buy for the shop floor in recurring cycles. They need the reorder path fast, and the record reviewable afterwards.</p>
+            </div>
+          </div>
+          <div class="actor" data-sr="2">
+            <span class="actor-i">Moves</span>
+            <div>
+              <p class="actor-n"><span>Wholesalers</span></p>
+              <p class="actor-r">Sit in the middle of the chain, receiving, confirming, and amending orders against what they can actually fulfil.</p>
+            </div>
+          </div>
+          <div class="actor" data-sr="3">
+            <span class="actor-i">Makes</span>
+            <div>
+              <p class="actor-n"><span>Manufacturers</span></p>
+              <p class="actor-r">Supply at the top of the chain, working to volume thresholds, lead times, and their own production cycles.</p>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 
@@ -644,18 +773,17 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
     <h3 class="q-title" data-sr>Three findings that <em>shaped everything after</em></h3>
     <p class="body" data-sr="1">Put the market picture next to the platform's scope, and the same three things kept surfacing. These are the read on the problem that the rest of the work is built on.</p>
 
-    <div class="find-key" data-sr="1">
-      <p class="find-t">Procurement is collaborative</p>
-      <p class="find-x">Even when one person places the order, decisions are spread across people and time. The platform had to support that coordination, not assume a single decision-maker.</p>
-    </div>
-
-    <div class="find-pair">
-      <div data-sr="1">
-        <p class="find-t">Repeat ordering is critical</p>
+    <div class="find-set">
+      <div class="find" data-sr="1">
+        <p class="find-t">Procurement is <em>collaborative</em></p>
+        <p class="find-x">Even when one person places the order, decisions are spread across people and time. The platform had to support that coordination, not assume a single decision-maker.</p>
+      </div>
+      <div class="find" data-sr="2">
+        <p class="find-t">Repeat ordering is <em>critical</em></p>
         <p class="find-x">Reordering familiar SKUs in cycles is one of the strongest behaviours in retail. It deserves first-class feature design, not an afterthought.</p>
       </div>
-      <div data-sr="2">
-        <p class="find-t">Business users need control</p>
+      <div class="find" data-sr="3">
+        <p class="find-t">Business users need <em>control</em></p>
         <p class="find-x">Speed matters for high-volume ordering, but only when it keeps reviewability, auditability, and room to handle exceptions.</p>
       </div>
     </div>
@@ -665,12 +793,27 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
     <h3 class="q-title" data-sr>From findings to <em>a mapped system</em></h3>
     <p class="body" data-sr="1">The findings gave me something to build from. Next I mapped the workflows, role relationships, and decision paths for the key procurement events: draft order creation, supplier review, changes, confirmations, and follow-up after an order. Mapping them surfaced the real constraints too. Backend dependencies, phased development, and permission complexity all shaped what the MVP could be.</p>
     <p class="led-note" data-sr="1"><span class="flag">NEEDS REAL NUMBER</span> Workflows and roles mapped during discovery. Swetha: add real counts (sessions held, workflows or roles mapped) if available.</p>
+
+    <!-- the artefact that claim produces, moved here from the old systems section so the
+         mapping is shown where it is asserted rather than two sections later -->
+    <div class="embed-block" data-sr="1">
+      <div class="method-label">Service Blueprint · FigJam</div>
+      <h3 class="q-title">How the procurement journey holds together</h3>
+      <p class="body">The blueprint maps the journey across three swim lanes: the retailer's visible actions, the platform's frontstage responses, and the backstage processes behind them. It makes the dependencies between what a user does and how the system responds explicit.</p>
+      <a class="embed-figlink" href="https://www.figma.com/board/hoFypYgZl0GxD9iKI6apUd/Customer-Service-Blueprint?node-id=0-1" target="_blank" rel="noopener noreferrer" title="Open the Krētha service blueprint in FigJam">
+        <img src="Kr%C4%93tha%20Assets/service-blueprint.png" alt="Krētha service blueprint: swim-lane map of the procurement journey across retailer actions, platform frontstage responses, and backstage processes" loading="lazy" decoding="async" width="5920" height="2220">
+        <span class="open-badge">Open in FigJam ↗</span>
+      </a>
+    </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ 6. RESEARCH → DECISION MAPPING ══ -->
+<!-- ══ 6. RESEARCH → DECISIONS → STRUCTURE ══ -->
+<!-- movement 1 is the finding/decision map; movement 2 is the system those decisions
+     produced (merged in from the old "How is the platform structured?" section) -->
+
 <section>
   <div class="eyebrow" data-sr>How did research shape the design?</div>
   <h2 class="q-title" data-sr>Every finding pointed to <em>a specific decision</em></h2>
@@ -704,6 +847,28 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
     </div>
   </div>
 
+  <!-- movement 2: what those decisions became structurally -->
+  <h3 class="q-title movement" data-sr>It had to behave like <em>a connected system</em>, not a menu of tools</h3>
+  <p class="body" data-sr="1">Krētha isn't a set of separate features. Order placement, purchase history, saved lists, account roles, subscriptions, and supplier interaction all shape one another. So the information architecture had to work as one connected system, not a menu of independent tools.</p>
+  <p class="body" data-sr="1">That view changed how I made decisions. An order stopped being a single transaction record. It became part of a lifecycle: intent, internal coordination, supplier response, revisions, and fulfilment. A purchase list stopped being a saved cart. It became a planning object tied to recurring buying, stock, and how efficiently a business runs.</p>
+  <p class="body" data-sr="1">Navigation and hierarchy followed the same logic. The design had to make relationships obvious: who belongs to which organisation, who can prepare or approve an order, which lists are personal and which are shared, and what each subscription tier unlocks. Clarity about those relationships mattered as much as a clean screen.</p>
+
+  <div class="layers">
+    <div class="layer" data-sr="1">
+      <span class="layer-k">Operational workflows</span>
+      <div class="layer-title">One lifecycle, not a series of isolated screens</div>
+      <p class="layer-text">Browsing, ordering, editing, approving, fulfilling, and reordering form a single lifecycle. Design decisions had to hold across the whole arc of a procurement event, not just one screen at a time.</p>
+    </div>
+  </div>
+
+  <!-- Supporting artefact: FigJam -->
+  <div class="embed-block" data-sr="1">
+    <div class="method-label">Product Flowchart · FigJam</div>
+    <h3 class="q-title">How the core objects connect</h3>
+    <p class="body">The flowchart lays out the information architecture: how accounts, organisations, orders, purchase lists, and subscriptions are structured and linked, and how people move between them based on role and permission.</p>
+    <iframe loading="lazy" src="https://embed.figma.com/board/0waIfP1SuceBhxs1WcjJYF/Untitled?node-id=0-28&embed-host=share" allowfullscreen title="Krētha product flowchart (FigJam)"></iframe>
+  </div>
+
   <div class="coda" data-sr="1">
     <div class="coda-label">How the work happened</div>
     <div class="coda-grid">
@@ -730,55 +895,6 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
 <div class="band" data-sr>
   <p>When procurement is treated as a coordinated system of business actions, not a string of one-off transactions, a lighter role-aware platform can give small businesses real operational structure without the weight of heavy enterprise software.</p>
 </div>
-
-<!-- ══ 7b. SYSTEMS THINKING & IA ══ -->
-<section>
-  <div class="eyebrow" data-sr>How is the platform structured?</div>
-  <h2 class="q-title" data-sr>It had to behave like <em>a connected system</em>, not a menu of tools</h2>
-  <p class="body" data-sr="1">Krētha isn't a set of separate features. Order placement, purchase history, saved lists, account roles, subscriptions, and supplier interaction all shape one another. So the information architecture had to work as one connected system, not a menu of independent tools.</p>
-  <p class="body" data-sr="1">That view changed how I made decisions. An order stopped being a single transaction record. It became part of a lifecycle: intent, internal coordination, supplier response, revisions, and fulfilment. A purchase list stopped being a saved cart. It became a planning object tied to recurring buying, stock, and how efficiently a business runs.</p>
-  <p class="body" data-sr="1">Navigation and hierarchy followed the same logic. The design had to make relationships obvious: who belongs to which organisation, who can prepare or approve an order, which lists are personal and which are shared, and what each subscription tier unlocks. Clarity about those relationships mattered as much as a clean screen.</p>
-
-  <img class="system-mark" src="Kr%C4%93tha%20Assets/Functional.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" data-sr="1">
-
-  <div class="layers">
-    <div class="layer" data-sr="1">
-      <span class="layer-k">Layer 01 · Business entities</span>
-      <div class="layer-title">Retailers, wholesalers, and manufacturers</div>
-      <p class="layer-text">Each acts as a distinct business type on the platform. They order differently, need different data, and carry different operational responsibilities.</p>
-    </div>
-    <div class="layer" data-sr="1">
-      <span class="layer-k">Layer 02 · Organisational structure</span>
-      <div class="layer-title">Accounts that represent businesses, not individuals</div>
-      <p class="layer-text">Accounts tie to organisation details, multi-user access, and role-specific permissions. The system had to support real business identity from early in the architecture, not bolt it on later.</p>
-    </div>
-    <div class="layer" data-sr="1">
-      <span class="layer-k">Layer 03 · Operational workflows</span>
-      <div class="layer-title">One lifecycle, not a series of isolated screens</div>
-      <p class="layer-text">Browsing, ordering, editing, approving, fulfilling, and reordering form a single lifecycle. Design decisions had to hold across the whole arc of a procurement event, not just one screen at a time.</p>
-    </div>
-  </div>
-
-  <!-- Supporting artefacts: FigJam -->
-  <div class="embed-block" data-sr="1">
-    <div class="method-label">Service Blueprint · FigJam</div>
-    <h3 class="q-title">How the procurement journey holds together</h3>
-    <p class="body">The blueprint maps the journey across three swim lanes: the retailer's visible actions, the platform's frontstage responses, and the backstage processes behind them. It makes the dependencies between what a user does and how the system responds explicit.</p>
-    <a class="embed-figlink" href="https://www.figma.com/board/hoFypYgZl0GxD9iKI6apUd/Customer-Service-Blueprint?node-id=0-1" target="_blank" rel="noopener noreferrer" title="Open the Krētha service blueprint in FigJam">
-      <img src="Kr%C4%93tha%20Assets/service-blueprint.png" alt="Krētha service blueprint: swim-lane map of the procurement journey across retailer actions, platform frontstage responses, and backstage processes" loading="lazy" decoding="async" width="5920" height="2220">
-      <span class="open-badge">Open in FigJam ↗</span>
-    </a>
-  </div>
-
-  <div class="embed-block" data-sr="1">
-    <div class="method-label">Product Flowchart · FigJam</div>
-    <h3 class="q-title">How the core objects connect</h3>
-    <p class="body">The flowchart lays out the information architecture: how accounts, organisations, orders, purchase lists, and subscriptions are structured and linked, and how people move between them based on role and permission.</p>
-    <iframe loading="lazy" src="https://embed.figma.com/board/0waIfP1SuceBhxs1WcjJYF/Untitled?node-id=0-28&embed-host=share" allowfullscreen title="Krētha product flowchart (FigJam)"></iframe>
-  </div>
-</section>
-
-<div class="divider"></div>
 
 <!-- ══ 8. THE SOLUTION ══ -->
 <section>
