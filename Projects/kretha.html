@@ -309,51 +309,7 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
   .rs-fig img{aspect-ratio:3/2}
 }
 
-/* ══ FINDINGS: THREE PEERS, ONE BLOCK ══ */
-/* an earlier pass ran these full-width at 3.5rem, one per row. That read as three
-   identical headlines with the right 40% of every row empty, and it swamped the
-   research zones it was supposed to conclude. They are three peers, not three
-   sections: set side by side they read as one dense block the eye takes in at once. */
-.finds{margin-top:4.5rem;padding-top:3rem;border-top:1px solid var(--border)}
-.find-set{display:grid;grid-template-columns:repeat(3,1fr);column-gap:3.5rem;
-  margin-top:2.75rem}
-/* the rule is per column, not one line across the set: a single full-width border
-   showed grey through the two column gaps once the ultraviolet drew over it, which
-   read as a broken dash rather than three deliberate underscores. */
-.find{position:relative;padding-top:2.5rem;border-top:1px solid var(--border)}
-.find+.find::before{content:'';position:absolute;left:-1.75rem;top:0;bottom:0;
-  width:1px;background:var(--border)}
-/* two lines' worth, so a title that wraps does not drop its own paragraph out of
-   line with the other two */
-.find-t{font-family:'Cormorant Garamond',serif;font-weight:600;
-  font-size:clamp(1.6rem,2.2vw,2rem);line-height:1.15;letter-spacing:-.015em;
-  color:var(--ink);margin:0;min-height:2.3em;text-wrap:balance}
-.find-t em{font-style:italic;color:var(--ultraviolet)}
-.find-x{font-family:'Lora',serif;font-size:.95rem;line-height:1.75;color:var(--muted);
-  margin:1rem 0 0}
-/* the one authored moment: each finding's rule draws left to right in sequence, so the
-   set assembles rather than appearing. Same gesture as the pen strokes on the actor
-   names, and it rides on top of the grey rule the block already has. */
-.find::after{content:'';position:absolute;left:0;right:0;top:-1px;height:1px;
-  background:var(--ultraviolet);transform:scaleX(0);transform-origin:0 50%;
-  transition:transform .65s var(--ease)}
-.find:nth-child(1)::after{transition-delay:.25s}
-.find:nth-child(2)::after{transition-delay:.4s}
-.find:nth-child(3)::after{transition-delay:.55s}
-.find.visible::after{transform:scaleX(1)}
-@media(max-width:860px){
-  .finds{margin-top:3.25rem}
-  .find-set{grid-template-columns:1fr;column-gap:0;row-gap:0;margin-top:2rem}
-  .find{padding-top:1.75rem;padding-bottom:1.25rem}
-  .find-t{min-height:0}
-  .find+.find::before{display:none}
-}
-@media(prefers-reduced-motion:reduce){
-  .find::after{transition:none;transform:scaleX(1)}
-}
-
 /* ══ WHAT THE RESEARCH LED TO ══ */
-.led{margin-top:3.25rem;padding-top:3rem;border-top:1px solid var(--border)}
 .led-note{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-top:1.75rem;
   font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--muted);line-height:1.7;max-width:78ch}
 /* stepped down from 5rem: these are supporting evidence inside a strand, and at
@@ -717,33 +673,6 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
 
 <div class="divider"></div>
 
-<!-- ══ 4. PROBLEM DISCOVERY ══ -->
-<section>
-  <div class="eyebrow" data-sr>What problem am I solving?</div>
-  <p class="statement" data-sr="1">Procurement here is rarely a single-screen task. It's scattered across people, channels, and time, with <em>no shared record of what was agreed.</em></p>
-  <p class="body" data-sr="1">For many retailers, placing an order means comparing suppliers, checking stock rhythm, adjusting quantities, coordinating with staff, confirming changes, and making sure the final order still reflects business reality. When that happens across messaging threads, calls, spreadsheets, and memory, the result is slower ordering, avoidable errors, and weak visibility.</p>
-
-  <div class="probs">
-    <div class="prob" data-sr="1">
-      <div class="prob-mark" aria-hidden="true"><img src="Kr%C4%93tha%20Assets/Functional.svg" alt="" loading="lazy" decoding="async" width="572" height="404"></div>
-      <h3 class="prob-title">Fragmented, multi-channel coordination</h3>
-      <p class="prob-text">Ordering spread across chats, calls, and spreadsheets means slower turnaround, avoidable errors, poor visibility, and weak auditability.</p>
-    </div>
-    <div class="prob" data-sr="2">
-      <div class="prob-mark prob-mark--loop" aria-hidden="true"><img src="Kr%C4%93tha%20Assets/Repetition.svg" alt="" loading="lazy" decoding="async" width="494" height="243"></div>
-      <h3 class="prob-title">Repetition without infrastructure</h3>
-      <p class="prob-text">Retailers reorder familiar products in recurring cycles, but with no system to support that, every order feels rebuilt from scratch.</p>
-    </div>
-    <div class="prob" data-sr="3">
-      <div class="prob-mark" aria-hidden="true"><img src="Kr%C4%93tha%20Assets/Complexity.svg" alt="" loading="lazy" decoding="async" width="802" height="484"></div>
-      <h3 class="prob-title">Organisational complexity at small scale</h3>
-      <p class="prob-text">Accounts need to represent businesses, not just individuals. That raises roles, permissions, approvals, and accountability, without overwhelming small operators.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
 <!-- ══ 5. RESEARCH / VALIDATION ══ -->
 <section>
   <div class="eyebrow" data-sr>How did I get to the problem?</div>
@@ -801,55 +730,49 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
     </div>
   </div>
 
-  <div class="finds">
-    <h3 class="q-title" data-sr>Three findings that <em>shaped everything after</em></h3>
-    <p class="body" data-sr="1">Put the market picture next to the platform's scope, and the same three things kept surfacing. These are the read on the problem that the rest of the work is built on.</p>
+  <div class="eyebrow" data-sr>What problem am I solving?</div>
+  <p class="statement" data-sr="1">Procurement here is rarely a single-screen task. It's scattered across people, channels, and time, with <em>no shared record of what was agreed.</em></p>
+  <p class="body" data-sr="1">For many retailers, placing an order means comparing suppliers, checking stock rhythm, adjusting quantities, coordinating with staff, confirming changes, and making sure the final order still reflects business reality. When that happens across messaging threads, calls, spreadsheets, and memory, the result is slower ordering, avoidable errors, and weak visibility.</p>
 
-    <div class="find-set">
-      <div class="find" data-sr="1">
-        <p class="find-t">Procurement is <em>collaborative</em></p>
-        <p class="find-x">Even when one person places the order, decisions are spread across people and time. The platform had to support that coordination, not assume a single decision-maker.</p>
-      </div>
-      <div class="find" data-sr="2">
-        <p class="find-t">Repeat ordering is <em>critical</em></p>
-        <p class="find-x">Reordering familiar SKUs in cycles is one of the strongest behaviours in retail. It deserves first-class feature design, not an afterthought.</p>
-      </div>
-      <div class="find" data-sr="3">
-        <p class="find-t">Business users need <em>control</em></p>
-        <p class="find-x">Speed matters for high-volume ordering, but only when it keeps reviewability, auditability, and room to handle exceptions.</p>
-      </div>
+  <div class="probs">
+    <div class="prob" data-sr="1">
+      <div class="prob-mark" aria-hidden="true"><img src="Kr%C4%93tha%20Assets/Functional.svg" alt="" loading="lazy" decoding="async" width="572" height="404"></div>
+      <h3 class="prob-title">Fragmented, multi-channel coordination</h3>
+      <p class="prob-text">Ordering spread across chats, calls, and spreadsheets means slower turnaround, avoidable errors, poor visibility, and weak auditability.</p>
     </div>
-  </div>
-
-  <div class="led">
-    <h3 class="q-title" data-sr>From findings to <em>a mapped system</em></h3>
-    <p class="body" data-sr="1">The findings gave me something to build from. Next I mapped the workflows, role relationships, and decision paths for the key procurement events: draft order creation, supplier review, changes, confirmations, and follow-up after an order. Mapping them surfaced the real constraints too. Backend dependencies, phased development, and permission complexity all shaped what the MVP could be.</p>
-    <p class="led-note" data-sr="1"><span class="flag">NEEDS REAL NUMBER</span> Workflows and roles mapped during discovery. Swetha: add real counts (sessions held, workflows or roles mapped) if available.</p>
-
-    <!-- the artefact that claim produces, moved here from the old systems section so the
-         mapping is shown where it is asserted rather than two sections later -->
-    <div class="embed-block" data-sr="1">
-      <div class="method-label">Service Blueprint · FigJam</div>
-      <h3 class="q-title">How the procurement journey holds together</h3>
-      <p class="body">The blueprint maps the journey across three swim lanes: the retailer's visible actions, the platform's frontstage responses, and the backstage processes behind them. It makes the dependencies between what a user does and how the system responds explicit.</p>
-      <a class="embed-figlink" href="https://www.figma.com/board/hoFypYgZl0GxD9iKI6apUd/Customer-Service-Blueprint?node-id=0-1" target="_blank" rel="noopener noreferrer" title="Open the Krētha service blueprint in FigJam">
-        <img src="Kr%C4%93tha%20Assets/service-blueprint.png" alt="Krētha service blueprint: swim-lane map of the procurement journey across retailer actions, platform frontstage responses, and backstage processes" loading="lazy" decoding="async" width="5920" height="2220">
-        <span class="open-badge">Open in FigJam ↗</span>
-      </a>
+    <div class="prob" data-sr="2">
+      <div class="prob-mark prob-mark--loop" aria-hidden="true"><img src="Kr%C4%93tha%20Assets/Repetition.svg" alt="" loading="lazy" decoding="async" width="494" height="243"></div>
+      <h3 class="prob-title">Repetition without infrastructure</h3>
+      <p class="prob-text">Retailers reorder familiar products in recurring cycles, but with no system to support that, every order feels rebuilt from scratch.</p>
+    </div>
+    <div class="prob" data-sr="3">
+      <div class="prob-mark" aria-hidden="true"><img src="Kr%C4%93tha%20Assets/Complexity.svg" alt="" loading="lazy" decoding="async" width="802" height="484"></div>
+      <h3 class="prob-title">Organisational complexity at small scale</h3>
+      <p class="prob-text">Accounts need to represent businesses, not just individuals. That raises roles, permissions, approvals, and accountability, without overwhelming small operators.</p>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ 6. RESEARCH → DECISIONS → STRUCTURE ══ -->
-<!-- movement 1 is the finding/decision map; movement 2 is the system those decisions
-     produced (merged in from the old "How is the platform structured?" section) -->
-
+<!-- ══ 6. RESEARCH → DECISION MAP ══ -->
 <section>
   <div class="eyebrow" data-sr>How did research shape the design?</div>
-  <h2 class="q-title" data-sr>Every finding pointed to <em>a specific decision</em></h2>
-  <p class="body" data-sr="1">The piece a case study can leave implicit: which research finding led to which design move. Here's the direct mapping.</p>
+  <h2 class="q-title" data-sr>I mapped the journey <em>before I mapped the screens</em></h2>
+  <p class="body" data-sr="1">I mapped the workflows, the roles and their relationships, and the decision paths for key procurement events: order creation, supplier review, changes, confirmations, and follow-up after an order.</p>
+
+  <div class="embed-block" data-sr="1">
+    <div class="method-label">Service Blueprint · FigJam</div>
+    <h3 class="q-title">How the procurement journey holds together</h3>
+    <p class="body">The blueprint maps the journey across three swim lanes: what the retailer does, how the platform responds, and what happens backstage. It makes the dependencies between action and response explicit.</p>
+    <a class="embed-figlink" href="https://www.figma.com/board/hoFypYgZl0GxD9iKI6apUd/Customer-Service-Blueprint?node-id=0-1" target="_blank" rel="noopener noreferrer" title="Open the Krētha service blueprint in FigJam">
+      <img src="Kr%C4%93tha%20Assets/service-blueprint.png" alt="Krētha service blueprint: swim-lane map of the procurement journey across retailer actions, platform frontstage responses, and backstage processes" loading="lazy" decoding="async" width="5920" height="2220">
+      <span class="open-badge">Open in FigJam ↗</span>
+    </a>
+  </div>
+
+  <p class="body" data-sr="1">Mapping them brought out the real constraints too. The backend dependencies, the phased development, and permission complexity all shaped what the MVP could be.</p>
+  <p class="led-note" data-sr="1"><span class="flag">NEEDS REAL NUMBER</span> Workflows and roles mapped during discovery. Swetha: add real counts (sessions held, workflows or roles mapped) if available.</p>
 
   <div class="map" data-sr="1">
     <div class="map-head">
@@ -857,6 +780,7 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
       <span></span>
       <span class="map-k map-k--dec">Design decision</span>
     </div>
+    <p class="body" data-sr="1" style="margin-bottom:1rem">Each finding from research pointed to a specific design decision. Here's the direct mapping.</p>
     <div class="map-row">
       <div class="map-find"><span class="map-k">Finding</span><p>Procurement is collaborative and distributed across people and time</p></div>
       <div class="map-arrow">→</div>
@@ -883,12 +807,17 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
       <div class="map-dec"><span class="map-k">Design decision</span><p>Organisation-level identity and role-based permissions built into the architecture from day one, rather than bolted onto an individual-user model.</p></div>
     </div>
   </div>
+</section>
 
-  <!-- movement 2: what those decisions became structurally -->
-  <h3 class="q-title movement" data-sr>It had to behave like <em>a connected system</em>, not a menu of tools</h3>
-  <p class="body" data-sr="1">Krētha isn't a set of separate features. Order placement, purchase history, saved lists, account roles, subscriptions, and supplier interaction all shape one another. So the information architecture had to work as one connected system, not a menu of independent tools.</p>
+<div class="divider"></div>
+
+<!-- ══ 6b. PLATFORM STRUCTURE ══ -->
+<section>
+  <div class="eyebrow" data-sr>How is the platform structured?</div>
+  <h2 class="q-title" data-sr>Kr&#275;tha functions like <em>a connected system</em></h2>
+  <p class="body" data-sr="1">Kr&#275;tha isn't a set of separate features. Order placement, purchase history, saved lists, account roles, subscriptions, and supplier interaction all shape one another. Each entity functions on its own, but all of them run at the same time, tied together. So the information architecture had to work as one connected system, not a menu of independent tools.</p>
   <p class="body" data-sr="1">That view changed how I made decisions. An order stopped being a single transaction record. It became part of a lifecycle: intent, internal coordination, supplier response, revisions, and fulfilment. A purchase list stopped being a saved cart. It became a planning object tied to recurring buying, stock, and how efficiently a business runs.</p>
-  <p class="body" data-sr="1">Navigation and hierarchy followed the same logic. The design had to make relationships obvious: who belongs to which organisation, who can prepare or approve an order, which lists are personal and which are shared, and what each subscription tier unlocks. Clarity about those relationships mattered as much as a clean screen.</p>
+  <p class="body" data-sr="1">The design had to make the relationships between users obvious: who belongs to which organisation, who can prepare an order, who can approve it, and which subscription tier unlocks which features. Getting that clarity right mattered as much as any single screen.</p>
 
   <div class="layers">
     <div class="layer" data-sr="1">
@@ -901,7 +830,7 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
   <div class="embed-block" data-sr="1">
     <div class="method-label">Product Flowchart · FigJam</div>
     <h3 class="q-title">How the core objects connect</h3>
-    <p class="body">The flowchart lays out the information architecture: how accounts, organisations, orders, purchase lists, and subscriptions are structured and linked, and how people move between them based on role and permission.</p>
+    <p class="body">The flowchart mapped how each feature connected to the next, before I drew a single screen. It lays out how accounts, organisations, orders, purchase lists, and subscriptions are structured and linked, and how people move between them based on role and permission.</p>
     <iframe loading="lazy" src="https://embed.figma.com/board/0waIfP1SuceBhxs1WcjJYF/Untitled?node-id=0-28&embed-host=share" allowfullscreen title="Krētha product flowchart (FigJam)"></iframe>
   </div>
 
