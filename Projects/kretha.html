@@ -116,7 +116,7 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
 /* 32ch resolves to 635px against the .body's 636px, so the pull-line and the
    paragraph beneath it share one left column instead of stacking two different
    widths; it also drops the statement from six ~23-character lines to four */
-.statement{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.8rem,3.2vw,2.6rem);line-height:1.28;letter-spacing:-.01em;color:var(--ink);max-width:32ch;margin-top:1.5rem;text-wrap:balance}
+.statement{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.8rem,3.2vw,2.6rem);line-height:1.3;letter-spacing:-.01em;color:var(--ink);max-width:32ch;margin-top:1.5rem;text-wrap:balance}
 .statement em{font-style:italic;color:var(--ultraviolet)}
 
 /* ══ AUDIENCE: the network, set as a hairline structure rather than three tinted cards.
@@ -201,8 +201,8 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
    in the flow rather than a 1000px column, with the full screen a click away */
 .screen{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:start;margin-top:2.75rem}
 .screen-frame{margin:0;width:300px}
-.screen-frame img{width:100%;height:340px;object-fit:cover;object-position:top;display:block;
-  border-radius:14px;border:1px solid var(--border);box-shadow:0 12px 36px rgba(30,18,10,.14)}
+.screen-frame img{width:100%;height:820px;object-fit:cover;object-position:top;display:block;
+  border-radius:14px;border:1px solid var(--border);box-shadow:0 12px 36px rgba(30,18,10,.14);transform:rotate(-1.5deg)}
 .screen-open{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;
   font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ultraviolet);margin-top:1rem}
 @media(prefers-reduced-motion:no-preference){.screen-open{transition:gap .25s var(--ease)}}
@@ -310,6 +310,7 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
 }
 
 /* ══ WHAT THE RESEARCH LED TO ══ */
+.led{margin-top:3.25rem;padding-top:3rem;border-top:1px solid var(--border)}
 .led-note{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-top:1.75rem;
   font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--muted);line-height:1.7;max-width:78ch}
 /* stepped down from 5rem: these are supporting evidence inside a strand, and at
@@ -459,7 +460,7 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
 /* ══ SOLUTION FEATURES ══ */
 .feature{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:4rem}
 .feature--flip .feature-media{order:-1}
-.feature-tag{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:.8rem}
+.feature-tag{font-family:'DM Mono',monospace;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ultraviolet);margin-bottom:.8rem}
 .feature-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,2.6vw,2rem);font-weight:600;line-height:1.15;color:var(--ink);margin-bottom:1rem}
 .feature-title em{font-style:italic;color:var(--ultraviolet)}
 .feature-text{font-family:'Lora',serif;font-size:1rem;line-height:1.8;color:var(--muted)}
@@ -751,28 +752,36 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
       <p class="prob-text">Accounts need to represent businesses, not just individuals. That raises roles, permissions, approvals, and accountability, without overwhelming small operators.</p>
     </div>
   </div>
+
+  <div class="led">
+    <h3 class="q-title" data-sr>From findings to <em>a mapped system</em></h3>
+    <p class="body" data-sr="1">I mapped the workflows, the roles and their relationships, and the decision paths for key procurement events: order creation, supplier review, changes, confirmations, and follow-up after an order. Mapping them brought out the real constraints too. The backend dependencies, the phased development, and permission complexity all shaped what the MVP could be.</p>
+    <p class="led-note" data-sr="1"><span class="flag">NEEDS REAL NUMBER</span> Workflows and roles mapped during discovery. Swetha: add real counts (sessions held, workflows or roles mapped) if available.</p>
+
+    <!-- the artefact that claim produces, moved here from the old systems section so the
+         mapping is shown where it is asserted rather than two sections later -->
+    <div class="embed-block" data-sr="1">
+      <div class="method-label">Service Blueprint · FigJam</div>
+      <h3 class="q-title">How the procurement journey holds together</h3>
+      <p class="body">The blueprint maps the journey across three swim lanes: the retailer's visible actions, the platform's frontstage responses, and the backstage processes behind them. It shows exactly how a user's action drives the system's response.</p>
+      <a class="embed-figlink" href="https://www.figma.com/board/hoFypYgZl0GxD9iKI6apUd/Customer-Service-Blueprint?node-id=0-1" target="_blank" rel="noopener noreferrer" title="Open the Krētha service blueprint in FigJam">
+        <img src="Kr%C4%93tha%20Assets/service-blueprint.png" alt="Krētha service blueprint: swim-lane map of the procurement journey across retailer actions, platform frontstage responses, and backstage processes" loading="lazy" decoding="async" width="5920" height="2220">
+        <span class="open-badge">Open in FigJam ↗</span>
+      </a>
+    </div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ 6. RESEARCH → DECISION MAP ══ -->
+<!-- ══ 6. RESEARCH → DECISIONS → STRUCTURE ══ -->
+<!-- movement 1 is the finding/decision map; movement 2 is the system those decisions
+     produced (merged in from the old "How is the platform structured?" section) -->
+
 <section>
   <div class="eyebrow" data-sr>How did research shape the design?</div>
-  <h2 class="q-title" data-sr>I mapped the journey <em>before I mapped the screens</em></h2>
-  <p class="body" data-sr="1">I mapped the workflows, the roles and their relationships, and the decision paths for key procurement events: order creation, supplier review, changes, confirmations, and follow-up after an order.</p>
-
-  <div class="embed-block" data-sr="1">
-    <div class="method-label">Service Blueprint · FigJam</div>
-    <h3 class="q-title">How the procurement journey holds together</h3>
-    <p class="body">The blueprint maps the journey across three swim lanes: what the retailer does, how the platform responds, and what happens backstage. It makes the dependencies between action and response explicit.</p>
-    <a class="embed-figlink" href="https://www.figma.com/board/hoFypYgZl0GxD9iKI6apUd/Customer-Service-Blueprint?node-id=0-1" target="_blank" rel="noopener noreferrer" title="Open the Krētha service blueprint in FigJam">
-      <img src="Kr%C4%93tha%20Assets/service-blueprint.png" alt="Krētha service blueprint: swim-lane map of the procurement journey across retailer actions, platform frontstage responses, and backstage processes" loading="lazy" decoding="async" width="5920" height="2220">
-      <span class="open-badge">Open in FigJam ↗</span>
-    </a>
-  </div>
-
-  <p class="body" data-sr="1">Mapping them brought out the real constraints too. The backend dependencies, the phased development, and permission complexity all shaped what the MVP could be.</p>
-  <p class="led-note" data-sr="1"><span class="flag">NEEDS REAL NUMBER</span> Workflows and roles mapped during discovery. Swetha: add real counts (sessions held, workflows or roles mapped) if available.</p>
+  <h2 class="q-title" data-sr>Every finding pointed to <em>a specific decision</em></h2>
+  <p class="body" data-sr="1">The piece a case study can leave implicit: which research finding led to which design move. Here's the direct mapping.</p>
 
   <div class="map" data-sr="1">
     <div class="map-head">
@@ -780,7 +789,6 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
       <span></span>
       <span class="map-k map-k--dec">Design decision</span>
     </div>
-    <p class="body" data-sr="1" style="margin-bottom:1rem">Each finding from research pointed to a specific design decision. Here's the direct mapping.</p>
     <div class="map-row">
       <div class="map-find"><span class="map-k">Finding</span><p>Procurement is collaborative and distributed across people and time</p></div>
       <div class="map-arrow">→</div>
@@ -807,17 +815,12 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
       <div class="map-dec"><span class="map-k">Design decision</span><p>Organisation-level identity and role-based permissions built into the architecture from day one, rather than bolted onto an individual-user model.</p></div>
     </div>
   </div>
-</section>
 
-<div class="divider"></div>
-
-<!-- ══ 6b. PLATFORM STRUCTURE ══ -->
-<section>
-  <div class="eyebrow" data-sr>How is the platform structured?</div>
-  <h2 class="q-title" data-sr>Kr&#275;tha functions like <em>a connected system</em></h2>
-  <p class="body" data-sr="1">Kr&#275;tha isn't a set of separate features. Order placement, purchase history, saved lists, account roles, subscriptions, and supplier interaction all shape one another. Each entity functions on its own, but all of them run at the same time, tied together. So the information architecture had to work as one connected system, not a menu of independent tools.</p>
+  <!-- movement 2: what those decisions became structurally -->
+  <h3 class="q-title movement" data-sr>It had to behave like <em>a connected system</em>, not a menu of tools</h3>
+  <p class="body" data-sr="1">Krētha isn't a set of separate features. Order placement, purchase history, saved lists, account roles, subscriptions, and supplier interaction all shape one another. So the information architecture had to work as one connected system, not a menu of independent tools.</p>
   <p class="body" data-sr="1">That view changed how I made decisions. An order stopped being a single transaction record. It became part of a lifecycle: intent, internal coordination, supplier response, revisions, and fulfilment. A purchase list stopped being a saved cart. It became a planning object tied to recurring buying, stock, and how efficiently a business runs.</p>
-  <p class="body" data-sr="1">The design had to make the relationships between users obvious: who belongs to which organisation, who can prepare an order, who can approve it, and which subscription tier unlocks which features. Getting that clarity right mattered as much as any single screen.</p>
+  <p class="body" data-sr="1">Navigation and hierarchy followed the same logic. The design had to make relationships obvious: who belongs to which organisation, who can prepare or approve an order, which lists are personal and which are shared, and what each subscription tier unlocks. Clarity about those relationships mattered as much as a clean screen.</p>
 
   <div class="layers">
     <div class="layer" data-sr="1">
@@ -830,8 +833,11 @@ h3.q-title{font-size:clamp(1.6rem,2.6vw,2rem);line-height:1.15}
   <div class="embed-block" data-sr="1">
     <div class="method-label">Product Flowchart · FigJam</div>
     <h3 class="q-title">How the core objects connect</h3>
-    <p class="body">The flowchart mapped how each feature connected to the next, before I drew a single screen. It lays out how accounts, organisations, orders, purchase lists, and subscriptions are structured and linked, and how people move between them based on role and permission.</p>
-    <iframe loading="lazy" src="https://embed.figma.com/board/0waIfP1SuceBhxs1WcjJYF/Untitled?node-id=0-28&embed-host=share" allowfullscreen title="Krētha product flowchart (FigJam)"></iframe>
+    <p class="body">The flowchart lays out the information architecture: how accounts, organisations, orders, purchase lists, and subscriptions are structured and linked, and how people move between them based on role and permission.</p>
+    <a class="embed-figlink" href="https://www.figma.com/board/0waIfP1SuceBhxs1WcjJYF/Untitled?node-id=0-28" target="_blank" rel="noopener noreferrer" title="Open the Krētha product flowchart in FigJam">
+      <img src="Kr%C4%93tha%20Assets/user-flow-map.png" alt="Krētha product flowchart: how accounts, organisations, orders, purchase lists, and subscriptions are structured and linked" loading="lazy" decoding="async" width="5920" height="2978">
+      <span class="open-badge">Open in FigJam ↗</span>
+    </a>
   </div>
 
   <div class="coda" data-sr="1">

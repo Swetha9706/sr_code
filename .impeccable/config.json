@@ -32,6 +32,15 @@
         "value": "1.28",
         "createdAt": "2026-09-07T13:53:28.092Z",
         "reason": "Claude verified: the only 1.28x element is .statement (kretha.html:119), Cormorant Garamond display type at clamp(1.8rem,3.2vw,2.6rem) capped to 32ch. The detector reads it as body text because it is a <p>. At 41.6px, 1.28 gives 53px leading; the rule's 1.5-1.7 body guidance would give 62-71px, which is wrong for display serif."
+      },
+      {
+        "rule": "tiny-text",
+        "value": "*",
+        "files": [
+          "Projects/kretha.html"
+        ],
+        "createdAt": "2026-09-20T10:03:16.200Z",
+        "reason": "DESIGN.md documents 0.7rem/11.2px as the intentional DM Mono label-scale floor (eyebrows, chips, .flag, .screen-cap), not body copy; detector misclassifies these mono utility labels as body text"
       }
     ]
   }
