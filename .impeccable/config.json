@@ -41,6 +41,24 @@
         ],
         "createdAt": "2026-09-20T10:03:16.200Z",
         "reason": "DESIGN.md documents 0.7rem/11.2px as the intentional DM Mono label-scale floor (eyebrows, chips, .flag, .screen-cap), not body copy; detector misclassifies these mono utility labels as body text"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "Projects/futurescope_Remix-restructured.html"
+        ],
+        "createdAt": "2026-10-03T14:16:59.067Z",
+        "reason": "Agent: verified in-browser this session across stat-item/why-item/user-item/outcome-col/horoscope-cell/contrast-item — each has explicit padding-right/bottom on the bordered first-child, detector appears not to resolve :first-child/:not(:last-child)-scoped padding"
+      },
+      {
+        "rule": "clipped-overflow-container",
+        "value": "*",
+        "files": [
+          "Projects/futurescope_Remix-restructured.html"
+        ],
+        "createdAt": "2026-10-03T14:17:12.882Z",
+        "reason": "Agent: html/body hits are from the intentional overflow-x:clip + .rq-band full-bleed (100vw) technique already reviewed this session; div.card-type hits are the literal tarot-card product-feature mockups, confirmed earlier as domain content not a generic card, not an overflow bug"
       }
     ]
   }
