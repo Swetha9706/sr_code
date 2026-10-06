@@ -46,19 +46,37 @@
         "rule": "cramped-padding",
         "value": "*",
         "files": [
-          "Projects/futurescope_Remix-restructured.html"
+          "Projects/futurescope_Remix.html"
         ],
         "createdAt": "2026-10-03T14:16:59.067Z",
-        "reason": "Agent: verified in-browser this session across stat-item/why-item/user-item/outcome-col/horoscope-cell/contrast-item — each has explicit padding-right/bottom on the bordered first-child, detector appears not to resolve :first-child/:not(:last-child)-scoped padding"
+        "reason": "Agent: verified in-browser this session across stat-item/why-item/user-item/outcome-col/horoscope-cell/contrast-item \u2014 each has explicit padding-right/bottom on the bordered first-child, detector appears not to resolve :first-child/:not(:last-child)-scoped padding"
       },
       {
         "rule": "clipped-overflow-container",
         "value": "*",
         "files": [
-          "Projects/futurescope_Remix-restructured.html"
+          "Projects/futurescope_Remix.html"
         ],
         "createdAt": "2026-10-03T14:17:12.882Z",
         "reason": "Agent: html/body hits are from the intentional overflow-x:clip + .rq-band full-bleed (100vw) technique already reviewed this session; div.card-type hits are the literal tarot-card product-feature mockups, confirmed earlier as domain content not a generic card, not an overflow bug"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "value": "*",
+        "files": [
+          "Projects/futurescope_Remix.html"
+        ],
+        "createdAt": "2026-10-06T16:03:16.056Z",
+        "reason": "All 10.88px/8.8px hits are DM Mono 0.68rem micro-labels (UK-based/Aged.../Male/per year/in retirement funds/McGonigal 2017) and 0.55em 'years' annotations, specified verbatim in Projects/prompts/futurescope_methods_rebuild_prompt.md; same category already sanctioned as the 0.7rem DM Mono label floor on kretha.html (see tiny-text ignore)"
+      },
+      {
+        "rule": "tight-leading",
+        "value": "*",
+        "files": [
+          "Projects/futurescope_Remix.html"
+        ],
+        "createdAt": "2026-10-06T16:03:25.368Z",
+        "reason": "Oversized Cormorant Garamond display/quote type (interview pull-quotes + Core Insight statement), line-height 1.15 specified verbatim in Projects/prompts/futurescope_methods_rebuild_prompt.md; same rationale as the existing 1.28 tight-leading exception on kretha.html's display .statement"
       }
     ]
   }

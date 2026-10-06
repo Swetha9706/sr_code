@@ -506,81 +506,137 @@ section{padding:5.5rem 3rem;max-width:1180px;margin:0 auto}
     <div class="process-step"><span class="process-step-dot">4</span>Synthesis</div>
   </div>
 
-  <!-- Method 1 -->
-  <div class="method-item reveal reveal-delay-2">
-    <div class="method-head">
-      <div class="method-n">01</div>
-      <div class="method-head-text">
-        <div class="method-tag-sm">Method</div>
-        <div class="method-name">Surveys and interviews</div>
-      </div>
-    </div>
-    <div class="method-prose">
-        <p class="method-lead">Understand user behaviours, attitudes, and pain points around retirement planning.</p>
+  <article class="reveal reveal-delay-2" style="margin-top:2.5rem">
 
-        <p>A survey reached 12 participants (aged 25-50), recruited via Reddit and Discord. Four in-depth interviews followed, digging deeper into user motivations and anxieties.</p>
-        <p>Both methods used a Buzzfeed-style quiz as a boundary object, a technique from Frith et al. (2005) and Bagnoli (2009). The quiz used unlabelled imagery so participants could describe their future without financial language getting in the way.</p>
-        <p>At the end of each quiz, we showed participants an estimate of how much money they'd need for their chosen lifestyle, using the HSBC Retirement Calculator. That moment consistently sparked surprise, reflection, and a more grounded conversation about what retirement planning actually means.</p>
+    <!-- Section 1 — Method header -->
+    <header style="display:flex;align-items:baseline;gap:20px;padding-bottom:28px;border-bottom:1px solid #141018">
+      <div style="font-family:'DM Mono',monospace;font-size:.72rem;text-transform:uppercase;color:#575165;flex-shrink:0">Method 01</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:clamp(1.3rem,2.2vw,1.6rem);color:#575165">Understand user behaviours, attitudes, and pain points around retirement planning.</div>
+    </header>
 
-        <div class="hero-quote">
-          <p class="hero-quote-text">"I'm nowhere near saving that amount, but this result makes me feel less anxious. It's about the sum I've been aiming for."</p>
-          <div class="hero-quote-attr">Interview participant</div>
+    <!-- Section 2 — Survey execution -->
+    <div style="display:flex;flex-wrap:wrap;gap:20px;border-bottom:1px solid #141018;padding:28px 0">
+      <div style="width:160px;flex-shrink:0;font-family:'DM Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;color:#630F49;line-height:1.6">Survey / execution</div>
+      <div style="flex:1;min-width:min(100%,300px);display:flex;flex-direction:column;gap:36px">
+
+        <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(5rem,11vw,8.5rem);color:#630F49;line-height:.8;letter-spacing:-.04em">12</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:clamp(1.6rem,3vw,2.2rem)">participants, via Reddit and Discord</span>
         </div>
 
-        <p>The unlabelled format was deliberate. It removed category labels, which cut down on researcher-imposed bias and let people respond more expressively.</p>
-        <p>Several participants asked to select more than one option. That's a sign that lifestyle expectations resist clean categories, and that good design should reflect that.</p>
+        <dl style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:20px 28px;margin:0">
+          <div style="padding-top:12px;border-top:1px solid #ddd6ec">
+            <dt style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:2.6rem;letter-spacing:-.02em;margin:0">11</dt>
+            <dd style="font-family:'DM Mono',monospace;font-size:.68rem;text-transform:uppercase;color:#575165;margin:0">UK-based</dd>
+          </div>
+          <div style="padding-top:12px;border-top:1px solid #ddd6ec">
+            <dt style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:2.6rem;letter-spacing:-.02em;margin:0">35%</dt>
+            <dd style="font-family:'DM Mono',monospace;font-size:.68rem;text-transform:uppercase;color:#575165;margin:0">Aged 25&ndash;30</dd>
+          </div>
+          <div style="padding-top:12px;border-top:1px solid #ddd6ec">
+            <dt style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:2.6rem;letter-spacing:-.02em;margin:0">63%</dt>
+            <dd style="font-family:'DM Mono',monospace;font-size:.68rem;text-transform:uppercase;color:#575165;margin:0">Aged 35&ndash;45</dd>
+          </div>
+          <div style="padding-top:12px;border-top:1px solid #ddd6ec">
+            <dt style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:2.6rem;letter-spacing:-.02em;margin:0">90%</dt>
+            <dd style="font-family:'DM Mono',monospace;font-size:.68rem;text-transform:uppercase;color:#575165;margin:0">Male</dd>
+          </div>
+          <div style="padding-top:12px;border-top:1px solid #ddd6ec">
+            <dt style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:2.6rem;letter-spacing:-.02em;margin:0;font-style:italic">&frac12;</dt>
+            <dd style="font-family:'DM Mono',monospace;font-size:.68rem;text-transform:uppercase;color:#575165;margin:0">Nearly, in tech</dd>
+          </div>
+        </dl>
 
-        <p>The only real difference between age groups was how long people expected retirement to last. Under-30s expected 10-15 years; over-30s expected 15-20. Beyond that, confusion and avoidance looked the same across every age group.</p>
-        <p>About half of respondents said retirement didn't factor into major purchasing decisions. Most pictured a retirement full of travel, hobbies, and downtime, but had no savings plan to match it.</p>
-    </div>
+        <div style="max-width:680px;font-size:1.02rem;line-height:1.8;display:flex;flex-direction:column;gap:1.2em">
+          <p style="margin:0">12 participants were recruited through Reddit and Discord. 11 were based in the UK. 35% were aged 25&ndash;30 and 63% were between 35 and 45. The sample was heavily male (90%), and nearly half worked in tech.</p>
+          <p style="margin:0">This group had above-average financial literacy. <em style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.25em;color:#630F49">All of them still avoided retirement planning and felt anxious about it.</em> That ruled out a simple knowledge gap.</p>
+        </div>
 
-    <div class="method-insight">
-      <span class="qual-tag">The Core Insight</span>
-      <p class="qual-text">Regardless of age, people are aimless about retirement planning. Not because they lack information. Because they lack <em>imagination</em> about their future selves.</p>
-    </div>
-  </div>
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:.68rem;text-transform:uppercase;color:#575165;margin-bottom:6px">Expected retirement duration</div>
+          <div style="display:flex;align-items:baseline;gap:20px;padding:10px 0;border-bottom:1px solid #ddd6ec">
+            <span style="font-family:'DM Mono',monospace;font-size:.75rem;text-transform:uppercase;width:120px;flex-shrink:0">Under 30</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2rem,4vw,2.8rem)">10&ndash;15 <span style="font-size:.55em;color:#575165;font-style:normal">years</span></span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:20px;padding:10px 0;border-bottom:1px solid #ddd6ec">
+            <span style="font-family:'DM Mono',monospace;font-size:.75rem;text-transform:uppercase;width:120px;flex-shrink:0">Over 30</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2rem,4vw,2.8rem);color:#630F49">15&ndash;20 <span style="font-size:.55em;color:#575165;font-style:normal">years</span></span>
+          </div>
+        </div>
 
-  <!-- Method 2 -->
-  <div class="method-item reveal">
-    <div class="method-head">
-      <div class="method-n">02</div>
-      <div class="method-head-text">
-        <div class="method-tag-sm">Method</div>
-        <div class="method-name">Competitive analysis</div>
+        <p style="max-width:680px;font-size:1.02rem;line-height:1.8;margin:0">The only measurable age difference was expected retirement duration. In all other respects, confusion was consistent across ages. Around 50% said retirement did not factor into major purchasing decisions. When asked what a typical retirement day might look like, participants described <em style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.25em;color:#630F49">travel, gardening, and pottery</em> &mdash; but had no savings strategy aligned with any of it.</p>
+
       </div>
     </div>
-    <span class="method-obj" style="margin-top:0">Objective</span>
-    <p class="body" style="margin-top:.35rem">Identify the gaps in existing retirement planning tools.</p>
 
-    <div class="table-wrap"><table class="opp-table">
-      <thead>
-        <tr>
-          <th>Tool</th>
-          <th>Type</th>
-          <th>Gap</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>HSBC Retirement Calculator</td>
-          <td>Traditional planning platform</td>
-          <td>Number-crunching only; no behavioural layer.</td>
-        </tr>
-        <tr>
-          <td>Mint</td>
-          <td>Financial independence app</td>
-          <td>Broad budgeting focus; weak on retirement visualisation.</td>
-        </tr>
-        <tr>
-          <td>YNAB</td>
-          <td>Budgeting tool</td>
-          <td>Goal-based but not retirement-specific; steep learning curve.</td>
-        </tr>
-      </tbody>
-    </table></div>
-  </div>
+    <!-- Section 3 — Interview execution -->
+    <div style="display:flex;flex-wrap:wrap;gap:20px;border-bottom:1px solid #141018;padding:28px 0">
+      <div style="width:160px;flex-shrink:0;font-family:'DM Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;color:#630F49;line-height:1.6">Interview / execution</div>
+      <div style="flex:1;min-width:min(100%,300px);display:flex;flex-direction:column;gap:36px">
 
-  <p class="synthesis-line reveal">Most tools <strong>count</strong>. None help you <strong>imagine</strong>.</p>
+        <p style="max-width:680px;font-size:1.02rem;line-height:1.8;margin:0">Four in-depth interviews with individuals aged 27&ndash;42. Both methods used a Buzzfeed-style quiz as a boundary object &mdash; drawn from Frith et al. (2005) and Bagnoli (2009) &mdash; with unlabelled imagery so participants could describe their future without being anchored by category labels.</p>
+
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 36px">
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2.6rem,6vw,4.4rem);line-height:.9;letter-spacing:-.03em">&pound;45,626</div>
+            <div style="font-family:'DM Mono',monospace;font-size:.68rem;text-transform:uppercase;color:#575165;margin-top:4px">per year</div>
+          </div>
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2rem;color:#575165">&asymp;</span>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2.6rem,6vw,4.4rem);line-height:.9;letter-spacing:-.03em;color:#630F49">&pound;950,000</div>
+            <div style="font-family:'DM Mono',monospace;font-size:.68rem;text-transform:uppercase;color:#575165;margin-top:4px">in retirement funds</div>
+          </div>
+        </div>
+
+        <p style="max-width:680px;font-size:1.02rem;line-height:1.8;margin:0">At the end of each quiz, participants received a savings estimate from the HSBC Retirement Calculator. A luxury lifestyle result came to approximately &pound;45,626 per year &mdash; around &pound;950,000 in retirement funds. <em style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.25em;color:#630F49">Three of the four were surprised.</em> One found it close to what they had been aiming for.</p>
+
+        <blockquote style="display:flex;flex-direction:column;gap:14px;margin:0;padding:0;border:0">
+          <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:clamp(1.6rem,3.5vw,2.6rem);line-height:1.15;letter-spacing:-.02em;margin:0"><span style="color:#630F49">"</span>I'm nowhere near saving that amount, but this result makes me feel less anxious. It's about the sum I've been aiming for."</p>
+          <div style="font-family:'DM Mono',monospace;font-size:.68rem;text-transform:uppercase;color:#630F49">Interview participant &mdash; P2, male, 40</div>
+        </blockquote>
+
+        <p style="max-width:680px;font-size:1.02rem;line-height:1.8;margin:0">A question posed after the Netflix preference slide &mdash; <em style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.2em;color:#630F49">"Would you consider yourself an optimist or a realist?"</em> &mdash; surfaced something the direct retirement questions had not. One participant who had chosen a luxury lifestyle result responded:</p>
+
+        <blockquote style="display:flex;flex-direction:column;gap:14px;margin:0;padding:0;border:0">
+          <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:clamp(1.6rem,3.5vw,2.6rem);line-height:1.15;letter-spacing:-.02em;margin:0"><span style="color:#630F49">"</span>I don't consider myself someone with a luxury lifestyle, but I think it's good to have ambitious goals."</p>
+          <div style="font-family:'DM Mono',monospace;font-size:.68rem;text-transform:uppercase;color:#630F49">Interview participant &mdash; P1, male, 42</div>
+        </blockquote>
+
+      </div>
+    </div>
+
+    <!-- Section 4 — From finding to design decision -->
+    <div style="display:flex;flex-wrap:wrap;gap:20px;border-bottom:1px solid #141018;padding:28px 0">
+      <div style="width:160px;flex-shrink:0;font-family:'DM Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;color:#630F49;line-height:1.6">From finding / to design / decision</div>
+      <div style="flex:1;min-width:min(100%,300px)">
+        <ol style="list-style:none;display:flex;flex-direction:column;margin:0;padding:0">
+          <li style="display:flex;flex-wrap:wrap;gap:8px 28px;padding:0 0 24px;border-bottom:1px solid #ddd6ec">
+            <div style="width:200px;flex-shrink:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:1.6rem;color:#630F49">Personality question</div>
+            <div style="flex:1;min-width:240px;font-size:1rem;line-height:1.75">The optimist/realist question directly informed the onboarding quiz. Framing the choice as optimist versus realist lets the service calibrate its tone to the user's actual outlook.</div>
+          </li>
+          <li style="display:flex;flex-wrap:wrap;gap:8px 28px;padding:24px 0;border-bottom:1px solid #ddd6ec">
+            <div style="width:200px;flex-shrink:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:1.6rem;color:#630F49">Spectrum-based profiles</div>
+            <div style="flex:1;min-width:240px;font-size:1rem;line-height:1.75">Removing labels from quiz options reduced bias and let participants respond by instinct. Several wanted to select more than one option &mdash; a signal that lifestyle expectations resist clean categories. This led to a spectrum-based profile system rather than fixed types.</div>
+          </li>
+          <li style="display:flex;flex-wrap:wrap;gap:8px 28px;padding:24px 0;border-bottom:1px solid #ddd6ec">
+            <div style="width:200px;flex-shrink:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:2.4rem;letter-spacing:-.02em;color:#630F49">4 / 4</div>
+            <div style="flex:1;min-width:240px;font-size:1rem;line-height:1.75">All four participants said they would use the service. The concept was not just analytically sound &mdash; users wanted it.</div>
+          </li>
+          <li style="padding-top:24px">
+            <p style="max-width:640px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;line-height:1.5;color:#575165;margin:0"><span style="font-family:'DM Mono',monospace;font-style:normal;font-size:.68rem;text-transform:uppercase;color:#141018">McGonigal (2017)</span> &mdash; when asked to think about their distant future, people neurologically envision someone else, making choices for that self harder. This grounded the decision to design toward imagination rather than information.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Section 5 — Core insight -->
+    <div style="display:flex;flex-direction:column;gap:28px;padding-top:28px">
+      <span style="font-family:'DM Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:#630F49">The Core Insight</span>
+      <p style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.15;letter-spacing:-.02em;max-width:820px;margin:0">Regardless of age, people are aimless about retirement planning not because they lack information, but because they lack <em style="font-weight:600;color:#630F49;font-style:normal">imagination</em> about their future selves.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:clamp(1.05rem,1.6vw,1.35rem);color:#630F49;margin:0">Most tools count. None help you imagine.</p>
+    </div>
+
+  </article>
 </section>
 
 <!-- ══ RESEARCH QUESTION ══ -->
