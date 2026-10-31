@@ -2,7 +2,7 @@
 
 Source code for Swetha Ramachandran's design portfolio website.
 
-🔗 **Live site:** [siddharthsubramaniam1996.github.io/sr_code](https://siddharthsubramaniam1996.github.io/sr_code/)
+🔗 **Live site:** [swetha9706.github.io/sr_code](https://swetha9706.github.io/sr_code/)
 
 ## About
 
@@ -29,7 +29,7 @@ sr_code/
 No setup needed — just open `index.html` in any browser.
 
 ```bash
-git clone https://github.com/siddharthsubramaniam1996/sr_code.git
+git clone https://github.com/Swetha9706/sr_code.git
 cd sr_code
 open index.html
 ```
