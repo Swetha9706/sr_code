@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Londrina Solid';src:url('uploads/LondrinaSolid-Regular.otf') format('opentype');font-weight:100 900;font-style:normal;font-display:swap}
+body{margin:0;background:#FDFCEF;color:#30272A;font-family:'Bricolage Grotesque',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#30272A;text-decoration-color:#ED4175;text-decoration-thickness:2px;text-underline-offset:4px}
+a:hover{color:#B8245A}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<section data-screen-label="Method" style="background:#FDFCEF;padding:clamp(32px,6vw,64px) clamp(20px,5vw,64px);">
+<div style="max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(24px,5vw,72px);">
+
+<div style="flex:0 0 220px;">
+<div style="position:sticky;top:32px;display:flex;flex-direction:column;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#5E5254;">
+<span style="font-family:'Londrina Solid',sans-serif;font-size:56px;line-height:0.9;letter-spacing:0;color:#ED4175;">01</span>
+<span style="color:#30272A;">Method</span>
+</div>
+</div>
+
+<div style="flex:1 1 420px;display:flex;flex-direction:column;gap:64px;max-width:720px;min-width:0;">
+
+<div style="display:flex;flex-direction:column;gap:16px;">
+<h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(38px,4.5vw,56px);line-height:1;letter-spacing:-0.03em;text-wrap:balance;">Surveys and interviews</h2>
+<p style="margin:0;font-size:20px;line-height:1.5;color:#5E5254;text-wrap:pretty;">Understand user behaviours, attitudes, and pain points around retirement planning.</p>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:24px;">
+<h3 style="margin:0;font-size:30px;font-weight:700;letter-spacing:-0.02em;line-height:1.2;">Survey execution</h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));column-gap:40px;border-bottom:1px solid #E7DECF;">
+<sc-for list="{{ stats }}" as="s" hint-placeholder-count="6">
+<div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:center;padding:14px 0;border-top:1px solid #E7DECF;">
+<span style="font-family:'Londrina Solid',sans-serif;font-size:48px;line-height:1;color:#ED4175;">{{ s.n }}</span>
+<span style="font-size:16px;line-height:1.4;">{{ s.label }}</span>
+</div>
+</sc-for>
+</div>
+<p style="margin:0;font-size:18px;line-height:1.65;text-wrap:pretty;">12 participants were recruited through Reddit and Discord. 11 were based in the UK. 35% were aged 25–30 and 63% were between 35 and 45. The sample was heavily male (90%), and nearly half worked in tech.</p>
+<p style="margin:0;font-size:18px;line-height:1.65;text-wrap:pretty;">This group had above-average financial literacy. All of them still avoided retirement planning and felt anxious about it. That ruled out a simple knowledge gap.</p>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:20px;">
+<span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#5E5254;">Expected retirement duration</span>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;">
+<div style="background:#FCF0F4;border-radius:20px;padding:20px 24px;display:flex;flex-direction:column;gap:6px;">
+<span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#5E5254;">Under 30</span>
+<span style="font-family:'Londrina Solid',sans-serif;font-size:56px;line-height:1;color:#ED4175;">10–15 years</span>
+</div>
+<div style="background:#FCF0F4;border-radius:20px;padding:20px 24px;display:flex;flex-direction:column;gap:6px;">
+<span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#5E5254;">Over 30</span>
+<span style="font-family:'Londrina Solid',sans-serif;font-size:56px;line-height:1;color:#ED4175;">15–20 years</span>
+</div>
+</div>
+<p style="margin:0;font-size:18px;line-height:1.65;text-wrap:pretty;">The only measurable age difference was expected retirement duration: under-30s anticipated 10–15 years, over-30s expected 15–20, likely because younger respondents face higher living costs and fewer guaranteed income-earning years. In all other respects, confusion was consistent across ages. Around 50% said retirement did not factor into major purchasing decisions. When asked what a typical day in retirement might look like, participants described travel, gardening, and pottery — but had no savings strategy aligned with any of it.</p>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:24px;">
+<h3 style="margin:0;font-size:30px;font-weight:700;letter-spacing:-0.02em;line-height:1.2;">Interview execution</h3>
+<p style="margin:0;font-size:18px;line-height:1.65;text-wrap:pretty;">Four in-depth interviews with individuals aged 27–42. Both methods used a Buzzfeed-style quiz as a boundary object — drawn from Frith et al. (2005) and Bagnoli (2009) — with unlabelled imagery so participants could describe their future without being anchored by category labels.</p>
+<div style="background:#FCF0F4;border-radius:20px;padding:24px 28px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;">
+<div style="display:flex;flex-direction:column;gap:4px;">
+<span style="font-family:'Londrina Solid',sans-serif;font-size:clamp(48px,6vw,64px);line-height:1;color:#ED4175;">£45,626</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#5E5254;">per year</span>
+</div>
+<span style="font-family:'Londrina Solid',sans-serif;font-size:48px;line-height:1;color:#30272A;">≈</span>
+<div style="display:flex;flex-direction:column;gap:4px;">
+<span style="font-family:'Londrina Solid',sans-serif;font-size:clamp(48px,6vw,64px);line-height:1;color:#ED4175;">£950,000</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#5E5254;">in retirement funds</span>
+</div>
+</div>
+<p style="margin:0;font-size:18px;line-height:1.65;text-wrap:pretty;">At the end of each quiz, participants received a savings estimate from the HSBC Retirement Calculator. A luxury lifestyle result came to approximately £45,626 per year — around £950,000 in retirement funds. Three of the four were surprised. One found it close to what they had been aiming for.</p>
+<figure style="margin:8px 0;display:flex;flex-direction:column;gap:14px;padding:28px 0;border-top:1px solid #E7DECF;border-bottom:1px solid #E7DECF;">
+<span style="font-family:'Londrina Solid',sans-serif;font-size:72px;line-height:0.5;color:#ED4175;height:28px;">“</span>
+<blockquote style="margin:0;font-size:clamp(22px,2.6vw,28px);font-weight:500;line-height:1.35;letter-spacing:-0.01em;text-wrap:pretty;">I'm nowhere near saving that amount, but this result makes me feel less anxious. It's about the sum I've been aiming for.”</blockquote>
+<figcaption style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#5E5254;">Interview participant — P2, male, 40</figcaption>
+</figure>
+<p style="margin:0;font-size:18px;line-height:1.65;text-wrap:pretty;">A question posed after the Netflix preference slide — "Would you consider yourself an optimist or a realist?" — surfaced something the direct retirement questions had not. One participant who had chosen a luxury lifestyle result responded:</p>
+<figure style="margin:8px 0;display:flex;flex-direction:column;gap:14px;padding:28px 0;border-top:1px solid #E7DECF;border-bottom:1px solid #E7DECF;">
+<span style="font-family:'Londrina Solid',sans-serif;font-size:72px;line-height:0.5;color:#ED4175;height:28px;">“</span>
+<blockquote style="margin:0;font-size:clamp(22px,2.6vw,28px);font-weight:500;line-height:1.35;letter-spacing:-0.01em;text-wrap:pretty;">I don't consider myself someone with a luxury lifestyle, but I think it's good to have ambitious goals.”</blockquote>
+<figcaption style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#5E5254;">Interview participant — P1, male, 42</figcaption>
+</figure>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:24px;">
+<h3 style="margin:0;font-size:30px;font-weight:700;letter-spacing:-0.02em;line-height:1.2;">From finding to design decision</h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;">
+<sc-for list="{{ decisions }}" as="d" hint-placeholder-count="2">
+<div style="border:1px solid #E7DECF;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:12px;background:#FDFCEF;">
+<span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#B8245A;">{{ d.num }}</span>
+<span style="font-size:22px;font-weight:700;letter-spacing:-0.01em;line-height:1.2;">{{ d.title }}</span>
+<span style="font-size:16px;line-height:1.6;text-wrap:pretty;">{{ d.body }}</span>
+</div>
+</sc-for>
+</div>
+<div style="background:#FCF0F4;border-radius:20px;padding:24px 28px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;">
+<span style="font-family:'Londrina Solid',sans-serif;font-size:clamp(56px,7vw,80px);line-height:1;color:#ED4175;">4 / 4</span>
+<span style="flex:1 1 280px;font-size:17px;line-height:1.55;text-wrap:pretty;">All four participants said they would use the service. The concept was not just analytically sound — users wanted it.</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;padding-top:16px;border-top:1px solid #E7DECF;">
+<span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#5E5254;">Reference</span>
+<p style="margin:0;font-size:16px;line-height:1.6;color:#5E5254;text-wrap:pretty;">McGonigal (2017) — when asked to think about their distant future, people neurologically envision someone else, making choices for that self harder. This grounded the decision to design toward imagination rather than information.</p>
+</div>
+</div>
+
+<div style="background:#30272A;color:#FDFCEF;border-radius:28px;padding:clamp(28px,5vw,48px);display:flex;flex-direction:column;gap:20px;">
+<span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#AABFF8;">The Core Insight</span>
+<p style="margin:0;font-size:clamp(20px,2.4vw,24px);line-height:1.45;text-wrap:pretty;">Regardless of age, people are aimless about retirement planning not because they lack information, but because they <mark style="background:#FCEA87;color:#30272A;padding:0 4px;">lack imagination about their future selves</mark>.</p>
+<span style="font-family:'Londrina Solid',sans-serif;font-size:clamp(40px,5.5vw,64px);line-height:0.95;color:#FF90D5;text-wrap:balance;">Most tools count. None help you imagine.</span>
+</div>
+
+</div>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      stats: [
+        { n: '12', label: 'participants, via Reddit and Discord' },
+        { n: '11', label: 'UK-based' },
+        { n: '35%', label: 'Aged 25–30' },
+        { n: '63%', label: 'Aged 35–45' },
+        { n: '90%', label: 'Male' },
+        { n: '½', label: 'Nearly, in tech' }
+      ],
+      decisions: [
+        { num: 'Decision 01', title: 'Personality question', body: "This directly informed the personality question in the onboarding quiz. Framing the choice as optimist versus realist lets the service calibrate its tone to the user's actual outlook." },
+        { num: 'Decision 02', title: 'Spectrum-based profiles', body: 'Removing labels from the quiz options reduced bias and let participants respond by instinct. Several wanted to select more than one option — a signal that lifestyle expectations resist clean categories. This led to a spectrum-based profile system rather than fixed types.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

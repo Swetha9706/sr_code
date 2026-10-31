@@ -194,26 +194,28 @@ section{padding:5.5rem 3rem;max-width:1180px;margin:0 auto}
 .rq-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.2vw,2.4rem);font-style:italic;font-weight:600;color:var(--paper);line-height:1.4;margin:0 auto}
 @media(max-width:720px){.rq-band{padding:3rem 1.5rem}}
 
-/* ══ TAKEAWAYS ══ */
-.numbered-insights{list-style:none;margin:1.5rem 0;max-width:820px}
-.numbered-insights li{display:flex;gap:1.25rem;align-items:flex-start;padding:1.25rem 0;border-bottom:1px solid var(--border)}
-.numbered-insights li:last-child{border-bottom:none}
-.ni-num{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--plum);min-width:2rem;padding-top:.3rem}
-.ni-text{font-family:'Lora',serif;font-size:1rem;color:var(--ink);line-height:1.65}
-.ni-text strong{font-weight:500;color:var(--plum)}
-.hypothesis-box{border:1px solid var(--plum);border-radius:28px;padding:2.25rem;margin-top:2.5rem;position:relative;background:rgba(202,202,255,.18)}
-.hyp-tag{position:absolute;top:-11px;left:1.5rem;background:var(--paper);padding:0 .75rem;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--plum)}
-.hypothesis-box p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;font-weight:600;line-height:1.55;color:var(--ink)}
+/* ══ TAKEAWAYS — icon-led hairline row, not cards (The No-New-Cards Rule) ══ */
+.insight-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin:2rem 0;max-width:900px}
+.insight-item{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.1rem}
+.insight-item:not(:last-child){border-right:1px solid var(--border);padding-right:2.5rem}
+.insight-icon{width:40px;height:40px;color:var(--plum)}
+.insight-icon-gif{width:55px;height:55px;object-fit:contain}
+.insight-text{font-family:'Lora',serif;font-size:1rem;color:var(--ink);line-height:1.6;margin:0}
+.insight-text strong{font-weight:500;color:var(--plum)}
+@media(max-width:860px){.insight-row{grid-template-columns:1fr;gap:1.75rem}.insight-item:not(:last-child){border-right:none;padding-right:0;padding-bottom:1.75rem;border-bottom:1px solid var(--border)}}
+.icon-credits{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.04em;color:var(--muted);text-align:center;max-width:1180px;margin:0 auto;padding:0 44px 28px}
+.icon-credits a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+.icon-credits a:hover{color:var(--plum)}
+@media(max-width:720px){.icon-credits{text-align:left;padding:0 1.5rem 2rem}}
 
-/* ══ OPP TABLE (research → decision map) ══ */
-.opp-table{width:100%;border-collapse:collapse;margin:2rem 0;min-width:480px}
-.opp-table thead th{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;padding:.8rem 1.1rem;border-bottom:2px solid var(--border);text-align:left;color:var(--plum)}
-.opp-table tbody td{padding:1.2rem 1.1rem;border-bottom:1px solid var(--border);font-family:'Lora',serif;font-size:1rem;vertical-align:top;line-height:1.6}
-.opp-table tbody td:first-child{color:var(--ink);max-width:35ch}
-.opp-table tbody td:last-child{color:var(--muted)}
-@media(prefers-reduced-motion:no-preference){.opp-table tbody tr{transition:background .45s var(--ease)}}
-.opp-table tbody tr:hover td{background:rgba(202,202,255,.25)}
-.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%}
+/* ══ OPP FLOW (problem → opportunity, hairline rows not a table) ══ */
+.opp-flow{max-width:820px;margin:2rem 0}
+.opp-row{display:flex;align-items:center;gap:1.25rem;padding:1.1rem 0;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.opp-row:last-child{border-bottom:none}
+.opp-problem{font-family:'Lora',serif;font-size:1rem;color:var(--ink);line-height:1.5;flex:1 1 220px}
+.opp-arrow{color:var(--plum);flex-shrink:0}
+.opp-solution{font-family:'Lora',serif;font-style:italic;font-size:1rem;color:var(--plum);line-height:1.5;flex:1 1 220px}
+@media(max-width:600px){.opp-row{flex-direction:column;align-items:flex-start;gap:.5rem}.opp-problem,.opp-solution{flex-basis:auto}}
 
 /* ══ SOLUTION FEATURES ══ */
 .feature-row{display:grid;grid-template-columns:auto 1fr 1fr;gap:2.5rem;align-items:start;padding:2.5rem 0;border-bottom:1px solid var(--border)}
@@ -225,7 +227,7 @@ section{padding:5.5rem 3rem;max-width:1180px;margin:0 auto}
 .feat-desc{font-family:'Lora',serif;font-size:1rem;color:var(--muted);line-height:1.75}
 .feat-desc em{font-style:italic;color:var(--ink)}
 .feat-visual{display:flex;flex-direction:column;gap:.75rem;align-items:flex-start;padding-top:.3rem}
-.feat-visual-label{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.7}
+.feat-visual-label{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.7}la
 @media(max-width:900px){
   .feature-row{grid-template-columns:auto 1fr;gap:1.5rem}
   .feat-visual{grid-column:1 / -1;margin-top:1rem}
@@ -277,6 +279,23 @@ section{padding:5.5rem 3rem;max-width:1180px;margin:0 auto}
 .tarot-card{aspect-ratio:2/3;border:1px dashed var(--plum);border-radius:28px;background:var(--card-base);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;padding:1rem;text-align:center}
 .tarot-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--ink);font-style:italic}
 @media(max-width:900px){.card-types{grid-template-columns:1fr;gap:.75rem}.card-type{transform:none!important}.tarot-strip{grid-template-columns:repeat(3,1fr);gap:.5rem}}
+
+/* ══ SERVICE BLUEPRINT ══ */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%}
+.lane-label{display:flex;flex-direction:column;justify-content:center;gap:5px}
+.lane-num{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;color:#630F49}
+.lane-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:1.4rem;color:#141018;line-height:1.02}
+.lane-sub{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#575165}
+.cell{font-family:'Lora',serif;font-size:.84rem;line-height:1.55;color:#141018;border-radius:14px;padding:14px 15px}
+.stagecap{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#630F49;line-height:1.5;text-align:center}
+.bp-divider{display:flex;align-items:center;gap:14px;margin:18px 0}
+.bp-divider span:first-child{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:#575165;white-space:nowrap}
+.bp-divider span:last-child{flex:1;border-top:1px dashed #ddd6ec}
+
+/* ══ JOURNEY MAP ══ */
+.tp{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;color:#575165;line-height:1.8}
+.think{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:.98rem;line-height:1.35;color:#141018}
+.pain{font-family:'Lora',serif;font-size:.8rem;line-height:1.5;color:#575165}
 
 /* ══ FOOTER ══ */
 .footer{background:var(--cotton-candy)}
@@ -649,55 +668,287 @@ section{padding:5.5rem 3rem;max-width:1180px;margin:0 auto}
 
 <!-- ══ RESEARCH TAKEAWAYS ══ -->
 <section>
-  <div class="eyebrow reveal">Summarizing Research / Takeaways</div>
+  <div class="eyebrow reveal">Research Takeaways</div>
   <h2 class="q-title reveal reveal-delay-1">What was the <em>takeaway</em> from the research?</h2>
 
-  <p class="body reveal reveal-delay-1" style="max-width:820px">The research surfaced a clear pattern: people knew retirement planning mattered, but most struggled to begin. The gap between awareness and action, between knowing the future is coming and being able to picture it, became the heart of the problem we set out to solve. One participant captured it directly: <em>"I am a 35-year-old woman living and working in the UK. I am trying to develop a savings plan for retirement, but I am struggling to do so because I cannot imagine what my needs will be that far in the future. This has caused me to feel overwhelmed and ill-prepared for my retirement."</em></p>
-
-  <div class="reveal reveal-delay-1" style="max-width:820px;margin:2.5rem 0">
-    <p class="body" style="margin-top:0">The research revealed that one of the biggest barriers to retirement planning is not a lack of awareness, but a lack of imagination. Users found it difficult to translate an ideal future lifestyle into a concrete savings strategy. Without a clear picture of what retirement might look like, long-term planning remained vague and emotionally disconnected.</p>
-    <p class="body">Another important insight was that anxiety shapes behaviour. Participants often felt uneasy when confronted with savings estimates and did not know where to begin. In many cases, existing financial tools increased that anxiety because they focused on numbers before helping users understand their goals.</p>
-    <p class="body">The research also showed that personalized support matters. Users responded more positively to tailored advice, guided conversations, and visible progress tracking than to generic financial information. That suggested trust and motivation grow when planning feels personal, human, and relevant.</p>
+  <div class="hero-quote reveal reveal-delay-1">
+    <p class="hero-quote-text">"I am a 35-year-old woman living and working in the UK. I am trying to develop a savings plan for retirement, but I cannot imagine what my needs will be that far in the future. This has caused me to feel overwhelmed and ill-prepared."</p>
+    <span class="hero-quote-attr">— Research participant</span>
   </div>
 
-  <h3 class="sub-title reveal" style="margin-top:3rem">Three ideas became central to the concept</h3>
-  <ul class="numbered-insights reveal reveal-delay-1">
-    <li><span class="ni-num">01</span><span class="ni-text">Users need help <strong>visualizing their future</strong> in order to make realistic financial decisions.</span></li>
-    <li><span class="ni-num">02</span><span class="ni-text">Financial planning should feel <strong>engaging and jargon-free</strong> in order to reduce anxiety.</span></li>
-    <li><span class="ni-num">03</span><span class="ni-text"><strong>Personalized guidance</strong> increases trust, confidence, and motivation.</span></li>
-  </ul>
+  <p class="body reveal reveal-delay-1" style="max-width:720px;margin-top:1.75rem">The gap wasn't awareness. It was imagination — and anxiety filled the space where a picture of the future should have been.</p>
 
-  <div class="hypothesis-box reveal reveal-delay-2">
-    <span class="hyp-tag">Hypothesis</span>
-    <p>If we provide an interactive, personalized financial planning experience, users will feel more confident and motivated to take actionable steps toward their retirement goals.</p>
+  <div class="insight-row reveal reveal-delay-2">
+    <div class="insight-item">
+      <img class="insight-icon insight-icon-gif" src="Futurescope_Assets/insight-imagination.gif" alt="" width="160" height="160" loading="lazy">
+      <p class="insight-text">Can't <strong>visualize</strong> the future, so planning stays abstract.</p>
+    </div>
+    <div class="insight-item">
+      <img class="insight-icon insight-icon-gif" src="Futurescope_Assets/insight-anxiety.gif" alt="" width="160" height="160" loading="lazy">
+      <p class="insight-text">Numbers-first tools <strong>raise anxiety</strong> before they build confidence.</p>
+    </div>
+    <div class="insight-item">
+      <img class="insight-icon insight-icon-gif" src="Futurescope_Assets/insight-friendship.gif" alt="" width="160" height="160" loading="lazy">
+      <p class="insight-text"><strong>Personalized</strong> guidance builds trust generic advice can't.</p>
+    </div>
   </div>
 
-  <h3 class="sub-title reveal" style="margin-top:3.5rem;margin-bottom:1rem">Problem / Opportunity Spaces</h3>
-  <div class="table-wrap"><table class="opp-table reveal reveal-delay-1">
-    <thead>
-      <tr>
-        <th>Identified Problem</th>
-        <th>Design Opportunity</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Users struggle to visualize their retirement lifestyle.</td>
-        <td>Use engaging quizzes and visual storytelling to help users connect with their future selves.</td>
-      </tr>
-      <tr>
-        <td>Retirement planning feels overwhelming and complex.</td>
-        <td>Simplify financial concepts through clear, bite-sized education and gamification.</td>
-      </tr>
-      <tr>
-        <td>Lack of motivation to save consistently.</td>
-        <td>Introduce goal tracking, milestone celebrations, and community-driven motivation.</td>
-      </tr>
-    </tbody>
-  </table></div>
+  <div class="insight-line reveal reveal-delay-2">
+    <span class="qual-tag">Hypothesis</span>
+    <p class="qual-text">If we provide an interactive, personalized financial planning experience, users will feel more confident and motivated to take actionable steps toward their retirement goals.</p>
+  </div>
 
-  <div class="float-img reveal reveal-delay-2" style="margin-top:2.5rem;transform:rotate(-.4deg)">
-    <img src="Futurescope_Assets/futurescope-prototype.jpg" alt="FutureScope problem / opportunity spaces, prototype diagram" loading="lazy" decoding="async" width="1200" height="810">
+  <h3 class="sub-title reveal" style="margin-top:3.5rem;margin-bottom:1.25rem">Problem / Opportunity</h3>
+  <div class="opp-flow reveal reveal-delay-1">
+    <div class="opp-row">
+      <span class="opp-problem">Can't visualize retirement lifestyle</span>
+      <span class="opp-arrow">→</span>
+      <span class="opp-solution">Visual storytelling &amp; quizzes</span>
+    </div>
+    <div class="opp-row">
+      <span class="opp-problem">Planning feels overwhelming, complex</span>
+      <span class="opp-arrow">→</span>
+      <span class="opp-solution">Bite-sized education, gamified</span>
+    </div>
+    <div class="opp-row">
+      <span class="opp-problem">Motivation to save fades over time</span>
+      <span class="opp-arrow">→</span>
+      <span class="opp-solution">Goal tracking &amp; milestone celebrations</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ JOURNEY MAP ══ -->
+<section>
+  <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:8px">
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#630F49;margin-bottom:8px">Case Study · Experience Map</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(2.2rem,4vw,3.4rem);line-height:.9;letter-spacing:-.025em;color:#141018">Journey&nbsp;<em style="font-style:italic;color:#630F49">Map</em></div>
+    </div>
+    <div style="display:flex;gap:22px;align-items:center;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#575165">
+      <span style="display:flex;align-items:center;gap:8px"><span style="width:12px;height:12px;border-radius:50%;background:#FFCAA6;border:1px solid #630F49;display:inline-block"></span>Positive / momentum</span>
+      <span style="display:flex;align-items:center;gap:8px"><span style="width:12px;height:12px;border-radius:50%;background:#D4F5F9;border:1px solid #630F49;display:inline-block"></span>Tension / friction</span>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+  <div style="min-width:1080px">
+  <div class="reveal reveal-delay-1" style="display:grid;grid-template-columns:138px repeat(6,1fr);gap:14px;align-items:end;margin:28px 0 16px">
+    <div class="lane-label"><span class="lane-name">Stages</span></div>
+    <div style="height:100px;background:#EEEAF6;border:1px solid #ddd6ec;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#575165;line-height:1.6">persona<br><span style="color:#630F49">01 · Awareness</span></div>
+    <div style="height:100px;background:#EEEAF6;border:1px solid #ddd6ec;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#575165;line-height:1.6">persona<br><span style="color:#630F49">02 · Consideration</span></div>
+    <div style="height:100px;background:#EEEAF6;border:1px solid #ddd6ec;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#575165;line-height:1.6">persona<br><span style="color:#630F49">03 · Onboarding</span></div>
+    <div style="height:100px;background:#EEEAF6;border:1px solid #ddd6ec;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#575165;line-height:1.6">persona<br><span style="color:#630F49">04 · Guidance</span></div>
+    <div style="height:100px;background:#EEEAF6;border:1px solid #ddd6ec;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#575165;line-height:1.6">persona<br><span style="color:#630F49">05 · Engagement</span></div>
+    <div style="height:100px;background:#EEEAF6;border:1px solid #ddd6ec;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#575165;line-height:1.6">persona<br><span style="color:#630F49">06 · Fulfilment</span></div>
+  </div>
+
+  <div class="reveal reveal-delay-1" style="display:grid;grid-template-columns:138px repeat(6,1fr);gap:14px;align-items:stretch;margin-bottom:14px">
+    <div class="lane-label"><span class="lane-name">User<br>goal</span></div>
+    <div style="border:1px solid #ddd6ec;border-radius:14px;padding:14px 12px;text-align:center;font-family:'Lora',serif;font-size:.8rem;line-height:1.5;color:#141018">Understand if they are on track and overhaul their finances</div>
+    <div style="border:1px solid #ddd6ec;border-radius:14px;padding:14px 12px;text-align:center;font-family:'Lora',serif;font-size:.8rem;line-height:1.5;color:#141018">Find a trustworthy tool and compare the options</div>
+    <div style="border:1px solid #ddd6ec;border-radius:14px;padding:14px 12px;text-align:center;font-family:'Lora',serif;font-size:.8rem;line-height:1.5;color:#141018">Picture their future lifestyle and what it will cost</div>
+    <div style="border:1px solid #ddd6ec;border-radius:14px;padding:14px 12px;text-align:center;font-family:'Lora',serif;font-size:.8rem;line-height:1.5;color:#141018">Turn the estimate into a realistic, personalized plan</div>
+    <div style="border:1px solid #ddd6ec;border-radius:14px;padding:14px 12px;text-align:center;font-family:'Lora',serif;font-size:.8rem;line-height:1.5;color:#141018">Stay motivated and keep saving consistently</div>
+    <div style="border:1px solid #ddd6ec;border-radius:14px;padding:14px 12px;text-align:center;font-family:'Lora',serif;font-size:.8rem;line-height:1.5;color:#141018">Retire comfortably into the life they planned for</div>
+  </div>
+
+  <div class="reveal reveal-delay-1" style="display:grid;grid-template-columns:138px repeat(6,1fr);gap:14px;align-items:stretch;margin-bottom:14px">
+    <div class="lane-label"><span class="lane-name">Touch-<br>points</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="tp">Search · pension letters · word of mouth</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="tp">App stores · review sites · competitor apps</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="tp">Onboarding · image quiz · profile card · estimate</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="tp">Advisor match · video call · recommendation doc</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="tp">Weekly horoscope · milestone cards · nudges · tracker</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="tp">Pension dashboard · annual review · milestone archive</span></div>
+  </div>
+
+  <div class="reveal reveal-delay-2" style="display:grid;grid-template-columns:138px repeat(6,1fr);gap:14px;align-items:stretch;margin-bottom:14px">
+    <div class="lane-label"><span class="lane-name">User<br>action</span></div>
+    <div class="cell" style="background:#EEEAF6">• Notices retirement anxiety<br>• Seeks information<br>• Starts a finance overhaul</div>
+    <div class="cell" style="background:#EEEAF6">• Researches new resources<br>• Compares products<br>• Signs up for FutureScope</div>
+    <div class="cell" style="background:#EEEAF6">• Completes the visual quiz<br>• Reacts to the savings estimate<br>• Receives a lifestyle profile</div>
+    <div class="cell" style="background:#EEEAF6">• Books &amp; attends the advisor meeting<br>• Receives a document of suggestions<br>• Sets realistic targets</div>
+    <div class="cell" style="background:#EEEAF6">• Re-arranges weekly / monthly costs<br>• Logs saved money<br>• Reads the forecast &amp; collects milestones</div>
+    <div class="cell" style="background:#EEEAF6">• Draws down the pension<br>• Organizes the rest of their life<br>• Reflects on the journey</div>
+  </div>
+
+  <div class="reveal reveal-delay-2" style="display:grid;grid-template-columns:138px repeat(6,1fr);gap:14px;align-items:stretch;margin-bottom:22px">
+    <div class="lane-label"><span class="lane-name">Thinking</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="think">"I know I should plan, but where do I even begin?"</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="think">"They're all just calculators — which one actually gets me?"</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="think">"I can't picture that far ahead, but this makes it feel real."</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="think">"Talking to someone made the number feel manageable."</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="think">"Checking in is something I look forward to now."</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="think">"I feel ready for a future I couldn't picture before."</span></div>
+  </div>
+
+  <div class="reveal reveal-delay-2" style="display:grid;grid-template-columns:138px 1fr;gap:14px;align-items:stretch;margin-bottom:18px">
+    <div class="lane-label"><span class="lane-name">Emotional<br>journey</span></div>
+    <div style="position:relative;background:#EEEAF6;border-radius:28px;padding:0">
+      <svg viewBox="0 0 1200 300" preserveAspectRatio="none" style="width:100%;height:300px;display:block">
+        <path d="M 100 245 C 180 245 220 195 300 195 C 380 195 430 225 500 225 C 580 225 590 150 660 150 C 760 150 810 125 900 125 C 1000 125 1010 70 1100 70" fill="none" stroke="#630F49" stroke-width="2.5"></path>
+        <circle cx="100" cy="245" r="15" fill="#D4F5F9" stroke="#630F49" stroke-width="2"></circle>
+        <circle cx="300" cy="195" r="15" fill="#FFCAA6" stroke="#630F49" stroke-width="2"></circle>
+        <circle cx="500" cy="225" r="15" fill="#D4F5F9" stroke="#630F49" stroke-width="2"></circle>
+        <circle cx="660" cy="150" r="15" fill="#FFCAA6" stroke="#630F49" stroke-width="2"></circle>
+        <circle cx="900" cy="125" r="15" fill="#FFCAA6" stroke="#630F49" stroke-width="2"></circle>
+        <circle cx="1100" cy="70" r="15" fill="#FFCAA6" stroke="#630F49" stroke-width="2"></circle>
+      </svg>
+      <div style="position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,1fr);pointer-events:none">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;padding-bottom:18px">
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#D4F5F9;color:#630F49;border-radius:999px;padding:4px 12px">Overwhelmed</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#D4F5F9;color:#630F49;border-radius:999px;padding:4px 12px">Anxious</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#D4F5F9;color:#630F49;border-radius:999px;padding:4px 12px">Avoidant</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding-top:6px">
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#FFCAA6;color:#630F49;border-radius:999px;padding:4px 12px">Curious</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#D4F5F9;color:#630F49;border-radius:999px;padding:4px 12px">Skeptical</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#FFCAA6;color:#630F49;border-radius:999px;padding:4px 12px">Hopeful</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;padding-bottom:32px">
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#D4F5F9;color:#630F49;border-radius:999px;padding:4px 12px">Nervous</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#D4F5F9;color:#630F49;border-radius:999px;padding:4px 12px">Surprised</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#FFCAA6;color:#630F49;border-radius:999px;padding:4px 12px">Reassured</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding-top:6px">
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#FFCAA6;color:#630F49;border-radius:999px;padding:4px 12px">Understood</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#FFCAA6;color:#630F49;border-radius:999px;padding:4px 12px">Supported</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#FFCAA6;color:#630F49;border-radius:999px;padding:4px 12px">Confident</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding-top:2px">
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#FFCAA6;color:#630F49;border-radius:999px;padding:4px 12px">Motivated</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#FFCAA6;color:#630F49;border-radius:999px;padding:4px 12px">Engaged</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#D4F5F9;color:#630F49;border-radius:999px;padding:4px 12px">Distracted</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;padding-top:20px">
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#FFCAA6;color:#630F49;border-radius:999px;padding:4px 12px">Fulfilled</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#FFCAA6;color:#630F49;border-radius:999px;padding:4px 12px">Free</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.03em;text-transform:uppercase;background:#FFCAA6;color:#630F49;border-radius:999px;padding:4px 12px">Proud</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal reveal-delay-3" style="display:grid;grid-template-columns:138px repeat(6,1fr);gap:14px;align-items:stretch;margin-bottom:22px">
+    <div class="lane-label"><span class="lane-name">Pain<br>points</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="pain">No idea where to start; retirement feels abstract and distant.</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="pain">Jargon-heavy, number-first tools; hard to trust; decision paralysis.</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="pain">A large savings figure can trigger anxiety and fear of being "behind".</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="pain">Fears the advice will be generic; unsure the goal is achievable.</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="pain">Motivation fades; check-ins feel like a chore; life events disrupt the plan.</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec"><span class="pain">Will the money truly last? Adjusting to life on a fixed income.</span></div>
+  </div>
+
+  <div class="reveal reveal-delay-3" style="display:grid;grid-template-columns:138px repeat(6,1fr);gap:14px;align-items:stretch">
+    <div class="lane-label"><span class="lane-name">Opportunity</span></div>
+    <div class="cell" style="background:#EEEAF6;border:1px solid #ddd6ec">Meet users with reflection, not calculation — jargon-free pension education.</div>
+    <div class="cell" style="background:#EEEAF6;border:1px solid #ddd6ec">Lead with a relatable, personality-led entry that earns trust before numbers.</div>
+    <div class="cell" style="background:#EEEAF6;border:1px solid #ddd6ec">Make the future imaginable with the image quiz and a grounded, real estimate.</div>
+    <div class="cell" style="background:#EEEAF6;border:1px solid #ddd6ec">Pair every user with a human advisor who turns the profile into a concrete plan.</div>
+    <div class="cell" style="background:#EEEAF6;border:1px solid #ddd6ec">Reframe progress as a horoscope and milestone cards so check-ins feel rewarding.</div>
+    <div class="cell" style="background:#EEEAF6;border:1px solid #ddd6ec">Celebrate arrival; show gains as "weeks of retirement funded".</div>
+  </div>
+  </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ SERVICE BLUEPRINT ══ -->
+<section>
+  <div class="reveal" style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#575165;margin-bottom:6px">Case Study · Service Design</div>
+  <div class="reveal reveal-delay-1" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(2.2rem,4vw,3.4rem);line-height:.9;letter-spacing:-.025em;color:#141018">Service&nbsp;<em style="font-style:italic;color:#630F49">Blueprint</em></div>
+
+  <div class="eyebrow reveal reveal-delay-1" style="margin:26px 0 16px">Persona &amp; Scenario</div>
+  <div class="reveal reveal-delay-1" style="display:flex;gap:26px;align-items:center">
+    <div style="width:104px;height:104px;border-radius:14px;flex-shrink:0;background:#EEEAF6;border:1px solid #ddd6ec;transform:rotate(-3deg);display:flex;align-items:center;justify-content:center;overflow:hidden">
+      <svg width="58" height="58" viewBox="0 0 48 48" fill="none" stroke="#630F49" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="24" cy="17" r="9"/>
+        <path d="M6 42c0-10 8-16 18-16s18 6 18 16"/>
+      </svg>
+    </div>
+    <div style="flex:1">
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:1.55rem;line-height:1.25;letter-spacing:-.015em;color:#141018;margin:0;text-wrap:balance">"I am a 35-year-old living in the UK, trying to strategically save for retirement — but I can't picture what my future will need."</p>
+      <p style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#575165;margin:12px 0 0">Primary persona · aged 35–50 · United Kingdom · aware but not yet acting</p>
+    </div>
+  </div>
+
+  <p class="body reveal reveal-delay-2" style="margin:28px 0 0;max-width:1000px"><span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:#630F49;margin-right:.7rem">Scenario</span>A user approaches FutureScope for help planning their retirement. Rather than opening with a calculator, the service begins with reflection — a personality-led quiz that helps the user imagine their future self before confronting the numbers. This blueprint maps every layer of the service, from what the user sees to the systems and partners working behind the scenes.</p>
+
+  <div class="reveal reveal-delay-2" style="height:1px;background:#ddd6ec;margin:34px 0 28px"></div>
+
+  <div class="table-wrap">
+  <div style="min-width:900px">
+  <div class="reveal reveal-delay-2" style="display:grid;grid-template-columns:170px repeat(5,1fr);gap:14px;align-items:center;margin-bottom:14px">
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:1.4rem;color:#141018;line-height:1">Service<br>phases</div>
+    <div style="grid-column:2 / 4;background:#CACAFF;border-radius:999px;padding:12px 18px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#141018">Sign-up Phase</div>
+    <div style="grid-column:4 / 6;background:#D4F5F9;border-radius:999px;padding:12px 18px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#141018">Consultation Phase</div>
+    <div style="grid-column:6 / 7;background:#FFCAA6;border-radius:999px;padding:12px 14px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#141018;line-height:1.3">Implementation Phase</div>
+  </div>
+
+  <div class="reveal reveal-delay-2" style="display:grid;grid-template-columns:170px repeat(5,1fr);gap:14px;align-items:center;margin-bottom:22px">
+    <div></div>
+    <div class="stagecap">01 · Discover</div>
+    <div class="stagecap">02 · Register</div>
+    <div class="stagecap">03 · Reflect</div>
+    <div class="stagecap">04 · Consult</div>
+    <div class="stagecap">05 · Track</div>
+  </div>
+
+  <div class="reveal reveal-delay-2" style="display:grid;grid-template-columns:170px repeat(5,1fr);gap:14px;align-items:stretch;margin-bottom:14px">
+    <div class="lane-label"><span class="lane-num">01</span><span class="lane-name">Physical<br>evidence</span></div>
+    <div style="padding:4px 6px;font-family:'Lora',serif;font-size:.8rem;line-height:1.55;color:#575165">App Store listing, ratings &amp; the first onboarding screens</div>
+    <div style="padding:4px 6px;font-family:'Lora',serif;font-size:.8rem;line-height:1.55;color:#575165">Welcome email &amp; SMS confirmation; the account dashboard</div>
+    <div style="padding:4px 6px;font-family:'Lora',serif;font-size:.8rem;line-height:1.55;color:#575165">Image-based quiz, the lifestyle profile card &amp; an HSBC-based savings estimate</div>
+    <div style="padding:4px 6px;font-family:'Lora',serif;font-size:.8rem;line-height:1.55;color:#575165">Calendar invite, advisor profile &amp; a personalized recommendation document</div>
+    <div style="padding:4px 6px;font-family:'Lora',serif;font-size:.8rem;line-height:1.55;color:#575165">Weekly horoscope card, progress tracker &amp; collectible milestone cards</div>
+  </div>
+
+  <div class="reveal reveal-delay-2" style="display:grid;grid-template-columns:170px repeat(5,1fr);gap:14px;align-items:stretch;margin-bottom:4px">
+    <div class="lane-label"><span class="lane-num">02</span><span class="lane-name">Customer<br>actions</span></div>
+    <div class="cell" style="background:#EEEAF6">• Hears about FutureScope<br>• Downloads the app<br></div>
+    <div class="cell" style="background:#EEEAF6">• Creates an account<br>• Consents to data use<br>• Sets an initial goal</div>
+    <div class="cell" style="background:#EEEAF6">• Completes the visual quiz<br>• Reacts to the savings estimate<br>• Receives a lifestyle profile</div>
+    <div class="cell" style="background:#EEEAF6">• Books &amp; attends the consultation<br>• Asks questions<br>• Reviews the suggested plan</div>
+    <div class="cell" style="background:#EEEAF6">• Adjusts monthly budget<br>• Logs savings<br>• Reads the weekly forecast &amp; collects milestones</div>
+  </div>
+
+  <div class="bp-divider reveal"><span>Line of interaction</span><span></span></div>
+
+  <div class="reveal reveal-delay-3" style="display:grid;grid-template-columns:170px repeat(5,1fr);gap:14px;align-items:stretch;margin-bottom:4px">
+    <div class="lane-label"><span class="lane-num">03</span><span class="lane-name">Frontstage<br>actions</span><span class="lane-sub">Visible to user</span></div>
+    <div class="cell" style="background:#CACAFF">Onboarding introduces the "imagine your future" premise</div>
+    <div class="cell" style="background:#CACAFF">Registration &amp; confirmation UI; dashboard seeded with the new profile</div>
+    <div class="cell" style="background:#CACAFF">Quiz serves unlabelled imagery; results reveal the lifestyle profile &amp; estimate</div>
+    <div class="cell" style="background:#CACAFF">Advisor-matching screen; video consultation; recommendation walkthrough</div>
+    <div class="cell" style="background:#CACAFF">Horoscope-framed progress feed with nudges, opportunities &amp; milestone cards</div>
+  </div>
+
+  <div class="bp-divider reveal"><span>Line of visibility</span><span></span></div>
+
+  <div class="reveal reveal-delay-3" style="display:grid;grid-template-columns:170px repeat(5,1fr);gap:14px;align-items:stretch;margin-bottom:4px">
+    <div class="lane-label"><span class="lane-num">04</span><span class="lane-name">Backstage<br>actions</span><span class="lane-sub">Hidden from user</span></div>
+    <div class="cell" style="background:#EEEAF6;color:#575165">Marketing &amp; app-store optimisation; onboarding content maintained</div>
+    <div class="cell" style="background:#EEEAF6;color:#575165">Account provisioned; customer profile created &amp; validated; identity checks</div>
+    <div class="cell" style="background:#EEEAF6;color:#575165">Scoring engine maps answers → lifestyle profile; calculator computes the estimate</div>
+    <div class="cell" style="background:#EEEAF6;color:#575165">Advisor assigned by profile; personalized plan prepared; notes logged to CRM</div>
+    <div class="cell" style="background:#EEEAF6;color:#575165">Plan data updated; forecast service authors the weekly horoscope; adherence tracked</div>
+  </div>
+
+  <div class="bp-divider reveal"><span>Line of internal interaction</span><span></span></div>
+
+  <div class="reveal reveal-delay-3" style="display:grid;grid-template-columns:170px repeat(5,1fr);gap:14px;align-items:stretch">
+    <div class="lane-label"><span class="lane-num">05</span><span class="lane-name">Support<br>processes</span><span class="lane-sub">Systems &amp; partners</span></div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec;color:#575165">App platform, hosting &amp; analytics; customer service</div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec;color:#575165">Identity &amp; data-security infrastructure; GDPR compliance</div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec;color:#575165">HSBC Retirement Calculator API; quiz &amp; boundary-object content library</div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec;color:#575165">Advisor network &amp; scheduling; compliance review of advice</div>
+    <div class="cell" style="background:#FCFBFA;border:1px solid #ddd6ec;color:#575165">Records database, notification service &amp; ongoing progress monitoring</div>
+  </div>
+  </div>
   </div>
 </section>
 
@@ -950,6 +1201,8 @@ section{padding:5.5rem 3rem;max-width:1180px;margin:0 auto}
   </div>
 </section>
 
+<div class="divider"></div>
+
 <!-- ══ FOOTER ══ -->
 <footer class="footer">
   <div class="footer-inner">
@@ -961,6 +1214,7 @@ section{padding:5.5rem 3rem;max-width:1180px;margin:0 auto}
     </div>
     <p class="footer-copyright">© 2026 · made with paper &amp; ink</p>
   </div>
+  <p class="icon-credits">Animated icons by <a href="https://www.flaticon.com/authors/magnific" target="_blank" rel="noopener">Magnific</a> on <a href="https://www.flaticon.com" target="_blank" rel="noopener">Flaticon</a>: <a href="https://www.flaticon.com/free-animated-icon/abstract-shape_10399348" target="_blank" rel="noopener">Abstract Shape</a>, <a href="https://www.flaticon.com/free-animated-icon/heartbeat_6449707" target="_blank" rel="noopener">Heartbeat</a>, <a href="https://www.flaticon.com/free-animated-icon/friendship_10182254" target="_blank" rel="noopener">Friendship</a></p>
 </footer>
 
 <script>
