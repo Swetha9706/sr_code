@@ -86,6 +86,69 @@
         ],
         "createdAt": "2026-10-25T12:20:14.007Z",
         "reason": "DESIGN.md documents 0.7rem as the hard floor for DM Mono label/utility text sitewide (label-sm); .icon-attr matches every other mono label on this page (.eyebrow, .hero-quote-attr, .opp-caption) already at this size"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "index-restructured.html"
+        ],
+        "createdAt": "2026-10-31T11:48:59.530Z",
+        "reason": "Raspberry Londrina footer wordmark on Cocoa, 100-320px display text per repo-docs/DESIGN_new.md footer spec ('giant Raspberry Londrina swetha'); only needs 3:1 at this size (WCAG large-text), actual ratio 3.9:1 clears it — detector applied the 4.5:1 body threshold"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "index-restructured.html"
+        ],
+        "createdAt": "2026-10-31T11:48:59.547Z",
+        "reason": "Draft implements repo-docs/DESIGN_new.md (Moodboard v3: Londrina Solid/Bricolage Grotesque/JetBrains Mono), which explicitly replaces the live DESIGN.md (3a) type system per user request; not yet promoted to root DESIGN.md pending review"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "index-restructured.html"
+        ],
+        "createdAt": "2026-10-31T11:48:59.560Z",
+        "reason": "Draft implements repo-docs/DESIGN_new.md (Moodboard v3) palette, which explicitly replaces the live DESIGN.md (3a) colors per user request; not yet promoted to root DESIGN.md pending review"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "index-restructured.html"
+        ],
+        "createdAt": "2026-10-31T11:48:59.574Z",
+        "reason": "Draft implements repo-docs/DESIGN_new.md (Moodboard v3) type ramp (Londrina display, Bricolage scale), which replaces the live DESIGN.md (3a) ramp; not yet promoted to root DESIGN.md pending review"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "*",
+        "files": [
+          "index-restructured.html"
+        ],
+        "createdAt": "2026-10-31T11:48:59.587Z",
+        "reason": "Draft implements repo-docs/DESIGN_new.md (Moodboard v3) radius scale (10/14/20/28/pill), which differs from the live DESIGN.md (3a) scale; not yet promoted to root DESIGN.md pending review"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "index-restructured.html"
+        ],
+        "createdAt": "2026-10-31T11:48:59.599Z",
+        "reason": "Ivory #FDFCEF is the committed Moodboard v3 page ground per repo-docs/DESIGN_new.md ('stands in for white'), not a reflexive default — same rationale applies to Blush #FCF0F4 nav/surfaces"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "index-restructured.html"
+        ],
+        "createdAt": "2026-10-31T11:48:59.612Z",
+        "reason": "Raspberry square grid behind hero is an explicit repo-docs/DESIGN_new.md spec value (rgba(237,65,117,.12), 24px/40px cells), not a generic reflex grid"
       }
     ]
   }
