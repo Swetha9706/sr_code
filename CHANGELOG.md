@@ -4,6 +4,33 @@ A running log of meaningful updates to the portfolio. Newest entries on top.
 
 ---
 
+## 2026-11-20 — Moodboard v3 homepage draft: hero rebuilt from Figma, full motion pass, 3 animation fixes shipped
+
+**File:** `index-restructured.html` (draft; not committed/pushed) · **New:** `hero-figma-assets/`, `fonts/LondrinaSolid-Regular.otf`, `plans/005-007*.md`
+
+_Nothing in this entry is live. `index-restructured.html` and everything it depends on remain uncommitted/untracked, per this repo's draft-protection convention, pending Swetha's sign-off._
+
+**Homepage rebuild to spec**
+- Rebuilt the draft homepage per `Projects/prompts/homepage-build-prompt.md` and `repo-docs/DESIGN_new.md`/`PRODUCT_new.md` — 7 sections only (nav, hero card, about statement, marquee, 3-card work grid, contact, footer), dropping extra sections a prior session had folded in.
+- Self-hosted Londrina Solid; reused existing project-card imagery and the resume PDF; bracketed placeholders for any unconfirmed figures.
+
+**Hero rebuilt from the real Figma source**
+- Pulled Figma nodes 818:5381 (hero card) and 818:5416 (photo well) via the Figma MCP and matched them exactly: downloaded the real portrait photo plus 9 candid crossfade photos and the flower/ring sticker SVGs into `hero-figma-assets/`; corrected the hero card structure to a cream-mat-over-raspberry-panel (not a flat rectangle) and fixed a rotation-sign error found by deriving the angle from the source's CSS transform matrix.
+- Recreated the "Welcome to Swetha's Portfolio" pink postcard exactly, including its soft double drop-shadow (a deliberate, disclosed exception to the site's hard-shadow convention for this one recreated element).
+
+**Hero motion — "postcards tossed onto a table"**
+- Built a full pure-CSS entrance choreography: the pink card and the photo card drop in from directly above with a rotational overshoot-and-settle (pink lands first, photo card follows on top), then a staggered content reveal (badge → headline → body → closing line → photo well → two corner stickers), each sticker handing off into a gentle ambient float once landed, plus a 10-frame photo-crossfade carousel inside the hero card.
+- Iterated the choreography twice against explicit feedback — corrected from a diagonal slide to a true top-drop toss, then widened the pause between the two cards landing.
+
+**`/improve-animations` audit + 3 fixes shipped**
+- Audited the hero against the 8-category motion rulebook; wrote and executed 3 plans (`plans/005-007`):
+  - **005** — the hero no longer replays its full ~2.9s entrance on every repeat visit to `/` within the same browser session (a `sessionStorage` flag skips straight to the resolved state; ambient motion keeps running).
+  - **006** — the hero's two hover effects (photo-crossfade pause, card shadow) are now gated behind `@media (hover: hover) and (pointer: fine)`, so a tap on a touch device no longer triggers either.
+  - **007** — the "open to work" badge now pops in with scale/rotation like its sibling stickers, instead of a flat opacity fade.
+- All three verified in headless Chromium (Playwright), including touch-device emulation, and approved against the `review-animations` craft bar.
+
+---
+
 ## 2026-08-20 — Sip & Scones §01–§02 rewrite: "The Concept", User Needs video split, mp4 video
 
 **File:** `Projects/sip-scones.html` · **New asset:** `Projects/Sip-Scones Assets/lauren-hemmert-jensen-dupe.mp4`
