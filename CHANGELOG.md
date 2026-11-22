@@ -4,6 +4,49 @@ A running log of meaningful updates to the portfolio. Newest entries on top.
 
 ---
 
+## 2026-11-22 — Moodboard v3 homepage draft: Selected Work + Expertise panel from Figma, scroll-reveal, footer rebuild, page loader
+
+**File:** `index-restructured.html` (draft; not committed/pushed) · **New:** `figma-work-assets/`, `footer-figma-assets/`
+
+_Nothing in this entry is live. `index-restructured.html` and everything it depends on remain uncommitted/untracked, per this repo's draft-protection convention, pending Swetha's sign-off._
+
+**Selected Work, exactly from Figma**
+- Rebuilt from node 791:1107: new real cover images downloaded into `figma-work-assets/` (replacing the old stock covers and the numbered sticker discs, which weren't in the design), matched type scale/pills/arrow treatment exactly.
+- Corrected a row-width ratio mistake caught by re-deriving the real card widths from the Figma node data (545px:498px, not the 2:1 split first assumed).
+- Re-pulled the lead Krētha card (node 791:1113) on request and found the Figma file had since gained a periwinkle arrow CTA it didn't have on the first pass — synced it.
+
+**Scroll-linked text reveal on the About statement**
+- Built per `Projects/prompts/prompt-scroll-text-reveal.md`: word/character-span split preserving line wraps, `IntersectionObserver`-gated `requestAnimationFrame` easing, a reusable `data-scroll-reveal` hook, `prefers-reduced-motion` and no-JS fallbacks, a visually-hidden original-text node for screen readers.
+- Retuned twice against feedback: first because the fill was finishing ~480px of scroll after the next section was already visible (widened the section's bottom gap, relaxed the progress-end threshold, slowed the easing ~30%); then to visually center the statement within its now-taller section.
+
+**About copy, rewritten twice**
+- Rewrote the one-line statement into a short multi-sentence bio, inspired by a reference bio's curiosity-driven voice and passed through `/plainer-voice` (cut a redundant closing restatement of the same idea).
+- Trimmed it further on direct feedback that it was too long for the section's display-sized type.
+
+**Contact section replaced with an Expertise panel**
+- Pulled Figma node 843:153 — a "What I'm good at" tabbed expertise panel (Product / Systems / The Last Mile). The static capture only exposed the currently-selected tab's copy, so a read-only Figma inspection found the underlying 3-variant component and pulled all three descriptions.
+- Built as a real working tab switcher (click swaps the underline + description, not a static recreation), reusing the existing Blush/Londrina/Bricolage tokens exactly.
+- Left the nav/footer "Contact" label as-is and flagged the mismatch (the section no longer carries email/location info — that still lives in the footer).
+
+**Footer: torn edge removed, then rebuilt pixel-exact, then made responsive**
+- Removed the jagged torn-paper SVG edge on request.
+- Rebuilt the whole footer exactly from Figma node 791:1229, including its literal 1864×819 frame size. The "Thanks for scrolling!" text turned out to be a `TEXT_PATH` node the design-to-code tool doesn't support — read its font/color directly and rebuilt it as a genuine curved SVG `<textPath>` (previously static centered text).
+- Made the exact-size canvas responsive via a uniform `transform:scale()` driven by the wrap's measured width, after the literal fixed size clipped the email sticker, the round sticker, and the wordmark's tail at common laptop widths.
+
+**Page loader**
+- Built per `Projects/prompts/prompt-page-loader.md`, after first stopping per that prompt's own instructions: root `DESIGN.md` still documents the old 3a system, not the Moodboard v3 this prompt assumes. Proceeded treating `repo-docs/DESIGN_new.md` as authoritative, per Swetha's call.
+- Rebuilt the Jitter-exported loader as inline SVG (flower, 24-tooth sunburst, two 4-point stars) with a real SMIL `<animate attributeName="d">` path-morph for the Bubblegum star's inner-radius slim, Safari-safe per the build note.
+- Unified the loader's once-per-session flag with the *existing* `heroIntroPlayed` session flag and `hero-skip-intro` mechanism already in the file, instead of adding a second one. The post-loader hero entrance reuses the hero's *existing* postcard-toss animation (paused at frame 0 behind the loader, released on cue) rather than a new one.
+- Exit sequence waits for load + fonts-ready, then the next loop boundary (`animationiteration`), guaranteeing one full 3.52s loop and an exit on the empty-panel frame; 400ms lift, 200ms beat, 8s failsafe, bfcache safety net.
+- Ran an `/emil-design-eng` motion audit afterward; applied its fix by strengthening the loop's weak built-in `ease-out`/`ease-in-out` keywords to real `cubic-bezier` curves — in the process, caught that a CSS custom property silently fails to resolve inside a per-keyframe `animation-timing-function` in Chrome (falls back to the base easing with no error), by inspecting `getAnimations()` directly rather than trusting the visual result.
+- Added a "Page loader" section to `repo-docs/DESIGN_new.md` documenting its 3 intentional system exceptions.
+
+**Verification**
+- Headless Chrome (routed through the installed Google Chrome via `channel:'chrome'`, since the Playwright-downloaded Chromium fails to launch in this environment) at 390–2000px throughout: zero horizontal overflow, loader freeze-frames checked against the reference sheet, full exit→hero-entrance run verified, repeat-session skip and reduced-motion both confirmed, no real console errors.
+- **Known, disclosed deviations:** the loader's flood/"hole" geometry is a uniform-scale approximation rather than the exact described shape; not tested in real Safari (none available in this environment); bfcache handling is code-reviewed, not verified via an actual cache-restore navigation.
+
+---
+
 ## 2026-11-20 — Moodboard v3 homepage draft: hero rebuilt from Figma, full motion pass, 3 animation fixes shipped
 
 **File:** `index-restructured.html` (draft; not committed/pushed) · **New:** `hero-figma-assets/`, `fonts/LondrinaSolid-Regular.otf`, `plans/005-007*.md`
